@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Sandali START
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/online-conferences', function () {
+    return view('onlineConferences');
+});
+
+Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Sandali END
+|--------------------------------------------------------------------------
+*/
