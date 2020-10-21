@@ -99,4 +99,41 @@ class MeetingController extends Controller
     }
 
     // --------------------------------------------------------------------------------------------------
+
+    public function viewMeetings(){
+        $meetings = Meeting::all()->where('approval', 1)->where('status',1);
+        return view('viewMeetings')->with('meetings', $meetings);
+    }
+
+    public function joinDetails($meeting_id){
+        return view('joinDetails')->with('meeting_id', $meeting_id);
+    }
+
+    public function joinViaCalendar(Request $request){
+        $meetingID = $request->meetingID;
+        $userType = $request->userType;
+        $userName = $request->user;
+        $password = $request->password;
+
+        $meeting = Meeting::find($meetingID);
+
+        if($userType == 'moderator'){
+            if($password == $meeting->moderator_password){
+                $url = $this->join($meetingID, $userType, $userName);
+                return redirect($url);
+            }
+            else
+                return 'Invalid Password';
+        }elseif($userType == 'attendee'){
+            if($password == $meeting->attendee_password){
+                $url = $this->join($meetingID, $userType, $userName);
+                return redirect($url);
+            }
+            else
+                return 'Invalid Password';
+        }
+
+    }
+
+    // --------------------------------------------------------------------------------------------------
 }
