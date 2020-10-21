@@ -23,6 +23,14 @@ class MeetingController extends Controller
 
     }
 
+    public function schedule(Request $request){
+
+        $meeting = $this->create($request);
+
+        return $meeting;
+
+    }
+
     // --------------------------------------------------------------------------------------------------
 
     public function create(Request $request){
