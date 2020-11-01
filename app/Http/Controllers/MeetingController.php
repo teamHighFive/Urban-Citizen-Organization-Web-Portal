@@ -14,6 +14,9 @@ use App\Meeting;
 
 class MeetingController extends Controller
 {
+    // --------------------------------------------------------------------------------------------------
+    // Create and join a meeting
+    // --------------------------------------------------------------------------------------------------
     public function createAndJoin(Request $request){
 
         $meeting = $this->create($request);
@@ -23,6 +26,9 @@ class MeetingController extends Controller
 
     }
 
+    // --------------------------------------------------------------------------------------------------
+    // Schedule a meeting
+    // --------------------------------------------------------------------------------------------------
     public function schedule(Request $request){
 
         $meeting = $this->create($request);
@@ -32,7 +38,8 @@ class MeetingController extends Controller
     }
 
     // --------------------------------------------------------------------------------------------------
-
+    // Basic fuction for creating a meeting
+    // --------------------------------------------------------------------------------------------------
     public function create(Request $request){
 
         //Add meetings to the table
@@ -57,6 +64,9 @@ class MeetingController extends Controller
 
     }
 
+    // --------------------------------------------------------------------------------------------------
+    //Basic function for joining a meeting
+    // --------------------------------------------------------------------------------------------------
     public function join($meetingID, $userType, $userName){ //Get meeting ID and user type(attendee, moderator) as parameters
 
         //When passing meeting ID get other details from database
@@ -99,7 +109,8 @@ class MeetingController extends Controller
     }
 
     // --------------------------------------------------------------------------------------------------
-
+    // View upcoming meetings and join. This should be used with the event calendar
+    // --------------------------------------------------------------------------------------------------
     public function viewMeetings(){
         $meetings = Meeting::all()->where('approval', 1)->where('status',1);
         return view('viewMeetings')->with('meetings', $meetings);
@@ -136,4 +147,26 @@ class MeetingController extends Controller
     }
 
     // --------------------------------------------------------------------------------------------------
+    // View meetings pending for admin approval and accept or reject those requests
+    // --------------------------------------------------------------------------------------------------
+    public function viewMeetingsPendingForAdminApproval(){
+        $meetings = Meeting::all()->where('approval', 0)->where('status',1);
+        return view('adminApproval')->with('meetings', $meetings);
+    }
+
+    public function approveMeeting($meeting_id){
+        $meeting = Meeting::find($meeting_id);
+        $meeting->approval = 1;
+        $meeting->save();
+        return redirect('/admin-approval');
+
+    }
+
+    public function rejectMeeting($meeting_id){
+        $meeting = Meeting::find($meeting_id);
+        $meeting->approval = 1;
+        $meeting->status = 0;
+        $meeting->save();
+        return redirect('/admin-approval');
+    }
 }
