@@ -49,7 +49,13 @@ Route::post('/meeting-join-pwd', function (Request $request) {
 
 Route::post('/meeting-join', 'MeetingController@joinViaCalendar');
 
-/// View meetings pending or admin approval
+/// View meetings pending for admin approval
+Route::get('/admin-approval', 'MeetingController@viewMeetingsPendingForAdminApproval');
+
+Route::get('/approve-meeting/{meeting_id}', 'MeetingController@approveMeeting');
+
+Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes by Sandali END
