@@ -61,3 +61,35 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 | Web Routes by Sandali END
 |--------------------------------------------------------------------------
 */
+/*
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Ruwanthi START
+|--------------------------------------------------------------------------
+*/
+Route::get('/gallery', 'GalleryController@index');
+
+Route::resource('gallery', 'GalleryController');
+
+Route::resource('photo', 'PhotoController');
+
+Route::get('/gallery/show/{id}', 'GalleryController@show');
+
+Route::get('/photo/create/{id}', 'PhotoController@create'); 
+
+Route::get('/photo/details/{id}', 'PhotoController@details');
+
+Route::get('/test', function()
+{
+    return view('gallery.create');
+});
+Route::delete('/gallery/delete/{id}','GalleryController@destroy');
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Ruwanthi END
+|--------------------------------------------------------------------------
+*/
