@@ -65,10 +65,18 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
-
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth','isUser']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    });
+
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('registered-user', 'Admin\RegisteredController@index');
+    Route::get('role-edit/{id}','Admin\RegisteredController@edit');
+    Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
+    Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
+});

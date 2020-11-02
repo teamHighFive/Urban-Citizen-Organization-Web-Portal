@@ -72,14 +72,22 @@
 
                 <div class="dropdown">
                 <button class="nav-link border border-light rounded waves-effect dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+                    {{ Auth::user()->fname.' '.Auth::user()->mname}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">My Profile</a>
                   <a class="dropdown-item" href="#">Other Option</a>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                 @csrf
+                </form>
 
 
-                       
                 </div>
               </div>
           </li>
