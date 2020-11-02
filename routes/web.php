@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +64,11 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 | Web Routes by Sandali END
 |--------------------------------------------------------------------------
 */
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
+
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

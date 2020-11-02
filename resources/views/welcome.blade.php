@@ -119,7 +119,7 @@
                         <a class="nav-link" href="#">Archieves</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="/login">Login</a>
                     </li>
                     </ul>
                     <!-- Left links -->
@@ -152,7 +152,7 @@
                             <h2 class="wow fadeInUp animated" data-wow-delay=".6s" >
                                 Let's make Colombo the right type of city!
                             </h2>
-                            <a class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green hvr-bounce-to-right" data-wow-delay=".9s" href="#" target="_blank">Join with Us</a>
+                            <a class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green hvr-bounce-to-right" data-wow-delay=".9s" href="/register" >Join with Us</a>
                         </div>
                     </div>
                 </div>
