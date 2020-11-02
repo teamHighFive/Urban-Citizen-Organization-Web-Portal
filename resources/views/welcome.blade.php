@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="icon" href="favicon.ico">
-        <title>Urban Citizens</title>
+        <title>Urban Citizens Organization</title>
         <!-- Mobile Specific Metas
         ================================================== -->
         <meta name="format-detection" content="telephone=no">
@@ -82,10 +82,10 @@
                     <!-- Left links -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#hero-area">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#about">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Donations</a>
