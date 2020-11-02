@@ -61,3 +61,33 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 | Web Routes by Sandali END
 |--------------------------------------------------------------------------
 */
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Tharindu START
+|--------------------------------------------------------------------------
+*/
+Route::get('/archieves', function () {
+    return view('doc_welcome');
+});
+
+Route::get('/upload', 'TheController@index');
+Route::post('/uploadfile', 'TheController@store')->name('uploadfile');
+
+Route::get('/table', 'TheController@table');
+
+Route::get('/warehouse', function () {
+    return view('uploadform');
+});
+
+Route::post('/choosetype', 'TheController@type')->name('choosetype');
+
+Route::get('/type', function () {
+    return view('choosetype');
+});
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Tharindu END
+|--------------------------------------------------------------------------
+*/

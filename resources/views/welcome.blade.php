@@ -116,7 +116,7 @@
                         <a class="nav-link" href="#">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Archieves</a>
+                        <a class="nav-link" href="/archieves">Archieves</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Login</a>
