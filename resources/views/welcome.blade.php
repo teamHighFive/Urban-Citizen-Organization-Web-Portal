@@ -113,7 +113,7 @@
                         <a class="nav-link" href="/posts">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="/gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/archieves">Archieves</a>
