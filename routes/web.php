@@ -157,3 +157,45 @@ Route::delete('/gallery/delete/{id}','GalleryController@destroy');
 | Web Routes by Ruwanthi END
 |--------------------------------------------------------------------------
 */
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Dananjana START
+|--------------------------------------------------------------------------
+*/
+// Main events view
+
+/*Route::get('/', ['uses' => 'IndexController@index', 'as' => 'index']);*/
+Route::get('/event-calendar',  'IndexController@index');
+
+// Show event model new view
+
+Route::get('/add', ['uses' => 'EventController@add', 'as' => 'add']);
+
+// Show event model view
+
+Route::get('/event/{event}', ['uses' => 'EventController@show', 'as' => 'event.edit']);
+
+// Route for create new event model
+
+Route::post('/event', ['uses' => 'EventController@store', 'as' => 'event.store']);
+
+// Route for update event model
+
+Route::put('/event/{event}', ['uses' => 'EventController@update', 'as' => 'event.update']);
+
+// Route for delete event model
+
+Route::delete('/event/{event}', ['uses' => 'EventController@destroy', 'as' => 'event.destroy']);
+
+// Get all events in json
+
+Route::get('/events', ['uses' => 'EventController@events', 'as' => 'events']);
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Dananjana START
+|--------------------------------------------------------------------------
+*/
