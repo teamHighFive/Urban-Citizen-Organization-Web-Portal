@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
 
-        <title>document type</title>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
-    </head>
-    <body>
+@section('title','Archieves')
+@section('content')
         <div>
-            <a href="archieves">
+            <a href="archives">
                 <img alt="LOGO" src="https://images.cdn4.stockunlimited.net/clipart/home-button_1481470.jpg"
                 width="50" height="50">
             </a>
@@ -20,12 +14,12 @@
             <form action="/upload" method="GET" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="flex-center position-ref full-height">
-           
+
                 <h2 class="main-heading">Select type of the document you upload</h2>
                     <div class="subscribe-card-container">
                     <div class="subscribe-card">
                    <br>
-                    
+
                         <div class="input">
                             <input type="radio" name="file" id="form-pdf" required>
                             <label for="form-name">PDF</label>
@@ -67,20 +61,19 @@
                      <br>
 
 
-            
+
                 <button type="submit"  name="submit" class="btn btn-warning bt-lg">&emsp; Next &emsp;</button>
-             
-            
+
+
                 </div>
             </form>
             </div>
         </div>
-    
+
 </div>
 
 
                 </div>
             </div>
         </div>
-    </body>
-</html>
+@endsection

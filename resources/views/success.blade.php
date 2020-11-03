@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
-<style>
-h2 {
-  font-family: "Sofia";
-  font-size: 22px;
-}
-h5 {
-  font: italic bold 12px/30px Georgia, serif;
-}
-p {font-family: 'Syne Mono', monospace;}
+@extends('layouts.main')
 
-form {font-family: 'Syne Mono', monospace;}
-</style>
-</head>
-
-
-    <body>
+@section('title','Archives')
+@section('content')
     <form align="center">
       <div class="container">
       <div class="jumbotron">
@@ -37,7 +19,6 @@ form {font-family: 'Syne Mono', monospace;}
               </form>
               </p>
       </div>
-      </div>  
+      </div>
     </form>
-   </body>
-</html>
+@endsection

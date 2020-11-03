@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('content')
 <div class="callout primary">
     <div class="row column">
@@ -18,10 +19,9 @@
         {!!Form::file('coverimage',$attributes=['class' => 'cropit-image-input'])!!}
         {!!Form::submit('Submit',$attributes=['class'=>'button'])!!}
         {!!Form::close() !!}
-        
-        
+
+
 
     </div>
 </div>
-
 @endsection

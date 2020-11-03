@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="container">
@@ -37,7 +37,7 @@
                                             <td>
                                                 <div class="pull-left">
                                                     <a href="{{ route('event.edit', $event->id ) }}">
-                                                        <i class="glyphicon glyphicon-pencil">EditEvent</i> 
+                                                        <i class="glyphicon glyphicon-pencil">EditEvent</i>
                                                     </a>
                                                 </div>
                                                 <div class="pull-left ml10">

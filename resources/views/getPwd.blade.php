@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('layouts.main')
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
-
-    <title>Join Details</title>
-</head>
-<body>
+@section('title','Join Details')
+@section('content')
     <div class="title flex-center position-ref">Join</div>
 
     <div class="container">
@@ -60,8 +47,7 @@
             <div class="col-md-3"></div>
         </div>
     </div>
-</body>
-</html>
+@endsection
 
 
 

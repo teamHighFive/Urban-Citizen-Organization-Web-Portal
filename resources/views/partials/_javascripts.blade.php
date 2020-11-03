@@ -1,22 +1,23 @@
  <!-- Template Javascript Files
         ================================================== -->
         <!-- jquery -->
-        <script src="plugins/jQurey/jquery.min.js"></script>
+        <script src="{{ asset('plugins/jQurey/jquery.min.js') }}"></script>
         <!-- Form Validation -->
-        <script src="plugins/form-validation/jquery.form.js"></script>
-        <script src="plugins/form-validation/jquery.validate.min.js"></script>
+        <script src="{{ asset('plugins/form-validation/jquery.form.js') }}"></script>
+        <script src="{{ asset('plugins/form-validation/jquery.validate.min.js') }}"></script>
         <!-- slick slider -->
-        <script src="plugins/slick/slick.min.js"></script>
+        <script src="{{ asset('plugins/slick/slick.min.js') }}"></script>
         <!-- bootstrap js -->
-        <script src="plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="{{ asset('plugins/bootstrap/bootstrap.min.js') }}"></script>
         <!-- wow js -->
-        <script src="plugins/wow-js/wow.min.js"></script>
+        <script src="{{ asset('plugins/wow-js/wow.min.js') }}"></script>
         <!-- slider js -->
-        <script src="plugins/slider/slider.js"></script>
+        <script src="{{ asset('plugins/slider/slider.js') }}"></script>
         <!-- Fancybox -->
-        <script src="plugins/facncybox/jquery.fancybox.js"></script>
+        <script src="{{ asset('plugins/facncybox/jquery.fancybox.js') }}"></script>
         <!-- template main js -->
-        <script src="js/main.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- MDB -->
         <script
