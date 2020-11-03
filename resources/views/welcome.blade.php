@@ -104,7 +104,7 @@
                         </span>
                         <!-- Dropdown menu -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Event Calendar</a></li>
+                        <li><a class="dropdown-item" href="/event-calendar">Event Calendar</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="/online-conferences">Online Conferences</a></li>
                         </ul>
@@ -113,7 +113,7 @@
                         <a class="nav-link" href="/posts">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="/gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/archieves">Archieves</a>
