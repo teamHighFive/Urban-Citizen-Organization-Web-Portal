@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 /*
 |--------------------------------------------------------------------------
@@ -59,5 +61,67 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 /*
 |--------------------------------------------------------------------------
 | Web Routes by Sandali END
+|--------------------------------------------------------------------------
+*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Theekshana START
+|--------------------------------------------------------------------------
+*/
+
+Auth::routes();
+Route::group(['middleware' => ['auth','isUser']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    });
+
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('registered-user', 'Admin\RegisteredController@index');
+    Route::get('role-edit/{id}','Admin\RegisteredController@edit');
+    Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
+    Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
+});
+
+Route::resource('posts', 'PostsController');
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Theekshana END
+|--------------------------------------------------------------------------
+*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Tharindu START
+|--------------------------------------------------------------------------
+*/
+Route::get('/archieves', function () {
+    return view('doc_welcome');
+});
+
+Route::get('/upload', 'TheController@index');
+Route::post('/uploadfile', 'TheController@store')->name('uploadfile');
+
+Route::get('/table', 'TheController@table');
+
+Route::get('/warehouse', function () {
+    return view('uploadform');
+});
+
+Route::post('/choosetype', 'TheController@type')->name('choosetype');
+
+Route::get('/type', function () {
+    return view('choosetype');
+});
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Tharindu END
 |--------------------------------------------------------------------------
 */
