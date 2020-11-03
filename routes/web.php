@@ -20,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +65,13 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 */
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Theekshana START
+|--------------------------------------------------------------------------
+*/
+
 Auth::routes();
 Route::group(['middleware' => ['auth','isUser']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -82,3 +88,40 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 });
 
 Route::resource('posts', 'PostsController');
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Theekshana END
+|--------------------------------------------------------------------------
+*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Tharindu START
+|--------------------------------------------------------------------------
+*/
+Route::get('/archieves', function () {
+    return view('doc_welcome');
+});
+
+Route::get('/upload', 'TheController@index');
+Route::post('/uploadfile', 'TheController@store')->name('uploadfile');
+
+Route::get('/table', 'TheController@table');
+
+Route::get('/warehouse', function () {
+    return view('uploadform');
+});
+
+Route::post('/choosetype', 'TheController@type')->name('choosetype');
+
+Route::get('/type', function () {
+    return view('choosetype');
+});
+/*
+|--------------------------------------------------------------------------
+| Web Routes by Tharindu END
+|--------------------------------------------------------------------------
+*/
