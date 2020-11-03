@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #e3f2fd;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="#">
+                    Urban Citizes
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,6 +39,18 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link" href="/home">Dash Board</a>
+                            </li>
+                             <li class="nav-item">
+                              <a class="nav-link" href="/posts">Blog</a>
+                        </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/dashboard">Admin Pannel</a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -72,9 +84,14 @@
             </div>
         </nav>
 
+        <div class="container">
+            @include('inc.messages')
         <main class="py-4">
             @yield('content')
+            <hr>
+             <p class="text-center"><b>Copyright dilshan - All Rights Reserved</b></p>
         </main>
+        </div>
     </div>
 </body>
 </html>

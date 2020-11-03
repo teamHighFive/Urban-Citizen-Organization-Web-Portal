@@ -80,3 +80,5 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
     Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
 });
+
+Route::resource('posts', 'PostsController');

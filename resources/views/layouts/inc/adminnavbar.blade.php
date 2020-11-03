@@ -42,7 +42,7 @@
             </div>
         </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="#" target="_blank">BLOG</a>
+            <a class="nav-link waves-effect" href="/home" target="">BLOG</a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-effect" href="#" target="_blank">GELLERY
