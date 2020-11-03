@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <a href="/posts" class="btn btn-primary">Go Back</a>
@@ -20,5 +20,4 @@
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 	{!! Form::close() !!}
-
 @endsection

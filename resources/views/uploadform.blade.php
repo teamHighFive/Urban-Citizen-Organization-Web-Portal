@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+@extends('layouts.main')
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+@section('title','Archives')
+@section('content')
 
-</head>
-<body>
-    
 
 <div class="container">
             <div>
@@ -24,7 +15,7 @@
         <h2 style="font-family:Garamond;"><strong>Upload your Document in here</strong></h2> <br>
         <form action="{{ route('uploadfile') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-        
+
             <!-- <div class="form-group">
                 <label>doc id</label>
                 <input type="text" name="docId" class="form-control" placeholder="Enter id">
@@ -53,11 +44,11 @@
                 <label>pM</label>
                 <input type="text" name="pM" class="form-control" placeholder="pM">
             </div> -->
-            
+
             <div class="form-group">
                 <label>Event or Function</label>
                 <input type="text" name="event" class="form-control" placeholder="(optional)">
-            </div> 
+            </div>
 
             <label>File</label>
             <div class="input-group">
@@ -67,16 +58,15 @@
             </div>
             <br>
             <button type="submit" name="submit" class="btn btn-success btn-sm">Upload</button>
-       
+
         <br><br>
-        
+
             <div class="links">
-                 <a href="table">View uploded files</a>  
+                 <a href="table">View uploded files</a>
                 </div>
-        
+
         </form>
         </div>
     </div>
 
-</body>
-</html>
+@endsection
