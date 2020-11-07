@@ -28,7 +28,7 @@ Route::get('/', function () {
 */
 /// Create, Join, Schedule meetings
 Route::get('/online-conferences', function () {
-    return view('onlineConferences');
+    return view('meeting.onlineConferences');
 });
 
 Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
@@ -46,7 +46,7 @@ Route::post('/meeting-join-pwd', function (Request $request) {
     $userType = $request->userType;
     $meetingID = $request->meetingID;
 
-    return view('getPwd')->with('user', $user)->with('userType', $userType)->with('meetingID', $meetingID);
+    return view('meeting.getPwd')->with('user', $user)->with('userType', $userType)->with('meetingID', $meetingID);
 });
 
 Route::post('/meeting-join', 'MeetingController@joinViaCalendar');

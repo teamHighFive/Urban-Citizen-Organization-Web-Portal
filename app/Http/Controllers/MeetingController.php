@@ -113,11 +113,11 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function viewMeetings(){
         $meetings = Meeting::all()->where('approval', 1)->where('status',1);
-        return view('viewMeetings')->with('meetings', $meetings);
+        return view('meeting.viewMeetings')->with('meetings', $meetings);
     }
 
     public function joinDetails($meeting_id){
-        return view('joinDetails')->with('meeting_id', $meeting_id);
+        return view('meeting.joinDetails')->with('meeting_id', $meeting_id);
     }
 
     public function joinViaCalendar(Request $request){
@@ -151,7 +151,7 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function viewMeetingsPendingForAdminApproval(){
         $meetings = Meeting::all()->where('approval', 0)->where('status',1);
-        return view('adminApproval')->with('meetings', $meetings);
+        return view('meeting.adminApproval')->with('meetings', $meetings);
     }
 
     public function approveMeeting($meeting_id){
