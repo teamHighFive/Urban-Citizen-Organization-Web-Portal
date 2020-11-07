@@ -2,6 +2,24 @@
 <html lang="en">
 <head>
     @include('partials._header')
+    <!-- Template CSS Files
+    ================================================== -->
+    <!-- Twitter Bootstrs CSS -->
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/bootstrap.min.css') }}">
+    <!-- Ionicons Fonts Css -->
+    <link rel="stylesheet" href="{{ asset('plugins/ionicons/ionicons.min.css') }}">
+    <!-- animate css -->
+    <link rel="stylesheet" href="{{ asset('plugins/animate-css/animate.css') }}">
+    <!-- Hero area slider css-->
+    <link rel="stylesheet" href="{{ asset('plugins/slider/slider.css') }}">
+    <!-- slick slider -->
+    <link rel="stylesheet" href="{{ asset('plugins/slick/slick.css') }}">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="{{ asset('plugins/facncybox/jquery.fancybox.css') }}">
+    <!-- hover -->
+    <link rel="stylesheet" href="{{ asset('plugins/hover/hover-min.css') }}">
+    <!-- template main css file -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
     <section class="top-bar animated-header">
