@@ -234,7 +234,7 @@
                                                 src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
                                                 class="img-fluid"
                                             />
-                                            <a href="#!">
+                                            <a href="#">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                                             </a>
                                         </div>
@@ -244,7 +244,7 @@
                                                 Some quick example text to build on the card title and make up the bulk of the
                                                 card's content.
                                             </p>
-                                            <a href="#!" class="btn btn-primary">View Post</a>
+                                            <a href="#" class="btn btn-primary">View Post</a>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +255,7 @@
                                                 src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
                                                 class="img-fluid"
                                             />
-                                            <a href="#!">
+                                            <a href="#">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                                             </a>
                                         </div>
@@ -265,7 +265,7 @@
                                                 Some quick example text to build on the card title and make up the bulk of the
                                                 card's content.
                                             </p>
-                                            <a href="#!" class="btn btn-primary">View Post</a>
+                                            <a href="#" class="btn btn-primary">View Post</a>
                                         </div>
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@
                                                 src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
                                                 class="img-fluid"
                                             />
-                                            <a href="#!">
+                                            <a href="#">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                                             </a>
                                         </div>
@@ -286,7 +286,7 @@
                                                 Some quick example text to build on the card title and make up the bulk of the
                                                 card's content.
                                             </p>
-                                            <a href="#!" class="btn btn-primary">View Post</a>
+                                            <a href="#" class="btn btn-primary">View Post</a>
                                         </div>
                                     </div>
                                 </div>
