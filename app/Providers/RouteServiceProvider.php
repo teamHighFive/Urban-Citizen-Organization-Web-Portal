@@ -46,12 +46,21 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //TODO configure new rouer files here
-        $this->mapOnlineRoutes();
+        //------------------------------------------------------------------------------------------
+        //By Sandali
+        //------------------------------------------------------------------------------------------
 
-        $this->mapTestRoutes();
+        $this->mapUserRoutes();
+        $this->mapMeetingRoutes();
+        $this->mapEventRoutes();
+        $this->mapDonationRoutes();
+        $this->mapArchiveRoutes();
+        $this->mapBlogRoutes();
+        $this->mapGalleryRoutes();
 
-        //
+        //------------------------------------------------------------------------------------------
+        //By Sandali
+        //------------------------------------------------------------------------------------------
     }
 
     /**
@@ -68,22 +77,62 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
-    //by chata
-    //TODO add new paths here
-    protected function mapOnlineRoutes()
+    //------------------------------------------------------------------------------------------
+    //By Sandali
+    //------------------------------------------------------------------------------------------
+
+    protected function mapUserRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/online.php'));
+            ->group(base_path('routes/user.php'));
     }
 
-    protected function mapTestRoutes()
+    protected function mapMeetingRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/test.php'));
+            ->group(base_path('routes/meeting.php'));
     }
-    //by chata ending
+
+    protected function mapEventRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/event.php'));
+    }
+
+    protected function mapDonationRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/donation.php'));
+    }
+
+    protected function mapArchiveRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/archive.php'));
+    }
+
+    protected function mapBlogRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/blog.php'));
+    }
+
+    protected function mapGalleryRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/gallery.php'));
+    }
+
+    //------------------------------------------------------------------------------------------
+    //By Sandali
+    //------------------------------------------------------------------------------------------
 
     /**
      * Define the "api" routes for the application.
