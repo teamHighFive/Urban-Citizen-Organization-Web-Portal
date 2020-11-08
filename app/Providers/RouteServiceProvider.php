@@ -46,6 +46,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        //TODO configure new rouer files here
+        $this->mapOnlineRoutes();
+
+        $this->mapTestRoutes();
+
         //
     }
 
@@ -62,6 +67,23 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
+
+    //by chata
+    //TODO add new paths here
+    protected function mapOnlineRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/online.php'));
+    }
+
+    protected function mapTestRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/test.php'));
+    }
+    //by chata ending
 
     /**
      * Define the "api" routes for the application.
