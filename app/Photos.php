@@ -9,5 +9,5 @@ class Photos extends Model
     protected $table = 'photos';
 
 
-    protected $fillable = ['title','image'];
+    protected $fillable = ['caption','image'];
 }

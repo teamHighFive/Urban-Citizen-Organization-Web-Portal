@@ -69,23 +69,45 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 | Web Routes by Ruwanthi START
 |--------------------------------------------------------------------------
 */
-Route::get('/gallery', 'GalleryController@index');
+Route::get('/gallery', 'AlbumController@index');
 
-Route::resource('gallery', 'GalleryController');
+Route::resource('album', 'AlbumController');
 
 Route::resource('photo', 'PhotoController');
 
-Route::get('/gallery/show/{id}', 'GalleryController@show');
+Route::get('/album/show/{id}', 'AlbumController@show');
+
+Route::delete('/album/delete/{id}','AlbumController@destroy');
+
+Route::get('/album/edit/{id}','AlbumController@edit');
+
+Route::get('/album/create','AlbumController@create');
+
+Route::get('/test', function()
+{
+    return view('album.test');
+});
 
 Route::get('/photo/create/{id}', 'PhotoController@create'); 
 
 Route::get('/photo/details/{id}', 'PhotoController@details');
 
-Route::get('/test', function()
-{
-    return view('gallery.create');
-});
-Route::delete('/gallery/delete/{id}','GalleryController@destroy');
+
+
+///for donation
+Route::get('/donation', 'DonationController@index');
+
+Route::resource('donation', 'DonationController');
+// Route::post('/','DonationController@store');
+Route::get('/createdonevent','DonationController@create');
+
+Route::get('/donate','DonationController@donate');
+
+Route::delete('/donation/delete/{id}','AlbumController@destroy');
+
+
+
+
 
 
 /*

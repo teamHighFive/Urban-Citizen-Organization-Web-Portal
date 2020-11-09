@@ -10,29 +10,30 @@ class PhotoController extends Controller
     private $table='photos'; 
      
     //show create form
-    public function create($gallery_id ){
+    public function create($album_id )
+    {
         //Render view
-        return view ('photo/create',compact('gallery_id'));
+        return view ('photo/create',compact('album_id'));
     }
     
      
     //Store photo   
-    public function store(Request  $request){
+    public function store(Request  $request)
+    {
         
         //Get request Input
-        $gallery_id=$request->input('gallery_id');
-        $title=$request->input('title');
+        $album_id=$request->input('album_id');
+        $caption=$request->input('caption');
         $description=$request->input('description');
         $location=$request->input('location');
         $image=$request->file('image');
-        $owner_id=$request->input('owner_id');
 
         
         //check whether image is upload
         if($image){
             
             $image_filename=$image->getClientOriginalName();
-            $image-> move(public_path('/gallery-template/images'),$image_filename);
+            $image-> move(public_path('/album-template/images'),$image_filename);
         
         }
         
@@ -40,16 +41,15 @@ class PhotoController extends Controller
             $image_filename='noimage.jpg';
         }
 
-    
         //insert photo the datbase
         DB::table($this->table)->insert(
         [
-        'title'=>$title,
+        'caption'=>$caption,
         'description'=>$description,
         'location'=>$location,
-        'gallery_id'=>$gallery_id,
+        'album_id'=>$album_id,
         'image'=>$image_filename,
-        'owner_id'=>$owner_id,
+        
            
         ]
         );
@@ -57,14 +57,15 @@ class PhotoController extends Controller
        
     
         //Rederect
-        //  return \Redirect::route('gallery.show',array('id'=>$gallery_id));
-         return \Redirect::route('gallery.show',$gallery_id);
+        //  return \Redirect::route('album.show',array('id'=>$album_id));
+         return \Redirect::route('album.show',$album_id);
        
         // return \Redirect::back();
 
     }   
     //Show Photo details
-    public function details($id){
+    public function details($id)
+    {
         //Get photo
        $photo=DB::table($this->table)->where('id',$id)->first();
         

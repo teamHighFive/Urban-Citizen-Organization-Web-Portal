@@ -6,7 +6,7 @@
               <div class="container-fluid">
               <!-- Navbar brand -->
               <span class="navbar-brand mb-0 h1">
-                  <img class="logoImg" src="images/logo.png" alt="logo">
+                  <img class="logoImg" src="/images/logo.png" alt="logo">
               </span>
 
               <!-- Toggle button -->
@@ -27,13 +27,13 @@
                   <!-- Left links -->
                   <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#hero-area">Home</a>
+                      <a class="nav-link active" aria-current="page" href="/">Home</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="#about">About Us</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Donations</a>
+                      <a class="nav-link" href="/donation">Donations</a>
                   </li>
                   <!-- Navbar dropdown -->
                   <li class="nav-item dropdown">

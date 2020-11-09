@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreatePhotosTable extends Migration
 {
@@ -15,12 +16,11 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id',6)->unique();;
-            $table->string('title');
-            $table->string('description');
-            $table->string('location');
+            $table->string('caption');
+            $table->string('description')->nullable();
+            $table->string('location')->nullable();
             $table->string('image');
-            $table->integer('owner_id');
-            $table->integer('gallery_id');
+            $table->integer('album_id');
             $table->timestamps();
         });
     }

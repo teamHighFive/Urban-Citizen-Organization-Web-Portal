@@ -15,23 +15,25 @@
         <!-- Template CSS Files
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
-        <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
         <!-- Ionicons Fonts Css -->
-        <link rel="stylesheet" href="plugins/ionicons/ionicons.min.css">
+        <link rel="stylesheet" href="/plugins/ionicons/ionicons.min.css">
         <!-- animate css -->
-        <link rel="stylesheet" href="plugins/animate-css/animate.css">
+        <link rel="stylesheet" href="/plugins/animate-css/animate.css">
         <!-- Hero area slider css-->
-        <link rel="stylesheet" href="plugins/slider/slider.css">
+        <link rel="stylesheet" href="/plugins/slider/slider.css">
         <!-- slick slider -->
-        <link rel="stylesheet" href="plugins/slick/slick.css">
+        <link rel="stylesheet" href="/plugins/slick/slick.css">
         <!-- Fancybox -->
-        <link rel="stylesheet" href="plugins/facncybox/jquery.fancybox.css">
+        <link rel="stylesheet" href="/plugins/facncybox/jquery.fancybox.css">
         <!-- hover -->
-        <link rel="stylesheet" href="plugins/hover/hover-min.css">
+        <link rel="stylesheet" href="/plugins/hover/hover-min.css">
         <!-- template main css file -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
          <!-- gallerytemplate css file -->
-        <link href="gallery-template/css/styles.css" rel="stylesheet" />
+        {{-- <link href="/gallery-template/css/styles.css" rel="stylesheet" /> --}}
+        <!-- donationtemplate css file -->
+        {{-- <link href="/donation-template/css/styles.css" rel="stylesheet" /> --}}
 
 
         <!-- Font Awesome -->

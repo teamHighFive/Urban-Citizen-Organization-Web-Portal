@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div class="row column">
-        <a href="/gallery/show/{{$photo->gallery_id}}">Back to Allbum</a>
+        <a href="/album/show/{{$photo->album_id}}">Back to Allbum</a>
         <h1>{{$photo->title}}</h1>
         <p class="lead">{{$photo->description}}</p>
         <p class="lead">Location:{{$photo->location}}</p>
