@@ -44,6 +44,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="/archieves">Archives</a>
             </li>
+
+            {{-- By theekshana start --}}
+            @guest
+
+            @else
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="/dashboard" target="">Dash Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="/admin-panel" target="">Admin Pannel</a>
+                </li>
+            @endguest
+
+            {{-- By theekshana end --}}
         </ul>
         <ul class="navbar-nav ml-auto">
             @guest
