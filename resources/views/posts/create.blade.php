@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<main class="mt-5 pt-5">
     <a href="/posts" class="btn btn-primary">Go Back</a>
     <hr>
 	<h1>Create New Post</h1>
@@ -19,5 +20,5 @@
     </div>
     {{Form::submit('Create Post', ['class' => 'btn btn-success btn-lg btn-block'])}}
 	{!! Form::close() !!}
-
+</main>
 @endsection

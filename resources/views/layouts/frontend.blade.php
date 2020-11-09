@@ -21,6 +21,7 @@
 <body>
 
   @include('layouts.inc.front-navbar')
+  
 <main>
     @yield('content')
 </main>

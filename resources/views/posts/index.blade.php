@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<main class="mt-5 pt-5">
 	<div class="row">
 		<div class="col-md-10">
-			<h1>Posts of Our Organization</h1>
+            <div class="card-header font-weight-bold"><h1>Posts of Organization</h1></div>
 		</div>
 		<div class="col-md-2">
-			<a href="/posts/create" class="btn btn-lg btn-block btn-primary">Create Post</a>
+			<a href="/posts/create" class="btn btn-primary btn-block">Create Post</a>
 		</div>
-</div>
-	@if(count($posts) > 0)
-	<div class="card" style="background-color: #e3f2fd;">
+    </div>
+	    @if(count($posts) > 0)
+	    <div class="card" style="background-color: #e3f2fd;">
 		<ul class="list-group list-group-flush">
 			@foreach($posts as $post)
 
@@ -26,12 +27,13 @@
 
 				</div>
 
-			</div>
+			    </div>
 				<hr>
 			@endforeach
 		</ul>
 	</div>
 
 	@else
-@endif
+    @endif
+</main>
 @endsection
