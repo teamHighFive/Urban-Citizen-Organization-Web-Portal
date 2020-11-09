@@ -5,6 +5,7 @@
 
 <div class="container" style="height:auto">
     {{-- //TODO for testing --}}
+    {{-- {{$status}} --}}
     <h1>this is content</h1>
     <h1>1</h1>
     <h1>2</h1>

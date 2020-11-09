@@ -17,17 +17,23 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('auth.dashboard');
+
+Route::group(['middleware' => ['auth','isUser']], function () {
+        Route::get('/home', function () {
+            return view('welcome');
+        });
+    });
+
+
+
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+
+    Route::get('/dashboard', function () {
+        return view('auth.dashboard');
+    });
+    Route::get('registered-user', 'Admin\RegisteredController@index');
+    Route::get('role-edit/{id}','Admin\RegisteredController@edit');
+    Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
+    Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
 });
-Route::get('registered-user', 'Admin\RegisteredController@index');
-Route::get('role-edit/{id}','Admin\RegisteredController@edit');
-Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
-Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });

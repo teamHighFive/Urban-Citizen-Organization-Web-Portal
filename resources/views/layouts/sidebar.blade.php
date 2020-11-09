@@ -12,8 +12,20 @@
         <i class="fa fa-table mr-3"></i>Tables</a>
       <a href="#" class="list-group-item list-group-item-action waves-effect">
         <i class="fa fa-map mr-3"></i>Maps</a>
-      <a href="{{ url('registered-user') }}" class="list-group-item list-group-item-action waves-effect">
-        <i class="fa fa-users mr-3"></i>Registered Users</a>
+
+        <?php
+            if(Auth::user()->role_as == 'admin'){
+               ?>
+                <a href="{{ url('registered-user') }}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-users mr-3"></i>Registered Users
+                </a>
+               <?php
+            }else{
+                ?>
+                <?php
+            }
+
+        ?>
     </div>
 
   </div>
