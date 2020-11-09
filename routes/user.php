@@ -24,7 +24,7 @@ Route::get('/home', function () {
 Route::get('/dashboard', function () {
     return view('auth.dashboard');
 });
-
+Route::get('registered-user', 'Admin\RegisteredController@index');
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });

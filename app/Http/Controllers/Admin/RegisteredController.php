@@ -10,7 +10,7 @@ class RegisteredController extends Controller
 {
     public function index(){
         $users = User::all();
-        return view('admin.users.index')->with('users',$users);
+        return view('auth.registereduser')->with('users',$users);
     }
 
     public function edit($id){
