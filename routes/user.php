@@ -25,6 +25,9 @@ Route::get('/dashboard', function () {
     return view('auth.dashboard');
 });
 Route::get('registered-user', 'Admin\RegisteredController@index');
+Route::get('role-edit/{id}','Admin\RegisteredController@edit');
+Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
+Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });

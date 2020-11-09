@@ -15,7 +15,7 @@ class RegisteredController extends Controller
 
     public function edit($id){
         $user_roles = User::find($id);
-        return view('admin.users.edit')->with('user_roles', $user_roles);
+        return view('auth.edituser')->with('user_roles', $user_roles);
     }
     public function updaterole(Request $request, $id){
         $user = User::find($id);
