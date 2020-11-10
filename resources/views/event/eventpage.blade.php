@@ -1,8 +1,7 @@
+@extends('layouts.EventCalendar')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
+@section('header')
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,60 +33,71 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
+@endsection
+
+@section('title','Upcoming Meetings')
+@section('content')
+<div class="container" style="min-height: 100vh">
+    <div class="jumbotron  blue-grey lighten-5">
+      <h2 class="grey-text text-center"><strong>Event Calendar</strong></h2>
+         <div class="card" >
+             <div class="row">
+                 <div class="col-md-8 col-md-offset-2" ><br/><br/>
+                    <!-- Add Event button -->
+                   <a href="/addeventurl"  class=" btn btn-blue-grey"> <strong >Add Event</strong> </a>
+                   <!-- Edit Event button -->
+                   <a href="/displaydata" class="btn btn-light-blue"> <strong>Edit Event </strong></a>
+                   <!-- Delete Event button -->
+                   <a href="/deleteeventurl" class="btn btn-yellow"><strong> Delete Event </strong></a>
+                 </div>
+             </div><br/>
+
+             <div class="col-md-11 col-md-offset-2" >
+             <div class="row">
+
+             <!-- Session State -->
+               @if(count($errors)>0)
+                 <div class="alert alert-danger">
+                     <ul>
+                       @foreach($errors->all() as $error)
+                       <li>{{$error}}</li>
+                       @endforeach
+                     </ul>
+                 </div>
+               @endif
+               @if(\Session::has('success'))
+                     <div class="alert alert-success">
+                       <p>{{ \Session::get('success') }}</p>
+                     </div>
+
+               @endif
+               </div>
+
+                           <div class="col-md-16 col-md-offset-2" >
+                             <div class="panel panel-default">
+                                     <!-- Calendar Code -->
+                                         <div class="panel-body" style="center">
+                                         <div class="col-md-18 col-md-offset-2 pb-5" >
+                                            {!! $calendar->calendar() !!}
+                                            {!! $calendar->script() !!}
+                                         </div>
+                                         </div>
+                             </div>
+                          </div>
+              </div>
+         </div>
+     </div>
+
+@endsection
+{{--
+<!DOCTYPE html>
+<html>
+<head>
+
 </head>
 <body>
    <br>
    <br>
- <div class="container">
-   <div class="jumbotron  blue-grey lighten-5">
-     <h2 class="grey-text text-center"><strong>Event Calendar</strong></h2>
-        <div class="card" >
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2" ><br/><br/>
-                   <!-- Add Event button -->
-                  <a href="/addeventurl"  class=" btn btn-blue-grey"> <strong >Add Event</strong> </a>
-                  <!-- Edit Event button -->
-                  <a href="/displaydata" class="btn btn-light-blue"> <strong>Edit Event </strong></a>
-                  <!-- Delete Event button -->
-                  <a href="/deleteeventurl" class="btn btn-yellow"><strong> Delete Event </strong></a>
-                </div>
-            </div><br/>
-
-            <div class="col-md-11 col-md-offset-2" >
-            <div class="row">
-
-            <!-- Session State -->
-              @if(count($errors)>0)
-                <div class="alert alert-danger">
-                    <ul>
-                      @foreach($errors->all() as $error)
-                      <li>{{$error}}</li>
-                      @endforeach
-                    </ul>
-                </div>
-              @endif
-              @if(\Session::has('success'))
-                    <div class="alert alert-success">
-                      <p>{{ \Session::get('success') }}</p>
-                    </div>
-
-              @endif
-              </div>
-
-                          <div class="col-md-16 col-md-offset-2" >
-                            <div class="panel panel-default">
-                                    <!-- Calendar Code -->
-                                        <div class="panel-body" style="center">
-                                        <div class="col-md-18 col-md-offset-2" >
-                                           {!! $calendar->calendar() !!}
-                                           {!! $calendar->script() !!}
-                                        </div>
-                                        </div>
-                            </div>
-                         </div>
-             </div>
-        </div>
-    </div>
 
 </body>
-</html>
+</html> --}}

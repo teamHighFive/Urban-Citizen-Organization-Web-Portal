@@ -35,7 +35,7 @@ class EventController extends Controller
 
      //output Add Event to Calendar view---------------------------
      public function display(){
-         return view('addevent');
+         return view('event.addevent');
      }
      //-------------------------------------------------------------
 
@@ -64,7 +64,7 @@ class EventController extends Controller
      //output display blade-Table view-------------------------------------
      public function show(){
          $events = event::all();
-         return view('display')->with('events',$events);
+         return view('event.view-event')->with('events',$events);
 
      }
      //---------------------------------------------------------------------

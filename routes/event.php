@@ -19,7 +19,7 @@ Route::get('/event-calendar',[EventController::class,'index'] );
 //Route to Add Event to Calendar-view
 Route::get('/addeventurl',[EventController::class,'display'] );
 //Route to dispaly blade-Table view
-Route::get('/displaydata',[EventController::class,'show']);
+Route::get('/view-event',[EventController::class,'show']);
 //Route to delete event and show
 Route::get('/deleteeventurl',[EventController::class,'show'] );
 
