@@ -12,17 +12,15 @@
         {{-- Navigation --}}
         <header>
             @include('layouts.navbar')
-
+            @include('layouts.sidebar')
         </header>
 
         {{-- Main Content --}}
 
-        <main>
-            <div class="row">
+        <main style="padding-left: 200px">
 
-            </div>
             <div class="mt-5 pt-5">
-                @include('layouts.sidebar')
+
                 @yield('content')
             </div>
         </main>
