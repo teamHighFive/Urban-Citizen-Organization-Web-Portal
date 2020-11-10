@@ -13,4 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+///for donation
+Route::get('/donation', 'Donation\DonationController@index');
+Route::post('/create-donation', 'Donation\DonationController@store');
+
+
+
+Route::resource('donation', 'Donation\DonationController');
+// Route::post('/','DonationController@store');
+Route::get('/createdonevent','Donation\DonationController@create');
+
+Route::get('/donate','Donation\DonationController@donate');
+
+Route::delete('/donation/delete/{id}','AlbumController@destroy');
 
