@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\DonationEvent;
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | User Routes
@@ -21,7 +24,11 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth','isUser']], function () {
         Route::get('/home', function () {
-            return view('welcome');
+            $donationEvents = DonationEvent::latest()->take(3)->get();
+            $albums = DB::table('albums')->latest()->take(3)->get();
+            $posts = Post::latest()->take(3)->get();
+
+            return view('welcome')->with('donationEvents', $donationEvents)->with('albums', $albums)->with('posts', $posts);
         });
     });
 

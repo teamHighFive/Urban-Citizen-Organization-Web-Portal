@@ -1,6 +1,7 @@
 <?php
 
 use App\DonationEvent;
+use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,9 @@ Route::get('/', function () {
 
     $donationEvents = DonationEvent::latest()->take(3)->get();
     $albums = DB::table('albums')->latest()->take(3)->get();
+    $posts = Post::latest()->take(3)->get();
 
-    return view('welcome')->with('donationEvents', $donationEvents)->with('albums', $albums);
+    return view('welcome')->with('donationEvents', $donationEvents)->with('albums', $albums)->with('posts', $posts);
 
 });
 
