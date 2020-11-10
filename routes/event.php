@@ -30,4 +30,4 @@ Route::put('/event@update/{id}',[EventController::class,'update'] );
 //EventController destroy function route
 Route::get('/event@destroy/{id}',[EventController::class,'destroy'] );
 //EventController store function route
-Route::post('/add',[EventController::class,'store'] );
+Route::post('/add-event',[EventController::class,'store'] );
