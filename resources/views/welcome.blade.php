@@ -153,7 +153,7 @@
                                 <div class="carousel-item @if($loop->first) active @endif">
                                     <div class="view">
                                     <img class="d-block w-100" src="gallery-resourses/images/{{$album->coverimage}}"
-                                        alt="First slide">
+                                        alt="slide">
                                     <div class="mask rgba-black-light"></div>
                                     </div>
                                     <div class="carousel-caption">

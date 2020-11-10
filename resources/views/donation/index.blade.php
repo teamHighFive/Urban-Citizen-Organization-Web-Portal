@@ -21,13 +21,14 @@
 
 @section('content')
 
-<div class="container" style="min-height: 100vh">
+<div class="container" style="height:auto;min-height: 100vh">
     <div class="row">
 
 		<div class="col-md-12 mb-3">
 
 			<img src="donation-resourses/events/images/donationthumbnail.jpg" class="img-fluid z-depth-1" alt="Responsive image" style="width:100%; height:40em">
-			<div class="mask flex-center waves-effect waves-light">
+            {{-- TODO goes down when no donation is available --}}
+            <div class="mask flex-center waves-effect waves-light">
 				<div class="centered maintext">Your Donation <br>
 					is Others Inspiration</strong>
 	  		</div>

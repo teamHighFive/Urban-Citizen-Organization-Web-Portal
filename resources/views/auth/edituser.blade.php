@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Online Conferences')
+@section('title','Registered Users')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
 

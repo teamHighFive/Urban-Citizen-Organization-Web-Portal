@@ -15,7 +15,7 @@
 
             </ol>
 
-            <div class="carousel-inner"  role="listbox">
+            <div class="carousel-inner"  style="max-height: 60vh"  role="listbox">
                 @foreach($albums as $album)
 
                     <div class="carousel-item  @if($loop->first) active @endif">
