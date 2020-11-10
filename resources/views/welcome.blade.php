@@ -37,7 +37,19 @@
 
                             <!-- Description -->
                             <h4 class="my-4 animated fadeInUp">Let's make Colombo the right type of city!</h4>
-                            <button type="button" class="btn btn-cyan animated fadeInUp">Join with Us</button>
+
+                            @guest
+
+                            @if (Route::has('register'))
+                                <a class="nav-link" href="{{ route('register') }}">
+                                    <button type="button"  class="btn btn-cyan animated fadeInUp">Join with Us</button>
+                                </a>
+
+                            @endif
+                            @else
+
+                            @endguest
+
                         </div>
                     </div>
                 </div>
