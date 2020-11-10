@@ -46,7 +46,7 @@
                     <!-- Add Event button -->
                    <a href="/addeventurl"  class=" btn btn-blue-grey"> <strong >Add Event</strong> </a>
                    <!-- Edit Event button -->
-                   <a href="/displaydata" class="btn btn-light-blue"> <strong>Edit Event </strong></a>
+                   <a href="/view-event" class="btn btn-light-blue"> <strong>Edit Event </strong></a>
                    <!-- Delete Event button -->
                    <a href="/deleteeventurl" class="btn btn-yellow"><strong> Delete Event </strong></a>
                  </div>

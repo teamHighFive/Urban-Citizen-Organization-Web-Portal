@@ -18,7 +18,7 @@
 <body>
  <br>
  <br>
-    >
+
     <div class="container">
             <div class="jumbotron  blue-grey lighten-5">
            <div class="card" >
@@ -40,7 +40,7 @@
                             <tr>
                                 <td>{{ $event->id}}</td>
                                 <td>{{ $event->title}}</td>
-                                <td>{{ $event->color}}</td>
+                                <td><div style="background-color: {{ $event->color}};width:100%;height:25px"></div> </td>
                                 <td>{{ $event->start_date}}</td>
                                 <td>{{ $event->end_date}}</td>
                                  <!-- Edit button -->
