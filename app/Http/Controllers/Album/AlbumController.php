@@ -73,7 +73,7 @@ class AlbumController extends Controller
             $photos=DB::table('photos')->where('album_id',$id)->get();
 
             //return view
-            return view('album/show',compact('album','photos'));
+            return view('gallery.show',compact('album','photos'));
     }
 
 
@@ -81,6 +81,7 @@ class AlbumController extends Controller
 
 
     public function edit($id){
+        //TODO edit function
         $albums=DB::table($this->table)->find($id);
         return \Redirect::route('album.index')->with('message','Album Deleted');
     }
