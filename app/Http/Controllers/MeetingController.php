@@ -83,8 +83,7 @@ class MeetingController extends Controller
         }
         $recording = $meeting->recording;
 
-        //Check if the time is right
-
+        //TODO Check if the time is right
 
         $bbb = new BigBlueButton();
 
