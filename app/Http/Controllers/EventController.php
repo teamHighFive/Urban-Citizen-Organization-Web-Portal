@@ -1,98 +1,113 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\event;//event model
+use LaravelFullCalendar\Facades\Calendar;//Calendar class
 
-use App\Event;
-use App\Http\Requests\EventRequest;
-use App\Http\Requests\EventRequestStore;
-use App\Repositories\Events;
-use Illuminate\Validation\Rule;
 
 class EventController extends Controller
 {
+    //Output Calendar View---------------------------------------
+    public function index(){
+        $events=event::all();
+        $event=[];
+        foreach($events as $row){
+           $enddate=$row->end_date."24:00:00";
+           $event[]=\Calendar::event(
+               $row->title,
+               false,
+               new \DateTime($row->start_date),
+               new \DateTime($row->end_date),
+               $row->id,
+               [
+                   'color'=>$row->color,
+               ]
+               
+           );
 
-    /**
-     * Add event view
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function add() {
-
-        $event = new Event();
-
-        return view('event.edit')->with(compact('event'));
-    }
-
-    /**
-     * Event show view
-     *
-     * @param  \App\Event $event
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Event $event) {
-
-        return view('event.edit')->with(compact('event'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(EventRequestStore $request) {
-        $event = new Event;
-        $event->fill($request->all());
-        if ($event->save()) {
-            return redirect()->action('IndexController@index')->with('status', 'Event added!');
         }
+        $calendar=\Calendar::addEvents($event);
+        return view('eventpage',compact('events','calendar'));
+     }
+     //------------------------------------------------------------
+     
+     //output Add Event to Calendar view---------------------------
+     public function display(){
+         return view('addevent');
+     }
+     //-------------------------------------------------------------
+     
+     
+     //Add Event to Calendar view Add Event button Store procedure---
+     public function store(Request $request){
+       $this->validate($request,[
+           'title'=>'required',
+           'color'=>'required',
+           'start_date'=>'required',
+           'end_date'=>'required',
+       ]);
+       $events=new event;
+       $events->title = $request->input('title');
+       $events->color = $request->input('color');
+       $events->start_date = $request->input('start_date');
+       $events->end_date = $request->input('end_date');
 
-        return redirect()->action('IndexController@index')->with('status', 'Event not added!');
-    }
+       $events->save();
+       return redirect('event-calendar')->with('success','Events Added');
+       
+     }
+     //-------------------------------------------------------------------
+     
+     
+     //output display blade-Table view-------------------------------------
+     public function show(){
+         $events = event::all();
+         return view('display')->with('events',$events);
 
-    /**
-     * Delete event
-     *
-     * @param  \App\Event $event
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Event $event) {
-        if ($event->delete()) {
-            return redirect()->action('IndexController@index')->with('status', "Event deleted!");
-        }
-
-        return redirect()->action('IndexController@index')->withErrors("Event not deleted!");
-    }
-
-    /**
-     * Update event.
-     *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(EventRequest $request, Event $event) {
-        $this->validate($request, [
-            'date' => Rule::unique('event', 'date')->ignore($event->id)
+     }
+     //---------------------------------------------------------------------
+     
+     //output editform view-Update your Data view---------------------------------
+     public function edit($id){
+           $events= event::find($id);
+           return view('editform',compact('events','id'));
+          
+     }
+     //--------------------------------------------------------------------
+     
+     
+     //output Update Event Data form updtade pocedure--------------------------
+     public function update(Request $request, $id){
+        $this->validate($request,[
+            'title'=>'required',
+            'color'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
         ]);
-        $event->fill($request->all());
-        if ($event->save()) {
-            return redirect()->action('IndexController@index')->with('status', 'Event updated!');
+        $events=event::find($id);
+
+        $events->title = $request->input('title');
+        $events->color = $request->input('color');
+        $events->start_date = $request->input('start_date');
+        $events->end_date = $request->input('end_date');
+ 
+        $events->save();
+        return redirect('event-calendar')->with('success','Event Updated');
+
+     }
+      //------------------------------------------------------------------------
+
+     
+     //output display blade-Table view Delete Procedure-----------------------
+     public function destroy($id){
+        $events= event::find($id);
+        $events->delete();
+         
+        return redirect('event-calendar')->with('success','Event Deleted');
+
         }
 
-        return redirect()->action('IndexController@index')->with('status', 'Event not updated!');
-    }
+      //---------------------------------------------------------------------
 
-    /**
-     *
-     * Return events in json format API
-     *
-     * @param Events $repositoryEvents
-     */
-    public function events(Events $eventsRepository) {
-        return $eventsRepository->get();
-    }
 }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;//Event-Calendar EventController-Dhananjana
 
 /*
 |--------------------------------------------------------------------------
@@ -165,34 +166,25 @@ Route::delete('/gallery/delete/{id}','GalleryController@destroy');
 | Web Routes by Dananjana START
 |--------------------------------------------------------------------------
 */
-// Main events view
+//Route to Display eventpage-Event Calendar View
+Route::get('/event-calendar',[EventController::class,'index'] );
+//Route to Add Event to Calendar-view
+Route::get('/addeventurl',[EventController::class,'display'] );
+//Route to dispaly blade-Table view
+Route::get('/displaydata',[EventController::class,'show']);
+//Route to delete event and show
+Route::get('/deleteeventurl',[EventController::class,'show'] );
 
-/*Route::get('/', ['uses' => 'IndexController@index', 'as' => 'index']);*/
-Route::get('/event-calendar',  'IndexController@index');
+//EventController edit function route
+Route::get('/event@edit/{id}',[EventController::class,'edit'] );
+//EventController update function route
+Route::put('/event@update/{id}',[EventController::class,'update'] );
+//EventController destroy function route
+Route::get('/event@destroy/{id}',[EventController::class,'destroy'] );
+//EventController store function route
+Route::post('/add',[EventController::class,'store'] );
 
-// Show event model new view
 
-Route::get('/add', ['uses' => 'EventController@add', 'as' => 'add']);
-
-// Show event model view
-
-Route::get('/event/{event}', ['uses' => 'EventController@show', 'as' => 'event.edit']);
-
-// Route for create new event model
-
-Route::post('/event', ['uses' => 'EventController@store', 'as' => 'event.store']);
-
-// Route for update event model
-
-Route::put('/event/{event}', ['uses' => 'EventController@update', 'as' => 'event.update']);
-
-// Route for delete event model
-
-Route::delete('/event/{event}', ['uses' => 'EventController@destroy', 'as' => 'event.destroy']);
-
-// Get all events in json
-
-Route::get('/events', ['uses' => 'EventController@events', 'as' => 'events']);
 
 /*
 |--------------------------------------------------------------------------
