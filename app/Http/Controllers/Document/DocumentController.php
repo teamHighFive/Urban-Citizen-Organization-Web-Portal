@@ -10,27 +10,27 @@ class DocumentController extends Controller
 {
     public function index_pdf()
     {
-        return view('uploadform_pdf');
+        return view('archive.uploadform_pdf');
     }
 //------------------------------------------------------------------------------------------------------------------
     public function index_doc()
     {
-        return view('uploadform_doc');
+        return view('archive.uploadform_doc');
     }
 //------------------------------------------------------------------------------------------------------------------
     public function index_exel()
     {
-        return view('uploadform_exel');
+        return view('archive.uploadform_exel');
     }
 //------------------------------------------------------------------------------------------------------------------
     public function index_images()
     {
-        return view('uploadform_images');
+        return view('archive.uploadform_images');
     }
 //------------------------------------------------------------------------------------------------------------------
 public function index_videos()
 {
-    return view('uploadform_videos');
+    return view('archive.uploadform_videos');
 }
 //------------------------------------------------------------------------------------------------------------------
     public function index_choose()
