@@ -3,7 +3,7 @@
 @section('title','Online Conferences')
 @section('content')
 
-    <h1 class="text-center cyan-text pt-5 mb-3">Online Conferencing</h1>
+
 
     <?php
         // TODO - Get the logged user
@@ -11,7 +11,8 @@
     ?>
 
     @if ($logged == 1){{--If a user has logged in--}}
-        <div class="container">
+        <div class="container"  style="min-height: 100VH">
+            <h1 class="text-center cyan-text pt-5 mb-3">Online Conferencing</h1>
             <div class="row">
                 <div class="col-md-6">
                     <div class="jumbotron">

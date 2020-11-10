@@ -1,3 +1,47 @@
+@extends('layouts.main')
+
+@section('title','Upcoming Meetings')
+@section('content')
+<div class="container" style="min-height: 100vh">
+    <h2 class="text-center #000-text pt-5 mb-3">Uploaded successfuly</h2>
+    <h5 class="text-center #000-text ">(files can be view in Warehouse)</h5>
+    <div class="container" >
+      <div class="row">
+        <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div class="jumbotron">
+              <div class="center">
+                <div class="row" >
+                    <div class="col-md-12">
+                      <center>
+                        <img src="images/tick.png" width="120px" height="120px"></a>
+
+                        <div class="row py-5" >
+                        <div class="col-md-6">
+                            <a href="choose-type">
+                            <button  class="btn btn-success btn-lg">Upload another file</button>
+                            </a> <br>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="archieves">
+                            <button  class="btn btn-warning btn-lg">View Uploaded Files</button>
+                            </a> <br>
+                        </div>
+                        </div>
+                        </center>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+@endsection
+
+{{--
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,44 +71,9 @@
 
 
     <body>
-    
-    <h2 class="text-center #000-text pt-5 mb-3">Uploaded successfuly</h2> 
-    <h5 class="text-center #000-text ">(files can be view in Warehouse)</h5>  
-    <div class="container" >
-      <div class="row">
-        <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <div class="jumbotron">   
-              <div class="center">
-                <div class="row" >
-                    <div class="col-md-12">
-                      <center><img src="images/tick.png" width="120px" height="120px"></a></center>
-                    </div>
-                    <div class="row py-5" >
-                      <div class="col-md-4">
-                        <a href="home">
-                        <button  class="btn btn-danger btn-lg">Back to my profile </button>
-                        </a> <br> 
-                      </div>
-                      <div class="col-md-4">
-                        <a href="/choose">
-                        <button  class="btn btn-success btn-lg">Upload another file</button>
-                        </a> <br> 
-                      </div>
-                      <div class="col-md-4">
-                        <a href="table">
-                        <button  class="btn btn-warning btn-lg">View uploaded files</button>
-                        </a> <br> 
-                      </div>
-                    </div>
-                </div>
-              </div> 
-            </div>
-          </div>
-        </div>
-      </div>  
-    </div>  
-    
+
+
+
 
     <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -75,4 +84,4 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
    </body>
-</html>
+</html> --}}

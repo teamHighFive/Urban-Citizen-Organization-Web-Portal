@@ -26,13 +26,13 @@ Route::post('/uploadfileimg', 'Document\DocumentController@storeimg')->name('upl
 Route::post('/uploadfilevideo', 'Document\DocumentController@storevideo')->name('uploadfilevideo');
 
 
-Route::get('/choose','Document\DocumentController@index_choose')->name('choose');
+Route::get('/choose-type','Document\DocumentController@index_choose')->name('choose');
 
-Route::get('/table', 'Document\DocumentController@table');
+Route::get('/archieves', 'Document\DocumentController@table');
 
-Route::get('/warehouse', function () {
-    return view('uploadform');
-});
+// Route::get('/archieves', function () {
+//     return view('archive.index');
+// });
 
 Route::post('/choosetype', 'Document\DocumentController@type')->name('choosetype');
 

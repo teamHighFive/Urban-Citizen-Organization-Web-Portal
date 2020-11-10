@@ -35,7 +35,7 @@ public function index_videos()
 //------------------------------------------------------------------------------------------------------------------
     public function index_choose()
     {
-        return view('choosetype');
+        return view('archive.choosetype');
     }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -165,14 +165,14 @@ public function storevideo(Request $request)
             $upload->file = '';
         }
         $upload->save();
-        return view('success')->with('success',$filename);
+        return view('archive.success')->with('success',$filename);
     }
 
 //------------------------------------------------------------------------------------------------------------------
     public function table()
     {
         $upload = Document::all();
-        return view('warehouse')->with('upload',$upload);
+        return view('archive.index')->with('upload',$upload);
     }
 
 //------------------------------------------------------------------------------------------------------------------

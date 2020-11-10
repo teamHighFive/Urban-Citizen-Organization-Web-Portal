@@ -2,7 +2,7 @@
 
 @section('title','Admin Approval')
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 100VH">
         <div class="jumbotron">
             <h3 class="text-center">Pending for Admin Approval</h3>
             <table class="table">

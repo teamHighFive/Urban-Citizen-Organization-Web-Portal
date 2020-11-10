@@ -2,7 +2,7 @@
 
 @section('title','Upcoming Meetings')
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height: 100vh">
         <div class="jumbotron">
             <h3 class="text-center">Upcoming Meetings</h3>
             <table class="table">
