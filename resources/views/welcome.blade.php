@@ -102,71 +102,28 @@
                     <div class="col-md-12">
                         <h2 class="fadeInDown">DONATIONS</h1>
                             <div class="row fadeInDown mt-5" style="color:#333333">
-                                <div class="col-md-4">
-                                    <div class="card card-margin">
-                                        <div class="bg-image hover-overlay ripple" data-ripple-color="light">
-                                            <img
-                                                src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-                                                class="img-fluid"
-                                            />
-                                            <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's content.
-                                            </p>
-                                            <a href="#!" class="btn btn-primary">Donate</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card card-margin">
-                                        <div class="bg-image hover-overlay ripple" data-ripple-color="light">
-                                            <img
-                                                src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-                                                class="img-fluid"
-                                            />
-                                            <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's content.
-                                            </p>
-                                            <a href="#!" class="btn btn-primary">Donate</a>
+                                @foreach($donationEvents as $donationEvent)
+                                    <div class="col-md-4">
+                                        <div class="card card-margin">
+                                            <div class="bg-image hover-overlay ripple" data-ripple-color="light">
+                                                <img
+                                                    src="donation-resourses/events/images/{{$donationEvent->coverimage}}"
+                                                    class="img-fluid center-cropped"
+                                                    style="height:20vh; object-fit: cover; object-position: center; width:100%;"
+                                                />
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{$donationEvent->name}}</h5>
+                                                <p class="card-text">
+                                                    {{$donationEvent->description}}
+                                                </p>
+                                                <a href="donate" class="btn btn-primary">Donate</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card card-margin">
-                                        <div class="bg-image hover-overlay ripple" data-ripple-color="light">
-                                            <img
-                                                src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-                                                class="img-fluid"
-                                            />
-                                            <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">
-                                                Some quick example text to build on the card title and make up the bulk of the
-                                                card's content.
-                                            </p>
-                                            <a href="#!" class="btn btn-primary">Donate</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
-                            <a href="/" class="btn btn-white cyan-text mt-5">More</a>
+                            <a href="/donation" class="btn btn-white cyan-text mt-5">More</a>
                         </div>
                     </div>
                 </div>
@@ -181,49 +138,80 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img
-                                  src="https://mdbootstrap.com/img/new/slides/041.jpg"
-                                  class="d-block w-100"
-                                  alt="..."
-                                />
-                              </div>
-                              <div class="carousel-item">
-                                <img
-                                  src="https://mdbootstrap.com/img/new/slides/042.jpg"
-                                  class="d-block w-100"
-                                  alt="..."
-                                />
-                              </div>
-                              <div class="carousel-item">
-                                <img
-                                  src="https://mdbootstrap.com/img/new/slides/043.jpg"
-                                  class="d-block w-100"
-                                  alt="..."
-                                />
-                              </div>
+                        <!--Carousel Wrapper-->
+                        <div id="albums" class="carousel slide carousel-fade" data-ride="carousel">
+                            <!--Indicators-->
+                            <ol class="carousel-indicators">
+                                <li data-target="#albums" data-slide-to="0" class="active"></li>
+                                <li data-target="#albums" data-slide-to="1"></li>
+                                <li data-target="#albums" data-slide-to="2"></li>
+                                </ol>
+                                <!--/.Indicators-->
+                            <!--Slides-->
+                            <div class="carousel-inner" role="listbox">
+                                @foreach($albums as $album)
+                                <div class="carousel-item @if($loop->first) active @endif">
+                                    <div class="view">
+                                    <img class="d-block w-100" src="gallery-resourses/images/{{$album->coverimage}}"
+                                        alt="First slide">
+                                    <div class="mask rgba-black-light"></div>
+                                    </div>
+                                    <div class="carousel-caption">
+                                    <h3 class="h3-responsive">{{$album->title}}</h3>
+                                    <p>{{$album->description}}</p>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
-                            <a
-                              class="carousel-control-prev"
-                              href="#carouselExampleFade"
-                              role="button"
-                              data-slide="prev"
-                            >
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
+                            <!--/.Slides-->
+                            <!--Controls-->
+                            <a class="carousel-control-prev" href="#albums" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
                             </a>
-                            <a
-                              class="carousel-control-next"
-                              href="#carouselExampleFade"
-                              role="button"
-                              data-slide="next"
-                            >
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
+                            <a class="carousel-control-next" href="#albums" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
                             </a>
+                            <!--/.Controls-->
                         </div>
+                        <!--/.Carousel Wrapper-->
+                        {{-- <!--Carousel Wrapper-->
+                        <div id="albums" class="carousel slide carousel-fade" data-ride="carousel">
+                            <!--Indicators-->
+                            <ol class="carousel-indicators">
+                            <li data-target="#albums" data-slide-to="0" class="active"></li>
+                            <li data-target="#albums" data-slide-to="1"></li>
+                            <li data-target="#albums" data-slide-to="2"></li>
+                            </ol>
+                            <!--/.Indicators-->
+                            <!--Slides-->
+                            @foreach($albums as $album)
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
+                            alt="Second slide">
+                                    <div class="col-md-4">
+                                        <div class="carousel-item @if($loop->first) active @endif">
+                                            <img
+                                            src="gallery-resourses/images/{{$album->coverimage}}"
+                                            class="d-block w-100 object-fit:cover; object-position: center;"
+                                            alt="..."
+                                            />
+                                        </div>
+                                    </div>
+                            @endforeach
+                            <!--/.Slides-->
+                            <!--Controls-->
+                            <a class="carousel-control-prev" href="#albums" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#albums" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                            </a>
+                            <!--/.Controls-->
+                        </div>
+                        <!--/.Carousel Wrapper--> --}}
                     </div>
                 </div>
             </div>

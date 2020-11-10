@@ -44,35 +44,6 @@
 		</a>
 	</div>
 
-
-
-
-	{{-- <div class="row">
-		@foreach($donevents ?? '' as $donevent)
-		<div class="col-md-4 mb-4">
-
-
-				<img class="card-img-top" src="donation-template/events/images/{{$donevent->coverimage}}" alt="Card image" style="width:100%">
-
-
-						<div class="card-title"> {{$donevent->name}} </div>
-							<p class="card-text">
-								<span>{{$donevent->description}}</span>
-							</p>
-
-
-					<div class="card-img-overlay">
-					<a href="/donate" class="btn btn-primary btn-md btn-d-lg-none">Donate</a>
-					</div>
-		</div>
-
-
-
-		@endforeach
-
-	</div> --}}
-
-
     <div class="row">
 		@foreach($donevents as $donevent)
 
