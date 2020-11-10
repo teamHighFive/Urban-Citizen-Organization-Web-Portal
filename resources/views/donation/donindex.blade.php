@@ -18,6 +18,25 @@
   
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<style>
+		.centered {
+			position: absolute;
+			top: 25vw;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			
+		  }
+		  
+		  .maintext{
+			  font-size: 3.7vw;
+			  color: rgb(255, 255, 255);
+			  font-family:'Alegreya Sans SC';
+			  text-shadow: 5px 0px 5px black;
+		  }
+		  
+		  
+		</style>
     </head>
     <body>
 
@@ -28,8 +47,8 @@
   
 			<img src="donation-resourses/events/images/donationthumbnail.jpg" class="img-fluid z-depth-1" alt="Responsive image" style="width:100%; height:40em">
 			<div class="mask flex-center waves-effect waves-light">
-				{{-- <strong class="white-text px-5 py-5">Your Donation <br>
-					is Others Inspiration</strong> --}}
+				<div class="centered maintext">Your Donation <br>
+					is Others Inspiration</strong>
 	  		</div>
   
 		</div>
@@ -43,7 +62,7 @@
 			</div>
 		</a>
 	</div>
-	{{-- <div class="container"> --}}
+	
 
 
 
