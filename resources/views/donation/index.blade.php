@@ -1,28 +1,10 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <link
-        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        rel="stylesheet"
-        />
-        <!-- Google Fonts -->
-        <link
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        rel="stylesheet"
-        />
-        <!-- MDB -->
-        <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0/mdb.min.css"
-        rel="stylesheet"
-        />
+@extends('layouts.main')
 
-        <!--Bootstrap-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-<style>
-		.centered {
-			position: absolute;
-			top: 25vw;
+@section('header')
+    <style>
+        .centered {
+			position: absolute !important;
+			top: 25vh;
 			left: 50%;
 			transform: translate(-50%, -50%);
 
@@ -34,14 +16,13 @@
 			  font-family:'Alegreya Sans SC';
 			  text-shadow: 5px 0px 5px black;
 		  }
+    </style>
+@endsection
 
+@section('content')
 
-		</style>
-    </head>
-    <body>
-
-
-	<div class="row">
+<div class="container" style="min-height: 100vh">
+    <div class="row">
 
 		<div class="col-md-12 mb-3">
 
@@ -125,19 +106,5 @@
 <div>
 	{{ $donevents->links() }}
 </div>
-
-
-
-<!-- MDB -->
-<script
-type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0/mdb.min.js"
-></script>
-
-
-<!--Bootstrap-->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-</body>
-</html>
+</div>
+@endsection
