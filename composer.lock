@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdfbe9f2797486dab042f8c1299cc3e9",
+    "content-hash": "2f9d5085f479a5e95d1d66a1ee7af51d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -57,6 +57,66 @@
                 "stack"
             ],
             "time": "2019-12-24T22:41:47+00:00"
+        },
+        {
+            "name": "bigbluebutton/bigbluebutton-api-php",
+            "version": "2.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bigbluebutton/bigbluebutton-api-php.git",
+                "reference": "3256e88c0870ee201816ac80e193ba41eaccfd45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bigbluebutton/bigbluebutton-api-php/zipball/3256e88c0870ee201816ac80e193ba41eaccfd45",
+                "reference": "3256e88c0870ee201816ac80e193ba41eaccfd45",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "composer/composer": "1.7.*@dev",
+                "ext-mbstring": "*",
+                "friendsofphp/php-cs-fixer": "2.*",
+                "fzaninotto/faker": "~1.8.0",
+                "php": ">=7.0",
+                "php-coveralls/php-coveralls": "2.1.*",
+                "phpunit/phpunit": "6.*",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BigBlueButton\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ghazi Triki",
+                    "email": "ghazi.nocturne@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "BigBlueButton PHP API Library for PHP",
+            "homepage": "http://bigbluebutton.org/",
+            "keywords": [
+                "api",
+                "bbb",
+                "bigbluebutton"
+            ],
+            "support": {
+                "issues": "https://github.com/bigbluebutton/bigbluebutton-api-php/issues",
+                "source": "https://github.com/bigbluebutton/bigbluebutton-api-php/tree/2.0.9"
+            },
+            "time": "2020-08-20T13:19:38+00:00"
         },
         {
             "name": "brick/math",
@@ -1021,6 +1081,10 @@
                 "laravel",
                 "ui"
             ],
+            "support": {
+                "issues": "https://github.com/laravel/ui/issues",
+                "source": "https://github.com/laravel/ui/tree/v2.5.0"
+            },
             "time": "2020-11-03T19:45:19+00:00"
         },
         {
@@ -1934,6 +1998,13 @@
             ],
             "description": "Laravel helper for FullCalendar.io. Fork of https://github.com/maddhatter/laravel-fullcalendar",
             "homepage": "https://github.com/nelkasovic/laravel-full-calendar",
+            "support": {
+                "docs": "https://github.com/nelkasovic/laravel-full-calendar",
+                "email": "nermin@qlick.ch",
+                "issues": "https://github.com/nelkasovic/laravel-full-calendar/issues",
+                "source": "https://github.com/nelkasovic/laravel-full-calendar",
+                "wiki": "https://github.com/nelkasovic/laravel-full-calendar/wiki"
+            },
             "time": "2020-09-10T06:17:05+00:00"
         },
         {
@@ -5985,5 +6056,6 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
