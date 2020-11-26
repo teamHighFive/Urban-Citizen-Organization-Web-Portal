@@ -42,7 +42,7 @@
                 <a class="nav-link" href="/gallery">Gallery</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/archieves">Archives</a>
+                <a class="nav-link" href="/arc">Archives</a>
             </li>
 
             {{-- By theekshana start --}}

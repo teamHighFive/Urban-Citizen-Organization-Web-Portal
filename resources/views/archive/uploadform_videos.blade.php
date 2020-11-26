@@ -34,7 +34,7 @@
                                     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="file" class="custom-file-input">
+                                    <input type="file" name="file" class="custom-file-input" accept="video/*">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>

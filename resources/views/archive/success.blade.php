@@ -14,7 +14,7 @@
                 <div class="row" >
                     <div class="col-md-12">
                       <center>
-                        <img src="images/tick.png" width="120px" height="120px"></a>
+                        <img src="images/archives/tick.png" width="120px" height="120px"></a>
 
                         <div class="row py-5" >
                         <div class="col-md-6">

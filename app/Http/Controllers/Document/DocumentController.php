@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Document;
+use App\Photo;
+use App\Event;
+use App\Donationfiles;
+
 
 class DocumentController extends Controller
 {
@@ -28,17 +32,51 @@ class DocumentController extends Controller
         return view('archive.uploadform_images');
     }
 //------------------------------------------------------------------------------------------------------------------
-public function index_videos()
-{
-    return view('archive.uploadform_videos');
-}
+    public function index_videos()
+    {
+        return view('archive.uploadform_videos');
+    }
 //------------------------------------------------------------------------------------------------------------------
     public function index_choose()
     {
         return view('archive.choosetype');
     }
 //------------------------------------------------------------------------------------------------------------------
+    public function donate_form()
+    {
+        return view('archive.formdonation');
+    }
+//------------------------------------------------------------------------------------------------------------------
 
+
+
+    public function store_donatefiles(Request $request)
+    {
+        $upload =new Donationfiles();
+        $upload->document_details = $request->input('docName');
+        $upload->location = "not specified yet";
+        $upload->type = "pdf,doc,exel,presentation";
+        $upload->created_by = $request->input('userId');
+        $upload->description = $request->input('description');
+        $upload->p_admin = $request->input('permissionadmin') != null ? true : false;
+        $upload->p_member = $request->input('permissionmember') != null ? true : false;
+        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+
+        if ($request->hasfile('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('uploads/donate_files',$filename);
+            $upload->file = $filename;
+        } else {
+            return $request;
+            $upload->file = '';
+        }
+        $upload->save();
+        return view('success')->with('success',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------
 
     public function storepdf(Request $request)
     {
@@ -169,16 +207,38 @@ public function storevideo(Request $request)
     }
 
 //------------------------------------------------------------------------------------------------------------------
-    public function table()
+    public function table_seperated_files()
     {
         $upload = Document::all();
         return view('archive.index')->with('upload',$upload);
     }
 
 //------------------------------------------------------------------------------------------------------------------
+    public function table_gallery_files()
+    {
+        $upload = Photo::all();
+        return view('archive.gallery')->with('upload',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------
+    public function table_event_files()
+    {
+        $upload = Event::all();
+        return view('archive.event')->with('upload',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------
+public function table_donate_files()
+{
+    $upload = Donationfiles::all();
+    return view('archive.donation')->with('upload',$upload);
+}
+
+//------------------------------------------------------------------------------------------------------------------
     public function type()
-     {
+    {
         return view('choosetype')->with('choosetype',$filename);
-     }
+    }
+
 
 }

@@ -10,7 +10,7 @@
    }
 
    .bg-image {
-     background: url("../images/logo.png") no-repeat center center fixed;
+     background: url("../images/archives/urban citizen.png") no-repeat center center fixed;
      filter: blur(8px);
      -webkit-filter: blur(8px);
      height: 100vh;
@@ -63,35 +63,35 @@
     <div class="row py-15">
         <div class="column">
         <a href="upload_doc">
-            <img height="130px" width="200px" src="images/Doc_logo.png" alt="doc" style="width:100%">
+            <img height="130px" width="200px" src="images/archives/Doc_logo.png" alt="doc" style="width:100%">
         </a>
         <p>&nbsp;</p><p>Doc files</p>
         </div>
 
         <div class="column">
         <a href="upload_exel">
-            <img height="130px" width="200px" src="images/sheets-logo.png" alt="exel" style="width:100%">
+            <img height="130px" width="200px" src="images/archives/sheets-logo.png" alt="exel" style="width:100%">
         </a>
         <p>&nbsp;</p><p>Sheets</p>
         </div>
 
         <div class="column">
         <a href="upload_pdf">
-            <img height="130px" width="200px" src="images/pdf-logo.jpg" alt="pdf" style="width:100%">
+            <img height="130px" width="200px" src="images/archives/pdf-logo.jpg" alt="pdf" style="width:100%">
         </a>
         <p>&nbsp;</p><p>PDF files</p>
         </div>
 
         <div class="column">
         <a href="upload_images">
-            <img height="130px" width="200px" src="images/images-logo.png" alt="image" style="width:100%">
+            <img height="130px" width="200px" src="images/archives/images-logo.png" alt="image" style="width:100%">
         </a>
         <p>&nbsp;</p><p>Image files</p>
         </div>
 
         <div class="column">
         <a href="upload_videos">
-            <img height="130px" width="200px" src="images/video-logo.jpg" alt="image" style="width:100%">
+            <img height="130px" width="200px" src="images/archives/video-logo.jpg" alt="image" style="width:100%">
         </a>
         <p>&nbsp;</p><p>Video files</p>
         </div>
