@@ -4,12 +4,17 @@
 @section('content')
 
 <div class="container" style="height:auto;min-height: 100vh">
-
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
     <!-- Heading -->
     <div class="card mb-4 wow fadeIn">
 
       <!--Card content-->
       <div class="card-body d-sm-flex justify-content-between">
+
 
         <h4 class="mb-2 mb-sm-0 pt-1">
           <a href="{{ url('dashboard') }}">Home Page</a>

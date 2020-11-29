@@ -184,7 +184,7 @@
         ==================================================
         Blog Section Start
         ================================================== -->
-        <section id="donations" class="pt-5 pb-5 cyan text-white text-center">
+        <section id="blog" class="pt-5 pb-5 cyan text-white text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

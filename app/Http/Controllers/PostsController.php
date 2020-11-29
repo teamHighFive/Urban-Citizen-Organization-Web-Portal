@@ -69,7 +69,7 @@ class PostsController extends Controller
         $post->cover_image = $fileNameToStore;
         $post->save();
 
-        return redirect('/posts')->with('success','Post is  Created.');
+        return redirect('/posts')->with('status','Post is  Created.');
     }
 
     /**
@@ -94,7 +94,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if(auth()->user()->id !== $post->user_id){
-            return redirect('/posts')->with('error', 'Unauthorized page.');
+            return redirect('/posts')->with('status', 'Unauthorized page.');
         }
         return view('posts.edit')->with('post',$post);
     }
@@ -129,7 +129,7 @@ class PostsController extends Controller
         }
         $post->save();
 
-        return redirect('/posts')->with('success','Post is Updated.');
+        return redirect('/posts')->with('status','Post is Updated.');
     }
 
     /**
@@ -143,7 +143,7 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         if(auth()->user()->id !== $post->user_id){
-            return redirect('/posts')->with('error', 'Unauthorized page.');
+            return redirect('/posts')->with('status', 'Unauthorized page.');
         }
 
         if($post->cover_image !== 'noimage.jpg'){
@@ -151,6 +151,6 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/posts')->with('success','Post Removed.');
+        return redirect('/posts')->with('status','Post Removed.');
     }
 }

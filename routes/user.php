@@ -1,10 +1,11 @@
 <?php
 //TODO delete me too
+use App\Post;
+use App\DonationEvent;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-use App\DonationEvent;
-use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,8 @@ Route::group(['middleware' => ['auth','isUser']], function () {
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
 
-    Route::get('/dashboard', function () {
-        return view('auth.dashboard');
+    Route::get('/admindashboard', function () {
+        return view('auth.admindashboard');
     });
     Route::get('registered-user', 'Admin\RegisteredController@index');
     Route::get('role-edit/{id}','Admin\RegisteredController@edit');
@@ -46,4 +47,8 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 });
 
 
-Route::resource('posts', 'PostsController');
+Route::group(['middleware' => ['auth','isUser']], function () {
+    Route::get('/userdashboard', function () {
+        return view('auth.userdashboard');
+    });
+});

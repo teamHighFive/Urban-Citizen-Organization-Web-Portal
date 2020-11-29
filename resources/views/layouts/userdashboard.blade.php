@@ -12,11 +12,11 @@
         {{-- Navigation --}}
         <header>
             @include('layouts.navbar')
-            @include('layouts.sidebar')
+            @include('layouts.usersidebar')
         </header>
 
         {{-- Main Content --}}
-        
+
         <main style="padding-left: 200px">
 
             <div class="mt-5 pt-5">
