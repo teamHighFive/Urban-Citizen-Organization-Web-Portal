@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Album;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 

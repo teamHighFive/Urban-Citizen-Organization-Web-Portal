@@ -47,32 +47,38 @@
         <section>
 
 
-            <div class="card-deck mt-5">
+            <div class="row row-cols-1 row-cols-md-3 mt-5">
             @foreach($albums as $album)
 
+            
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="view overlay">
+                            <img class="card-img-top" src="gallery-resourses/images/{{$album->coverimage}}" alt="snow" />
 
-                <div class="card mb-4">
-                    <div class="view overlay">
-                        <img class="card-img-top" src="gallery-resourses/images/{{$album->coverimage}}" alt="snow" />
+                        </div>
 
-                    </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title">{{$album->title}}</h4>
-                        <p class="card-text">{{$album->description}}</p>
-                        <a class="btn btn-primary" href="album/show/{{$album->id}}" role="button">See more</a>
-                        {{-- <a class="btn btn-danger" href="album/delete/{{$album->id}}" role="button">Delete</a> --}}
-                        <a class="btn aqua-gradient waves-effect"{{--href="album/edit/{{$album->id}}"--}} onClick="alert('This feature not available yet')" role="button">Edit</a>
+                        <div class="card-body">
+                            <h4 class="card-title">{{$album->title}}</h4>
+                            <p class="card-text">{{$album->description}}</p>
+                            <a class="btn btn-primary" href="album/show/{{$album->id}}" role="button">See more</a>
+                            {{-- <a class="btn btn-danger" href="album/delete/{{$album->id}}" role="button">Delete</a> --}}
+                            <a class="btn aqua-gradient waves-effect" href="/album/edit/{{$album->id}}" role="button">Edit</a>
+                            
                             <div>
-                                <form action="/album/{{$album->id}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="submit" value="DELETE" class="btn btn-danger">
-                                </form>
+                                    <form action="/album/{{$album->id}}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" value="DELETE" class="btn btn-danger">
+                                    </form>
                             </div>
+                            
+                            
 
+                        </div>
                     </div>
                 </div>
+            
 
 
             @endforeach

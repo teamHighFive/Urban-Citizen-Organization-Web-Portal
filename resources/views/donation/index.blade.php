@@ -59,6 +59,7 @@
 					<h4 class="card-title white-text">{{$donevent->name}} </h4>
 					<p class="card-text white-text">{{$donevent->description}}</p>
 					<a href="donate" class="btn aqua-gradient waves-effect">Donate</a>
+					<a class="btn aqua-gradient waves-effect" href="/donation/edit/{{$donevent->id}}" role="button">Edit</a>
 					{{-- <div>
 						<form action="/donation/{{$donevent->id}}" method="POST">
 							@method('DELETE')
