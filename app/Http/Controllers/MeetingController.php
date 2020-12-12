@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use BigBlueButton\BigBlueButton;
 use BigBlueButton\Parameters\CreateMeetingParameters;
 use BigBlueButton\Parameters\JoinMeetingParameters;
+use BigBlueButton\Parameters\GetRecordingsParameters;
 
 use App\Meeting;
 
@@ -167,5 +168,28 @@ class MeetingController extends Controller
         $meeting->status = 0;
         $meeting->save();
         return redirect('/admin-approval');
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    //  Get meeting recordings
+    // --------------------------------------------------------------------------------------------------
+    public function getRecordings(){
+        $bbb = new BigBlueButton();
+        $recordingParams = new GetRecordingsParameters();
+        $response = $bbb->getRecordings($recordingParams);
+        
+        if ($response->getReturnCode() == 'SUCCESS') {
+            if (empty($response->getRawXml()->recordings->recording)){
+                return view('meeting.getRecordings')->with('message', "NODATA");
+            }else {
+                $recordings=array();
+                foreach ($response->getRawXml()->recordings->recording as $recording) {
+                    array_push($recordings,$recording);
+                }
+                return view('meeting.getRecordings')->with('recordings', $recordings)->with('message', "SUCCESS");
+            }
+        }else {
+            return view('meeting.getRecordings')->with('message', "UNSUCCESS");
+        }
     }
 }
