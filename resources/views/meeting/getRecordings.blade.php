@@ -9,23 +9,23 @@
             @elseif($message == "NODATA")
                 <h3 class="text-center">No recordings found.</h3>
             @elseif($message == "SUCCESS")
-                <h3 class="text-center">Meeting Recordings</h3>
+                <h3 class="text-center">Recordings</h3>
                 <table class="table">
                     <tr>
+                        <th></th>
                         <th>Meeting ID</th>
                         <th>Meeting Name</th>
-                        <th>Description</th>
                         <th></th>
                         <th></th>
                     </tr>
 
                     @foreach ($recordings as $recording)
                     <tr>
+                        <td><img src="{{$recording->playback->format->preview->images->image[0]}}"></td>
                         <td>{{$recording->meetingID}}</td>
                         <td>{{$recording->name}}</td>
-                        <td>{{$recording->name}}</td>
-                        <td>{{$recording->name}}</td>
-                        <td>{{$recording->name}}</td>
+                        <td><a class="btn btn-info btn-sm" target="_blank" href="{{$recording->playback->format->url}}">View</a></td>
+                        <td><a class="btn btn-danger btn-sm" target="_blank" href="{{$recording->playback->format->url}}">Delete</a></td>
                     </tr>
                     @endforeach
                 </table>

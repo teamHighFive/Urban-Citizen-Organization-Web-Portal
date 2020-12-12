@@ -177,13 +177,15 @@ class MeetingController extends Controller
         $bbb = new BigBlueButton();
         $recordingParams = new GetRecordingsParameters();
         $response = $bbb->getRecordings($recordingParams);
-        
+
+        // dd ($response->getRawXml()->recordings);
         if ($response->getReturnCode() == 'SUCCESS') {
             if (empty($response->getRawXml()->recordings->recording)){
                 return view('meeting.getRecordings')->with('message', "NODATA");
             }else {
                 $recordings=array();
                 foreach ($response->getRawXml()->recordings->recording as $recording) {
+                    // process all recording
                     array_push($recordings,$recording);
                 }
                 return view('meeting.getRecordings')->with('recordings', $recordings)->with('message', "SUCCESS");
