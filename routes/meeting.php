@@ -48,3 +48,6 @@ Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
 
 /// View recordings of meetings
 Route::get('/get-recordings', 'MeetingController@getRecordings');
+
+/// Delete recording
+Route::get('/delete-recording/{recording_id}', 'MeetingController@deleteRecording');

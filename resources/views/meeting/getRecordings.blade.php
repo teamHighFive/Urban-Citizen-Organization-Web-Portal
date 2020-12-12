@@ -1,6 +1,17 @@
 @extends('layouts.main')
 
 @section('title','Meeting Recordings')
+
+@section('header')
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+        alert(msg);
+        }
+    </script>
+@endsection
+
 @section('content')
     <div class="container" style="min-height: 100vh">
         <div class="jumbotron">
@@ -25,7 +36,7 @@
                         <td>{{$recording->meetingID}}</td>
                         <td>{{$recording->name}}</td>
                         <td><a class="btn btn-info btn-sm" target="_blank" href="{{$recording->playback->format->url}}">View</a></td>
-                        <td><a class="btn btn-danger btn-sm" target="_blank" href="{{$recording->playback->format->url}}">Delete</a></td>
+                        <td><a class="btn btn-danger btn-sm" href="/delete-recording/{{$recording->recordID}}">Delete</a></td>
                     </tr>
                     @endforeach
                 </table>

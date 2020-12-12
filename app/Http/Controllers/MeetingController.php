@@ -10,6 +10,7 @@ use BigBlueButton\BigBlueButton;
 use BigBlueButton\Parameters\CreateMeetingParameters;
 use BigBlueButton\Parameters\JoinMeetingParameters;
 use BigBlueButton\Parameters\GetRecordingsParameters;
+use BigBlueButton\Parameters\DeleteRecordingsParameters;
 
 use App\Meeting;
 
@@ -192,6 +193,23 @@ class MeetingController extends Controller
             }
         }else {
             return view('meeting.getRecordings')->with('message', "UNSUCCESS");
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    //  Delete meeting recordings
+    // --------------------------------------------------------------------------------------------------
+    public function deleteRecording($recording_id){
+        $bbb = new BigBlueButton();
+        $deleteRecordingsParams= new DeleteRecordingsParameters($recording_id); // get from "Get Recordings"
+        $response = $bbb->deleteRecordings($deleteRecordingsParams);
+
+        if ($response->getReturnCode() == 'SUCCESS') {
+            // recording deleted
+            return redirect()->back()->with('alert', 'Recording deleted successfully.');
+        } else {
+            // something wrong
+            return redirect()->back()->with('alert', 'Something went wrong. Please try again later.');
         }
     }
 }
