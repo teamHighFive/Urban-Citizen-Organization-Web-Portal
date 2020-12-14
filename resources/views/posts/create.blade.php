@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Online Conferences')
+@section('title','Create Post')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
     <a href="/posts" class="btn btn-primary">Go Back</a>
