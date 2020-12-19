@@ -57,7 +57,7 @@ class MeetingController extends Controller
         $meeting->recording = $request->recording != null ? true : false;
         $meeting->display_on_calendar = $request->calendar != null ? true : false;
         //If logged as an admin,
-        $meeting->approval = true;
+        // $meeting->approval = true;
         //End If
 
         $meeting->save();
@@ -159,6 +159,7 @@ class MeetingController extends Controller
         $meeting = Meeting::find($meeting_id);
         $meeting->approval = 1;
         $meeting->save();
+        app('App\Http\Controllers\SMSController')->send("+94719274111", "Testing by Sandali\nSecond Line");
         return redirect('/admin-approval');
 
     }
