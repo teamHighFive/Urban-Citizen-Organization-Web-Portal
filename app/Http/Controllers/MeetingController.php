@@ -192,13 +192,13 @@ class MeetingController extends Controller
         //End If
 
         $meeting->save();
-        return redirect('/view-meetings');
+        return redirect('/view-meetings')->with('alert', 'Updates saved successfully.');
     }
 
     public function deleteMeeting($meeting_id){
         $meeting = Meeting::find($meeting_id);
         $meeting->delete();
-        return redirect('/view-meetings');
+        return redirect()->back()->with('alert', 'Meeting deleted successfully.');
     }
 
     // --------------------------------------------------------------------------------------------------
