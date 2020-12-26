@@ -112,11 +112,6 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     // View upcoming meetings and join. This should be used with the event calendar
     // --------------------------------------------------------------------------------------------------
-    public function viewMeetings(){
-        $meetings = Meeting::all()->where('approval', 1)->where('status',1);
-        return view('meeting.viewMeetings')->with('meetings', $meetings);
-    }
-
     public function joinDetails($meeting_id){
         return view('meeting.joinDetails')->with('meeting_id', $meeting_id);
     }
@@ -172,6 +167,15 @@ class MeetingController extends Controller
         $meeting->status = 0;
         $meeting->save();
         return redirect('/admin-approval');
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    // Edit a meeting
+    // --------------------------------------------------------------------------------------------------
+    public function editMeeting(Request $request){
+
+        
+
     }
 
     // --------------------------------------------------------------------------------------------------
