@@ -55,7 +55,12 @@ Route::get('/view-meetings', function(){
     return view('meeting.viewMeetings')->with('meetings', $meetings);
 });
 
-Route::get('/edit-meeting/{meeting_id}', 'MeetingController@editMeeting');
+Route::get('/edit-meeting/{meeting_id}', function($meeting_id){
+    $meeting = Meeting::find($meeting_id);
+    return view('meeting.editMeeting')->with('meeting', $meeting);
+});
+
+Route::post('/save-edited-meeting', 'MeetingController@editMeeting');
 
 Route::get('/delete-meeting/{meeting_id}', 'MeetingController@deleteMeeting');
 

@@ -177,8 +177,22 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     // Edit a meeting
     // --------------------------------------------------------------------------------------------------
-    public function editMeeting($meeting_id){
+    public function editMeeting(Request $request){
+        $meeting = Meeting::find($request->id);
 
+        $meeting->meeting_description = $request->description;
+        $meeting->moderator_password = $request->moderatorPwd == null ? 'moderator_pwd' : $request->moderatorPwd;
+        $meeting->attendee_password = $request->attendeePwd == null ? 'attendee_pwd' : $request->attendeePwd;
+        $meeting->date = $request->date == null ? date("Y-m-d") : $request->date;
+        $meeting->time = $request->time == null ? date('H:i:s') : $request->time;
+        $meeting->recording = $request->recording != null ? true : false;
+        $meeting->display_on_calendar = $request->calendar != null ? true : false;
+        //If logged as an admin,
+        // $meeting->approval = true;
+        //End If
+
+        $meeting->save();
+        return redirect('/view-meetings');
     }
 
     public function deleteMeeting($meeting_id){
