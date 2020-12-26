@@ -2,15 +2,6 @@
 
 @section('title','Online Conferences')
 @section('content')
-
-
-
-    <?php
-        // TODO - Get the logged user
-        $logged = 1; // 1 for true, 0 for false
-    ?>
-
-    @if ($logged == 1){{--If a user has logged in--}}
         <div class="container"  style="min-height: 100VH">
             <h1 class="text-center cyan-text pt-5 mb-3">Online Conferencing</h1>
             <div class="row">
@@ -61,6 +52,4 @@
                 </div>
             </div>
         </div>
-    @endif
-
 @endsection

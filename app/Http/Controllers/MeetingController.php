@@ -10,6 +10,7 @@ use BigBlueButton\BigBlueButton;
 use BigBlueButton\Parameters\CreateMeetingParameters;
 use BigBlueButton\Parameters\JoinMeetingParameters;
 use BigBlueButton\Parameters\GetRecordingsParameters;
+use BigBlueButton\Parameters\DeleteRecordingsParameters;
 
 use App\Meeting;
 
@@ -56,7 +57,7 @@ class MeetingController extends Controller
         $meeting->recording = $request->recording != null ? true : false;
         $meeting->display_on_calendar = $request->calendar != null ? true : false;
         //If logged as an admin,
-        $meeting->approval = true;
+        // $meeting->approval = true;
         //End If
 
         $meeting->save();
@@ -111,11 +112,6 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     // View upcoming meetings and join. This should be used with the event calendar
     // --------------------------------------------------------------------------------------------------
-    public function viewMeetings(){
-        $meetings = Meeting::all()->where('approval', 1)->where('status',1);
-        return view('meeting.viewMeetings')->with('meetings', $meetings);
-    }
-
     public function joinDetails($meeting_id){
         return view('meeting.joinDetails')->with('meeting_id', $meeting_id);
     }
@@ -158,7 +154,10 @@ class MeetingController extends Controller
         $meeting = Meeting::find($meeting_id);
         $meeting->approval = 1;
         $meeting->save();
-        return redirect('/admin-approval');
+
+        $response = app('App\Http\Controllers\SMSController')->send("+94719274111", "Testing by Sandali\nSecond Line");
+
+        return redirect('/admin-approval')->with('alert', $response);
 
     }
 
@@ -171,25 +170,53 @@ class MeetingController extends Controller
     }
 
     // --------------------------------------------------------------------------------------------------
+    // Edit a meeting
+    // --------------------------------------------------------------------------------------------------
+    public function editMeeting(Request $request){
+
+        
+
+    }
+
+    // --------------------------------------------------------------------------------------------------
     //  Get meeting recordings
     // --------------------------------------------------------------------------------------------------
     public function getRecordings(){
         $bbb = new BigBlueButton();
         $recordingParams = new GetRecordingsParameters();
         $response = $bbb->getRecordings($recordingParams);
-        
+
+        // dd ($response->getRawXml()->recordings);
         if ($response->getReturnCode() == 'SUCCESS') {
             if (empty($response->getRawXml()->recordings->recording)){
                 return view('meeting.getRecordings')->with('message', "NODATA");
             }else {
                 $recordings=array();
                 foreach ($response->getRawXml()->recordings->recording as $recording) {
+                    // process all recording
                     array_push($recordings,$recording);
                 }
                 return view('meeting.getRecordings')->with('recordings', $recordings)->with('message', "SUCCESS");
             }
         }else {
             return view('meeting.getRecordings')->with('message', "UNSUCCESS");
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    //  Delete meeting recordings
+    // --------------------------------------------------------------------------------------------------
+    public function deleteRecording($recording_id){
+        $bbb = new BigBlueButton();
+        $deleteRecordingsParams= new DeleteRecordingsParameters($recording_id); // get from "Get Recordings"
+        $response = $bbb->deleteRecordings($deleteRecordingsParams);
+
+        if ($response->getReturnCode() == 'SUCCESS') {
+            // recording deleted
+            return redirect()->back()->with('alert', 'Recording deleted successfully.');
+        } else {
+            // something wrong
+            return redirect()->back()->with('alert', 'Something went wrong. Please try again later.');
         }
     }
 }
