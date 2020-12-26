@@ -112,6 +112,11 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     // View upcoming meetings and join. This should be used with the event calendar
     // --------------------------------------------------------------------------------------------------
+    public function viewUpcomingMeetings(){
+        $meetings = Meeting::all()->where('approval', 1)->where('status',1);
+        return view('meeting.upcomingMeetings')->with('meetings', $meetings);
+    }
+
     public function joinDetails($meeting_id){
         return view('meeting.joinDetails')->with('meeting_id', $meeting_id);
     }
@@ -173,9 +178,27 @@ class MeetingController extends Controller
     // Edit a meeting
     // --------------------------------------------------------------------------------------------------
     public function editMeeting(Request $request){
+        $meeting = Meeting::find($request->id);
 
-        
+        $meeting->meeting_description = $request->description;
+        $meeting->moderator_password = $request->moderatorPwd == null ? 'moderator_pwd' : $request->moderatorPwd;
+        $meeting->attendee_password = $request->attendeePwd == null ? 'attendee_pwd' : $request->attendeePwd;
+        $meeting->date = $request->date == null ? date("Y-m-d") : $request->date;
+        $meeting->time = $request->time == null ? date('H:i:s') : $request->time;
+        $meeting->recording = $request->recording != null ? true : false;
+        $meeting->display_on_calendar = $request->calendar != null ? true : false;
+        //If logged as an admin,
+        // $meeting->approval = true;
+        //End If
 
+        $meeting->save();
+        return redirect('/view-meetings')->with('alert', 'Updates saved successfully.');
+    }
+
+    public function deleteMeeting($meeting_id){
+        $meeting = Meeting::find($meeting_id);
+        $meeting->delete();
+        return redirect()->back()->with('alert', 'Meeting deleted successfully.');
     }
 
     // --------------------------------------------------------------------------------------------------

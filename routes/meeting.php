@@ -27,10 +27,7 @@ Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
 Route::post('/meeting-schedule', 'MeetingController@schedule');
 
 /// View upcoming meetings
-Route::get('/upcoming-meetings', function(){
-    $meetings = Meeting::all()->where('approval', 1)->where('status',1);
-    return view('meeting.upcomingMeetings')->with('meetings', $meetings);
-});
+Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
 
 Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
 
@@ -58,6 +55,14 @@ Route::get('/view-meetings', function(){
     return view('meeting.viewMeetings')->with('meetings', $meetings);
 });
 
+Route::get('/edit-meeting/{meeting_id}', function($meeting_id){
+    $meeting = Meeting::find($meeting_id);
+    return view('meeting.editMeeting')->with('meeting', $meeting);
+});
+
+Route::post('/save-edited-meeting', 'MeetingController@editMeeting');
+
+Route::get('/delete-meeting/{meeting_id}', 'MeetingController@deleteMeeting');
 
 
 
