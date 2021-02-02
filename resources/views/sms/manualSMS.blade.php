@@ -2,13 +2,13 @@
 
 @section('title','SMS')
 @section('header')
-    <!-- <script>
+    <script>
         var msg = '{{Session::get('alert')}}';
         var exist = '{{Session::has('alert')}}';
         if(exist){
         alert(msg);
         }
-    </script> -->
+    </script>
 @endsection
 @section('content')
     <div class="container" style="min-height: 100VH">
@@ -26,7 +26,7 @@
                             {{csrf_field()}}
                             <!-- TODO - set correct sender ID dynamically -->
                             <input type="text" name="from" class="form-control my-1" value="From : Mora-FitB18" required disabled>
-                            <input type="text" name="contact" class="form-control my-1" placeholder="To" required>
+                            <input type="text" name="to" class="form-control my-1" placeholder="To (with county code)" required>
                             <textarea name="text" cols="30" rows="2" class="form-control my-1" placeholder="Message" required></textarea>
                             <input type="submit" class="btn btn-primary mt-3" value="Send">
                     </form>

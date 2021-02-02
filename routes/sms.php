@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-/// Manual SMS Sending
+/// SMS gateway
 Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
     $userId = Auth::id();
     $dataInbox = Http::get('https://app.newsletters.lk/smsAPI?getinbox&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN").'&list=all')->json();
@@ -35,3 +35,6 @@ Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
         }
     }
 }]);
+
+/// Manual SMS Sending
+Route::post('/send-sms', 'SMSController@manualSMS');
