@@ -14,45 +14,14 @@
     <div class="container" style="min-height: 100VH">
         <div class="jumbotron">
             <h3 class="text-center">SMS Gateway</h3>
-            <h4 class="text-primary text-right">Credit Balance : 3125.00 LKR</h4>
+            @if(isset($balance))
+                <h5 class="text-primary text-left">Credit Balance : LKR {{$balance}}</h5>
+            @elseif (isset($balanceError))
+                <h5 class="text-danger text-left">Credit Balance is not available.</h5>
+                <p class="text-danger text-left">Error :  {{$balanceError}}</p>
+            @endif
             <div class="row">
-                <div class="col-md-8 jumbotron">
-                    <table class="table">
-                        <tr>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                        </tr>
-
-                        <tr>
-                            <td>0719274111</td>
-                            <td>Mora-FitB18</td>
-                            <td>This is the message</td>
-                            <td>2021-02-02 17:55:55</td>
-                        </tr>
-                        <tr>
-                            <td>0719274111</td>
-                            <td>Mora-FitB18</td>
-                            <td>This is the message</td>
-                            <td>2021-02-02 17:55:55</td>
-                        </tr>
-                        <tr>
-                            <td>0719274111</td>
-                            <td>Mora-FitB18</td>
-                            <td>This is the message</td>
-                            <td>2021-02-02 17:55:55</td>
-                        </tr>
-                        <tr>
-                            <td>0719274111</td>
-                            <td>Mora-FitB18</td>
-                            <td>This is the message</td>
-                            <td>2021-02-02 17:55:55</td>
-                        </tr>
-
-                    </table>
-                </div>
-                <div class="col-md-4 jumbotron">
+                <div class="col-md-6 jumbotron">
                     <form action="/send-sms" method="POST">
                             {{csrf_field()}}
                             <!-- TODO - set correct sender ID dynamically -->
@@ -61,6 +30,31 @@
                             <textarea name="text" cols="30" rows="2" class="form-control my-1" placeholder="Message" required></textarea>
                             <input type="submit" class="btn btn-primary mt-3" value="Send">
                     </form>
+                </div>
+                <div class="col-md-6 jumbotron">
+                    @if(isset($inbox))
+                        <table class="table">
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                            </tr>
+
+                            @foreach ($inbox as $message)
+                            <tr>
+                                <td>{{$message->from}}</td>
+                                <td>{{$message->to}}</td>
+                                <td>{{$message->message}}</td>
+                                <td>{{$message->date}}</td>
+                            </tr>
+                            @endforeach
+
+                        </table>
+                    @elseif (isset($inboxError))
+                        <h4 class="text-center">Inbox</h4>
+                        <h5 class="text-danger text-center">{{$inboxError}}</h5>
+                    @endif
                 </div>
             </div>
         </div>

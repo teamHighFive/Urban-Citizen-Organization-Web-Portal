@@ -17,5 +17,21 @@ use Illuminate\Http\Request;
 /// Manual SMS Sending
 Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
     $userId = Auth::id();
-    return view('sms.manualSMS')->with('userId', $userId);
+    $dataInbox = Http::get('https://app.newsletters.lk/smsAPI?getinbox&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN").'&list=all')->json();
+    $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
+    //dd($dataBalance['balance']);
+    if ($dataInbox['status'] == "success"){
+        if (isset($dataBalance['balance'])){
+            return view('sms.manualSMS')->with('userId', $userId)->with('inbox', $dataInbox['inbox'])->with('balance', $dataBalance['balance']);
+        }else if ($dataBalance['status'] == "error"){
+            return view('sms.manualSMS')->with('userId', $userId)->with('inbox', $dataInbox['inbox'])->with('balanceError', $dataBalance['message']);
+        }
+    }
+    else if ($dataInbox['status'] == "error"){
+        if (isset($dataBalance['balance'])){
+            return view('sms.manualSMS')->with('userId', $userId)->with('inboxError', $dataInbox['message'])->with('balance', $dataBalance['balance']);
+        }else if ($dataBalance['status'] == "error"){
+            return view('sms.manualSMS')->with('userId', $userId)->with('inboxError', $dataInbox['message'])->with('balanceError', $dataBalance['message']);
+        }
+    }
 }]);
