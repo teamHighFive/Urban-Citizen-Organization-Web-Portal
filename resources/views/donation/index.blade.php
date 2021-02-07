@@ -67,6 +67,13 @@
 							<input type="submit" value="DELETE" class="btn btn-danger">
 						</form>
 					</div> --}}
+					<div>
+						<form action="/donation/{{$donevent->id}}" method="POST">
+							@method('DELETE')
+							@csrf
+							<input type="submit" value="DELETE" class="btn btn-danger">
+						</form>
+				</div>
 
 				</div>
 

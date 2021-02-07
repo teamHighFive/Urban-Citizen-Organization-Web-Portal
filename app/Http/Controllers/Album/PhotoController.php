@@ -8,6 +8,15 @@ use DB;
 
 class PhotoController extends Controller
 {
+
+     // --------------------------------------------------------------------------------------------------
+    // Create a new controller instance.
+    // --------------------------------------------------------------------------------------------------
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=> ['index','show']]);
+    }
+    
     private $table='photos';
 
     //show create form

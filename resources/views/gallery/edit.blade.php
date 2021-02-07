@@ -12,7 +12,7 @@
                         {!!Form::label('description','Description') !!}
                         {!!Form::text('description',$album->description,$attributes=['placeholder'=>'Album Description ','name'=>'description','required']) !!}
                         {!!Form::file('coverimage',$attributes=['class' => 'file-path validate px-4','placeholder'=>'Upload your file','required'])!!}
-                        {!!Form::submit('Submit',$attributes=['class'=>'btn btn-primary btn-sm'])!!}
+                        {!!Form::submit('Edit',$attributes=['class'=>'btn btn-primary btn-sm'])!!}
                         {!!Form::close() !!}
 
 

@@ -118,18 +118,6 @@ class DonationController extends Controller{
     }
 
 
-    // --------------------------------------------------------------------------------------------------
-    // Remove the specified resource from Album
-    // --------------------------------------------------------------------------------------------------
-
-public function destroy($id){
-
-    $donevents=DonationEvent::find($id);
-    $donevents->delete($id);
-    return redirect('/donation')->with('success','Donation event Deleted');
-
-}
-
 public function update(Request $request, $id){
      //validate inputs
      $this->validate($request,[
@@ -180,5 +168,17 @@ public function update(Request $request, $id){
 
     // }
 
+
+     
+    // --------------------------------------------------------------------------------------------------
+    // Remove the specified resource from Donation
+    // --------------------------------------------------------------------------------------------------
+    public function destroy($id){
+
+        $donevents=DonationEvent::find($id);
+        $donevents->delete($id);
+        return redirect('/donation')->with('success','Donation event  Deleted');
+
+    }
    
 }

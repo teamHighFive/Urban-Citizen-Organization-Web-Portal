@@ -29,6 +29,8 @@ Route::delete('/donation/delete/{id}','AlbumController@destroy');
 
 Route::get('/donation/edit/{id}','Donation\DonationController@edit');
 
-Route::post('/update-donevent/{id}', 'Donation\DonationController@update');
+Route::put('/update-donevent/{id}', 'Donation\DonationController@update');
+
+Route::delete('/donation/delete/{id}','Donation\DonationController@destroy');
 
 

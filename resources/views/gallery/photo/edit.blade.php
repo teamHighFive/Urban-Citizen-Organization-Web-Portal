@@ -30,7 +30,7 @@
         </div>
 
         <input type="hidden" name="album_id"  value="{{$album_id}}">
-        {!!Form::submit('Submit',$attributes=['class'=>'btn btn-primary btn-sm float-left'])!!}
+        {!!Form::submit('Edit',$attributes=['class'=>'btn btn-primary btn-sm float-left'])!!}
         {!!Form::close() !!}
 
     </div>
