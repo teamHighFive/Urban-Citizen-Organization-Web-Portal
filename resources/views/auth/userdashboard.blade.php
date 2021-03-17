@@ -10,6 +10,7 @@
                 </div>
     @endif
     <img src="https://www.strikingly.com/content/static/a78ab36a143f10abeafab282e4164a8b/6f021/2019-10-29-site-under-construction.jpg" width="500" >
+    <h1>Under Contribution</h1>
 
 </div>
 

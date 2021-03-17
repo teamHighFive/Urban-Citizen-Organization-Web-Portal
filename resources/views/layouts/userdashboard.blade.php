@@ -12,7 +12,7 @@
         {{-- Navigation --}}
         <header>
             @include('layouts.navbar')
-            @include('layouts.usersidebar')
+           {{-- @include('layouts.usersidebar')--}}
         </header>
 
         {{-- Main Content --}}

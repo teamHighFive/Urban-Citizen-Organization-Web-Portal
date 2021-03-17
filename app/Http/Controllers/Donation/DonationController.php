@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Donation;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class DonationController extends Controller
 {
@@ -70,7 +71,7 @@ class DonationController extends Controller
                 //return \Redirect::route('album.index')->with('message','Album Created');
                // return view('donation/donindex',compact($this->table));
             //    return Redirect::to('donation')->withInput();
-            return \Redirect::route('donation.index')->with('message','Event Deleted');
+            return Redirect::route('donation.index')->with('message','Event Deleted');
 
 
     }
@@ -91,7 +92,7 @@ class DonationController extends Controller
 
         $donevents=DB::table($this->table)->find($id);
         $donevents=DB::table('donevents')->delete($id);
-        return \Redirect::route('donation.donindex')->with('message','Event Deleted');
+        return Redirect::route('donation.donindex')->with('message','Event Deleted');
 
 
     }

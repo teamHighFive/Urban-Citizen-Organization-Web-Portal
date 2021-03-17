@@ -15,13 +15,7 @@ use Illuminate\Http\Request;
 */
 
 /// Create, Join, Schedule meetings
-Route::get('/online-conferences', function () {
-    return view('meeting.onlineConferences');
-});
 
-Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
-
-Route::post('/meeting-schedule', 'MeetingController@schedule');
 
 /// View upcoming meetings
 Route::get('/view-meetings', 'MeetingController@viewMeetings');

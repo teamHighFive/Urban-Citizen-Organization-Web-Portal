@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Login')
+@section('title','Register')
 @section('content')
 <div class="container" style="height:100vh">
     <div class="row justify-content-center">
