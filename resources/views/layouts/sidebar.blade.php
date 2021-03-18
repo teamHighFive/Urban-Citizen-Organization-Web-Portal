@@ -22,7 +22,9 @@
         <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
             <i class="fa fa-map mr-3"></i>My Photos</a>
         <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fa fa-map mr-3"></i>Pool</a>
+            <i class="fa fa-map mr-3"></i>Polls</a>
+        <a href="{{ url('admin-approval') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fa fa-map mr-3"></i>Online Conferences</a>
 
     </div>
 
