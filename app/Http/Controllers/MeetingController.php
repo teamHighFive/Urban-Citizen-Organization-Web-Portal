@@ -160,7 +160,7 @@ class MeetingController extends Controller
         $meeting->approval = 1;
         $meeting->save();
 
-        $response = app('App\Http\Controllers\SMSController')->send("+94719274111", "Testing by Sandali\nSecond Line");
+        $response = app('App\Http\Controllers\SMSController')->send("+94719274111", "Testing by Sandali");
 
         return redirect('/admin-approval')->with('alert', $response);
 
