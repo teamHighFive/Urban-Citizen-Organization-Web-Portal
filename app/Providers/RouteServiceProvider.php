@@ -52,6 +52,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapUserRoutes();
         $this->mapMeetingRoutes();
+        $this->mapSMSRoutes();
         $this->mapEventRoutes();
         $this->mapDonationRoutes();
         $this->mapArchiveRoutes();
@@ -93,6 +94,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/meeting.php'));
+    }
+
+    protected function mapSMSRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/sms.php'));
     }
 
     protected function mapEventRoutes()

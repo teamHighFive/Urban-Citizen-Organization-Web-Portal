@@ -22,4 +22,14 @@ class SMSController extends Controller
             return "An error occured while sending SMS notifications. ".$data['message'];
 
     }
+
+    // --------------------------------------------------------------------------------------------------
+    // Send SMS Manually
+    // --------------------------------------------------------------------------------------------------
+    public function manualSMS(Request $request){
+
+        $response = $this->send($request->to, $request->text);
+        return redirect()->back()->with('alert', $response);
+
+    }
 }
