@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+use App\Meeting;
+
 /*
 |--------------------------------------------------------------------------
 | Meeting Routes
@@ -15,10 +17,16 @@ use Illuminate\Http\Request;
 */
 
 /// Create, Join, Schedule meetings
+Route::get('/online-conferences', ['middleware' => 'auth', 'uses' => function () {
+    $userId = Auth::id();
+    return view('meeting.onlineConferences')->with('userId', $userId);
+}]);
+
+Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
 
 
 /// View upcoming meetings
-Route::get('/view-meetings', 'MeetingController@viewMeetings');
+Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
 
 Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
 
@@ -39,3 +47,29 @@ Route::get('/admin-approval', 'MeetingController@viewMeetingsPendingForAdminAppr
 Route::get('/approve-meeting/{meeting_id}', 'MeetingController@approveMeeting');
 
 Route::get('/reject-meeting/{meeting_id}', 'MeetingController@rejectMeeting');
+
+/// View all meetings with edit/delete options
+Route::get('/view-meetings', function(){
+    $meetings = Meeting::all();
+    return view('meeting.viewMeetings')->with('meetings', $meetings);
+});
+
+Route::get('/edit-meeting/{meeting_id}', function($meeting_id){
+    $meeting = Meeting::find($meeting_id);
+    return view('meeting.editMeeting')->with('meeting', $meeting);
+});
+
+Route::post('/save-edited-meeting', 'MeetingController@editMeeting');
+
+Route::get('/delete-meeting/{meeting_id}', 'MeetingController@deleteMeeting');
+
+
+
+
+//---------RECORDINGS--------------------------------------------------------------------------------------
+
+/// View recordings of meetings
+Route::get('/get-recordings', 'MeetingController@getRecordings');
+
+/// Delete recording
+Route::get('/delete-recording/{recording_id}', 'MeetingController@deleteRecording');

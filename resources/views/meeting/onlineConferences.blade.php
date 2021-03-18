@@ -2,15 +2,6 @@
 
 @section('title','Online Conferences')
 @section('content')
-
-
-
-    <?php
-        // TODO - Get the logged user
-        $logged = 1; // 1 for true, 0 for false
-    ?>
-
-    @if ($logged == 1){{--If a user has logged in--}}
         <div class="container"  style="min-height: 100VH">
             <h1 class="text-center cyan-text pt-5 mb-3">Online Conferencing</h1>
             <div class="row">
@@ -24,9 +15,16 @@
                             <textarea name="description" cols="30" rows="2" class="form-control my-1" placeholder="Description" required></textarea>
                             <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)">
                             <input type="text" name="attendeePwd" class="form-control my-1" placeholder="Set Attendee Password (Not Required)">
-                            <div class="form-check my-1 ml-1">
-                                <input type="checkbox" class="form-check-input" name="recording">
-                                <label class="form-check-label" for="recording">Allow Recording</label>
+                            <div class="row my-1 ml-1">
+                                <div class="form-check col-md-4">
+                                    <input type="checkbox" class="form-check-input" name="recording">
+                                    <label class="form-check-label" for="recording">Allow Recording</label>
+                                </div>
+                                <div class="form-check col-md-6">
+                                    <input type="checkbox" class="form-check-input" name="calendar">
+                                    <label class="form-check-label" for="calendar">Display on Calendar</label>
+                                </div>
+                                <div class="col-md-4"></div>
                             </div>
                             <input type="submit" class="btn btn-primary mt-3" value="Create & Join">
                         </form>
@@ -49,9 +47,9 @@
                                     <input type="checkbox" class="form-check-input" name="recording">
                                     <label class="form-check-label" for="recording">Allow Recording</label>
                                 </div>
-                                <div class="form-check col-md-4">
+                                <div class="form-check col-md-6">
                                     <input type="checkbox" class="form-check-input" name="calendar">
-                                    <label class="form-check-label" for="calendar">Put on Calendar</label>
+                                    <label class="form-check-label" for="calendar">Display on Calendar</label>
                                 </div>
                                 <div class="col-md-4"></div>
                             </div>
@@ -61,6 +59,4 @@
                 </div>
             </div>
         </div>
-    @endif
-
 @endsection

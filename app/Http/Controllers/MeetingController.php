@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use BigBlueButton\BigBlueButton;
 use BigBlueButton\Parameters\CreateMeetingParameters;
 use BigBlueButton\Parameters\JoinMeetingParameters;
+use BigBlueButton\Parameters\GetRecordingsParameters;
+use BigBlueButton\Parameters\DeleteRecordingsParameters;
 
 use App\Meeting;
 
@@ -55,7 +57,7 @@ class MeetingController extends Controller
         $meeting->recording = $request->recording != null ? true : false;
         $meeting->display_on_calendar = $request->calendar != null ? true : false;
         //If logged as an admin,
-        $meeting->approval = true;
+        // $meeting->approval = true;
         //End If
 
         $meeting->save();
@@ -110,9 +112,9 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     // View upcoming meetings and join. This should be used with the event calendar
     // --------------------------------------------------------------------------------------------------
-    public function viewMeetings(){
+    public function viewUpcomingMeetings(){
         $meetings = Meeting::all()->where('approval', 1)->where('status',1);
-        return view('meeting.viewMeetings')->with('meetings', $meetings);
+        return view('meeting.upcomingMeetings')->with('meetings', $meetings);
     }
 
     public function joinDetails($meeting_id){
@@ -157,7 +159,10 @@ class MeetingController extends Controller
         $meeting = Meeting::find($meeting_id);
         $meeting->approval = 1;
         $meeting->save();
-        return redirect('/admin-approval');
+
+        $response = app('App\Http\Controllers\SMSController')->send("+94719274111", "Testing by Sandali\nSecond Line");
+
+        return redirect('/admin-approval')->with('alert', $response);
 
     }
 
@@ -167,5 +172,74 @@ class MeetingController extends Controller
         $meeting->status = 0;
         $meeting->save();
         return redirect('/admin-approval');
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    // Edit a meeting
+    // --------------------------------------------------------------------------------------------------
+    public function editMeeting(Request $request){
+        $meeting = Meeting::find($request->id);
+
+        $meeting->meeting_description = $request->description;
+        $meeting->moderator_password = $request->moderatorPwd == null ? 'moderator_pwd' : $request->moderatorPwd;
+        $meeting->attendee_password = $request->attendeePwd == null ? 'attendee_pwd' : $request->attendeePwd;
+        $meeting->date = $request->date == null ? date("Y-m-d") : $request->date;
+        $meeting->time = $request->time == null ? date('H:i:s') : $request->time;
+        $meeting->recording = $request->recording != null ? true : false;
+        $meeting->display_on_calendar = $request->calendar != null ? true : false;
+        //If logged as an admin,
+        // $meeting->approval = true;
+        //End If
+
+        $meeting->save();
+        return redirect('/view-meetings')->with('alert', 'Updates saved successfully.');
+    }
+
+    public function deleteMeeting($meeting_id){
+        $meeting = Meeting::find($meeting_id);
+        $meeting->delete();
+        return redirect()->back()->with('alert', 'Meeting deleted successfully.');
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    //  Get meeting recordings
+    // --------------------------------------------------------------------------------------------------
+    public function getRecordings(){
+        $bbb = new BigBlueButton();
+        $recordingParams = new GetRecordingsParameters();
+        $response = $bbb->getRecordings($recordingParams);
+
+        // dd ($response->getRawXml()->recordings);
+        if ($response->getReturnCode() == 'SUCCESS') {
+            if (empty($response->getRawXml()->recordings->recording)){
+                return view('meeting.getRecordings')->with('message', "NODATA");
+            }else {
+                $recordings=array();
+                foreach ($response->getRawXml()->recordings->recording as $recording) {
+                    // process all recording
+                    array_push($recordings,$recording);
+                }
+                return view('meeting.getRecordings')->with('recordings', $recordings)->with('message', "SUCCESS");
+            }
+        }else {
+            return view('meeting.getRecordings')->with('message', "UNSUCCESS");
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    //  Delete meeting recordings
+    // --------------------------------------------------------------------------------------------------
+    public function deleteRecording($recording_id){
+        $bbb = new BigBlueButton();
+        $deleteRecordingsParams= new DeleteRecordingsParameters($recording_id); // get from "Get Recordings"
+        $response = $bbb->deleteRecordings($deleteRecordingsParams);
+
+        if ($response->getReturnCode() == 'SUCCESS') {
+            // recording deleted
+            return redirect()->back()->with('alert', 'Recording deleted successfully.');
+        } else {
+            // something wrong
+            return redirect()->back()->with('alert', 'Something went wrong. Please try again later.');
+        }
     }
 }

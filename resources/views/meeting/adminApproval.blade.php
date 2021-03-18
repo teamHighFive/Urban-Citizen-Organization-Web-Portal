@@ -1,6 +1,15 @@
 @extends('layouts.main')
 
 @section('title','Admin Approval')
+@section('header')
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+        alert(msg);
+        }
+    </script>
+@endsection
 @section('content')
     <div class="container" style="min-height: 100VH">
         <div class="jumbotron">

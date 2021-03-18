@@ -1,9 +1,9 @@
 @extends('layouts.userdashboard')
 
-@section('title','Create Posts')
+@section('title','Create Post')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
-    
+
     <a href="/posts" class="btn btn-primary">Go Back</a>
     <hr>
 	<h1>Create New Post</h1>
