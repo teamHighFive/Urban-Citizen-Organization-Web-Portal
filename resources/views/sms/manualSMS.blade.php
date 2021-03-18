@@ -29,7 +29,7 @@
                                 <input type="text" name="from" class="form-control my-1" value="From : Mora-FitB18" required disabled>
                                 <!-- <input type="text" name="to" class="form-control my-1" placeholder="To" required> -->
                                 <a href="#contact-list" class="form-control my-1" data-toggle="collapse">To</a>
-                                <div id="contact-list" class="collapse">
+                                <div id="contact-list" class="collapse my-1">
                                     <div style="overflow-y: auto; height: 350px;">
                                     <table class="table">
                                         <thead>
@@ -40,26 +40,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="align-middle"><input type="checkbox" name="recipients[]" value="1"/></td>
-                                                <td><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar" class="md-avatar rounded" style="width:40px"></td>
-                                                <td class="align-middle"><h5>Sandali Senarathne</h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle"><input type="checkbox" name="recipients[]" value="1"/></td>
-                                                <td><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar" class="md-avatar rounded" style="width:40px"></td>
-                                                <td class="align-middle"><h5>Sandali Senarathne</h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle"><input type="checkbox" name="recipients[]" value="1"/></td>
-                                                <td><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar" class="md-avatar rounded" style="width:40px"></td>
-                                                <td class="align-middle"><h5>Sandali Senarathne</h5></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle"><input type="checkbox" name="recipients[]" value="1"/></td>
-                                                <td><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar" class="md-avatar rounded" style="width:40px"></td>
-                                                <td class="align-middle"><h5>Sandali Senarathne</h5></td>
-                                            </tr>
+                                            @foreach ($members as $member)
+                                                <tr>
+                                                    <td class="align-middle"><input type="checkbox" name="recipients[]" value="{{$member->contact}}"/></td>
+                                                    <td><img src="{{$member->avatar}}" alt="Avatar" class="md-avatar rounded" style="width:40px"></td>
+                                                    <td class="align-middle"><h5>{{$member->fname}} {{$member->mname}} {{$member->lname}}</h5></td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </Table>
                                     </div>
