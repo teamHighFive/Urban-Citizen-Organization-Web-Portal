@@ -1,4 +1,4 @@
-@extends('layouts.userdashboard')
+{{-- @extends('layouts.userdashboard')
 
 @section('title','Dashboard')
 @section('content')
@@ -14,4 +14,4 @@
 
 </div>
 
-@endsection
+@endsection --}}

@@ -17,8 +17,8 @@
 
 
         <h4 class="mb-2 mb-sm-0 pt-1">
-          <a href="{{ url('dashboard') }}">Home Page</a>
-          <span>/</span>
+          {{-- <a href="{{ url('dashboard') }}">Home Page</a>
+          <span>/</span> --}}
           <span>Registered Users</span>
         </h4>
 

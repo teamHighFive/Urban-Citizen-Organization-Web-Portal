@@ -50,10 +50,7 @@
 
             @else
                 <li class="nav-item">
-                    <a class="nav-link waves-effect" href="/admindashboard" target="">Admin-Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="/userdashboard" target="">User-Dashboard</a>
+                    <a class="nav-link waves-effect" href="/dashboard" target="">My Dashboard</a>
                 </li>
             @endguest
 

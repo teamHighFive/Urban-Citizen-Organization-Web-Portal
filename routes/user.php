@@ -59,6 +59,8 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::get('/userdashboard', function () {
         return view('auth.userdashboard');
     });
+    Route::get('/dashboard', function () {
+        return view('auth.dashboard');
+    });
 });
-
 
