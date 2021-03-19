@@ -29,6 +29,9 @@ class SMSController extends Controller
     public function manualSMS(Request $request){
 
         $recipientsArr = $request->recipients;
+        if($recipientsArr == null){
+            return redirect()->back()->with('alert', "No cantact was selected.");
+        }
         $recipients = implode(",", $recipientsArr);
         $response = $this->send($recipients, $request->text);
         return redirect()->back()->with('alert', $response);
