@@ -15,8 +15,8 @@ class EventController extends Controller
         $event=[];
         foreach($events as $row){
            $event[]=\Calendar::event(
-               $row->title,
-               false,
+               $row->title, //event title
+               false, //full day event?
                new \DateTime($row->start_date),
                new \DateTime($row->end_date),
                $row->id,
@@ -26,19 +26,6 @@ class EventController extends Controller
                ]
 
            );
-
-        //    $event[] = \Calendar::event(
-        //     "Valentine's Day", //event title
-        //     true, //full day event?
-        //     '2021-03-14', //start time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg)
-        //     '2021-03-15', //end time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg),
-        //     1, //optional event ID
-        //     [
-        //         'url' => '/online-conferences',
-        //         //any other full-calendar supported parameters
-        //     ]
-        // );
-
         }
         $calendar=\Calendar::addEvents($event);
         return view('event.eventpage',compact('events','calendar'));
@@ -99,17 +86,21 @@ class EventController extends Controller
         $this->validate($request,[
             'title'=>'required',
             'color'=>'required',
+            'description'=>'required',
+            'location'=>'required',
             'start_date'=>'required',
             'end_date'=>'required',
         ]);
         $events=event::find($id);
-
         $events->title = $request->input('title');
+        $events->description = $request->input('description');
+        $events->location = $request->input('location');
         $events->color = $request->input('color');
         $events->start_date = $request->input('start_date');
         $events->end_date = $request->input('end_date');
-
+ 
         $events->save();
+
         return redirect('event-calendar')->with('success','Event Updated');
 
      }
