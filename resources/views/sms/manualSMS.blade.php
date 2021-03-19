@@ -8,6 +8,22 @@
         if(exist){
         alert(msg);
         }
+
+        function c(){
+            var recipients = document.getElementsByName('recipients[]');
+            console.log(recipients.length);
+            if (document.getElementById('all').checked) {
+                for(var i=0; i<recipients.length; i++){  
+                    if(recipients[i].type=='checkbox')  
+                    recipients[i].checked=true;  
+                }  
+            } else {
+                for(var i=0; i<recipients.length; i++){  
+                    if(recipients[i].type=='checkbox')  
+                    recipients[i].checked=false;  
+                } 
+            }
+        }
     </script>
 @endsection
 @section('content')
@@ -34,7 +50,7 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col"><input type="checkbox" name="All" value="1"/></th>
+                                                <th scope="col"><input onClick="c()" type="checkbox" id="all" value="1"/></th>
                                                 <th scope="col" colspan="2">Select All</th>
                                                 <th scope="col"></th>
                                             </tr>
@@ -42,9 +58,9 @@
                                         <tbody>
                                             @foreach ($members as $member)
                                                 <tr>
-                                                    <td class="align-middle"><input type="checkbox" name="recipients[]" value="{{$member->contact}}"/></td>
+                                                    <td class="align-middle"><input name="recipients[]" type="checkbox"  value="{{$member->contact}}"/></td>
                                                     <td><img src="{{$member->avatar}}" alt="Avatar" class="md-avatar rounded" style="width:40px"></td>
-                                                    <td class="align-middle"><h5>{{$member->fname}} {{$member->mname}} {{$member->lname}}</h5></td>
+                                                    <td class="align-middle"><h6><b>{{$member->fname}} {{$member->mname}} {{$member->lname}}<b></h6></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -58,7 +74,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="jumbotron">
-                        @if(isset($inbox))
+                        <!-- @if(isset($inbox))
                             <table class="table">
                                 <tr>
                                     <th>From</th>
@@ -80,7 +96,7 @@
                         @elseif (isset($inboxError))
                             <h4 class="text-center">Inbox</h4>
                             <h5 class="text-danger text-center">{{$inboxError}}</h5>
-                        @endif
+                        @endif -->
                     </div>
                 </div>
             </div>

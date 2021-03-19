@@ -28,8 +28,9 @@ class SMSController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function manualSMS(Request $request){
 
-        // $response = $this->send('+94719274111,+94711124541', $request->text);
-        $response = $this->send($request->to, $request->text);
+        $recipientsArr = $request->recipients;
+        $recipients = implode(",", $recipientsArr);
+        $response = $this->send($recipients, $request->text);
         return redirect()->back()->with('alert', $response);
 
     }
