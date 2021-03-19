@@ -36,17 +36,6 @@ Route::group(['middleware' => ['auth','isUser']], function () {
 
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
-
-    Route::get('/admindashboard', function () {
-        return view('auth.admindashboard');
-    });
-    Route::get('/online-conferences', function () {
-        return view('meeting.onlineConferences');
-    });
-
-    Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
-
-    Route::post('/meeting-schedule', 'MeetingController@schedule');
     Route::get('registered-user', 'Admin\RegisteredController@index');
     Route::get('role-edit/{id}','Admin\RegisteredController@edit');
     Route::get('role-update/{id}','Admin\RegisteredController@updaterole');

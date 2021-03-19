@@ -1,6 +1,15 @@
 @extends('layouts.main')
 
 @section('title','Online Conferences')
+@section('header')
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+        alert(msg);
+        }
+    </script>
+@endsection
 @section('content')
         <div class="container"  style="min-height: 100VH">
             <h1 class="text-center cyan-text pt-5 mb-3">Online Conferencing</h1>
@@ -10,7 +19,7 @@
                         <h3 class="text-center">Create & Join</h3>
                         <form action="/meeting-create-and-join" method="POST">
                             {{csrf_field()}}
-                            <input type="text" name="user" class="form-control my-1" placeholder="Your Name" required>
+                            <input type="text" name="user" class="form-control my-1" placeholder="Your Name" value="{{ Auth::user()->fname.' '.Auth::user()->mname }}" hidden>
                             <input type="text" name="meetingName" class="form-control my-1" placeholder="Meeting Name" required>
                             <textarea name="description" cols="30" rows="2" class="form-control my-1" placeholder="Description" required></textarea>
                             <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)">
@@ -35,7 +44,7 @@
                         <h3 class="text-center">Schedule</h3>
                         <form action="/meeting-schedule" method="POST">
                             {{csrf_field()}}
-                            <input type="text" name="user" class="form-control my-1" placeholder="Your Name" required>
+                            <input type="text" name="user" class="form-control my-1" placeholder="Your Name" value="{{ Auth::user()->fname.' '.Auth::user()->mname }}" hidden>
                             <input type="text" name="meetingName" class="form-control my-1" placeholder="Meeting Name" required>
                             <textarea name="description" cols="30" rows="2" class="form-control my-1" placeholder="Description" required></textarea>
                             <input type="date" name="date" class="form-control my-1" value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>" required>

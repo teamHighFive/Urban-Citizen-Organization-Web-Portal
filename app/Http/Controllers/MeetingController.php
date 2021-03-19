@@ -6,6 +6,8 @@ date_default_timezone_set("Asia/Kolkata");
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 use BigBlueButton\BigBlueButton;
 use BigBlueButton\Parameters\CreateMeetingParameters;
 use BigBlueButton\Parameters\JoinMeetingParameters;
@@ -35,7 +37,7 @@ class MeetingController extends Controller
 
         $meeting = $this->create($request);
 
-        return $meeting;
+        return redirect()->back()->with('alert', "Successfully scheduled the meeting.");
 
     }
 
@@ -56,9 +58,11 @@ class MeetingController extends Controller
         $meeting->time = $request->time == null ? date('H:i:s') : $request->time;
         $meeting->recording = $request->recording != null ? true : false;
         $meeting->display_on_calendar = $request->calendar != null ? true : false;
-        //If logged as an admin,
-        // $meeting->approval = true;
-        //End If
+        
+        $user = Auth::user();
+        if($user['role_as'] == 'admin'){
+            $meeting->approval = true;
+        }
 
         $meeting->save();
 
