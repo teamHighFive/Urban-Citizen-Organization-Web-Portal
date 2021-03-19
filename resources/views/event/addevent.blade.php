@@ -14,13 +14,17 @@
                               <form method="POST" action="{{url('/add-event') }}">
                                 {{ csrf_field() }}
                                 <label for=""><h5 class="blue-grey-text"><strong>Enter Event Name:</strong></h5></label>
-                                <input type="text" class="form-control" name="title" placeholder="Enter the Name"><br/><br/>
+                                <input type="text" class="form-control" name="title" placeholder="Enter the Name" Required><br/>
+                                <label for=""><h5 class="blue-grey-text"><strong>Enter Description:</strong></h5></label>
+                                <input type="text" class="form-control" name="description" placeholder="Description" Required><br/>
+                                <label for=""><h5 class="blue-grey-text"><strong>Enter Location:</strong></h5></label>
+                                <input type="text" class="form-control" name="location" placeholder="Location" Required><br/>
                                 <label for=""><h5 class="blue-grey-text"><strong>Enter Color:</strong></h5></label>
-                                <input type="color" class="form-control" name="color" placeholder="Enter the color"><br/><br/>
+                                <input type="color" class="form-control" name="color" placeholder="Enter the color" value="#cccccc" Required><br/>
                                 <label for=""><h5 class="blue-grey-text"><strong>Enter Start Date:</strong></h5></label>
-                                <input type="datetime-local" class="form-control" name="start_date" class="date" placeholder="Enter Start date"><br/><br/>
+                                <input type="datetime-local" class="form-control" name="start_date" class="date" placeholder="Enter Start date"Required><br/>
                                 <label for=""><h5 class="blue-grey-text"><strong>Enter End Date:</strong></h5></label>
-                                <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date"><br/>
+                                <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date"Required><br/>
                                 <input type="submit" name="submit" class="btn btn-blue-grey" value="Add Event">
                               </form>
                           </div>

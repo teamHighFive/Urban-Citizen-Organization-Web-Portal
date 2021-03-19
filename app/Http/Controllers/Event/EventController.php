@@ -14,7 +14,6 @@ class EventController extends Controller
         $events=event::all();
         $event=[];
         foreach($events as $row){
-           $enddate=$row->end_date."24:00:00";
            $event[]=\Calendar::event(
                $row->title,
                false,
@@ -23,9 +22,22 @@ class EventController extends Controller
                $row->id,
                [
                    'color'=>$row->color,
+                   'url' => "/eventDetails/$row->id",
                ]
 
            );
+
+        //    $event[] = \Calendar::event(
+        //     "Valentine's Day", //event title
+        //     true, //full day event?
+        //     '2021-03-14', //start time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg)
+        //     '2021-03-15', //end time, must be a DateTime object or valid DateTime format (http://bit.ly/1z7QWbg),
+        //     1, //optional event ID
+        //     [
+        //         'url' => '/online-conferences',
+        //         //any other full-calendar supported parameters
+        //     ]
+        // );
 
         }
         $calendar=\Calendar::addEvents($event);
@@ -45,11 +57,15 @@ class EventController extends Controller
        $this->validate($request,[
            'title'=>'required',
            'color'=>'required',
+           'description'=>'required',
+           'location'=>'required',
            'start_date'=>'required',
            'end_date'=>'required',
        ]);
        $events=new event;
        $events->title = $request->input('title');
+       $events->description = $request->input('description');
+       $events->location = $request->input('location');
        $events->color = $request->input('color');
        $events->start_date = $request->input('start_date');
        $events->end_date = $request->input('end_date');
@@ -110,4 +126,11 @@ class EventController extends Controller
         }
 
       //---------------------------------------------------------------------
+
+    //onClick event in event calendar-----------------------
+    public function moreOnEvent($id){
+        return $id;
+    }
+    //---------------------------------------------------------------------
+
 }

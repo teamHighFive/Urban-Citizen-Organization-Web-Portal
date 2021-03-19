@@ -31,3 +31,5 @@ Route::put('/event@update/{id}',[EventController::class,'update'] );
 Route::get('/event@destroy/{id}',[EventController::class,'destroy'] );
 //EventController store function route
 Route::post('/add-event',[EventController::class,'store'] );
+
+Route::get('/eventDetails/{event_id}', [EventController::class,'moreOnEvent']);
