@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/meeting-schedule', 'MeetingController@schedule');
 
     /// View upcoming meetings
-
+    Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
     Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
 
     Route::post('/meeting-join-pwd', function (Request $request) {
@@ -76,6 +76,3 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 });
 //TODO - if not action
 
-
-/// View upcoming meetings
-Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');

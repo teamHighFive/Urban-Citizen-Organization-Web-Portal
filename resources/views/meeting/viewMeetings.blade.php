@@ -29,7 +29,7 @@
                     <td>{{$meeting->meeting_name}}</td>
                     <td>{{$meeting->meeting_description}}</td>
                     <td><a class="btn btn-info btn-sm" href="/edit-meeting/{{$meeting->meeting_id}}">Edit</a></td>
-                    <td><a class="btn btn-info btn-sm" href="/delete-meeting/{{$meeting->meeting_id}}">Delete</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="/delete-meeting/{{$meeting->meeting_id}}">Delete</a></td>
                 </tr>
                 @endforeach
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\event;//event model
+use App\Meeting;
 use LaravelFullCalendar\Facades\Calendar;//Calendar class
 
 class EventController extends Controller
@@ -27,6 +28,26 @@ class EventController extends Controller
 
            );
         }
+
+        //Adding meetings to calendar -By Sandali=======================================
+        $meetings=Meeting::all()->where('approval', 1)->where('status',1)->where('display_on_calendar',1);
+
+        foreach($meetings as $meeting){
+            $event[]=\Calendar::event(
+                $meeting->meeting_name, //event title
+                true, //full day event?
+                new \DateTime($meeting->date),
+                new \DateTime($meeting->date),
+                $meeting->meeting_id,
+                [
+                    'color'=>'#3c5703',
+                    'url' => "/meetingDetails/$meeting->meeting_id",
+                ]
+ 
+            );
+        }
+        //Adding meetings to calendar -By Sandali=======================================
+
         $calendar=\Calendar::addEvents($event);
         return view('event.eventpage',compact('events','calendar'));
      }
@@ -120,6 +141,12 @@ class EventController extends Controller
 
     //onClick event in event calendar-----------------------
     public function moreOnEvent($id){
+        return $id;
+    }
+    //---------------------------------------------------------------------
+
+    //onClick meeting in event calendar -By Sandali-----------------------
+    public function moreOnMeeting($id){
         return $id;
     }
     //---------------------------------------------------------------------

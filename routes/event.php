@@ -33,3 +33,6 @@ Route::get('/event@destroy/{id}',[EventController::class,'destroy'] );
 Route::post('/add-event',[EventController::class,'store'] );
 
 Route::get('/eventDetails/{event_id}', [EventController::class,'moreOnEvent']);
+
+//By Sandali
+Route::get('/meetingDetails/{event_id}', [EventController::class,'moreOnMeeting']);
