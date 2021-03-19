@@ -39,7 +39,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">
-        © 2020 Copyright: Team highFive - Universiy of Moratuwa
+        © 2020 Copyright: Team highFive - Faculty of IT, Universiy of Moratuwa
     </div>
     <!-- Copyright -->
 
