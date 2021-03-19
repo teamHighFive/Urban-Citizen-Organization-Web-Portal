@@ -24,7 +24,6 @@ Route::get('/online-conferences', ['middleware' => 'auth', 'uses' => function ()
 
 Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
 
-Route::post('/meeting-schedule', 'MeetingController@schedule');
 
 /// View upcoming meetings
 Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');

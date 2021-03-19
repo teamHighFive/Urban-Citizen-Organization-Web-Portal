@@ -30,6 +30,6 @@ class RegisteredController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        return redirect()->back()->with('status','Role is Deleted');
+        return redirect()->back()->with('status','User is Deleted');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Login')
+@section('title','Register')
 @section('content')
 <div class="container" style="height:100vh">
     <div class="row justify-content-center">
@@ -58,7 +58,7 @@
                             <label for="contact" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="contact" type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact" autofocus>
+                                <input id="contact" type="phone" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact" autofocus>
 
                                 @error('contact')
                                     <span class="invalid-feedback" role="alert">

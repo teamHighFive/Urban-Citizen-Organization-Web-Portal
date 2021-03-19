@@ -21,7 +21,7 @@ Route::post('/create-donation', 'Donation\DonationController@store');
 
 Route::resource('donation', 'Donation\DonationController');
 // Route::post('/','DonationController@store');
-Route::get('/createdonevent','Donation\DonationController@create');
+
 
 Route::get('/donate','Donation\DonationController@donate');
 
