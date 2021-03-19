@@ -224,28 +224,3 @@
 
 </body>
 </html>
-
-
-
-
-
-    {{-- <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="block wow fadeInUp" data-wow-delay=".3s">
-
-                    <!-- Slider -->
-                    <section class="cd-intro">
-                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
-                            <span>Welcome to Urban Citizes Organization</span><br>
-                        </h1>
-                    </section> <!-- cd-intro -->
-                    <!-- /.slider -->
-                    <h2 class="wow fadeInUp animated" data-wow-delay=".6s" >
-                        Let's make Colombo the right type of city!
-                    </h2>
-                    <a class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green hvr-bounce-to-right" data-wow-delay=".9s" href="/register" >Join with Us</a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
