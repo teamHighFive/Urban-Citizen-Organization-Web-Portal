@@ -26,7 +26,6 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/meeting-schedule', 'MeetingController@schedule');
 
     /// View upcoming meetings
-    Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
 
     Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
 
@@ -50,6 +49,7 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::get('/delete-recording/{recording_id}', 'MeetingController@deleteRecording');
 
 });
+//TODO - if not action
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
     /// View meetings pending for admin approval
@@ -74,3 +74,8 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     Route::get('/delete-meeting/{meeting_id}', 'MeetingController@deleteMeeting');
 });
+//TODO - if not action
+
+
+/// View upcoming meetings
+Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
