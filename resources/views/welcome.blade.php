@@ -103,7 +103,7 @@
                         <h2 class="fadeInDown">DONATIONS</h1>
                             <div class="row fadeInDown mt-5" style="color:#333333">
                                 @foreach($donationEvents as $donationEvent)
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 my-1">
                                         <div class="card card-margin">
                                             <div class="bg-image hover-overlay ripple" data-ripple-color="light">
                                                 <img
@@ -112,12 +112,12 @@
                                                     style="height:20vh; object-fit: cover; object-position: center; width:100%;"
                                                 />
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body" style="height:250px;">
                                                 <h5 class="card-title">{{$donationEvent->name}}</h5>
                                                 <p class="card-text">
-                                                    {{$donationEvent->description}}
+                                                    {{ str_limit($donationEvent->description, $limit = 150, $end = '...') }}
                                                 </p>
-                                                <a href="donate" class="btn btn-primary">Donate</a>
+                                                <a href="donate" class="btn btn-primary" style="position:absolute; bottom:15px; left:15px; right:15px;">Donate</a>
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
                         <h2 class="fadeInDown">What's New</h1>
                             <div class="row fadeInDown mt-5" style="color:#333333">
                                 @foreach ($posts as $post)
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 my-1">
                                         <div class="card card-margin">
                                             <div class="bg-image hover-overlay ripple" data-ripple-color="light">
                                                 <img
@@ -200,12 +200,12 @@
                                                     style="height:20vh; object-fit: cover; object-position: center; width:100%;"
                                                 />
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body" style="height:250px;">
                                                 <h5 class="card-title">{{$post->title}}</h5>
                                                 <p class="card-text">
-                                                    {{$post->body}}
+                                                    {{ str_limit($post->body, $limit = 150, $end = '...') }}
                                                 </p>
-                                                <a href="/posts/{{$post->id}}" class="btn btn-primary">View Post</a>
+                                                <a href="/posts/{{$post->id}}" class="btn btn-primary" style="position:absolute; bottom:15px; left:15px; right:15px;">View Post</a>
                                             </div>
                                         </div>
                                     </div>
