@@ -37,6 +37,7 @@
 	</div>
 
 
+	@if (Auth::check())
 	<div class="container-fluid py-2">
 		<a href="/createdonevent" class="btn aqua-gradient waves-effect">
 			<div>
@@ -44,6 +45,7 @@
 			</div>
 		</a>
 	</div>
+	@endif
 
     <div class="row">
 		@foreach($donevents as $donevent)
@@ -58,22 +60,28 @@
 				<div class="card-body text-center">
 					<h4 class="card-title white-text">{{$donevent->name}} </h4>
 					<p class="card-text white-text">{{$donevent->description}}</p>
+
+					
 					<a href="donate" class="btn aqua-gradient waves-effect">Donate</a>
+					
+
+					{{-- @if(Auth::user()->role_as == "admin")
+					<a href="donate" class="btn aqua-gradient waves-effect">Donate</a>
+					@endif --}}
+
+					
+
+					@if (Auth::check())
 					<a class="btn aqua-gradient waves-effect" href="/donation/edit/{{$donevent->id}}" role="button">Edit</a>
-					{{-- <div>
-						<form action="/donation/{{$donevent->id}}" method="POST">
-							@method('DELETE')
-							@csrf
-							<input type="submit" value="DELETE" class="btn btn-danger">
-						</form>
-					</div> --}}
+					
 					<div>
 						<form action="/donation/{{$donevent->id}}" method="POST">
 							@method('DELETE')
 							@csrf
 							<input type="submit" value="DELETE" class="btn btn-danger">
 						</form>
-				</div>
+					</div>
+					@endif 
 
 				</div>
 

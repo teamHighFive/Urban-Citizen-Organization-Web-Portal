@@ -3,7 +3,9 @@
 @section('content')
 
 <div class="container" style="min-height: 100vh">
+    @if (Auth::check())
     <h3 class="mt-5 py-5">Create New Album</h3>
+    @endif
     <div class="row small-up-2 medium-up-3 large-up-4">
         <div class="form-group row">
                         {!!Form::open(array('url'=>'create-album','enctype'=>'multipart/form-data')) !!}

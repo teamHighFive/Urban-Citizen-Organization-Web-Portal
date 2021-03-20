@@ -12,10 +12,10 @@ class DonationController extends Controller{
     // --------------------------------------------------------------------------------------------------
     // Create a new controller instance.
     // --------------------------------------------------------------------------------------------------
-    public function __construct()
-    {
-        $this->middleware('auth',['except'=> ['index','show']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth',['except'=> ['index','show']]);
+    // }
 
     // --------------------------------------------------------------------------------------------------
     // Display a listing of the Donation event
@@ -137,17 +137,19 @@ public function update(Request $request, $id){
         $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
     }
 
-    else{
-        $fileNameToStore='noimage.jpg';
-        
-    }
-
     //insert into datbase
     $donevents=DonationEvent::find($id);
+    if(is_null($donevents)){
+        abort(404);
+      }
+
     $donevents->name = $request->input('name');
     $donevents->description = $request->input('description');
-    $donevents->coverimage = $fileNameToStore;
+    if($request->hasFile('coverimage')){
+        $donevents->coverimage = $fileNameToStore;
+    }
     $donevents->save();
+
     
     
     //Rederect
@@ -156,20 +158,7 @@ public function update(Request $request, $id){
 
    
 
-    // //Show Gallery Photos
-    // public function show($id){
-
-    //         $event=DonationEvent::where('id',$id)->first();
-
-
-
-
-    //        return view('donation/donindex');
-
-    // }
-
-
-     
+   
     // --------------------------------------------------------------------------------------------------
     // Remove the specified resource from Donation
     // --------------------------------------------------------------------------------------------------

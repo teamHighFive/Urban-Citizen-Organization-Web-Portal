@@ -17,6 +17,7 @@ Route::get('/gallery', 'Album\AlbumController@index');
 
 Route::resource('album', 'Album\AlbumController');
 
+
 Route::resource('photo', 'Album\PhotoController');
 
 Route::post('/add-photo-to-album','Album\PhotoController@store' );
@@ -26,12 +27,13 @@ Route::get('/album/show/{id}', 'Album\AlbumController@show');
 Route::delete('/album/delete/{id}','Album\AlbumController@destroy');
 
 Route::get('/album/edit/{id}','Album\AlbumController@edit');
+// Route::post('edit-album/{id}','Album\AlbumController@update');
 
 Route::get('/album/create','Album\AlbumController@create');
 
 Route::get('/test', function()
 {
-    return view('album.test');
+    return view('gallery.test');
 });
 
 Route::get('/photo/create/{id}', 'Album\PhotoController@create');

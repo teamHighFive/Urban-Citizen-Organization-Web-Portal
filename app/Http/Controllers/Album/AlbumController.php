@@ -27,7 +27,7 @@ class AlbumController extends Controller
 
             //Get all Albums
             $albums=Album::orderBy('title','asc')->get();
-            $albums=Album::simplePaginate(3);
+            
 
 
             //render view
@@ -140,19 +140,20 @@ class AlbumController extends Controller
             $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
         }
 
-        else{
-            $fileNameToStore='noimage.jpg';
-            
+        $donevents=Album::find($id);
+        if(is_null($donevents)){
+        abort(404);
         }
-
 
         $album=Album::find($id);
         $album->title = $request->input('title');
         $album->description = $request->input('description');
-        $album->coverimage = $fileNameToStore;
+        if($request->hasFile('coverimage')){
+            $album->coverimage = $fileNameToStore;
+        }
         $album->save();
         
-        return redirect('/galley')->with('success','Album Edited');
+        return redirect('/gallery')->with('success','Album Edited');
         
     }
     

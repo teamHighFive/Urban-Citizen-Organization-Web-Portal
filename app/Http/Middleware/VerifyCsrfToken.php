@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '*', //this exclude all urls
+             'www.exapmle.com/payhere/nofity'
     ];
 }

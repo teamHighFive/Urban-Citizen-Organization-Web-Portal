@@ -20,17 +20,23 @@ Route::post('/create-donation', 'Donation\DonationController@store');
 
 
 Route::resource('donation', 'Donation\DonationController');
-// Route::post('/','DonationController@store');
+
 Route::get('/createdonevent','Donation\DonationController@create');
 
 Route::get('/donate','Donation\DonationController@donate');
 
-Route::delete('/donation/delete/{id}','AlbumController@destroy');
-
 Route::get('/donation/edit/{id}','Donation\DonationController@edit');
 
-Route::put('/update-donevent/{id}', 'Donation\DonationController@update');
+// Route::put('/update-donevent/{id}', 'Donation\DonationController@update');
 
 Route::delete('/donation/delete/{id}','Donation\DonationController@destroy');
 
+
+
+Route::post ( 'payment/notify' , 'DonateController@notifyUrl' );
+Route::name ( 'shop.notifyUrl' ) ;
+Route::get ( 'payment/cancelUrl' , 'DonateController@cancelUrl' );
+Route::name ( 'shop.cancelUrl' ) ;
+Route::get ( 'payment/returnUrl' , 'DonateController@returnUrl' );
+Route::name ( 'shop.returnUrl' ) ;
 

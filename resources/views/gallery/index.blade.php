@@ -63,6 +63,8 @@
                             <p class="card-text">{{$album->description}}</p>
                             <a class="btn btn-primary" href="album/show/{{$album->id}}" role="button">See more</a>
                             {{-- <a class="btn btn-danger" href="album/delete/{{$album->id}}" role="button">Delete</a> --}}
+
+                            @if (Auth::check())
                             <a class="btn aqua-gradient waves-effect" href="/album/edit/{{$album->id}}" role="button">Edit</a>
                             
                             <div>
@@ -72,6 +74,7 @@
                                         <input type="submit" value="DELETE" class="btn btn-danger">
                                     </form>
                             </div>
+                            @endif
                             
                             
 
@@ -84,14 +87,12 @@
             @endforeach
             </div>
 
+            @if (Auth::check())
             <div class="my-5">
                 <a href="album/create" class="btn aqua-gradient waves-effect  ">Create New Album</a>
             </div>
+            @endif
 
-
-        <div class="row justify-content-center">
-
-            {{ $albums->links() }}
-        </div>
+       
     </div>
 @endsection

@@ -4,8 +4,11 @@
 
 <div class="container" style="min-height: 100vh">
     <div class="row mt-5 px-5">
+        
 
         <h2>{{$album->title}}</h2>
+
+        
 
     </div>
     <div class="row px-5">
@@ -16,8 +19,9 @@
     <div class="row mt-2">
 
         <div class="col px-5">
+            @if (Auth::check())
             <a class="btn btn-primary" href="/photo/create/{{$album->id}}" role="button">Add Photo</a>
-
+            @endif
         </div>
     </div>
 
