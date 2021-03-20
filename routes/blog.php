@@ -16,7 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('posts', 'PostsController');
 Auth::routes();
-
-
-
-
+Route::get('/my_posts', 'PostsController@my_posts');
