@@ -145,10 +145,13 @@ class EventController extends Controller
     }
     //---------------------------------------------------------------------
 
-    //onClick meeting in event calendar -By Sandali-----------------------
+    //Adding meetings to calendar -By Sandali=======================================
+    //onClick meeting in event calendar-----------------------
     public function moreOnMeeting($id){
-        return $id;
+        $meeting = Meeting::find($id);
+        return view('event.meetingDetails')->with('meeting', $meeting);
     }
     //---------------------------------------------------------------------
+    //Adding meetings to calendar -By Sandali=======================================
 
 }
