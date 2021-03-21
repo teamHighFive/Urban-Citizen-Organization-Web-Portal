@@ -19,7 +19,6 @@ use App\User;
 Route::group(['middleware' => ['auth','isAdmin']], function () {
     /// SMS gateway
     Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
-        $dataInbox = Http::get('https://app.newsletters.lk/smsAPI?getinbox&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN").'&list=all')->json();
         $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
         $members = User::all();
         if (isset($dataBalance['balance'])){

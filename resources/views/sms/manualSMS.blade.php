@@ -27,17 +27,24 @@
     </script>
 @endsection
 @section('content')
-    <div class="container" style="min-height: 100VH">
+    <div class="container" style="min-height:100VH; width:90%;">
         <div class="jumbotron">
             <h3 class="text-center">SMS Gateway</h3>
-            @if(isset($balance))
-                <h5 class="text-primary text-left">Credit Balance : LKR {{$balance}}</h5>
-            @elseif (isset($balanceError))
-                <h5 class="text-danger text-left">Credit Balance is not available.</h5>
-                <p class="text-danger text-left">Error :  {{$balanceError}}</p>
-            @endif
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    @if(isset($balance))
+                        <h5 class="text-primary text-left">Credit Balance : LKR {{$balance}}</h5>
+                    @elseif (isset($balanceError))
+                        <h5 class="text-danger text-left">Credit Balance is not available.</h5>
+                        <p class="text-danger text-left">Error :  {{$balanceError}}</p>
+                    @endif
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <div class="jumbotron">
                         <form action="/send-sms" method="POST">
                                 {{csrf_field()}}
@@ -72,33 +79,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="jumbotron">
-                        <!-- @if(isset($inbox))
-                            <table class="table">
-                                <tr>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Message</th>
-                                    <th>Date</th>
-                                </tr>
-
-                                @foreach ($inbox as $message)
-                                <tr>
-                                    <td>{{$message->from}}</td>
-                                    <td>{{$message->to}}</td>
-                                    <td>{{$message->message}}</td>
-                                    <td>{{$message->date}}</td>
-                                </tr>
-                                @endforeach
-
-                            </table>
-                        @elseif (isset($inboxError))
-                            <h4 class="text-center">Inbox</h4>
-                            <h5 class="text-danger text-center">{{$inboxError}}</h5>
-                        @endif -->
-                    </div>
-                </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
  <!-- Admin Sidebar -->
- <div class="sidebar-fixed position-fixed mt-5 " >
+ <div class="sidebar-fixed position-fixed mt-5 overflow-auto" style="overflow-y: scroll; z-index: 10; height: 100%; max-height: 85vh;">
 
     <div class="list-group list-group-flush">
         
@@ -32,7 +32,7 @@
         </a>
 
         <a href="{{ url('view-meetings') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>Online Conferences
+            <i class="fas fa-bullhorn mr-3"></i>All Meetings
         </a>
 
         <a href="{{ url('admin-approval') }}" class="list-group-item list-group-item-action waves-effect">
@@ -45,6 +45,10 @@
 
         <a href="{{ url('get-recordings') }}" class="list-group-item list-group-item-action waves-effect">
             <i class="fas fa-bullhorn mr-3"></i>Meeting Records
+        </a>
+
+        <a href="{{ url('manual-sms') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-bullhorn mr-3"></i>SMS Gateway
         </a>
 
     </div>
