@@ -1,6 +1,7 @@
 <?php
 //TODO delete me too
 use App\Post;
+use App\User;
 use App\DonationEvent;
 
 use Illuminate\Support\Facades\DB;
@@ -56,3 +57,14 @@ Route::group(['middleware' => ['auth','isUser']], function () {
 
 });
 
+//=============================================================================
+
+Route::get('/forgot-password', function () {
+    return view('auth.email');
+});
+
+Route::get('/send-otp', 'ForgotPasswordController@sendOTP');
+
+Route::post('/verify-otp/{otpCorrect}/{userId}', 'ForgotPasswordController@verifyOTP');
+
+Route::post('/reset-pwd', 'ForgotPasswordController@resetPwd');
