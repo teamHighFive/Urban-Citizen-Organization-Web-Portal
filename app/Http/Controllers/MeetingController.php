@@ -114,10 +114,10 @@ class MeetingController extends Controller
     }
 
     // --------------------------------------------------------------------------------------------------
-    // View upcoming meetings and join. This should be used with the event calendar
+    // View upcoming meetings and join. This is only visible to admins
     // --------------------------------------------------------------------------------------------------
     public function viewUpcomingMeetings(){
-        $meetings = Meeting::all()->where('approval', 1)->where('status',1);
+        $meetings = Meeting::all()->where('approval', 1)->where('status',1)->where('date', '>=', date("Y-m-d"));
         return view('meeting.upcomingMeetings')->with('meetings', $meetings);
     }
 
