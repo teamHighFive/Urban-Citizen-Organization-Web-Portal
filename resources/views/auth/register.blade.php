@@ -5,9 +5,21 @@
 <div class="container" style="height:100vh">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                    @if(Session::has('alert-' . $msg))
+                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                    @endif
+                @endforeach
+            </div>
 
+            <div class="card mb-3 wow fadeIn">
+                <div class="card-header">
+                    <h3><b>Registration Page</b></h3>
+                </div>
+            </div>
+
+            <div class="card">
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
@@ -83,7 +95,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Please upload your Avatar<br>
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Please upload your Profile Picture<br>
                             <span class="text small text info">* Not required</span>
                             </label>
 

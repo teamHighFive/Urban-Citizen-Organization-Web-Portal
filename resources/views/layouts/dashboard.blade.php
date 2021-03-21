@@ -5,14 +5,10 @@
         @yield('header')
     </head>
     <body>
-
-
-
-
         {{-- Navigation --}}
-        <header>
-            @include('layouts.navbar')
-            <?php
+            <header>
+                    @include('layouts.navbar')
+                <?php
                 $user = Auth::user();
                 if($user['role_as'] == 'admin'){
                     ?>
@@ -23,8 +19,8 @@
                     @include('layouts.usersidebar')
                     <?php
                 }
-            ?>
-        </header>
+                ?>
+            </header>
 
         {{-- Main Content --}}
 

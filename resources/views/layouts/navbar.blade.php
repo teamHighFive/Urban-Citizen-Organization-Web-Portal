@@ -50,7 +50,7 @@
 
             @else
                 <li class="nav-item">
-                    <a class="nav-link waves-effect" href="/dashboard" target="">My Dashboard</a>
+                    <a class="nav-link waves-effect" href="/dashboard" target="">Dashboard</a>
                 </li>
             @endguest
 
@@ -70,7 +70,7 @@
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="{{asset(Auth::user()->avatar)}}" style="height:35px;width:35px;border-radius:50%;margin-right:15px" alt="" >{{ Auth::user()->fname.' '.Auth::user()->mname }} <span class="caret"></span>
+                        <img src="{{ asset(Auth::user()->avatar) }}" style="height:35px;width:35px;border-radius:50%;margin-right:15px" alt="" >{{ Auth::user()->fname.' '.Auth::user()->mname }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

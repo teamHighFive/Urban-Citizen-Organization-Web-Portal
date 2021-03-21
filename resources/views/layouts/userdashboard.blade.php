@@ -17,7 +17,7 @@
 
         {{-- Main Content --}}
 
-        <main style="padding-left: 200px">
+        <main>
 
             <div class="mt-5 pt-5">
 

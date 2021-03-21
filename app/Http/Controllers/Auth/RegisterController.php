@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Request;
+//use Illuminate\Http\Request;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -53,7 +57,7 @@ class RegisterController extends Controller
             'fname' => ['required', 'string', 'max:255'],
             'mname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
-            'contact' => ['required', 'string', 'max:20'],
+            'contact' => ['required', 'numeric', 'digits:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'avatar' => ['sometimes', 'image', 'mimes:jpg,jpeg,bmp,svg,png' ,'max:5000'],
@@ -92,4 +96,41 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+   // public function register(Request $request){
+        // if(request()->has('avatar')){
+        //     $avataruploaded = request()->file('avatar');
+        //     $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
+        //     $avatarpath = public_path('/images/');
+        //     $avataruploaded->move($avatarpath, $avatarname);
+        //     $user = new User();
+        //     $user->fname = $request->fname;
+        //     $user->mname = $request->mname;
+        //     $user->lname = $request->lname;
+        //     $user->contact = $request->contact;
+        //     $user->email = $request->email;
+        //     $user->password = Hash::make($request->password);
+        //     $user->avatar = '/images/'.  $avatarname;
+        //     $user->verification_code = sha1(time());
+        //     $user->save();
+        // }
+    //     $user = new User();
+    //     $user->fname = $request->fname;
+    //     $user->mname = $request->mname;
+    //     $user->lname = $request->lname;
+    //     $user->contact = $request->contact;
+    //     $user->email = $request->email;
+    //     $user->password = Hash::make($request->password);
+    //     $user->verification_code = sha1(time());
+    //     $user->save();
+
+    // if($user != null){
+    //     MailController::sendSignupEmail($user->fname, $user->email, $user->verification_code);
+    //     return redirect()->back()->with(session()->flash('alert-success', 'Your account has been created. Please check email for verification link.'));
+    // }
+
+    // return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
+    // }
 }
+
+

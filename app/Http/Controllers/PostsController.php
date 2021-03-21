@@ -28,7 +28,12 @@ class PostsController extends Controller
         $posts = Post::orderBy('title','asc')->get();
         return view('posts.index')->with('posts', $posts);
     }
-
+    
+    public function my_posts()
+    {
+        $posts = Post::orderBy('title','asc')->get();
+        return view('posts.my_posts')->with('posts', $posts);
+    }
     /**
      * Show the form for creating a new resource.
      *

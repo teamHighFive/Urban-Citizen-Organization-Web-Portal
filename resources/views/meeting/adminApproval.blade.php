@@ -21,8 +21,8 @@
                             <th>Meeting ID</th>
                             <th>Meeting Name</th>
                             <th>Description</th>
-                            <th></th>
-                            <th></th>
+                            <th>Approvement</th>
+                            <th>Rejection</th>
                         </tr>
 
                         @foreach ($meetings as $meeting)
@@ -42,7 +42,7 @@
         <?php
                 }else if($user['role_as'] == 'member'){
         ?>
-                    <h1>Member yannaaa enna epaa</h1>
+                    <h1>I'm still Member</h1>
         <?php
                 }
         ?>
