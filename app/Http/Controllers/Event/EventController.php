@@ -141,7 +141,8 @@ class EventController extends Controller
 
     //onClick event in event calendar-----------------------
     public function moreOnEvent($id){
-        return $id;
+        $event = event::find($id);
+        return view('event.eventDetails')->with('event', $event);
     }
     //---------------------------------------------------------------------
 

@@ -25,6 +25,20 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
     Route::post('/meeting-schedule', 'MeetingController@schedule');
 
+    // Join meetings via calendar
+    Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
+
+    Route::post('/meeting-join-pwd', function (Request $request) {
+
+        $user = $request->user;
+        $userType = $request->userType;
+        $meetingID = $request->meetingID;
+
+        return view('meeting.getPwd')->with('user', $user)->with('userType', $userType)->with('meetingID', $meetingID);
+    });
+
+    Route::post('/meeting-join', 'MeetingController@joinViaCalendar');
+
     //---------RECORDINGS--------------------------------------------------------------------------------------
 
     /// View recordings of meetings
@@ -46,18 +60,6 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     /// View upcoming meetings
     Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
-    Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
-
-    Route::post('/meeting-join-pwd', function (Request $request) {
-
-        $user = $request->user;
-        $userType = $request->userType;
-        $meetingID = $request->meetingID;
-
-        return view('meeting.getPwd')->with('user', $user)->with('userType', $userType)->with('meetingID', $meetingID);
-    });
-
-    Route::post('/meeting-join', 'MeetingController@joinViaCalendar');
 
     /// View all meetings with edit/delete options
     Route::get('/view-meetings', function(){

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Join Meeting')
+@section('title','Meeting Details')
 @section('header')
 @endsection
 @section('content')
