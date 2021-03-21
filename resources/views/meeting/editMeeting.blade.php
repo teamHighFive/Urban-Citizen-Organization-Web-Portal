@@ -14,7 +14,7 @@
                             <input type="text" name="id"value="{{$meeting->meeting_id}}" hidden>
                             <input type="text" name="user" class="form-control my-1" placeholder="Your Name" value="{{$meeting->creator}}" required disabled>
                             <input type="text" name="meetingName" class="form-control my-1" placeholder="Meeting Name" value="{{$meeting->meeting_name}}" required disabled>
-                            <textarea name="description" cols="30" rows="2" class="form-control my-1" placeholder="Description" required>{{$meeting->meeting_description}}</textarea>
+                            <textarea name="description" cols="30" rows="3" class="form-control my-1" placeholder="Description" required>{{$meeting->meeting_description}}</textarea>
                             <input type="date" name="date" class="form-control my-1" value="{{$meeting->date}}" min="<?php echo date("Y-m-d"); ?>" required>
                             <input type="time" name="time" class="form-control my-1" value="{{$meeting->time}}" required>
                             <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)" value="{{$meeting->moderator_password}}">

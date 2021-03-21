@@ -1,6 +1,6 @@
 <?php
-//TODO delete me too
 use App\Meeting;
+use App\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +61,18 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     /// View upcoming meetings
     Route::get('/upcoming-meetings', 'MeetingController@viewUpcomingMeetings');
+
+    Route::get('/send-meeting-notifications/{meeting_id}', function($meeting_id){
+        $meeting = Meeting::find($meeting_id);
+        $dataInbox = Http::get('https://app.newsletters.lk/smsAPI?getinbox&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN").'&list=all')->json();
+        $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
+        $members = User::all();
+        if (isset($dataBalance['balance'])){
+            return view('sms.meetingNotifications')->with('meeting', $meeting)->with('members', $members)->with('meeting', $meeting)->with('balance', $dataBalance['balance']);
+        }else if ($dataBalance['status'] == "error"){
+            return view('sms.meetingNotifications')->with('meeting', $meeting)->with('members', $members)->with('meeting', $meeting)->with('balanceError', $dataBalance['message']);
+        }
+    });
 
     /// View all meetings with edit/delete options
     Route::get('/view-meetings', function(){

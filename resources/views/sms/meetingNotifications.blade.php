@@ -67,7 +67,7 @@
                                     </Table>
                                     </div>
                                 </div>
-                                <textarea name="text" cols="30" rows="3" class="form-control my-1" placeholder="Message" required></textarea>
+                                <textarea name="text" cols="30" rows="3" class="form-control my-1" placeholder="Message" required>"{{$meeting->meeting_name}}", online meeting is going to be held on {{$meeting->date}} at {{$meeting->time}}. {{$meeting->meeting_description}}. Please visit our web portal to attend the meeting.</textarea>
                                 <input type="submit" class="btn btn-primary mt-3" value="Send">
                         </form>
                     </div>

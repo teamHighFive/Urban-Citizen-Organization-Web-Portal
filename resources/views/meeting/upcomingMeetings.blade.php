@@ -17,6 +17,7 @@
                             <th>Meeting Name</th>
                             <th>Description</th>
                             <th>Join Via</th>
+                            <th></th>
                         </tr>
 
                         @foreach ($meetings as $meeting)
@@ -25,6 +26,7 @@
                             <td>{{$meeting->meeting_name}}</td>
                             <td>{{$meeting->meeting_description}}</td>
                             <td><a class="btn btn-info btn-sm" href="/join-details/{{$meeting->meeting_id}}">Join</a></td>
+                            <td><a class="btn btn-success btn-sm" href="/send-meeting-notifications/{{$meeting->meeting_id}}">Send Invitations</a></td>
                         </tr>
                         @endforeach
 

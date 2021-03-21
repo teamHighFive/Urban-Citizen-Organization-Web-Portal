@@ -163,11 +163,7 @@ class MeetingController extends Controller
         $meeting = Meeting::find($meeting_id);
         $meeting->approval = 1;
         $meeting->save();
-
-        $response = app('App\Http\Controllers\SMSController')->send("+94719274111", "Testing by Sandali");
-
-        return redirect('/admin-approval')->with('alert', $response);
-
+        return redirect('/admin-approval');
     }
 
     public function rejectMeeting($meeting_id){
@@ -199,11 +195,19 @@ class MeetingController extends Controller
         return redirect('/view-meetings')->with('alert', 'Updates saved successfully.');
     }
 
+    // --------------------------------------------------------------------------------------------------
+    // Delete a meeting
+    // --------------------------------------------------------------------------------------------------
     public function deleteMeeting($meeting_id){
         $meeting = Meeting::find($meeting_id);
         $meeting->delete();
         return redirect()->back()->with('alert', 'Meeting deleted successfully.');
     }
+
+
+
+
+    
 
     // --------------------------------------------------------------------------------------------------
     //  Get meeting recordings

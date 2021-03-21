@@ -21,7 +21,7 @@
                             {{csrf_field()}}
                             <input type="text" name="user" class="form-control my-1" placeholder="Your Name" value="{{ Auth::user()->fname.' '.Auth::user()->mname }}" hidden>
                             <input type="text" name="meetingName" class="form-control my-1" placeholder="Meeting Name" required>
-                            <textarea name="description" cols="30" rows="2" class="form-control my-1" placeholder="Description" required></textarea>
+                            <textarea name="description" cols="30" rows="3" class="form-control my-1" placeholder="Description" required></textarea>
                             <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)">
                             <input type="text" name="attendeePwd" class="form-control my-1" placeholder="Set Attendee Password (Not Required)">
                             <div class="row my-1 ml-1">
@@ -46,7 +46,7 @@
                             {{csrf_field()}}
                             <input type="text" name="user" class="form-control my-1" placeholder="Your Name" value="{{ Auth::user()->fname.' '.Auth::user()->mname }}" hidden>
                             <input type="text" name="meetingName" class="form-control my-1" placeholder="Meeting Name" required>
-                            <textarea name="description" cols="30" rows="2" class="form-control my-1" placeholder="Description" required></textarea>
+                            <textarea name="description" cols="30" rows="3" class="form-control my-1" placeholder="Description" required></textarea>
                             <input type="date" name="date" class="form-control my-1" value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>" required>
                             <input type="time" name="time" class="form-control my-1" value="<?php echo date("H:i"); ?>" required>
                             <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)">
