@@ -16,17 +16,20 @@ use App\User;
 |
 */
 
-/// SMS gateway
-Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
-    $dataInbox = Http::get('https://app.newsletters.lk/smsAPI?getinbox&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN").'&list=all')->json();
-    $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
-    $members = User::all();
-    if (isset($dataBalance['balance'])){
-        return view('sms.manualSMS')->with('members', $members)->with('balance', $dataBalance['balance']);
-    }else if ($dataBalance['status'] == "error"){
-        return view('sms.manualSMS')->with('members', $members)->with('balanceError', $dataBalance['message']);
-    }
-}]);
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+    /// SMS gateway
+    Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
+        $dataInbox = Http::get('https://app.newsletters.lk/smsAPI?getinbox&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN").'&list=all')->json();
+        $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
+        $members = User::all();
+        if (isset($dataBalance['balance'])){
+            return view('sms.manualSMS')->with('members', $members)->with('balance', $dataBalance['balance']);
+        }else if ($dataBalance['status'] == "error"){
+            return view('sms.manualSMS')->with('members', $members)->with('balanceError', $dataBalance['message']);
+        }
+    }]);
 
-/// Manual SMS Sending
-Route::post('/send-sms', 'SMSController@manualSMS');
+    /// Manual SMS Sending
+    Route::post('/send-sms', 'SMSController@manualSMS');
+});
+//TODO - if not action
