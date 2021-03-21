@@ -31,8 +31,20 @@
             <i class="fas fa-poll mr-3"></i>Polls
         </a>
 
-        <a href="{{ url('admin-approval') }}" class="list-group-item list-group-item-action waves-effect">
+        <a href="{{ url('view-meetings') }}" class="list-group-item list-group-item-action waves-effect">
             <i class="fas fa-bullhorn mr-3"></i>Online Conferences
+        </a>
+
+        <a href="{{ url('admin-approval') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-bullhorn mr-3"></i>New Meeting Requests
+        </a>
+
+        <a href="{{ url('upcoming-meetings') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-bullhorn mr-3"></i>Upcoming Meetings
+        </a>
+
+        <a href="{{ url('get-recordings') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-bullhorn mr-3"></i>Meeting Records
         </a>
 
     </div>

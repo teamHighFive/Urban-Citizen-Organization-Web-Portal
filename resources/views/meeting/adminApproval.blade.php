@@ -1,6 +1,3 @@
-
-{{-- sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss --}}
-
 @extends('layouts.dashboard')
 @section('title','Dashboard')
 @section('content')
@@ -42,7 +39,7 @@
         <?php
                 }else if($user['role_as'] == 'member'){
         ?>
-                    <h1>I'm still Member</h1>
+                    <h1 class="text-center cyan-text pt-5 mb-3">Only Admins have the permission to access this page</h1>
         <?php
                 }
         ?>

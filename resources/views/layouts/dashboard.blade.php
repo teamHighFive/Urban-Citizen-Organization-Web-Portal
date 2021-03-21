@@ -24,15 +24,11 @@
 
         {{-- Main Content --}}
 
-        <main style="padding-left: 200px">
-
+        <main style="padding-left: 250px">
             <div class="mt-5 pt-5">
                 @yield('content')
             </div>
         </main>
-
-        {{-- Footer and Scripts  --}}
-        @include('layouts.footer')
 
     </body>
 </html>

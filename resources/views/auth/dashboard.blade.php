@@ -1,12 +1,10 @@
 
-{{-- sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss --}}
-
 @extends('layouts.dashboard')
 
 @section('title','Dashboard')
 @section('content')
 
-<div class="container" style="height:100vh">
+<div class="container" style="height:100vh; width:90;">
         <?php
                 $user = Auth::user();
                 if($user['role_as'] == 'admin'){
