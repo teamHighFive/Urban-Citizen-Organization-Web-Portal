@@ -26,6 +26,11 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/meeting-create-and-join', 'MeetingController@createAndJoin');
     Route::post('/meeting-schedule', 'MeetingController@schedule');
 
+    /// Join via link
+    Route::get('/join-via-link/{meeting_id}', function($meeting_id){
+        return view('meeting.joinDetails')->with('meeting_id', $meeting_id);
+    });
+
     // Join meetings via calendar
     Route::get('/join-details/{meeting_id}', 'MeetingController@joinDetails');
 
@@ -89,4 +94,3 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('/delete-meeting/{meeting_id}', 'MeetingController@deleteMeeting');
 });
 //TODO - if not action
-

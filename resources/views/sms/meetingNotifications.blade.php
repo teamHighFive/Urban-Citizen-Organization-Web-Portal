@@ -74,7 +74,7 @@
                                     </Table>
                                     </div>
                                 </div>
-                                <textarea name="text" cols="30" rows="3" class="form-control my-1" placeholder="Message" required>"{{$meeting->meeting_name}}", online meeting is going to be held on {{$meeting->date}} at {{$meeting->time}}. {{$meeting->meeting_description}}. Please visit our web portal to attend the meeting.</textarea>
+                                <textarea name="text" cols="30" rows="3" class="form-control my-1" placeholder="Message" required>"{{$meeting->meeting_name}}", online meeting is going to be held on {{$meeting->date}} at {{$meeting->time}}. {{$meeting->meeting_description}}. Please click the following link to join the meeting. {{getenv('APP_URL')}}/join-via-link/{{$meeting->meeting_id}}</textarea>
                                 <input type="submit" class="btn btn-primary mt-3" value="Send">
                         </form>
                     </div>
