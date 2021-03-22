@@ -50,9 +50,6 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     /// View recordings of meetings
     Route::get('/get-recordings', 'MeetingController@getRecordings');
 
-    /// Delete recording
-    Route::get('/delete-recording/{recording_id}', 'MeetingController@deleteRecording');
-
 });
 //TODO - if not action
 
@@ -92,5 +89,10 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::post('/save-edited-meeting', 'MeetingController@editMeeting');
 
     Route::get('/delete-meeting/{meeting_id}', 'MeetingController@deleteMeeting');
+
+    //---------RECORDINGS--------------------------------------------------------------------------------------
+
+    /// Delete recording
+    Route::get('/delete-recording/{recording_id}', 'MeetingController@deleteRecording');
 });
 //TODO - if not action

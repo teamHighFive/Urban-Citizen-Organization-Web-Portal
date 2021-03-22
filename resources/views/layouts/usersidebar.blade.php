@@ -24,6 +24,10 @@
                 <i class="fas fa-images mr-3"></i>My photos
         </a>
 
+        <a href="{{ url('get-recordings') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-bullhorn mr-3"></i>Meeting Records
+        </a>
+
     </div>
 
   </div>
