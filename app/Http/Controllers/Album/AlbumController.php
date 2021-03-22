@@ -94,7 +94,7 @@ class AlbumController extends Controller
             
             //Get Album
             // $album=Album::where('id',$id)->first();
-            $album = Album::find($id)->first();
+            $album = Album::find($id);
             //Get photo
             $photos=Photo::where('album_id',$id)->get();
 

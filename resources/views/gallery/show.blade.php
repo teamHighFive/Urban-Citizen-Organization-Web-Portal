@@ -5,7 +5,7 @@
 <div class="container" style="min-height: 100vh">
     <div class="row mt-5 px-5">
         
-
+       
         <h2>{{$album->title}}</h2>
 
         
@@ -23,6 +23,7 @@
             <a class="btn btn-primary" href="/photo/create/{{$album->id}}" role="button">Add Photo</a>
             @endif
         </div>
+        
     </div>
 
 
