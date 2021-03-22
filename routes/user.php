@@ -18,8 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
 
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('profile', function(){
+    return 'theekshana';
+})->middleware('verified');
 
 
 
@@ -56,5 +62,9 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::get('/my-profile', 'Frontend\UserController@myprofile');
     Route::post('/my-profile-update', 'Frontend\UserController@profileupdate');
 
+    Route::get('/change-password', 'Auth\ChangePasswordController@index')->name('password.change');
+    Route::post('/change-password', 'Auth\ChangePasswordController@changePassword')->name('password.update');
+
 });
 
+// Auth::routes(['verify' => true]);

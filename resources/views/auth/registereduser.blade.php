@@ -29,10 +29,10 @@
                                     <th>Id</th>
                                     <th>First Name</th>
                                     <th>Middle Name</th>
-                                    <th>Last Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th>Is Verfied</th>
                                     <th>isban/unban</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -44,10 +44,10 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->fname }}</td>
                                     <td>{{ $item->mname }}</td>
-                                    <td>{{ $item->lname }}</td>
                                     <td>{{ $item->contact }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->role_as }}</td>
+                                    <td>{{ $item->email_verified_at }}</td>
                                     <td>
                                         @if($item->isban == '0')
                                                 <label class="badge badge-pill btn-primary px-3 py-2">Not Banned</label>
