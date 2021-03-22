@@ -1,7 +1,5 @@
-@extends('layouts.main')
-
-@section('title','Meeting Recordings')
-
+@extends('layouts.dashboard')
+@section('title','Dashboard')
 @section('header')
     <script>
         var msg = '{{Session::get('alert')}}';
@@ -11,15 +9,6 @@
         }
     </script>
 @endsection
-
-@section('content')
-    <div class="container" style="min-height: 100vh">
-        
-    </div>
-@endsection
-
-@extends('layouts.dashboard')
-@section('title','Dashboard')
 @section('content')
 
 <div class="container" style="height:100vh">
