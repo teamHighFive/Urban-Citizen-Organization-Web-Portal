@@ -53,9 +53,11 @@ class ForgotPasswordController extends Controller
     
                 return redirect(route('login'));
             }else{
+                //Error
                 return redirect()->back()->with('alert', 'Passwords does not match');
             }
         }else{
+            //Error
             return redirect()->back()->with('alert', 'Password must contain at least 8 characters');
         }
         
