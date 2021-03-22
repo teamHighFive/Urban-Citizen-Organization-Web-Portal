@@ -17,8 +17,8 @@
                             <textarea name="description" cols="30" rows="3" class="form-control my-1" placeholder="Description" required>{{$meeting->meeting_description}}</textarea>
                             <input type="date" name="date" class="form-control my-1" value="{{$meeting->date}}" min="<?php echo date("Y-m-d"); ?>" required>
                             <input type="time" name="time" class="form-control my-1" value="{{$meeting->time}}" required>
-                            <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)" value="{{$meeting->moderator_password}}">
-                            <input type="text" name="attendeePwd" class="form-control my-1" placeholder="Set Attendee Password (Not Required)" value="{{$meeting->attendee_password}}">
+                            <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)" value="<?php echo $meeting->moderator_password != 'moderator_pwd'? $meeting->moderator_password:''; ?>">
+                            <input type="text" name="attendeePwd" class="form-control my-1" placeholder="Set Attendee Password (Not Required)" value="<?php echo $meeting->attendee_password != 'attendee_pwd'? $meeting->attendee_password:''; ?>">
                             <div class="row my-1 ml-1">
                                 <div class="form-check col-md-4">
                                     <input type="checkbox" class="form-check-input" name="recording" <?php if($meeting->recording == true) echo 'checked';?>>
