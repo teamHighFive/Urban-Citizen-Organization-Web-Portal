@@ -27,8 +27,10 @@
                             <td>{{$meeting->meeting_description}}</td>
                             <td><a class="btn btn-info btn-sm" href="/join-details/{{$meeting->meeting_id}}">Join</a></td>
                             <td><a class="btn btn-success btn-sm" href="/send-meeting-notifications/{{$meeting->meeting_id}}">Send Invitations</a></td>
+                            <td><a class="btn btn-warning btn-sm" href="/send-meeting-notifications/{{$meeting->meeting_id}}">Invite Link</a></td>
                         </tr>
                         @endforeach
+
 
                     </table>
                 </div>

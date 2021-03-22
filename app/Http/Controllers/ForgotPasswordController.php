@@ -41,25 +41,12 @@ class ForgotPasswordController extends Controller
 
     public function resetPwd(Request $request){
         $password = $request->password;
-        $password_confirmation = $request->password_confirmation;
         
-        if(strlen($password) >= 8){
-            if($password == $password_confirmation){
-                $user = User::find($request->userId);
+        $user = User::find($request->userId);
+        $user->password = Hash::make($password);
+        $user->save();
     
-                $user->password = Hash::make($password);
-    
-                $user->save();
-    
-                return redirect(route('login'));
-            }else{
-                //Error
-                return redirect()->back()->with('alert', 'Passwords does not match');
-            }
-        }else{
-            //Error
-            return redirect()->back()->with('alert', 'Password must contain at least 8 characters');
-        }
+        return redirect(route('login'));
         
     }
 }

@@ -8,6 +8,35 @@
         if(exist){
         alert(msg);
         }
+
+
+
+        function resetPass(){
+            pass = document.getElementById("password").value;
+            passC = document.getElementById("password-confirm").value;
+
+            err = document.getElementById("error");
+
+            if(pass.length >= 8){
+                if(pass == passC){
+                    err.innerHTML = "";
+                    document.getElementById("resetButton").disabled = false;
+                }else{
+                    //Error
+                    err.innerHTML = "Passwords does not match";
+                    document.getElementById("resetButton").disabled = true;
+                }
+            }else{
+                //Error
+                err.innerHTML = "Password must contain at least 8 characters"
+                document.getElementById("resetButton").disabled = true;
+
+            }
+
+
+        }
+
+        
     </script>
 @endsection
 @section('content')
@@ -42,13 +71,14 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input onkeyup="resetPass()"  id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        <div  style="color:red;text-align:center" id="error"></div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                
+                                <button type="submit" id="resetButton" class="btn btn-primary">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
