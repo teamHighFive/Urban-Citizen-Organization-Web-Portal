@@ -75,7 +75,8 @@
                                     </div>
                                 </div>
                                 <textarea name="text" cols="30" rows="3" class="form-control my-1" placeholder="Message" required>"{{$meeting->meeting_name}}", online meeting is going to be held on {{$meeting->date}} at <?php echo substr($meeting->time, 0, 5); ?>. {{$meeting->meeting_description}}. Please click the following link to join the meeting. {{getenv('APP_URL')}}/join-via-link/{{$meeting->meeting_id}}</textarea>
-                                <input type="submit" class="btn btn-primary mt-3" value="Send">
+                                <p class="text-danger text-justify">Please add meeting's attendee or moderator password in the above text message according to the participant type.</p>
+                                <input type="submit" class="btn btn-primary mt-2" value="Send">
                         </form>
                     </div>
                 </div>
