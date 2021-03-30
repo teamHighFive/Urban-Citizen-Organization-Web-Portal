@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="row fadeInDown mt-5">
-                    <p class="lead">{{$post->body}}</p>
+                    <p class="lead">{!! $post->body !!}</p>
                 </div>
             </div>
         </div>
@@ -56,9 +56,9 @@
                     </div>
 
                     <div class="card-body">
-                        hyjyj
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>

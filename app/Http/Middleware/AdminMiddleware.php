@@ -21,7 +21,7 @@ class AdminMiddleware
         {
             return $next($request);
         } else{
-            return redirect('/userdashboard')->with('status','You are not Allowed To Admin Dashboard');
+            return redirect('/dashboard')->with('status','You are not Allowed To Admin Dashboard');
         }
     }
 }

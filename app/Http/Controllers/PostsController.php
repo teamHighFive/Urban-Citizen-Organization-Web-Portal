@@ -28,7 +28,7 @@ class PostsController extends Controller
         $posts = Post::orderBy('title','asc')->get();
         return view('posts.index')->with('posts', $posts);
     }
-    
+
     public function my_posts()
     {
         $posts = Post::orderBy('title','asc')->get();
@@ -147,9 +147,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        if(auth()->user()->id !== $post->user_id){
-            return redirect('/posts')->with('status', 'Unauthorized page.');
-        }
+        // if(auth()->user()->id !== $post->user_id){
+        //     return redirect('/posts')->with('status', 'Unauthorized page.');
+        // }
 
         if($post->cover_image !== 'noimage.jpg'){
             Storage::delete('public/cover_images/'.$post->cover_image);

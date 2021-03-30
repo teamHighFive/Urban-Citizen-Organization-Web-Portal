@@ -96,7 +96,7 @@
 
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">Please upload your Profile Picture<br>
-                            <span class="text small text info">* Not required</span>
+                            <span class="text small text info">* Optional</span>
                             </label>
 
                             <div class="col-md-6">

@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('status')->default('0');
             $table->string('role_as')->default("member");
             $table->tinyInteger('isban')->default('0');
             $table->rememberToken();

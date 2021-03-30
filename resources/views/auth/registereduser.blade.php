@@ -46,8 +46,8 @@
                                     <td>{{ $item->mname }}</td>
                                     <td>{{ $item->contact }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->role_as }}</td>
-                                    <td>{{ $item->email_verified_at }}</td>
+                                    <th>{{ $item->role_as }}</th>
+                                    <td>{{ date('M j, Y h:ia',strtotime($item->email_verified_at)) }}</td>
                                     <td>
                                         @if($item->isban == '0')
                                                 <label class="badge badge-pill btn-primary px-3 py-2">Not Banned</label>

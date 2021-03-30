@@ -23,8 +23,8 @@
             <i class="fas fa-mail-bulk mr-3"></i>My Posts
         </a>
 
-        <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-newspaper mr-3"></i>My Events
+        <a href="{{ url('user-active') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-newspaper mr-3"></i>User Approval
         </a>
 
         <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
