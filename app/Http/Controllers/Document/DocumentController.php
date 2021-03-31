@@ -8,35 +8,27 @@ use App\Document;
 use App\Photo;
 use App\Event;
 use App\Donationfiles;
-
+use App\Conferencefiles;
+use App\Album;
+use App\Conf_files;
+use App\Post;
+use App\Eventfiles;
+use App\Submission;
 
 class DocumentController extends Controller
 {
-    public function index_pdf()
-    {
-        return view('archive.uploadform_pdf');
-    }
-//------------------------------------------------------------------------------------------------------------------
-    public function index_doc()
+    
+    public function index_files()
     {
         return view('archive.uploadform_doc');
     }
 //------------------------------------------------------------------------------------------------------------------
-    public function index_exel()
+    public function index_submission()
     {
         return view('archive.uploadform_exel');
     }
 //------------------------------------------------------------------------------------------------------------------
-    public function index_images()
-    {
-        return view('archive.uploadform_images');
-    }
-//------------------------------------------------------------------------------------------------------------------
-    public function index_videos()
-    {
-        return view('archive.uploadform_videos');
-    }
-//------------------------------------------------------------------------------------------------------------------
+ 
     public function index_choose()
     {
         return view('archive.choosetype');
@@ -47,7 +39,80 @@ class DocumentController extends Controller
         return view('archive.formdonation');
     }
 //------------------------------------------------------------------------------------------------------------------
+    public function conference_form()
+    {
+        return view('archive.formconf');
+    }
 
+//------------------------------------------------------------------------------------------------------------------
+
+public function event_form()
+{
+    return view('archive.formevents');
+}
+//------------------------------------------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------------------------------
+
+public function store_events(Request $request)
+    {
+        $upload =new Eventfiles();
+        $upload->document_name = $request->input('document_name');
+        $upload->event = $request->input('event');
+        $upload->location =  $request->input ("location");
+        $upload->type = "pdf,doc,exel,presentation";
+        $upload->created_by = $request->input('created_by');
+        $upload->description = $request->input('description');
+        $upload->event = $request->input('event');
+        $upload->p_admin = $request->input('p_admin') != null ? true : true;
+        $upload->p_member = $request->input('p_member') != null ? true : false;
+        $upload->p_visitor = $request->input('p_visitor') != null ? true : false;
+
+        if ($request->hasfile('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('uploads/event_files',$filename);
+            $upload->file = $filename;
+        } else {
+            return $request;
+            $upload->file = '';
+        }
+        $upload->save();
+        return view('archive.formevents')->with('formevents',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------
+
+public function store_conffiles(Request $request)
+    {
+        $upload =new Conf_files();
+        $upload->document_name = $request->input('document_name');
+        $upload->location =  $request->input ("location");
+        $upload->type = "pdf,doc,exel,presentation";
+        $upload->created_by = $request->input('created_by');
+        $upload->description = $request->input('description');
+        $upload->event = $request->input('event');
+        $upload->p_admin = $request->input('p_admin') != null ? true : true;
+        $upload->p_member = $request->input('p_member') != null ? true : false;
+        $upload->p_visitor = $request->input('p_visitor') != null ? true : false;
+
+        if ($request->hasfile('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('uploads/conf_files',$filename);
+            $upload->file = $filename;
+        } else {
+            return $request;
+            $upload->file = '';
+        }
+        $upload->save();
+        return view('archive.formconf')->with('success',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------
 
 
     public function store_donatefiles(Request $request)
@@ -58,7 +123,7 @@ class DocumentController extends Controller
         $upload->type = "pdf,doc,exel,presentation";
         $upload->created_by = $request->input('userId');
         $upload->description = $request->input('description');
-        $upload->p_admin = $request->input('permissionadmin') != null ? true : false;
+        $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
         $upload->p_member = $request->input('permissionmember') != null ? true : false;
         $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
 
@@ -73,34 +138,7 @@ class DocumentController extends Controller
             $upload->file = '';
         }
         $upload->save();
-        return view('success')->with('success',$upload);
-    }
-
-//------------------------------------------------------------------------------------------------------------------
-
-    public function storepdf(Request $request)
-    {
-        $upload =new Document();
-        $upload->document_name = $request->input('docName');
-        $upload->location = "not specified yet";
-        $upload->type = "pdf";
-        $upload->created_by = $request->input('userId');
-        $upload->event = $request->input('event');
-        $upload->p_member = $request->input('permissionmember') != null ? true : false;
-        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
-
-        if ($request->hasfile('file')){
-            $file = $request->file('file');
-            $extension = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $file->move('uploads/files/pdf',$filename);
-            $upload->file = $filename;
-        } else {
-            return $request;
-            $upload->file = '';
-        }
-        $upload->save();
-        return view('success')->with('success',$upload);
+        return view('archive.formdonation')->with('success',$upload);
     }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -112,6 +150,7 @@ class DocumentController extends Controller
         $upload->type = "doc";
         $upload->created_by = $request->input('userId');
         $upload->event = $request->input('event');
+        $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
         $upload->p_member = $request->input('permissionmember') != null ? true : false;
         $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
 
@@ -126,19 +165,18 @@ class DocumentController extends Controller
             $upload->file = '';
         }
         $upload->save();
-        return view('success')->with('success',$filename);
+        return view('archive.uploadform_doc')->with('success',$filename);
     }
 //------------------------------------------------------------------------------------------------------------------
     public function storeexel(Request $request)
     {
-        $upload =new Document();
-        $upload->document_name = $request->input('docName');
-        $upload->location = "not specified yet";
-        $upload->type = "exel";
-        $upload->created_by = $request->input('userId');
-        $upload->event = $request->input('event');
-        $upload->p_member = $request->input('permissionmember') != null ? true : false;
-        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+        $upload =new Submission();
+        $upload->file_name = $request->input('file_name');
+        $upload->location = "not specified";
+        $upload->created_by = $request->input('created_by');
+        $upload->type = "submission files";
+        $upload->Description = $request->input('Description');
+        
 
         if ($request->hasfile('file')){
             $file = $request->file('file');
@@ -151,59 +189,7 @@ class DocumentController extends Controller
             $upload->file = '';
         }
         $upload->save();
-        return view('success')->with('success',$filename);
-    }
-
-//------------------------------------------------------------------------------------------------------------------
-    public function storeimg(Request $request)
-    {
-        $upload =new Document();
-        $upload->document_name = $request->input('docName');
-        $upload->location = "not specified yet";
-        $upload->type = "img";
-        $upload->created_by = $request->input('userId');
-        $upload->event = $request->input('event');
-        $upload->p_member = $request->input('permissionmember') != null ? true : false;
-        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
-
-        if ($request->hasfile('file')){
-            $file = $request->file('file');
-            $extension = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $file->move('uploads/files/img',$filename);
-            $upload->file = $filename;
-        } else {
-            return $request;
-            $upload->file = '';
-        }
-        $upload->save();
-        return view('success')->with('success',$filename);
-    }
-
-//------------------------------------------------------------------------------------------------------------------
-public function storevideo(Request $request)
-    {
-        $upload =new Document();
-        $upload->document_name = $request->input('docName');
-        $upload->location = "not specified yet";
-        $upload->type = "video";
-        $upload->created_by = $request->input('userId');
-        $upload->event = $request->input('event');
-        $upload->p_member = $request->input('permissionmember') != null ? true : false;
-        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
-
-        if ($request->hasfile('file')){
-            $file = $request->file('file');
-            $extension = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $file->move('uploads/files/video',$filename);
-            $upload->file = $filename;
-        } else {
-            return $request;
-            $upload->file = '';
-        }
-        $upload->save();
-        return view('archive.success')->with('success',$filename);
+        return view('archive.uploadform_exel')->with('success',$filename);
     }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -216,29 +202,103 @@ public function storevideo(Request $request)
 //------------------------------------------------------------------------------------------------------------------
     public function table_gallery_files()
     {
-        $upload = Photo::all();
+        $upload = Album::all();
         return view('archive.gallery')->with('upload',$upload);
     }
 
+
 //------------------------------------------------------------------------------------------------------------------
-    public function table_event_files()
+    public function table_events()
     {
         $upload = Event::all();
         return view('archive.event')->with('upload',$upload);
     }
 
 //------------------------------------------------------------------------------------------------------------------
-public function table_donate_files()
+    public function table_donate_files()
+    {
+        $upload = Donationfiles::all();
+        return view('archive.donation')->with('upload',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------  
+    public function table_conf_files()
+    {
+        $upload = Conf_files::all();
+        return view('archive.conf-file')->with('upload',$upload);
+    }
+
+//------------------------------------------------------------------------------------------------------------------  
+public function table_post_files()
 {
-    $upload = Donationfiles::all();
-    return view('archive.donation')->with('upload',$upload);
+    $upload = Post::all();
+    return view('archive.post')->with('upload',$upload);
 }
 
 //------------------------------------------------------------------------------------------------------------------
-    public function type()
+public function table_event_files()
     {
-        return view('choosetype')->with('choosetype',$filename);
+        $upload = Eventfiles::all();
+        return view('archive.eventfiles')->with('upload',$upload);
     }
 
+//------------------------------------------------------------------------------------------------------------------  
+    
+    public function type()
+        {
+            return view('choosetype')->with('choosetype',$filename);
+        }
+
+//------------------------------------------------------------------------------------------------------------------  
+
+    public function edit($primary)
+        {
+            $upload = Document::find($primary);
+            return view('archive.file-editform')->with('upload',$upload);
+        }
+
+    public function update(Request $request, $primary)
+    {
+        $upload = Document::find($primary);
+        $upload->document_name = $request->input('document_name');
+        $upload->location = "not specified yet";
+        $upload->type = "doc";
+        $upload->created_by = "1"; //$request->input('created_by');
+        $upload->event = $request->input('event');
+        $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
+        $upload->p_member = $request->input('permissionmember') != null ? true : false;
+        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+
+        if ($request->hasfile('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('uploads/files/doc',$filename);
+            $upload->file = $filename;
+        }
+
+        $upload->save();
+        return redirect('/seperated-arc')->with('upload',$upload);
+    
+
+    } 
+        
+    public function delete($primary)
+    {
+        $upload = Document::find($primary);
+        $upload->delete();
+        return redirect('/seperated-arc')->with('upload',$upload);
+
+    }
+
+    public function download(){
+        $file = public_path()."/uploads/files/doc',$filename";
+    
+        $header = array(
+            'Content-Type: application/$filename',
+        );
+    
+        return Response::download($file, "$filename", $header );
+    }
 
 }

@@ -15,11 +15,15 @@
 <table class="table table-stripped table-bordered">
 <thead class="thead-dark">
     <tr>
-        <th scope="col">Document ID</th>
-        <th scope="col">Document Name</th>
-        <th scope="col">User ID</th>
+        <th scope="col">File ID</th>
+        <th scope="col">File Name</th>
+        <th scope="col">Uploader's ID</th>
         <th scope="col">Event Name</th>
         <th scope="col"><strong>File </strong><br> (click to view)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Download </th>
+
     </tr>
 </thead>
 
@@ -28,20 +32,15 @@
     <tr>
     <tr>
 
-        <th> {{$item->document_id}}</th>
+        <th> {{$item->id}}</th>
         <th> {{$item->document_name}}</th>
         <th> {{$item->created_by}}</th>
         <th> {{$item->event}}</th>
-        <th>
-            @if($item->type == 'img')
-                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
-                    <h1 class="far fa-file-image"></h1>
-                </a>
-            @endif
+        <th>            
 
             @if($item->type == 'doc')
                 <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
-                    <h1 class="fas fa-file-word"></h1>
+                    <h1 class="fas fa-file-invoice"></h1>
                 </a>
             @endif
 
@@ -49,21 +48,13 @@
                 <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
                     <h1 class="far fa-file-excel "></h1>
                 </a>
-            @endif
 
-            @if($item->type == 'pdf')
-                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
-                    <h1 class="far fa-file-pdf"></h1>
-                </a>
-            @endif
-
-            @if($item->type == 'video')
-                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
-                    <h1 class="fas fa-video"></h1>
-                </a>
             @endif
 
         </th>
+        <th><a href ="/edit/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
+        <th><a href = "/delete/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
+        <th><a href = "/download/{{$item->id}}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-download"></i></a></th>
 
     </tr>
     @endforeach

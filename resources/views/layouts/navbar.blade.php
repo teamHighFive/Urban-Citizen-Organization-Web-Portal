@@ -41,8 +41,27 @@
             <li class="nav-item">
                 <a class="nav-link" href="/gallery">Gallery</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/arc">Archives</a>
+            
+            <!-- Navbar dropdown -->
+            <li class="nav-item dropdown">
+                <span
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-expanded="false"
+                >
+                Archives 
+                </span>
+                <!-- Dropdown menu -->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/arc">Documents</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/event-arc">Events shedules and documents</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/conffiles-arc">Conferences schedules and documents</a></li>
+                </ul>
             </li>
 
             {{-- By theekshana start --}}

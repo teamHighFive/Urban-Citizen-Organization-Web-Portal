@@ -62,7 +62,30 @@
                         </div>
                     </div>
 
-                    <button type="submit" name="submit" class="btn btn-mdb-color mt-3">Upload</button>
+                    <br>
+
+            <!-- <button type="submit" name="submit" class="btn btn-primary mt-3">Upload</button> -->
+            <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#centralModal">Upload</button>
+
+            <!--button alert pop up code-->  
+                <!-- Central Modal Medium -->
+                <div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-body">
+                        <br>
+                        <center><button type="button" class="btn btn-success btn-lg">Uploaded</button></center>
+                        </div>
+                        <!-- Footer
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Done</button>                   
+                        </div> -->
+                    </div>
+                        <!--/.Content-->
+                    </div>
+                    </div>
 
                     <br><br>
                     <div class="links">

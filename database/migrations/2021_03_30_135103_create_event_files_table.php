@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentsTable extends Migration
+class CreateEventFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('event_files', function (Blueprint $table) {
+            $table->increments('event_id');
+            $table->String('event');
             $table->String('document_name');
             $table->String('location');
             $table->integer('created_by');
-            $table->String('event')->nullable();
+            $table->String('description')->nullable();
             $table->boolean('p_admin');
             $table->boolean('p_member');
             $table->boolean('p_visitor');
@@ -35,6 +36,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('event_files');
     }
 }

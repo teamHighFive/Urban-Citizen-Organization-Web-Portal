@@ -4,6 +4,10 @@
 @section('content')
 <head>
 <style>
+    body {
+    scroll-behavior: smooth;
+    }
+
     h1  {color: white;
      background-color: black;
      text-align: center;
@@ -179,8 +183,8 @@
         <section class="section pb-3 wow fadeIn" data-wow-delay="0.3s">
         <!--Section heading-->
           
-          <!--Section description-->
-          <p class="text-center grey-text mb-5 mx-auto w-responsive"></p>
+         <!--Section description-->
+         <p class="text-center grey-text mb-5 mx-auto w-responsive"></p>
           <!--Grid row-->
           <div class="row">
           <!--Fourth column-->
@@ -189,26 +193,26 @@
                 <div class="card card-ecommerce">
                   <!--Card image-->
                   <div class="view overlay z-depth-1">
+                  <a href="/online-conferences">
                     <img src="images/archives/meeting2.jpg" class="card-img-top" height="150px"
-                      alt="">
-                    <a>
-                      <div class="mask rgba-white-slight"></div>
-                    </a>
+                      alt="">                    
+                     <div class="mask rgba-white-slight"></div>                    
                   </div>
+                  </a>
                   <!--Card image-->
                   <!--Card content-->
                   <div class="card-body text-center no-padding">
                     <!--Category & Title-->
-                    <a href="" class="text-muted">
+                    <a href="/online-conferences" class="text-muted">
                       <h5>Online conferences</h5>
                     </a>
                     <!--Card footer-->
                     <div class="card-footer">
-                      <span class="float-left">View files</span>
+                    <a href="/conffiles-arc"><span class="float-left">View files</span></a>
                       <span class="float-right">
                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
                           <i class="fas fa-fingerprint"></i>
-                        </a>
+                        </a>                      
                       </span>
                     </div>
                   </div>
@@ -224,28 +228,28 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <!--Card-->
                 <div class="card card-ecommerce">
-                  <!--Card image-->
+                  <!--Card image-->                  
                   <div class="view overlay z-depth-1">
+                    <a href="/posts">
                     <img src="images/archives/blog.jpg" class="card-img-top" height="150px"
-                      alt="">
-                    <a>
-                      <div class="mask rgba-white-slight"></div>
-                    </a>
+                      alt="">                    
+                    </a>                    
+                      <div class="mask rgba-white-slight"></div>                    
                   </div>
                   <!--Card image-->
                   <!--Card content-->
                   <div class="card-body text-center no-padding">
                     <!--Category & Title-->
-                    <a href="" class="text-muted">
+                    <a href="/posts" class="text-muted">
                       <h5>Blog</h5>
                     </a>
                     <!--Card footer-->
                     <div class="card-footer">
-                      <span class="float-left">View files</span>
+                      <a href='post-arc'><span class="float-left">View files</span></a>
                       <span class="float-right">
                         <a class="" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
                           <i class="fas fa-fingerprint"></i>
-                        </a>
+                        </a>                      
                       </span>
                     </div>
                   </div>
@@ -299,26 +303,7 @@
           </div>
           <!--Grid column-->
 
-          <!--Grid column-->
-          <div class="col-md-6 mb-4">
-            <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(60).jpg');">
-              <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                <div>
-                  <a href="" class="pink-text">
-                    <h5>
-                      <i class="fas fa-camera pr-2"></i>Gallery</h5>
-                  </a>
-                  <h3 class="mb-4 mt-4">
-                    <strong>Addtional files to gallery</strong>
-                  </h3>
-                <a class="btn btn-pink btn-sm">
-                    <i class="fas fa-clone left"></i> Upload</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Grid column-->
-
+      
           <!--Grid column-->
           <div class="col-md-6 mb-4">
             <div class="card card-image" style="background-image: url('https://cdn.psychologytoday.com/sites/default/files/styles/image-article_inline_full/public/field_blog_entry_images/2019-10/87400469_m.jpg?itok=f2qO5Lne');">
@@ -331,7 +316,7 @@
                   <h3 class="mb-4 mt-4">
                     <strong>Addtional files for events</strong>
                   </h3>
-                  <a class="btn btn-success btn-sm">
+                  <a class="btn btn-success btn-sm" href="/event-file-form">
                     <i class="fas fa-clone left"></i> Upload</a>
                 </div>
               </div>
@@ -371,34 +356,14 @@
                   <h3 class="mb-4 mt-4">
                     <strong>Addtional files for conferences</strong>
                   </h3>
-                  <a class="btn btn-warning btn-sm">
+                  <a class="btn btn-warning btn-sm" href="/conf-file-form">
                     <i class="fas fa-users"></i> Upload</a>
                 </div>
               </div>
             </div>
           </div>
           <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-6 mb-4">
-            <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(58).jpg');">
-              <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                <div>
-                  <a href="" class="light-blue-text">
-                    <h5>
-                    <i class="fas fa-book-open pr-2"></i>Blog</h5>
-                  </a>
-                  <h3 class="mb-4 mt-4">
-                    <strong>Addtional files for blog</strong>
-                  </h3>
-                  <a class="btn btn-info btn-sm">
-                    <i class="fas fa-book-open"></i> Upload</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Grid column-->
-
+          
         </div>
         <!--Grid row-->
 
