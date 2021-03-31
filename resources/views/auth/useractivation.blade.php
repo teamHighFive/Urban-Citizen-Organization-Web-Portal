@@ -15,14 +15,11 @@
                         </div>
                         @endif
 
-                        <div class="card mb-4 wow fadeIn">
+                        <div class="card mb-3 wow fadeIn">
                             <div class="card-header font-weight-bold">
-                                <h2 class="mb-2 mb-sm-0 pt-1">
-                                <span>User Approval Page</span>
-                                </h2>
+                                <h1><b>User Approval Page</b></h1>
                             </div>
                         </div>
-
 
                         <div class="row">
                             <div class="col-md-12">

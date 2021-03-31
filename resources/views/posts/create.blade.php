@@ -13,9 +13,11 @@
 <div class="container" style="height:auto;min-height: 100vh">
 
     {{-- <a href="/posts" class="btn btn-primary">Go Back</a> --}}
-    <hr>
-        <h1>Create New Post</h1>
-    <hr>
+    <div class="card mb-3 wow fadeIn">
+        <div class="card-header font-weight-bold">
+            <h1><b>Create New Post</b></h1>
+        </div>
+    </div>
 	{!! Form::open(['action' => 'PostsController@store', 'method' => 'POST','enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
     	{{Form::label('title','Title')}}

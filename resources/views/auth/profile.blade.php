@@ -10,11 +10,9 @@
             </div>
             @endif
 
-            <div class="card mb-4 wow fadeIn">
+            <div class="card mb-3 wow fadeIn">
                 <div class="card-header font-weight-bold">
-                  <h2 class="mb-2 mb-sm-0 pt-1">
-                    <span>My Profile Page</span>
-                  </h2>
+                    <h1><b>My Profile Page</b></h1>
                 </div>
             </div>
 

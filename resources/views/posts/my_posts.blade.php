@@ -42,7 +42,7 @@
                                     <tr>
                                         <th>{{$post->title}}</a></th>
                                         <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
-                                        <th>{{date('M j, Y h:ia',strtotime($post->created_at))}}</a></th>
+                                        <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
                                         <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
                                             {{Form::hidden('_method','DELETE')}}
                                             {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}

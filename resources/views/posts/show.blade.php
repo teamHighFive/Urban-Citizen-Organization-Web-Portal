@@ -16,7 +16,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <img style="width: 100%;height: 100%" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                        <img style="width: 900px;height: 500px" src="/storage/cover_images/{{$post->cover_image}}" alt="">
                     </div>
                 </div>
                 <div class="row fadeInDown mt-5">

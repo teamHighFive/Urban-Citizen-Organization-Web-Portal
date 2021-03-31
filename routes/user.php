@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/my-profile-update', 'Frontend\UserController@profileupdate');
 
     Route::get('/change-password', 'Auth\ChangePasswordController@index')->name('password.change');
-    Route::post('/change-password', 'Auth\ChangePasswordController@changePassword')->name('password.update');
+    Route::post('/change-password', 'Auth\ChangePasswordController@changePassword')->name('passwords.update');
 
     Route::get('/user-active', 'HomeController@index')->name('auth.useractivation');
     Route::get('status/{id}', 'HomeController@status')->name('status');

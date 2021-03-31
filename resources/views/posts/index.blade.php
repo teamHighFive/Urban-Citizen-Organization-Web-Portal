@@ -38,9 +38,7 @@
                                                 <h2><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
                                                 <small>Created At : {{date('M j, Y h:ia',strtotime($post->created_at))}}</small> <br>
                                                 <small>Last Updated : {{date('M j, Y h:ia',strtotime($post->updated_at))}}</small> <br><br>
-                                                <p class="card-text">
-                                                    {!! $post->body !!}
-                                                </p>
+                                                <p>{!! substr($post->body, 0, 250) !!}{!! strlen($post->body) > 250 ? '...' : "" !!}</p>
                                                 <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More...</a>
                                             </th>
                                         </tr>
