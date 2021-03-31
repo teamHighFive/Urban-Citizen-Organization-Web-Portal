@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.2",
+        "paypal/rest-api-sdk-php": "*",
         "qlick/laravel-full-calendar": "^1.1"
     },
     "require-dev": {

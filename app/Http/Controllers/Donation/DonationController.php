@@ -1,173 +1,147 @@
 <?php
-
 namespace App\Http\Controllers\Donation;
 
+use App\Http\Controllers\Donation\Payment2Controller;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\DonationEvent;
+use PayPal\Api\Order;
+use App\Donation;
 
-class DonationController extends Controller{
- 
+class OrderController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('Donation.payment');
 
-    // --------------------------------------------------------------------------------------------------
-    // Create a new controller instance.
-    // --------------------------------------------------------------------------------------------------
-    // public function __construct()
-    // {
-    //     $this->middleware('auth',['except'=> ['index','show']]);
-    // }
+    }
 
-    // --------------------------------------------------------------------------------------------------
-    // Display a listing of the Donation event
-    // --------------------------------------------------------------------------------------------------
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $result = (new Payment2Controller)->payWithpaypal();
+    }
 
-    public function index(){
-
-        //Get all Donation Events
-        $donevents=DonationEvent::get();
-        $donevents=DonationEvent::simplePaginate(3);
-
-
-
-        //render view
-        return view('donation.index')->with('donevents', $donevents);
-       
-}
-
-    // --------------------------------------------------------------------------------------------------
-    // Show the form for creating a new Album
-    // --------------------------------------------------------------------------------------------------
-   
-    public function create(){
-        return view('donation.createdonevent');
-
-}
-    // --------------------------------------------------------------------------------------------------
-    // Show the form for Donation
-    // --------------------------------------------------------------------------------------------------
-
-    public function donate(){
-        return view('donation.form');
-
-}
-
-    // --------------------------------------------------------------------------------------------------
-    // Store a newly created Album in storage.
-    // --------------------------------------------------------------------------------------------------
-    public function store(Request  $request){
-
-        //validate inputs
-        $this->validate($request,[
-            'name'=>'required|max:100',
-            'description'=>'required|max:255',
-            'coverimage'=>'required|image|mimes:jpeg,jpg|max:2048',
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'donner_fullname' => 'required',
+            'amount' => 'required',
+            'donner_country' => 'required',
+            'donner_city' => 'required',
+            'donner_address' => 'required',
+            'donner_phone' => 'required',
+            'donner_email' => 'required',
+            'is_member'=>'required',
+            'payment_method' => 'required',
         ]);
 
+        $donation = new Donation();
 
-        //check whether image is upload
-        if($request->hasFile('coverimage')){
-            $filenameWithExt = $request->file('coverimage')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('coverimage')->getClientOriginalExtension();
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            $path = $request->file('coverimage');
-            $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
-        }
+        $donation->donation_id = uniqid('donation_id');
+        $donation->donner_fullname = $request->input('donner_fullname');
+        $donation->amount = $request->input('amount');
+        $donation->id = $request->input('donation_event_id');
+        $donation->donner_country = $request->input('donner_country');
+        $donation->donner_city = $request->input('donner_city');
+        $donation->donner_address = $request->input('donner_address');
+        $donation->donner_phone = $request->input('donner_phone');
+        $donation->donner_email = $request->input('donner_email');
+        $donation->payment_method = $request->input('payment_method');
+        $donation->is_member = $request->input('is_member');
+        $donation->save();
 
-        else{
-            $fileNameToStore='noimage.jpg';
-            
-        }
+        return redirect()->route('Donation')->withMessage('Donation has been created');
 
-        //insert into datbase
-        $donevents=new DonationEvent;
-        $donevents->name = $request->input('name');
-        $donevents->description = $request->input('description');
-        $donevents->coverimage = $fileNameToStore;
-        $donevents->save();
-        
-        
-        //Rederect
-        return redirect('/donation')->with('success','Donation Event created.');
 
-}
+        // $donation->grand_total = \Cart::session(auth()->id())->getTotal();
+        // $donation->item_count = \Cart::session(auth()->id())->getContent()->count();
 
-    // --------------------------------------------------------------------------------------------------
-    // Display the specified Donation event
-    // --------------------------------------------------------------------------------------------------
-    
-    public function show($id){
-            
-        //Get Donation event
-        
-        $donevents = DonationEvent::find($id)->last();
-        
+        // $donation->user_id = auth()->id();
 
-        //return view
-        return view('donation.show')->with('donevents', $donevents);;
+        // if (request('payment_method') == 'paypal') {
+        //     $donation->payment_method = 'paypal';
+
+        // }
 
         
-}
-    // --------------------------------------------------------------------------------------------------
-    // Show the form for editing the specified Donation event
-    // --------------------------------------------------------------------------------------------------
-    public function edit($id){
-        //TODO edit function
-        $donevents=DonationEvent::find($id);
-        return view('donation.edit')->with('donevent',$donevents);
+
+        // $cartItems = \Cart::session(auth()->id())->getContent();
+
+        // foreach($cartItems as $item) {
+        //     $donation->items()->attach($item->id, ['price'=> $item->price, 'quantity'=> $item->quantity]);
+        // }
+
+        // $donation->generateSubOrders();
+
+        // if (request('payment_method') == 'paypal') {
+
+        //     return redirect()->route('paypal.checkout', $donation->id);
+
+        // }
+
+        // \Cart::session(auth()->id())->clear();
+
+        
+
     }
 
-
-public function update(Request $request, $id){
-     //validate inputs
-     $this->validate($request,[
-        'name'=>'required|max:100',
-        'description'=>'required|max:255',
-        'coverimage'=>'required|image|mimes:jpeg,jpg|max:2048',
-    ]);
-
-
-    //check whether image is upload
-    if($request->hasFile('coverimage')){
-        $filenameWithExt = $request->file('coverimage')->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        $extension = $request->file('coverimage')->getClientOriginalExtension();
-        $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        $path = $request->file('coverimage');
-        $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Order  $donation
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Order $donation)
+    {
+        //
     }
 
-    //insert into datbase
-    $donevents=DonationEvent::find($id);
-    if(is_null($donevents)){
-        abort(404);
-      }
-
-    $donevents->name = $request->input('name');
-    $donevents->description = $request->input('description');
-    if($request->hasFile('coverimage')){
-        $donevents->coverimage = $fileNameToStore;
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Order  $donation
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Order $donation)
+    {
+        //
     }
-    $donevents->save();
 
-    
-    
-    //Rederect
-    return redirect('/donation')->with('success','Donation Event Updated.');
-}
-
-   
-
-   
-    // --------------------------------------------------------------------------------------------------
-    // Remove the specified resource from Donation
-    // --------------------------------------------------------------------------------------------------
-    public function destroy($id){
-
-        $donevents=DonationEvent::find($id);
-        $donevents->delete($id);
-        return redirect('/donation')->with('success','Donation event  Deleted');
-
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Order  $donation
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Order $donation)
+    {
+        //
     }
-   
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Order  $donation
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Order $donation)
+    {
+        //
+    }
 }

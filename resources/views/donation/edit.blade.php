@@ -10,7 +10,7 @@
             <div class="form-group row">
                
                 
-                {!! Form::open(['action' => ['Donation\DonationController@update', $donevent->id], 'method' => 'POST' ,'enctype' => 'multipart/form-data']) !!}
+                {!! Form::open(['action' => ['Donation\DonationEventController@update', $donevent->id], 'method' => 'POST' ,'enctype' => 'multipart/form-data']) !!}
                 {!! csrf_field() !!}
                 {!!Form::label('name','Name') !!}
                 {!!Form::text('name',$donevent->name,$attributes=['placeholder'=>'Event Name','name'=>'name','required']) !!}
