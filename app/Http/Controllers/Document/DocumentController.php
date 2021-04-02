@@ -278,7 +278,7 @@ public function table_event_files()
         }
 
         $upload->save();
-        return redirect('/seperated-arc')->with('upload',$upload);
+        return redirect('/seperated-arc')->with('success',$upload);
     
 
     } 

@@ -9,6 +9,7 @@
 		</div>
 		<div class="col-md-2">
 			<a href="/posts/create" class="btn btn-primary btn-block">Create Post</a>
+			<a href="/viewcomments" class="btn btn-primary btn-block">comments</a>
 		</div>
     </div>
 	    @if(count($posts) > 0)

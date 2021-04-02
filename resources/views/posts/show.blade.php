@@ -39,8 +39,48 @@
                             @endif
                         @endif
 		        </div>
+
 		    </div>
 		</div>
+<hr>
 
+<h3 class="text-center">Comments</h3>
+            <table class="table">
+            
+            
+
+                @foreach ($comments as $comment)
+                <tr>
+                    <td>{{$comment->comment_body}}</td>
+                    <td>{{App\User::find($comment->user_id)->fname}} {{App\User::find($comment->user_id)->lname}}</td>
+                    
+                       
+                </tr>
+                @endforeach
+
+            </table>
+
+    <hr>
+    <div class="card mb-3 wow fadeIn">
+        <form action="/storecomment/{{$post->id}}" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}  
+            <div class="card-body">  
+                <div class="row">
+		            <div class="col-md-10">                  
+                        <div class="form-outline">
+                            <i class="fas fa-pencil-alt input-prefix">&nbsp; Share your idea using comment</i><br>
+                            <textarea class="form-control" name="comment_body" id="comment_body" rows="4" placeholder="type here.."></textarea>                            
+                        </div>   
+                    </div>    
+                    <div class="col-md-10">              
+                        <button type="submit" id="submit" class="btn btn-info btn-sm">Add</button>
+                    </div>
+                </div>
+            </div> 
+             
+        </form>
     </div>
+
+    
+</div>
 @endsection
