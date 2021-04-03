@@ -3,7 +3,7 @@
 
     <!-- Footer Elements -->
     <div class="container">
-
+    <a href="#top"><i class="fas fa-angle-double-up"></i></a>
       <!-- Social buttons -->
       <ul class="list-unstyled list-inline text-center">
         <li class="list-inline-item">

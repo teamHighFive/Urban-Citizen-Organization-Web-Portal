@@ -14,11 +14,12 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->increments('document_id');
+            $table->increments('id');
             $table->String('document_name');
             $table->String('location');
             $table->integer('created_by');
             $table->String('event')->nullable();
+            $table->boolean('p_admin');
             $table->boolean('p_member');
             $table->boolean('p_visitor');
             $table->binary('file');

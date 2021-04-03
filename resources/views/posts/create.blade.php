@@ -1,4 +1,4 @@
-@extends('layouts.userdashboard')
+@extends('layouts.dashboard')
 
 @section('title','Create Post')
 @section('content')
@@ -18,7 +18,7 @@
     	{{Form::label('body','Body')}}
     	{{Form::textarea('body','',['class'=> 'form-control', 'placeholder'=> 'Body'])}}
     </div>
-    
+
     <div class="form-group">
         {{Form::file('cover_image')}}
     </div>

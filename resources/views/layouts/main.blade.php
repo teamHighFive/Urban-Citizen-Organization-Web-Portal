@@ -20,6 +20,7 @@
 
         {{-- Footer and Scripts  --}}
         @include('layouts.footer')
+        
 
     </body>
 </html>

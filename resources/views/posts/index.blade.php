@@ -1,4 +1,4 @@
-@extends('layouts.userdashboard')
+@extends('layouts.dashboard')
 
 @section('title','Posts')
 @section('content')
@@ -13,11 +13,12 @@
         <div class="card mb-3 wow fadeIn">
             <div class="card-header font-weight-bold">
                 <div class="row">
-                    <div class="col-md-8">
-                        <h1><b>Urban Citizen Organization</b></h1>
+                    <div class="col-md-10">
+                        <div class="card-header font-weight-bold"><h1>Posts of Organization</h1></div>
                     </div>
-                    <div class="col-md-4">
-                        <a href="/posts/create" class="btn btn-success btn-lg">Create Post</a>
+                    <div class="col-md-2">
+                        <a href="/posts/create" class="btn btn-primary btn-block">Create Post</a>
+                        <a href="/viewcomments" class="btn btn-primary btn-block">comments</a>
                     </div>
                 </div>
             </div>
