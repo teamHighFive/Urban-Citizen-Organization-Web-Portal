@@ -77,11 +77,14 @@ class RegisterController extends Controller
             $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
             $avatarpath = public_path('/images/');
             $avataruploaded->move($avatarpath, $avatarname);
+
+            $str1 = substr($data['contact'], 1);
+
             return User::create([
                 'fname' => $data['fname'],
                 'mname' => $data['mname'],
                 'lname' => $data['lname'],
-                'contact' => $data['contact'],
+                'contact' => '+94'.$str1,
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'avatar' => '/images/'.  $avatarname,
