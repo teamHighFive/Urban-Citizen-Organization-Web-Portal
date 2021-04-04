@@ -24,18 +24,19 @@
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
-                            <thead>
+                            <thead class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
                                 <tr>
                                     <th>Id</th>
                                     <th>First Name</th>
                                     <th>Middle Name</th>
+                                    <th>Last Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Is Verfied</th>
                                     <th>isban/unban</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
+                                    <th>Payments History</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,10 +45,11 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->fname }}</td>
                                     <td>{{ $item->mname }}</td>
+                                    <td>{{ $item->lname }}</td>
                                     <td>{{ $item->contact }}</td>
                                     <td>{{ $item->email }}</td>
                                     <th>{{ $item->role_as }}</th>
-                                    <td>{{ date('M j, Y h:ia',strtotime($item->email_verified_at)) }}</td>
+
                                     <td>
                                         @if($item->isban == '0')
                                                 <label class="badge badge-pill btn-primary px-3 py-2">Not Banned</label>
@@ -65,8 +67,10 @@
                                                 <button type="submit" class="badge badge-pill btn-danger px-3 py-2">DELETE</button>
                                             </form>
                                     </td>
+                                    <td><a href="/view-payments/{{$item->id}}" class="badge badge-pill btn-primary px-3 py-2">View</a></td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>

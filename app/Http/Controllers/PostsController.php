@@ -58,10 +58,15 @@ class PostsController extends Controller
             'cover_image' => 'image|nullable|max:1999'
         ]);
         if($request->hasFile('cover_image')){
+            //get file name with extention
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //get just file name
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just file extention
             $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //file name to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //image uploading path
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         }else{
             $fileNameToStore = 'noimage.jpg';
@@ -74,7 +79,7 @@ class PostsController extends Controller
         $post->cover_image = $fileNameToStore;
         $post->save();
 
-        return redirect('/posts')->with('status','Post is  Created.');
+        return redirect('/posts')->with('status','Post is Created.');
     }
 
     /**
@@ -119,10 +124,15 @@ class PostsController extends Controller
             'cover_image' => 'image|nullable|max:1999'
         ]);
         if($request->hasFile('cover_image')){
+            //get file name with extention
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //get just file name
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just file extention
             $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //file name to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //image uploading path
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         }
 
@@ -134,7 +144,7 @@ class PostsController extends Controller
         }
         $post->save();
 
-        return redirect('/posts')->with('status','Post is Updated.');
+        return redirect('/posts')->with('status','Your Post is Updated.');
     }
 
     /**
@@ -147,15 +157,11 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        // if(auth()->user()->id !== $post->user_id){
-        //     return redirect('/posts')->with('status', 'Unauthorized page.');
-        // }
-
         if($post->cover_image !== 'noimage.jpg'){
             Storage::delete('public/cover_images/'.$post->cover_image);
         }
 
         $post->delete();
-        return redirect('/posts')->with('status','Post Removed.');
+        return redirect()->back()->with('status','Post is Removed.');
     }
 }

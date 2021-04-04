@@ -15,11 +15,14 @@ class ChangePasswordController extends Controller
         $this->middleware('auth');
 
     }
+
+    //show password reset page for user(admin/member)
     public function index()
     {
         return view('auth.passwords.change');
     }
 
+    
     public function changePassword(Request $request)
     {
         $this->validate($request,[

@@ -20,11 +20,11 @@
             <i class="fas fa-mail-bulk mr-3"></i>My posts
         </a>
 
-        <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-newspaper mr-3"></i>My events
+        <a href="{{ url('membership-payments') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-poll mr-3"></i>Membership Payments
         </a>
 
-        <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
+        <a href="{{ url('#') }}" class="list-group-item list-group-item-action waves-effect">
                 <i class="fas fa-images mr-3"></i>My photos
         </a>
 

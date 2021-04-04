@@ -19,19 +19,18 @@ class CheckApproved
         $user = Auth::user();
         if($user['status'] == '0')
         {
-            $active = Auth::user()->status == '0';
+            $not_active = Auth::user()->status == '0';
             Auth::logout();
-            // return redirect()->route('login');
-            // return redirect()->route('approval');
-            if($active == 1) {
-                $message = 'Your account is waiting for our administrator approval.Please check back later.';
+
+            if($not_active == 1) {
+                $message = 'Your account is waiting for our administrator approval. Please verify you email after admin approvel. Please check back later. Thank You...';
 
             }
             return redirect()->route('login')
             ->with('status',$message)
-            ->withErrors(['email' => 'Your account still Not actived. Please contact Administrator.']);
-            // return redirect()->route('login')->with('status','Your account is waiting for our administrator approval.Please check back later.');
+            ->withErrors(['email' => 'Your account still Not Actived. Please contact Administrator.']);
         }
+
 
         return $next($request);
     }

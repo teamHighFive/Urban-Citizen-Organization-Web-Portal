@@ -2,13 +2,13 @@
 
 @section('title','Create Post')
 @section('content')
-<script src="https://cdn.tiny.cloud/1/8qpvqjbcsz9ifv2ptfvle3168jgjt47d15bzgj2szu2dylwq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin">></script>
 
 <script>
     tinymce.init({
       selector: 'textarea'
     });
-  </script>
+  </script> --}}
 
 <div class="container" style="height:auto;min-height: 100vh">
 

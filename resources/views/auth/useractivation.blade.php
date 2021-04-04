@@ -17,7 +17,7 @@
 
                         <div class="card mb-3 wow fadeIn">
                             <div class="card-header font-weight-bold">
-                                <h1><b>User Approval Page</b></h1>
+                                <h2><b>User Approval Page</b></h2>
                             </div>
                         </div>
 
@@ -26,11 +26,12 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <table class="table table-bordered table-striped">
-                                    <thead>
+                                    <thead class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
                                         <tr>
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Last Name</th>
+                                            <th>Verfied At:</th>
                                             <th>Email</th>
                                             <th>Current Status</th>
                                             <th>Approve/Not approve</th>
@@ -42,6 +43,7 @@
                                             <td>{{ $user->fname }}</td>
                                             <td>{{ $user->mname }}</td>
                                             <td>{{ $user->lname }}</td>
+                                            <td>{{ date('M j, Y',strtotime($user->email_verified_at)) }}</td>
                                             <td>{{ $user->email }}</td>
                                             <th>@if($user->status == 0) Not approved @else Approved @endif</th>
                                             <td><a href="{{ route('status', ['id'=>$user->id]) }}">@if($user->status == 1) Not approve @else Approve @endif</a></td>

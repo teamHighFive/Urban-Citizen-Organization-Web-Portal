@@ -26,52 +26,53 @@
                     <div class="card-body">
                         @if(count($posts)>0)
                             <table class="table table-bordered table-striped">
-                                <tr>
-                                    <th>Title</th>
-                                    <th>View Post</th>
-                                    <th>Created At</th>
-                                    <th>Delete Post</th>
-                                    <th>Edit Post</th>
-                                </tr>
+                                <thead class="color-block-dark teal lighten-1-color-dark z-depth-2 white-text">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>View Post</th>
+                                        <th>Created At</th>
+                                        <th>Delete Post</th>
+                                        <th>Edit Post</th>
+                                    </tr>
+                                </thead>
                                 @foreach($posts as $post)
                                     @if(!Auth::guest())
-                                    <?php
-                                    $user = Auth::user();
-                                    if($user['role_as'] == 'admin'){
-                                    ?>
-                                    <tr>
-                                        <th>{{$post->title}}</a></th>
-                                        <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
-                                        <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
-                                        <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
-                                            {{Form::hidden('_method','DELETE')}}
-                                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
-                                            {!!Form::close()!!}
-                                        </th>
-                                        @if(Auth::user()->id == $post->user_id)
-                                        <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
-                                        @endif
-                                    </tr>
-                                     <?php
-                                    }else if($user['role_as'] == 'member'){
-                                    ?>
-                                        @if(Auth::user()->id == $post->user_id)
-                                        <tr>
-                                            <th>{{$post->title}}</a></th>
-                                            <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
-                                            <th>{{date('M j, Y h:ia',strtotime($post->created_at))}}</a></th>
-                                            <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
-                                                {{Form::hidden('_method','DELETE')}}
-                                                {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
-                                                {!!Form::close()!!}
-                                            </th>
-                                            <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
-                                        </tr>
-                                    @endif
-                                    <?php
-                                    }
-                                    ?>
-
+                                        <?php
+                                        $user = Auth::user();
+                                        if($user['role_as'] == 'admin'){
+                                        ?>
+                                            <tr>
+                                                <th>{{$post->title}}</a></th>
+                                                <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
+                                                <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
+                                                <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
+                                                    {{Form::hidden('_method','DELETE')}}
+                                                    {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                                    {!!Form::close()!!}
+                                                </th>
+                                                @if(Auth::user()->id == $post->user_id)
+                                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
+                                                @endif
+                                            </tr>
+                                        <?php
+                                        }else if($user['role_as'] == 'member'){
+                                        ?>
+                                            @if(Auth::user()->id == $post->user_id)
+                                                <tr>
+                                                    <th>{{$post->title}}</a></th>
+                                                    <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
+                                                    <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
+                                                    <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
+                                                        {{Form::hidden('_method','DELETE')}}
+                                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                                        {!!Form::close()!!}
+                                                    </th>
+                                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
+                                                </tr>
+                                            @endif
+                                        <?php
+                                        }
+                                        ?>
                                     @endif
                                 @endforeach
                             </table>

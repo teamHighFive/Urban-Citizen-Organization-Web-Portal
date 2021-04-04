@@ -7,6 +7,11 @@
 @section('content')
 
 <div class="container" style="height:100vh">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
         <?php
                 $user = Auth::user();
                 if($user['role_as'] == 'admin'){

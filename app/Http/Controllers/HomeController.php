@@ -16,8 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
-        $this->middleware(['auth','verified']);
+        $this->middleware('auth');
+        // $this->middleware(['auth','verified']);
 
     }
 
@@ -26,31 +26,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        // return view('auth.useractivation');
-        $users = DB::table('users')->get();
-        return view('auth.useractivation', ['users' => $users]);
-    }
-    public function status(Request $request, $id){
-        $data = User::find($id);
-
-        if ($data->status == 0) {
-            # code...
-            $data->status=1;
-        }else{
-            $data->status=0;
-        }
-        $data->save();
-
-        // return redirect()->back()->with('message', $data->fname.' Status has been changed sucessfully.');
-        return Redirect::to('/user-active')->with('message', $data->fname.' Status has been changed sucessfully.');
-    }
-
-//     public function approval()
-// {
-//     return view('auth.approval');
-// }
 
 
 }

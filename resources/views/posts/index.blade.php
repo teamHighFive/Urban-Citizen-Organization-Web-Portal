@@ -3,6 +3,8 @@
 @section('title','Posts')
 @section('content')
 
+{{-- <script src="https://cdn.tiny.cloud/1/8qpvqjbcsz9ifv2ptfvle3168jgjt47d15bzgj2szu2dylwq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+
 <div class="container" style="height:auto;min-height: 100vh">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -24,31 +26,33 @@
         </div>
 
         <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            @if(count($posts) > 0)
-                                <table class="table table-striped">
-                                    @foreach($posts as $post)
-                                        <tr>
-                                            <th>
-                                                <img style="width: 500px;height: 300px" src="/storage/cover_images/{{$post->cover_image}}" alt="">
-                                            </th>
-                                            <th>
-                                                <h2><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
-                                                <small>Created At : {{date('M j, Y h:ia',strtotime($post->created_at))}}</small> <br>
-                                                <small>Last Updated : {{date('M j, Y h:ia',strtotime($post->updated_at))}}</small> <br><br>
-                                                <p>{!! substr($post->body, 0, 250) !!}{!! strlen($post->body) > 250 ? '...' : "" !!}</p>
-                                                <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More...</a>
-                                            </th>
-                                        </tr>
-                                    @endforeach
-                                </table>
-                            @else
-                            @endif
-                        </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @if(count($posts) > 0)
+                            <table class="table table-striped">
+                                @foreach($posts as $post)
+                                    <tr>
+                                        <th>
+                                            <img style="width: 500px;height: 300px" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                                        </th>
+                                        <th>
+                                            <h2><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
+                                            <small>Created At : {{date('M j, Y h:ia',strtotime($post->created_at))}}</small> <br>
+                                            <small>Last Updated : {{date('M j, Y h:ia',strtotime($post->updated_at))}}</small> <br><br>
+
+                                            <p>{{substr($post->body, 0, 450) }}{{ strlen($post->body) > 450 ? '...' : "" }}</p>
+                                            {{-- <p>{!! $post->body !!}</p> --}}
+                                            <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More</a>
+                                        </th>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        @else
+                        @endif
                     </div>
                 </div>
-        </div>
+            </div>
+    </div>
 </div>
 @endsection

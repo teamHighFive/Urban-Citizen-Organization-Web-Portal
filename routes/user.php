@@ -23,54 +23,61 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('profile', function(){
-    return 'theekshana';
-})->middleware('verified');
-
-
 Route::middleware(['auth'])->group(function () {
-    // Route::get('/approval', 'HomeController@approval')->name('approval');
+
     Route::middleware(['approved'])->group(function () {
+
         Route::group(['middleware' => ['auth','isUser']], function () {
+
             Route::get('/home', function () {
                 $donationEvents = DonationEvent::latest()->take(3)->get();
                 $albums = DB::table('albums')->latest()->take(3)->get();
                 $posts = Post::latest()->take(3)->get();
                 return view('welcome')->with('donationEvents', $donationEvents)->with('albums', $albums)->with('posts', $posts);
             });
+
+            Route::get('/dashboard', function () {
+                return view('auth.dashboard');
+            });
+
+            Route::get('/my-profile', 'Frontend\UserController@myprofile');
+            Route::post('/my-profile-update', 'Frontend\UserController@profileupdate');
+
+            Route::get('/change-password', 'Auth\ChangePasswordController@index')->name('password.change');
+            Route::post('/change-password', 'Auth\ChangePasswordController@changePassword')->name('passwords.update');
+
+            Route::get('/membership-payments', 'MembershipPaymentsController@mpayments');
+            Route::post('/do-payments', 'MembershipPaymentsController@createPayments');
+
+
         });
+            Route::group(['middleware' => ['auth','isAdmin']], function () {
+
+            Route::get('registered-user', 'Admin\RegisteredController@index');
+            Route::get('role-edit/{id}','Admin\RegisteredController@edit');
+            Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
+            Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
+
+            Route::get('/user-active', 'UserApprovelController@index')->name('auth.useractivation');
+            Route::get('status/{id}', 'UserApprovelController@status')->name('status');
+
+            Route::get('/view-payments/{id}', 'MembershipPaymentsController@membersPayments');
+        });
+
     });
 });
 
 
 
-Route::group(['middleware' => ['auth','isAdmin']], function () {
-
-    Route::get('registered-user', 'Admin\RegisteredController@index');
-    Route::get('role-edit/{id}','Admin\RegisteredController@edit');
-    Route::get('role-update/{id}','Admin\RegisteredController@updaterole');
-    Route::delete('role-delete/{id}','Admin\RegisteredController@registerdelete');
-
-});
 
 
-Route::group(['middleware' => ['auth','isUser']], function () {
-    // Route::get('/userdashboard', function () {
-    //     return view('auth.userdashboard');
-    // });
-    Route::get('/dashboard', function () {
-        return view('auth.dashboard');
-    });
 
-    Route::get('/my-profile', 'Frontend\UserController@myprofile');
-    Route::post('/my-profile-update', 'Frontend\UserController@profileupdate');
+// Route::group(['middleware' => ['auth','isUser']], function () {
+//     // Route::get('/userdashboard', function () {
+//     //     return view('auth.userdashboard');
+//     // });
 
-    Route::get('/change-password', 'Auth\ChangePasswordController@index')->name('password.change');
-    Route::post('/change-password', 'Auth\ChangePasswordController@changePassword')->name('passwords.update');
 
-    Route::get('/user-active', 'HomeController@index')->name('auth.useractivation');
-    Route::get('status/{id}', 'HomeController@status')->name('status');
+// });
 
-});
-
-// Auth::routes(['verify' => true]);
+// // Auth::routes(['verify' => true]);
