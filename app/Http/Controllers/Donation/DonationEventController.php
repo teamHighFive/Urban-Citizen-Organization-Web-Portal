@@ -42,17 +42,10 @@ class DonationEventController extends Controller{
         return view('donation.createdonevent');
 
 }
-    // --------------------------------------------------------------------------------------------------
-    // Show the form for Donation
-    // --------------------------------------------------------------------------------------------------
 
-    public function donate(){
-        return view('donation.form');
-
-}
 
     // --------------------------------------------------------------------------------------------------
-    // Store a newly created Album in storage.
+    // Store a newly created Donation Event in storage.
     // --------------------------------------------------------------------------------------------------
     public function store(Request  $request){
 
@@ -112,7 +105,7 @@ class DonationEventController extends Controller{
     // Show the form for editing the specified Donation event
     // --------------------------------------------------------------------------------------------------
     public function edit($id){
-        //TODO edit function
+        
         $donevents=DonationEvent::find($id);
         return view('donation.edit')->with('donevent',$donevents);
     }

@@ -13,7 +13,7 @@
             {!!Form::text('description',$value=null,$attributes=['placeholder'=>'Photo Description','name'=>'description']) !!}
             {!!Form::label('location','Location') !!}
             {!!Form::text('location',$value=null,$attributes=['placeholder'=>'Photo Location','name'=>'location']) !!}
-            {!!Form::file('image',$attributes=['class' => 'file-path validate','placeholder'=>'Upload images'])!!}
+            {!!Form::file('image[]',['multiple'=>'multiple'],$attributes=['class' => 'file-path validate','placeholder'=>'Upload images'])!!}
             <input type="hidden" name="album_id"  value="{{$album_id}}">
             {!!Form::submit('Submit',$attributes=['class'=>'btn btn-primary btn-sm float-left'])!!}
             {!!Form::close() !!}

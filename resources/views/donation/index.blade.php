@@ -45,6 +45,13 @@
 			</div>
 		</a>
 	</div>
+	<div class="container-fluid py-2">
+		<a href="/donations/show" class="btn aqua-gradient waves-effect">
+			<div>
+				<span>Show Donations</span>
+			</div>
+		</a>
+	</div>
 	@endif
 
     <div class="row">
@@ -62,7 +69,7 @@
 					<p class="card-text white-text">{{$donevent->description}}</p>
 
 					
-					<a href="donate" class="btn aqua-gradient waves-effect">Donate</a>
+					<a href="donate/{{$donevent->id}}" class="btn aqua-gradient waves-effect">Donate</a>
 					
 
 					{{-- @if(Auth::user()->role_as == "admin")

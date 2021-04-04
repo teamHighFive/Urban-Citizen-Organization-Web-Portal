@@ -2,7 +2,12 @@
 
 @section('content')
 
-<h2>Donation</h2>
+{{-- @foreach($donationEvents as $donationEvent)
+<div>
+<h2>{{$donationEvent->name}}</h2>
+<h2>{{$donationEvent->description}}</h2>
+</div>
+@endforeach --}}
 
 
 <h3>Donation Information</h3>
@@ -25,69 +30,74 @@
 <?php Session::forget('error');?>
 @endif
 
+
+
 <form action="{{route('paypal')}}" method="post">
     @csrf
 
-    {{-- <input type="hidden" name="donation_id"  value="{{$donation_id}}"> --}}
+    {{-- <input type="hidden" name="donation_event_id"  value="{{$donevent->id}}"> --}}
+    <input type="hidden" name="donation_event_id"  value="1">
     <div class="form-group">
         <label for="">Full Name</label>
-        <input type="text" name="shipping_fullname" id="" class="form-control">
+        <input type="text" name="donner_fullname" id="" class="form-control">
+       
     </div>
+
     <div class="form-group">
       <label for="">Amount</label>
       <input type="text" name="amount" id="" class="form-control">
-  </div>
+    </div>
 
     <div class="form-group">
         <label for="">Country</label>
-        <input type="text" name="country" id="" class="form-control">
+        <input type="text" name="donner_country" id="" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="">City</label>
-        <input type="text" name="shipping_city" id="" class="form-control">
+        <input type="text" name="donner_city" id="" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="">Address</label>
-        <input type="number" name="shipping_zipcode" id="" class="form-control">
+        <input type="text" name="donner_address" id="" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="">Email</label>
-        <input type="text" name="shipping_address" id="" class="form-control">
+        <input type="text" name="donner_email" id="" class="form-control">
     </div>
 
     <div class="form-group">
         <label for="">Mobile</label>
-        <input type="text" name="shipping_phone" id="" class="form-control">
+        <input type="text" name="donner_phone" id="" class="form-control">
     </div>
 
     <div class="form-group">
-      <label for="">Comments</label>
-      <textarea name="comments" id="" class="form-control"></textarea>
-  </div>
+      <label for="">Comment</label>
+      <textarea name="comment" id="" class="form-control"></textarea>
+    </div>
 
   <div class="form-check">
-    <label class="form-check-label">Membership:
+    <label class="form-check-label">Membership:</label>
     </br>
-        <input type="radio" class="form-check-input" name="payment_method" id="" value="Yes">
-        Member
+        <input type="radio" class="form-check-input" name="is_member" id="" value="Yes">
+        <label >Member</label>
     </br>
-        <input type="radio" class="form-check-input" name="payment_method" id="" value="No">
-        Not a member
+        <input type="radio" class="form-check-input" name="is_member" id="" value="No">
+        <label>Not a Member</label>
     </label>
   </div>
 </br>
 
     <div class="form-check">
-        <label class="form-check-label">Payment method:
+        <label class="form-check-label">Payment method:</label>
         </br>
             <input type="radio" class="form-check-input" name="payment_method" id="" value="paypal">
-            Paypal
+            <label>Paypal</label>
         </br>
             <input type="radio" class="form-check-input" name="payment_method" id="" value="bank deposit">
-            Bank Deposit
+            <label>Bank Deposit</label>
         </label>
     </div>
 
