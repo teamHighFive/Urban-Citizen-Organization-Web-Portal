@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.dashboard')
 
 @section('title','Upcoming Meetings')
 @section('content')
@@ -8,9 +8,9 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="jumbotron">
-                    <form action="/updatefile/{{ $upload->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/updatecomment/{{$comment->id}}/{{$post_id}}" class="form-popup" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}                
-                    {{ method_field('PUT')}}
+                    
 
                     <div class="card">
                     <div class="card-header">
@@ -21,11 +21,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-text"><br> 
-                        <h5 class="card-title"> &emsp; &emsp; <i class="fas fa-comment-dots"></i> &nbsp; {{$comment->comment_body}}</h5>                       
-                        <div class="card-text" align="right">    
-                                <a href="/editcomment/{{$item->id}}" class="btn btn-outline-warning btn-sm">EDIT</a>
-                                <a href="#" class="btn btn-outline-danger btn-sm">DELETE</a>
-                            </div>
+                    <div class="card-text"><br>
+                        <textarea class="form-control" name="comment_body" id="comment_body" rows="4" placeholder="type here..">{{$comment->comment_body}}</textarea>                               
+                        <button type="submit" id="submit" class="btn btn-info btn-sm">Save</button>
                     </div>
+                    </form>
                 </div> 

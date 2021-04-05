@@ -54,20 +54,20 @@
                                 <div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <!--Content-->
-                                    <div class="modal-content">
-                                        <!--Header-->
-                                        <div class="modal-body">
-                                        <br>
-                                        <center><button type="button" class="btn btn-success btn-lg">Uploaded</button></center>
+                                        <div class="modal-content">
+                                            <!--Header-->
+                                            <div class="modal-body">
+                                            <br>
+                                                <center><button type="button" class="btn btn-success btn-lg">Uploaded</button></center>
+                                            </div>
+                                            <!-- Footer
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Done</button>                   
+                                            </div> -->
                                         </div>
-                                        <!-- Footer
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Done</button>                   
-                                        </div> -->
-                                    </div>
                                         <!--/.Content-->
                                     </div>
-                                    </div>
+                                </div>
 
 
                             <br><br>

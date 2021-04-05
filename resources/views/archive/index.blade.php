@@ -17,12 +17,12 @@
     <tr>
         <th scope="col">File ID</th>
         <th scope="col">File Name</th>
-        <th scope="col">Uploader's ID</th>
+        <th scope="col">Uploaded By</th>
         <th scope="col">Event Name</th>
         <th scope="col"><strong>File </strong><br> (click to view)</th>
+        <th scope="col">File Type</th>
         <th>Edit</th>
         <th>Delete</th>
-        <th>Download </th>
 
     </tr>
 </thead>
@@ -34,27 +34,42 @@
 
         <th> {{$item->id}}</th>
         <th> {{$item->document_name}}</th>
-        <th> {{$item->created_by}}</th>
+        <th> {{App\User::find($item->created_by)->fname}} {{App\User::find($item->created_by)->lname}}</th>
         <th> {{$item->event}}</th>
         <th>            
 
-            @if($item->type == 'doc')
-                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
+            <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
+            @if($item->type == 'doc'||$item->type =='docx'||$item->type =='txt'||$item->type =='pptx')
                     <h1 class="fas fa-file-invoice"></h1>
-                </a>
+            @elseif($item->type =='pdf')
+                    <h1 class="far fa-file-pdf"></h1>
+            @elseif($item->type =='zip')
+                    <h1 class="far fa-file-archive"></h1>
+            @elseif($item->type == 'jpg'||$item->type == 'png'||$item->type =='png'||$item->type =='jpeg')
+                    <h1 class="fas fa-file-image"></h1>
+            @elseif($item->type == 'excel'||$item->type == 'xlsm'||$item->type =='xls' ||$item->type =='xlsx')
+                    <h1 class="fas fa-excel"></h1>
+            @elseif($item->type == 'mkv'||$item->type == 'mp4'||$item->type == 'mov'||$item->type == '3gp'
+            ||$item->type == 'wmv'||$item->type == 'avi'||$item->type == 'webm'||$item->type == 'flv')
+                    <h1 class="fas fa-file-video"></h1>      
+            @else
+                    <h1 class="fas fa-info"></h1>
             @endif
+            </a>
 
-            @if($item->type == 'exel')
+            <!-- @if($item->type == 'exel')
                 <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
                     <h1 class="far fa-file-excel "></h1>
                 </a>
 
-            @endif
+            @endif -->
 
+            <th> {{$item->type}}</th>
         </th>
+        @if (Auth::User()->id == $item->created_by)
         <th><a href ="/edit/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
         <th><a href = "/delete/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
-        <th><a href = "/download/{{$item->id}}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-download"></i></a></th>
+        @endif
 
     </tr>
     @endforeach

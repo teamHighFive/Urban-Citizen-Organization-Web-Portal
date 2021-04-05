@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Document;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Document;
@@ -14,6 +15,7 @@ use App\Conf_files;
 use App\Post;
 use App\Eventfiles;
 use App\Submission;
+
 
 class DocumentController extends Controller
 {
@@ -147,8 +149,8 @@ public function store_conffiles(Request $request)
         $upload =new Document();
         $upload->document_name = $request->input('docName');
         $upload->location = "not specified yet";
-        $upload->type = "doc";
-        $upload->created_by = $request->input('userId');
+        // $upload->type = "doc";
+        $upload->created_by = Auth::user()->id;
         $upload->event = $request->input('event');
         $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
         $upload->p_member = $request->input('permissionmember') != null ? true : false;
@@ -158,8 +160,9 @@ public function store_conffiles(Request $request)
             $file = $request->file('file');
             $extension = $file->getClientOriginalExtension();
             $filename= time().'.'.$extension;
-            $file->move('uploads/files/doc',$filename);
+            $file->move('uploads/files/'.$extension,$filename);
             $upload->file = $filename;
+            $upload->type = $extension;
         } else {
             return $request;
             $upload->file = '';
@@ -195,7 +198,16 @@ public function store_conffiles(Request $request)
 //------------------------------------------------------------------------------------------------------------------
     public function table_seperated_files()
     {
-        $upload = Document::all();
+        if(Auth::guest()){
+            $upload = Document::all()->where('p_visitor', 1);
+        }else {
+            $userType = Auth::user()->role_as;
+            if($userType == 'admin'){
+                $upload = Document::all();
+            }else if($userType == 'member'){
+                $upload = Document::all()->where('p_member', 1);
+            }
+        }
         return view('archive.index')->with('upload',$upload);
     }
 

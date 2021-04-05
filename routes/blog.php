@@ -16,5 +16,8 @@ use App\Http\Controllers\PostsController;
  Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');; 
  Route::get('/viewcomments', 'CommentController@table_comments_files');
 
- Route::get('/editcomment/{id}','CommentController@editfile');
+ Route::get('/editcomment/{id}/{post_id}','CommentController@editcomment');
+ Route::post('/updatecomment/{id}/{post_id}','CommentController@updatecomment');
+ 
+ Route::get('/deletecomment/{id}/{post_id}','CommentController@deletecomment');
  //Route::resources('comments','CommentController');

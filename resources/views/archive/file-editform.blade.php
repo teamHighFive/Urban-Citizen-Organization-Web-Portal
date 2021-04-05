@@ -34,7 +34,7 @@
                                 <div class="col-md-4"></div>
                             </div>
                         <br>
-                            <div class="input-group">
+                            <!-- <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
@@ -42,7 +42,7 @@
                                     <input type="file" name="image" class="custom-file-input" value="{{$upload->file}}">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <button type="submit" name="submit" class="btn btn-primary mt-3">Update</button>
 

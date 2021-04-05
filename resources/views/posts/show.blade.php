@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Online Conferences')
+@section('title','Blog Posts')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
 
@@ -54,7 +54,7 @@
                 <div class="card-header">
                     <div class="row">   
                         <div class="col-sm-6 col-md-4"> 
-                            <img src="{{asset(Auth::user()->avatar)}}" class="card-img-top" alt="..." style="height:60px;width:60px;border-radius:50%;margin-right:15px;padding:10px;">
+                            <img src="{{App\User::find($comment->user_id)->avatar}}" class="card-img-top" alt="..." style="height:60px;width:60px;border-radius:50%;margin-right:15px;padding:10px;">
                             <b>{{App\User::find($comment->user_id)->fname}} {{App\User::find($comment->user_id)->lname}}</b>
                         </div>  
                     </div>
@@ -62,9 +62,11 @@
                 <div class="card-text"><br> 
                     <h5 class="card-title"> &emsp; &emsp; <i class="fas fa-comment-dots"></i> &nbsp; {{$comment->comment_body}}</h5>                       
                     <div class="card-text" align="right">    
-                            <a href="" class="btn btn-outline-warning btn-sm">EDIT</a>
-                            <a href="#" class="btn btn-outline-danger btn-sm">DELETE</a>
-                        </div>
+                        @if (Auth::User()->id == $comment->user_id)
+                            <a href="/editcomment/{{$comment->id}}/{{$post->id}}" class="btn btn-outline-warning btn-sm">EDIT</a>
+                            <a href="/deletecomment/{{$comment->id}}/{{$post->id}}" class="btn btn-outline-danger btn-sm">DELETE</a>
+                        @endif
+                    </div>
                 </div>
             </div>  
             <br>
