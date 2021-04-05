@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Payments;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +26,10 @@ class MembershipPaymentsController extends Controller
         $payment->year = $request->input('year');
         $payment->user_id = Auth::user()->id;
         $payment->save();
-        return redirect()->back()->with('status','Your Membership Payment is Created.');
+
+        $user = User::find($payment->user_id);
+        // dd ($user->contact);
+        $response = app('App\Http\Controllers\SMSController')->send($user->contact, "Your membership payment of LKR 750.00 for the year ".$payment->year." has been made successfully. Thank you");
+        return redirect()->back()->with('status',$response);
     }
 }

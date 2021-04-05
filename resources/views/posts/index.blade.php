@@ -25,34 +25,48 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        @if(count($posts) > 0)
-                            <table class="table table-striped">
-                                @foreach($posts as $post)
-                                    <tr>
-                                        <th>
-                                            <img style="width: 500px;height: 300px" src="/storage/cover_images/{{$post->cover_image}}" alt="">
-                                        </th>
-                                        <th>
-                                            <h2><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
-                                            <small>Created At : {{date('M j, Y h:ia',strtotime($post->created_at))}}</small> <br>
-                                            <small>Last Updated : {{date('M j, Y h:ia',strtotime($post->updated_at))}}</small> <br><br>
+        @if(count($posts) > 0)
+            @foreach($posts as $post)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card mb-3 wow fadeIn">
+                            <div class="card-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <img src="{{App\User::find($post->user_id)->avatar}}" style="height:35px;width:35px;border-radius:50%;margin-right:15px" alt="" >
+                                                {{App\User::find($post->user_id)->fname}} {{App\User::find($post->user_id)->mname}} <br><br>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row justify-content-center " >
+                                                    <img style="width: 550px;height: 350px" src="/storage/cover_images/{{$post->cover_image}}" alt=""> <br><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h2><b><a href="/posts/{{$post->id}}">{{$post->title}}</a></b></h2>
 
-                                            <p>{{substr($post->body, 0, 450) }}{{ strlen($post->body) > 450 ? '...' : "" }}</p>
-                                            {{-- <p>{!! $post->body !!}</p> --}}
-                                            <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More</a>
-                                        </th>
-                                    </tr>
-                                @endforeach
-                            </table>
-                        @else
-                        @endif
+                                        <p>{{substr($post->body, 0, 450) }}{{ strlen($post->body) > 450 ? '...' : "" }}</p>
+                                        {{-- <p>{!! $post->body !!}</p> --}}
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <small>Created At : {{date('M j, Y h:ia',strtotime($post->created_at))}}</small> <br>
+                                                <small>Last Updated : {{date('M j, Y h:ia',strtotime($post->updated_at))}}</small> <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-    </div>
+            @endforeach
+        @else
+        @endif
+
 </div>
 @endsection

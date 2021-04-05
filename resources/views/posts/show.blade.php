@@ -3,6 +3,11 @@
 @section('title','View Post')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
         <div class="card mb-3 wow fadeIn">
             <div class="card-header font-weight-bold">

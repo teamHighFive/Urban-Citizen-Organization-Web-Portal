@@ -26,7 +26,7 @@
                     <div class="card-body">
                         @if(count($posts)>0)
                             <table class="table table-bordered table-striped">
-                                <thead class="color-block-dark teal lighten-1-color-dark z-depth-2 white-text">
+                                <thead class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
                                     <tr>
                                         <th>Title</th>
                                         <th>View Post</th>

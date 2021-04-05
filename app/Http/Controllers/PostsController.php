@@ -79,7 +79,7 @@ class PostsController extends Controller
         $post->cover_image = $fileNameToStore;
         $post->save();
 
-        return redirect('/posts')->with('status','Post is Created.');
+        return redirect('/posts')->with('status','Post is Created successfully.');
     }
 
     /**
@@ -144,7 +144,7 @@ class PostsController extends Controller
         }
         $post->save();
 
-        return redirect('/posts')->with('status','Your Post is Updated.');
+        return redirect('/posts')->with('status','Your Post is Updated successfully.');
     }
 
     /**
@@ -162,6 +162,6 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect()->back()->with('status','Post is Removed.');
+        return redirect()->back()->with('status','Post is Removed successfully.');
     }
 }

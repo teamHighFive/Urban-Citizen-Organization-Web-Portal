@@ -22,9 +22,10 @@ class CheckApproved
             $not_active = Auth::user()->status == '0';
             Auth::logout();
 
-            if($not_active == 1) {
-                $message = 'Your account is waiting for our administrator approval. Please verify you email after admin approvel. Please check back later. Thank You...';
-
+            if($user['email_verified_at']== null){
+                $message = 'Your verification mail has been sent your email. Please verify if for admin approvel...';
+            }elseif($not_active == 1) {
+                $message = 'Your account is waiting for our administrator approval. Please check back later. Thank You...';
             }
             return redirect()->route('login')
             ->with('status',$message)

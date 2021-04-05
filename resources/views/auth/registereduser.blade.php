@@ -10,12 +10,10 @@
             </div>
         @endif
 
-        <div class="card mb-4 wow fadeIn">
-        <div class="card-header font-weight-bold">
-            <h2 class="mb-2 mb-sm-0 pt-1">
-            <span>Registered Users</span>
-            </h2>
-        </div>
+        <div class="card mb-3 wow fadeIn">
+            <div class="card-header font-weight-bold">
+                <h2><b>Registered Users</b></h2>
+            </div>
         </div>
 
 

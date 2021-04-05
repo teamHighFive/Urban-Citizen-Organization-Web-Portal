@@ -68,16 +68,3 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
-
-
-
-// Route::group(['middleware' => ['auth','isUser']], function () {
-//     // Route::get('/userdashboard', function () {
-//     //     return view('auth.userdashboard');
-//     // });
-
-
-// });
-
-// // Auth::routes(['verify' => true]);
