@@ -11,6 +11,6 @@ class Comment extends Model
     // }
 
     protected $table='comments';
-    protected $primary = 'comment_id';
+    protected $primary = 'id';
     public $timestamps = false;
 }

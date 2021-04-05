@@ -251,7 +251,7 @@ public function table_event_files()
 
 //------------------------------------------------------------------------------------------------------------------  
 
-    public function edit($primary)
+    public function editfile($primary)
         {
             $upload = Document::find($primary);
             return view('archive.file-editform')->with('upload',$upload);
@@ -280,7 +280,6 @@ public function table_event_files()
         $upload->save();
         return redirect('/seperated-arc')->with('success',$upload);
     
-
     } 
         
     public function delete($primary)
@@ -301,4 +300,134 @@ public function table_event_files()
         return Response::download($file, "$filename", $header );
     }
 
+
+
+//------------------------------------------------------------------------------------------------------------------  
+
+    public function editdon($primary)
+        {
+            $upload = Donationfiles::find($primary);
+            return view('archive.conf-editform')->with('upload',$upload);
+        }
+
+
+    public function updatedon(Request $request, $primary)
+    {
+        $upload = Donationfiles::find($primary);
+        $upload->document_details = $request->input('document_details');
+        $upload->location = "not specified yet";
+        $upload->type = "doc";
+        $upload->created_by = "1"; //$request->input('created_by');
+        $upload->description = $request->input('description');
+        $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
+        $upload->p_member = $request->input('permissionmember') != null ? true : false;
+        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+
+        if ($request->hasfile('file')){
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $file->move('uploads/donate_files',$filename);
+            $upload->file = $filename;
+        }
+
+        $upload->save();
+        return redirect('/donatfiles-arc')->with('success',$upload);
+    
+    } 
+
+        public function deletedon($primary)
+        {
+            $upload = Donationfiles::find($primary);
+            $upload->delete();
+            return redirect('/donatfiles-arc')->with('upload',$upload);
+
+        }
+
+//------------------------------------------------------------------------------------------------------------------  
+
+public function editconf($primary)
+{
+    $upload = Conf_files::find($primary);
+    return view('archive.conf-editform')->with('upload',$upload);
 }
+
+
+public function updateconf(Request $request, $primary)
+{
+$upload = Conf_files::find($primary);
+$upload->document_name = $request->input('document_name');
+$upload->location = $request->input('location');
+$upload->type = "doc";
+$upload->created_by = "1"; //$request->input('created_by');
+$upload->description = $request->input('description');
+$upload->event = $request->input('event');
+$upload->p_admin = $request->input('permissionadmin') != null ? true : true;
+$upload->p_member = $request->input('permissionmember') != null ? true : false;
+$upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+
+if ($request->hasfile('file')){
+    $file = $request->file('file');
+    $extension = $file->getClientOriginalExtension();
+    $filename= time().'.'.$extension;
+    $file->move('uploads/donate_files',$filename);
+    $upload->file = $filename;
+}
+
+$upload->save();
+return redirect('/conffiles-arc')->with('success',$upload);
+
+} 
+
+public function deleteconf($primary)
+{
+    $upload = Conf_files::find($primary);
+    $upload->delete();
+    return redirect('/conffiles-arc')->with('upload',$upload);
+}
+
+//------------------------------------------------------------------------------------------------------------------  
+
+public function editeventfile($primary)
+{
+    $upload = Eventfiles::find($primary);
+    return view('archive.event-editform')->with('upload',$upload);
+}
+
+
+public function updateeventfile(Request $request, $primary)
+{
+$upload = Eventfiles::find($primary);
+$upload->document_name = $request->input('document_name');
+$upload->location = $request->input('location');
+$upload->type = "doc";
+$upload->created_by = "1"; //$request->input('created_by');
+$upload->description = $request->input('description');
+$upload->event = $request->input('event');
+$upload->p_admin = $request->input('permissionadmin') != null ? true : true;
+$upload->p_member = $request->input('permissionmember') != null ? true : false;
+$upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+
+if ($request->hasfile('file')){
+    $file = $request->file('file');
+    $extension = $file->getClientOriginalExtension();
+    $filename= time().'.'.$extension;
+    $file->move('uploads/donate_files',$filename);
+    $upload->file = $filename;
+}
+
+$upload->save();
+return redirect('/conffiles-arc')->with('success',$upload);
+
+} 
+
+public function deleteeventfile($primary)
+{
+    $upload = Eventfiles::find($primary);
+    $upload->delete();
+    return redirect('/conffiles-arc')->with('upload',$upload);
+
+}
+
+
+    }

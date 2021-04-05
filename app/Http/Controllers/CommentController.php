@@ -28,7 +28,7 @@ class CommentController extends Controller
         $upload->user_id = Auth::user()->id;
 
         $upload->save();
-        return redirect('/posts')->with('upload',$upload);
+        return redirect()->back();//->with('upload',$upload);
         
     }
 
@@ -77,9 +77,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editfile($primary)
     {
-        //
+        {
+            $upload = Comment::find($primary);
+            return view('posts.comment-editform')->with('upload',$upload);
+        }
     }
 
     /**

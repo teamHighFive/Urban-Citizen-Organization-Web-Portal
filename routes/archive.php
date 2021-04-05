@@ -46,8 +46,23 @@ Route::post('/choosetype', 'Document\DocumentController@type')->name('choosetype
 Route::get('/type', function () {return view('choosetype');});
 Route::get('/arc', function () {return view('archive\basic');});
 
-Route::get('/edit/{id}','Document\DocumentController@edit');
+Route::get('/edit/{id}','Document\DocumentController@editfile');
 Route::put('/updatefile/{id}','Document\DocumentController@update');
 Route::get('/delete/{id}','Document\DocumentController@delete');
-
 Route::get('/download','Document\DocumentController@download');
+
+Route::get('/edit_don/{id}','Document\DocumentController@editdon');
+Route::put('/updatedon/{id}','Document\DocumentController@updatedon');
+Route::get('/deletedon/{id}','Document\DocumentController@deletedon');
+Route::get('/download','Document\DocumentController@download');
+
+Route::get('/editconf/{id}','Document\DocumentController@editconf');
+Route::put('/updateconf/{id}','Document\DocumentController@updateconf');
+Route::get('/deleteconf/{id}','Document\DocumentController@deleteconf');
+Route::get('/download','Document\DocumentController@download');
+
+Route::get('/editeventfile/{id}','Document\DocumentController@editeventfile');
+Route::put('/updateeventfile/{id}','Document\DocumentController@updateeventfile');
+Route::get('/deleteeventfile/{id}','Document\DocumentController@deleteeventfile');
+Route::get('/download','Document\DocumentController@download');
+

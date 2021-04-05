@@ -30,7 +30,7 @@
     
     <tr>
 
-        <th> {{$item->document_id}}</th>
+        <th> {{$item->id}}</th>
         <th> {{$item->document_details}}</th>
         <th> {{$item->description}}</th>
         <th>
@@ -38,8 +38,8 @@
             <h1 class="fas fa-book"></h1>                   
             </a> 
         </th>
-        <th><a href ="/edit/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
-        <th><a href = "/delete/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
+        <th><a href ="/edit_don/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
+        <th><a href = "/deletedon/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
         <th><a href = "/download/{{$item->id}}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-download"></i></a></th>
 
     @endforeach

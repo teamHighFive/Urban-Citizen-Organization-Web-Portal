@@ -56,11 +56,13 @@
                 </span>
                 <!-- Dropdown menu -->
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/arc">Documents</a></li>
+                <li><a class="dropdown-item" href="/arc"><i class="far fa-file-alt"></i>&nbsp; Documents</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/event-arc">Events shedules and documents</a></li>
+                <li><a class="dropdown-item" href="/event-arc"><i class="fas fa-file-pdf"></i>&nbsp; Events shedules and documents</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/conffiles-arc">Conferences schedules and documents</a></li>
+                <li><a class="dropdown-item" href="/conffiles-arc"><i class="far fa-file-pdf"></i>&nbsp; Conferences schedules and documents</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/upload_exel"><i class="fas fa-cloud-upload-alt"></i>&nbsp; Extra immeadiate submissions</a></li>
                 </ul>
             </li>
 

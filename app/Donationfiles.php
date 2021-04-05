@@ -8,6 +8,6 @@ class Donationfiles extends Model
 {
     
     protected $table='donation_files';
-    protected $primary = 'document_id';
+    protected $primary = 'id';
     public $timestamps = false;
 }

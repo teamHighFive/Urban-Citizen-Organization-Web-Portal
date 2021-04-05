@@ -13,9 +13,8 @@ use App\Http\Controllers\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
- Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');;
- Route::get('', function () {return view('posts.comments');});
+ Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');; 
  Route::get('/viewcomments', 'CommentController@table_comments_files');
 
-
+ Route::get('/editcomment/{id}','CommentController@editfile');
  //Route::resources('comments','CommentController');

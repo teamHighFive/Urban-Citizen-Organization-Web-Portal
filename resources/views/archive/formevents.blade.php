@@ -87,7 +87,7 @@
                     <br>
 
                             <!-- <button type="submit" name="submit" class="btn btn-primary mt-3">Upload</button> -->
-                            <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#centralModal">Upload</button>
+                            <button type="submit" name="submit" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#centralModal">Upload</button>
 
                             <!--button alert pop up code-->  
                                 <!-- Central Modal Medium -->
