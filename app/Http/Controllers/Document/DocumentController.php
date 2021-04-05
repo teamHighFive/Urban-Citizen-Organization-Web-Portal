@@ -274,21 +274,22 @@ public function table_event_files()
         $upload = Document::find($primary);
         $upload->document_name = $request->input('document_name');
         $upload->location = "not specified yet";
-        $upload->type = "doc";
-        $upload->created_by = "1"; //$request->input('created_by');
+        
+        $upload->created_by = Auth::user()->id; //$request->input('created_by');
         $upload->event = $request->input('event');
-        $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
-        $upload->p_member = $request->input('permissionmember') != null ? true : false;
-        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+        $upload->p_admin = $request->input('p_admin') != null ? true : true;
+        $upload->p_member = $request->input('p_member') != null ? true : false;
+        $upload->p_visitor = $request->input('p_visitor') != null ? true : false;
 
         if ($request->hasfile('file')){
             $file = $request->file('file');
             $extension = $file->getClientOriginalExtension();
             $filename= time().'.'.$extension;
-            $file->move('uploads/files/doc',$filename);
+            $file->move('uploads/files/'.$extension,$filename);
             $upload->file = $filename;
+            $upload->type = $extension;
         }
-
+        
         $upload->save();
         return redirect('/seperated-arc')->with('success',$upload);
     

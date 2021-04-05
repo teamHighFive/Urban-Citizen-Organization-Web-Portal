@@ -13,11 +13,15 @@ use App\Http\Controllers\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
- Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');; 
- Route::get('/viewcomments', 'CommentController@table_comments_files');
 
- Route::get('/editcomment/{id}/{post_id}','CommentController@editcomment');
- Route::post('/updatecomment/{id}/{post_id}','CommentController@updatecomment');
+Route::get('/viewcomments', 'CommentController@table_comments_files');
+
+Route::group(['middleware' => ['auth','isUser']], function () {
+    Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');; 
  
- Route::get('/deletecomment/{id}/{post_id}','CommentController@deletecomment');
+    Route::get('/editcomment/{id}/{post_id}','CommentController@editcomment');
+    Route::post('/updatecomment/{id}/{post_id}','CommentController@updatecomment');
+    
+    Route::get('/deletecomment/{id}/{post_id}','CommentController@deletecomment');
+});
  //Route::resources('comments','CommentController');
