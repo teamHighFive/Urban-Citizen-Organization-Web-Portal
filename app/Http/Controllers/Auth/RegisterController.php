@@ -93,6 +93,8 @@ class RegisterController extends Controller
                 'avatar' => '/images/'.  $avatarname,
             ]);
         }
+
+        $str1 = substr($data['contact'], 1);
         return User::create([
             'fname' => $data['fname'],
             'mname' => $data['mname'],

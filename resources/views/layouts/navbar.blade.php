@@ -64,7 +64,7 @@
                 </ul>
             </li>
 
-            {{-- By theekshana start --}}
+            <!-- {{-- By theekshana start --}} -->
             @guest
 
             @else
@@ -73,7 +73,7 @@
                 </li>
             @endguest
 
-            {{-- By theekshana end --}}
+            <!-- {{-- By theekshana end --}} -->
         </ul>
         <ul class="navbar-nav ml-auto">
             @guest
