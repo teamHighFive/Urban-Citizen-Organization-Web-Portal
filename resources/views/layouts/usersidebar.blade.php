@@ -12,15 +12,19 @@
             <i class="fa fa-user mr-3"></i>Profile
         </a>
 
+        <a href="{{ url('change-password') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fa fa-user mr-3"></i>Reset My Password
+        </a>
+
         <a href="{{ url('my_posts') }}" class="list-group-item list-group-item-action waves-effect">
             <i class="fas fa-mail-bulk mr-3"></i>My posts
         </a>
 
-        <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-newspaper mr-3"></i>My events
+        <a href="{{ url('membership-payments') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-poll mr-3"></i>Membership Payments
         </a>
 
-        <a href="{{ url('dashboard') }}" class="list-group-item list-group-item-action waves-effect">
+        <a href="{{ url('#') }}" class="list-group-item list-group-item-action waves-effect">
                 <i class="fas fa-images mr-3"></i>My photos
         </a>
 

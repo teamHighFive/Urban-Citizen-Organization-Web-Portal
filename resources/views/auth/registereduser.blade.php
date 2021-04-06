@@ -10,12 +10,10 @@
             </div>
         @endif
 
-        <div class="card mb-4 wow fadeIn">
-        <div class="card-header font-weight-bold">
-            <h2 class="mb-2 mb-sm-0 pt-1">
-            <span>Registered Users</span>
-            </h2>
-        </div>
+        <div class="card mb-3 wow fadeIn">
+            <div class="card-header font-weight-bold">
+                <h2><b>Registered Users</b></h2>
+            </div>
         </div>
 
 
@@ -24,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
-                            <thead>
+                            <thead class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
                                 <tr>
                                     <th>Id</th>
                                     <th>First Name</th>
@@ -36,6 +34,7 @@
                                     <th>isban/unban</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
+                                    <th>Payments History</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +46,8 @@
                                     <td>{{ $item->lname }}</td>
                                     <td>{{ $item->contact }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->role_as }}</td>
+                                    <th>{{ $item->role_as }}</th>
+
                                     <td>
                                         @if($item->isban == '0')
                                                 <label class="badge badge-pill btn-primary px-3 py-2">Not Banned</label>
@@ -65,8 +65,10 @@
                                                 <button type="submit" class="badge badge-pill btn-danger px-3 py-2">DELETE</button>
                                             </form>
                                     </td>
+                                    <td><a href="/view-payments/{{$item->id}}" class="badge badge-pill btn-primary px-3 py-2">View</a></td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>

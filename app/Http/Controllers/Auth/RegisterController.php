@@ -32,8 +32,11 @@ class RegisterController extends Controller
      * Where to redirect users after registration.
      *
      * @var string
+     *
      */
+    
     protected $redirectTo = RouteServiceProvider::HOME;
+
 
     /**
      * Create a new controller instance.
@@ -100,40 +103,7 @@ class RegisterController extends Controller
         ]);
     }
 
-   // public function register(Request $request){
-        // if(request()->has('avatar')){
-        //     $avataruploaded = request()->file('avatar');
-        //     $avatarname = time() . '.' . $avataruploaded->getClientOriginalExtension();
-        //     $avatarpath = public_path('/images/');
-        //     $avataruploaded->move($avatarpath, $avatarname);
-        //     $user = new User();
-        //     $user->fname = $request->fname;
-        //     $user->mname = $request->mname;
-        //     $user->lname = $request->lname;
-        //     $user->contact = $request->contact;
-        //     $user->email = $request->email;
-        //     $user->password = Hash::make($request->password);
-        //     $user->avatar = '/images/'.  $avatarname;
-        //     $user->verification_code = sha1(time());
-        //     $user->save();
-        // }
-    //     $user = new User();
-    //     $user->fname = $request->fname;
-    //     $user->mname = $request->mname;
-    //     $user->lname = $request->lname;
-    //     $user->contact = $request->contact;
-    //     $user->email = $request->email;
-    //     $user->password = Hash::make($request->password);
-    //     $user->verification_code = sha1(time());
-    //     $user->save();
 
-    // if($user != null){
-    //     MailController::sendSignupEmail($user->fname, $user->email, $user->verification_code);
-    //     return redirect()->back()->with(session()->flash('alert-success', 'Your account has been created. Please check email for verification link.'));
-    // }
-
-    // return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
-    // }
 }
 
 

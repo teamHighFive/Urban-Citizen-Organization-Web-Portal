@@ -10,11 +10,9 @@
             </div>
             @endif
 
-            <div class="card mb-4 wow fadeIn">
+            <div class="card mb-3 wow fadeIn">
                 <div class="card-header font-weight-bold">
-                  <h2 class="mb-2 mb-sm-0 pt-1">
-                    <span>My Profile Page</span>
-                  </h2>
+                    <h2><b>My Profile</b></h2>
                 </div>
             </div>
 
@@ -27,8 +25,8 @@
                                 <div class="row">
 
                                     <div class="col-md-4">
-                                        <img src="{{ asset('uploads/profile/'.Auth::user()->image) }}" class="w-75" alt=""> <br> <br>
-                                        <input type="file" name="image" class="form-control"> <br>
+                                        <img src="{{ asset(Auth::user()->avatar) }}" class="w-75" alt=""> <br> <br>
+                                        <input type="file" name="avatar" class="form-control"> <br>
                                     </div>
 
                                     <div class="col-md-8">
@@ -79,7 +77,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Date Joined</label>
-                                            <input type="text" class="form-control" readonly value="{{ Auth::user()->created_at }}">
+                                            <input type="text" class="form-control" readonly value="{{date('M j, Y   h:ia',strtotime(Auth::user()->created_at))}}">
                                         </div>
                                     </div>
 

@@ -50,7 +50,6 @@
                                             <option value="">--Select Role--</option>
                                             <option value="member">Member</option>
                                             <option value="admin">Admin</option>
-
                                         </select>
                                     </div>
 
@@ -59,7 +58,6 @@
                                             <option value="">--Select Ban or Un-Ban--</option>
                                             <option value="0">Un-Ban</option>
                                             <option value="1">Ban now</option>
-
                                         </select>
                                     </div>
 
@@ -67,7 +65,7 @@
                                         <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
 
-                                </form>
+                            </form>
 
                 </div>
             </div>

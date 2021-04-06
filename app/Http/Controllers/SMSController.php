@@ -20,7 +20,6 @@ class SMSController extends Controller
             return "SMS notifications sent successfully.";
         else if ($data['status'] == "error")
             return "An error occured while sending SMS notifications. ".$data['message'];
-
     }
 
     // --------------------------------------------------------------------------------------------------

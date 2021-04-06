@@ -4,6 +4,8 @@ use App\Post;
 use App\DonationEvent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
 
     $donationEvents = DonationEvent::latest()->take(3)->get();
@@ -26,7 +29,6 @@ Route::get('/', function () {
     return view('welcome')->with('donationEvents', $donationEvents)->with('albums', $albums)->with('posts', $posts);
 
 });
-
 
 
 
