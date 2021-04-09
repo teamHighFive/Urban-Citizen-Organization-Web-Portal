@@ -1,6 +1,6 @@
 
 @extends('layouts.dashboard')
-@section('title','Dashboard')
+@section('title','My Posts')
 @section('content')
 
 <div class="container" style="height:auto;min-height: 100vh">
@@ -10,13 +10,9 @@
             </div>
         @endif
 
-        <div class="card mb-3 wow fadeIn">
+        <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
-                <h2 class="mb-2 mb-sm-0 pt-1">
-                    <span>Your Blog Posts</span>
-                    <span>/</span>
-                    <a href="{{ url('/posts/create') }}">Create New</a>
-                </h2>
+                <h2><b>Your Blog Posts</b></h2>
             </div>
         </div>
 

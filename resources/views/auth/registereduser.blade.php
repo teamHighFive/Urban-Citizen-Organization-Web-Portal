@@ -10,7 +10,7 @@
             </div>
         @endif
 
-        <div class="card mb-3 wow fadeIn">
+        <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
                 <h2><b>Registered Users</b></h2>
             </div>

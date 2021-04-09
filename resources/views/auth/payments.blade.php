@@ -8,7 +8,7 @@
                 {{ session('status') }}
             </div>
         @endif
-    <div class="card mb-3 wow fadeIn">
+    <div class="card text-body bg-info mb-3 mt-2">
         <div class="card-header font-weight-bold">
             <h2><b>My Membership Payments</b></h2>
         </div>
@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card mb-3 wow fadeIn">
+            <div class="card card mb-4 wow fadeIn">
                 <div class="card-body">
                     @if(count($payments)>0)
                         <table class="table table-bordered table-striped">
@@ -42,7 +42,7 @@
                             @endforeach
                         </table>
                     @else
-                        <p>You haven't any payments.</p>
+                        <p>You have not any payments.</p>
                     @endif
                 </div>
             </div>
@@ -61,7 +61,7 @@
                                 <form action="/do-payments" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                         <div class="form-group">
-                                            <label for="">Select the year you are paying for</label>
+                                            <label for="">Select the year you are paying for,</label>
                                             <select class="form-control" name="year">
                                                 <?php
                                                 for ($year = (int)date('Y'); 1900 <= $year; $year--): ?>

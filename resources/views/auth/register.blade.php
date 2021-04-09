@@ -2,7 +2,7 @@
 
 @section('title','Register')
 @section('content')
-<div class="container" style="height:100vh">
+<div class="container" style="height:auto;min-height: 100vh">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="flash-message">
@@ -13,13 +13,13 @@
                 @endforeach
             </div>
 
-            <div class="card mb-3 wow fadeIn">
+            <div class="card text-body bg-info mb-3 mt-2">
                 <div class="card-header">
-                    <h3><b>Registration Page</b></h3>
+                    <h2><b>Registration Page</b></h2>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card bg-light mb-3">
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
@@ -73,6 +73,20 @@
                                 <input id="contact" type="phone" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact" autofocus>
 
                                 @error('contact')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Home City') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
+
+                                @error('city')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

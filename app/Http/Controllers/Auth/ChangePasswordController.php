@@ -22,7 +22,7 @@ class ChangePasswordController extends Controller
         return view('auth.passwords.change');
     }
 
-    
+
     public function changePassword(Request $request)
     {
         $this->validate($request,[
@@ -33,13 +33,14 @@ class ChangePasswordController extends Controller
         $hashedPassword = Auth::user()->password;
         if(Hash::check($request->oldpassword, $hashedPassword)){
             $user=User::find(Auth::id());
+            //get requested password and maka hashcode, then assign new password to user
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
             return redirect()->route('login')->with('status', 'Password is Changed Succesfully');
 
         }else{
-            return redirect()->back()->with('status', 'Current Password is Invalid');
+            return redirect()->back()->with('status', 'Invalid Password');
         }
     }
 }

@@ -3,6 +3,7 @@
     <head>
         @include('layouts.header')
         @yield('header')
+
     </head>
     <body>
 
@@ -17,10 +18,8 @@
 
         {{-- Main Content --}}
 
-        <main>
-
+        <main style="background-color:#e3f2fd">
             <div class="mt-5 pt-5">
-
                 @yield('content')
             </div>
         </main>

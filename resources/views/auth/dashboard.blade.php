@@ -1,6 +1,4 @@
 
-{{-- sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss --}}
-
 @extends('layouts.dashboard')
 
 @section('title','Dashboard')
@@ -17,22 +15,77 @@
                 if($user['role_as'] == 'admin'){
         ?>
 
-                    <a href="{{ url('online-conferences') }}" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-bullhorn mr-3"></i>Make Online conferences</a>
+                    
+                    <h1>Admin Dash-board</h1> <br>
 
-                    <a href="{{ url('createdonevent') }}" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-newspaper mr-3"></i>Create New Donation</a>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card border border-primary shadow-0 mb-3">
+                                <div class="card-body">
+                                  <h5 class="card-title">Online conferences</h5>
+                                  <p class="card-text">
+                                    Click here to make quick Oline conferences
+                                  </p>
+                                  <a href="{{ url('online-conferences') }}" class="btn btn-primary btn-sm">Click</a>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border border-primary shadow-0 mb-3">
+                                <div class="card-body">
+                                  <h5 class="card-title">Donation</h5>
+                                  <p class="card-text">
+                                    Click here to create new donation
+                                  </p>
+                                  <a href="{{ url('createdonevent') }}" class="btn btn-primary btn-sm">Click</a>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border border-primary shadow-0 mb-3">
+                                <div class="card-body">
+                                  <h5 class="card-title">Blog Posts</h5>
+                                  <p class="card-text">
+                                    Click here to create new blog post quckly
+                                  </p>
+                                  <a href="{{ url('/posts/create') }}" class="btn btn-primary btn-sm">Click</a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
 
-                    <a href="{{ url('/posts/create') }}" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-mail-bulk mr-3"></i>Create New Post</a>
+
 
         <?php
                 }else if($user['role_as'] == 'member'){
         ?>
-                    <h1>Dash-board</h1>
+                    <h1>Member Dash-board</h1> <br>
 
-                    <a href="{{ url('donation') }}" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fa fa-user mr-3"></i>view Donations</a>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card border border-primary shadow-0 mb-3">
+                                <div class="card-body">
+                                  <h5 class="card-title">Blog Posts</h5>
+                                  <p class="card-text">
+                                    Click here to create new blog post quckly
+                                  </p>
+                                  <a href="{{ url('/posts/create') }}" class="btn btn-primary btn-sm">Click</a>
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card border border-primary shadow-0 mb-3">
+                                <div class="card-body">
+                                  <h5 class="card-title">Donation</h5>
+                                  <p class="card-text">
+                                    Click here to create new donation
+                                  </p>
+                                  <a href="{{ url('createdonevent') }}" class="btn btn-primary btn-sm">Click</a>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
         <?php
                 }
         ?>
