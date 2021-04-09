@@ -5,18 +5,16 @@
 
 <div class="container" style="height:auto;min-height: 100vh">
 
-    <div class="card mb-4 wow fadeIn">
-      <div class="card-body d-sm-flex justify-content-between">
-        <h4 class="mb-2 mb-sm-0 pt-1">
-          <span>Registered Users-Edit role</span>
-        </h4>
-      </div>
-    </div>
 
+    <div class="card text-body bg-info mb-3 mt-2">
+        <div class="card-header font-weight-bold">
+            <h2><b>Registered Users-Edit role</b></h2>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card bg-light">
                 <div class="card-body">
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">

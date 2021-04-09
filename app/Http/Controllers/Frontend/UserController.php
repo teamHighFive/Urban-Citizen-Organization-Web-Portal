@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 //use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+// use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -18,12 +18,22 @@ class UserController extends Controller
 
     public function profileupdate(Request $request)
     {
+        $this->validate($request,[
+            'fname'=>'sometimes|string|max:255',
+            'mname'=>'sometimes|string|max:255',
+            'lname'=>'sometimes|string|max:255',
+            'contact'=>'sometimes|numeric|digits:10',
+            'city'=>'sometimes|string|max:20',
+            'avatar' => 'image|sometimes|max:5000|mimes:jpg,jpeg,bmp,svg,png'
+        ]);
+
         $user_id = Auth::user()->id;
         $user = User::findOrFail($user_id);
         $user->fname = $request->input('fname');
         $user->mname = $request->input('mname');
         $user->lname = $request->input('lname');
         $user->contact = $request->input('contact');
+        $user->city = $request->input('city');
 
         if($request->has('avatar'))
         {
@@ -38,7 +48,7 @@ class UserController extends Controller
             $user->avatar ='/images/'. $avatarname;
         }
 
-        
+
         $user->update();
         return redirect()->back()->with('status','Your Profile is Updated');
     }

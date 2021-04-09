@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.userdashboard')
 
 @section('title','Password Reset')
 @section('content')
@@ -10,14 +10,13 @@
         @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mb-3 wow fadeIn">
+            <div class="card text-body bg-info mb-3 mt-5">
                 <div class="card-header font-weight-bold">
                     <h3><b>Reset Your Password</b></h3>
                 </div>
             </div>
-            <div class="card">
 
-
+            <div class="card bg-light mb-3">
                 <div class="card-body">
                     <form method="POST" action="{{ route('passwords.update') }}">
                         @csrf

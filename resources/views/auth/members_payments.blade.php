@@ -1,9 +1,9 @@
 @extends('layouts.dashboard')
-@section('title','Dashboard')
+@section('title','Payments Details')
 @section('content')
 
 <div class="container" style="height:auto;min-height: 100vh">
-    <div class="card mb-3 wow fadeIn">
+    <div class="card text-body bg-info mb-3 mt-2">
         <div class="card-header font-weight-bold">
             <h2><b>Membership Details</b></h2>
         </div>
@@ -21,7 +21,7 @@
                                     <th>User Name</th>
                                     <th>Amount</th>
                                     <th>Membership Payment Date</th>
-                                    <th>Which year</th>
+                                    <th>Which Year</th>
 
                                 </tr>
                             </thead>
@@ -45,7 +45,7 @@
                             @endforeach
                         </table>
                     @else
-                        <p>Member haven't any payments.</p>
+                        <p>Member have not any payments.</p>
                     @endif
                 </div>
             </div>

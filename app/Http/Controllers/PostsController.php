@@ -55,9 +55,9 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
+            'title'=>'required|max:255',
             'body'=>'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999|mimes:jpg,jpeg,bmp,svg,png'
         ]);
         if($request->hasFile('cover_image')){
             //get file name with extention
@@ -81,7 +81,7 @@ class PostsController extends Controller
         $post->cover_image = $fileNameToStore;
         $post->save();
 
-        return redirect('/posts')->with('status','Post is Created successfully.');
+        return redirect('/posts')->with('status','Your Post is Created successfully.');
     }
 
     /**
@@ -124,9 +124,9 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title'=>'required',
+            'title'=>'required|max:255',
             'body'=>'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999|mimes:jpg,jpeg,bmp,svg,png'
         ]);
         if($request->hasFile('cover_image')){
             //get file name with extention

@@ -3,8 +3,6 @@
 @section('title','Posts')
 @section('content')
 
-{{-- <script src="https://cdn.tiny.cloud/1/8qpvqjbcsz9ifv2ptfvle3168jgjt47d15bzgj2szu2dylwq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
-
 <div class="container" style="height:auto;min-height: 100vh">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -12,15 +10,18 @@
             </div>
         @endif
 
-        <div class="card mb-3 wow fadeIn">
+        <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
                 <div class="row">
-                    <div class="col-md-10">
-                        <div class="card-header font-weight-bold"><h1>Posts of Organization</h1></div>
+                    <div class="col-md-9">
+                        <h1><b>Urban Citizen Organization</b></h1>
                     </div>
-                    <div class="col-md-2">
-                        <a href="/posts/create" class="btn btn-primary btn-block">Create Post</a>
-                        <a href="/viewcomments" class="btn btn-primary btn-block">comments</a>
+                    <div class="col-md-3">
+                        @if(!Auth::guest())
+                            <div class="row justify-content-center">
+                                <a href="/posts/create" class="btn btn-success btn-lg">Create New Post</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -30,12 +31,12 @@
             @foreach($posts as $post)
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card mb-3 wow fadeIn">
+                        <div class="card bg-light mb-3">
                             <div class="card-body">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <img src="{{App\User::find($post->user_id)->avatar}}" style="height:35px;width:35px;border-radius:50%;margin-right:15px" alt="" >
+                                                <img src="{{App\User::find($post->user_id)->avatar}}" style="height:50px;width:50px;border-radius:60%;margin-right:15px" alt="" >
                                                 {{App\User::find($post->user_id)->fname}} {{App\User::find($post->user_id)->mname}} <br><br>
                                             </div>
                                         </div>
@@ -49,7 +50,7 @@
                                         <br>
                                         <h2><b><a href="/posts/{{$post->id}}">{{$post->title}}</a></b></h2>
 
-                                        <p>{{substr($post->body, 0, 450) }}{{ strlen($post->body) > 450 ? '...' : "" }}</p>
+                                        <p>{!! substr($post->body, 0, 450) !!}{!! strlen($post->body) > 450 ? '...' : "" !!}</p>
                                         {{-- <p>{!! $post->body !!}</p> --}}
                                         <div class="row">
                                             <div class="col-md-8">

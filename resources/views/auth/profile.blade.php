@@ -10,7 +10,7 @@
             </div>
             @endif
 
-            <div class="card mb-3 wow fadeIn">
+            <div class="card text-body bg-info mb-3 mt-2">
                 <div class="card-header font-weight-bold">
                     <h2><b>My Profile</b></h2>
                 </div>
@@ -18,18 +18,21 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card">
+                    <div class="card bg-light mb-3">
                         <div class="card-body">
                             <form action="{{ url('my-profile-update') }}" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
 
                                     <div class="col-md-4">
-                                        <img src="{{ asset(Auth::user()->avatar) }}" class="w-75" alt=""> <br> <br>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <img src="{{ asset(Auth::user()->avatar) }}" style="height:260px;width:300px;border-radius:50%" class="w-75" alt=""> <br> <br>
                                         <input type="file" name="avatar" class="form-control"> <br>
                                     </div>
 
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                     </div>
 
                                     <div class="col-md-4">
@@ -53,14 +56,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Contact Number</label>
                                             <input type="text" name="contact" class="form-control" value="{{ Auth::user()->contact }}">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Home City</label>
+                                            <input type="text" name="city" class="form-control" value="{{ Auth::user()->city }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">E-mail Address</label>
                                             <input type="text" class="form-control" readonly value="{{ Auth::user()->email }}">

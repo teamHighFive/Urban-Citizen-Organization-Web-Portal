@@ -22,7 +22,7 @@ class UserMiddleware
             Auth::logout();
 
             if($banned == 1) {
-                $message = 'Your account has been BANNED. Please contact Administrator.';
+                $message = 'Your account has been BANNED temporary. Please contact Administrator.';
 
             }
             return redirect()->route('login')

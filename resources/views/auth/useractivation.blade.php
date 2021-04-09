@@ -9,28 +9,29 @@
         ?>
 
 
-                        @if(session('message'))
-                        <div class="alert alert-success">
-                            {{session('message')}}
-                        </div>
-                        @endif
+                @if(session('message'))
+                <div class="alert alert-success">
+                    {{session('message')}}
+                </div>
+                @endif
 
-                        <div class="card mb-3 wow fadeIn">
-                            <div class="card-header font-weight-bold">
-                                <h2><b>User Approval Page</b></h2>
-                            </div>
-                        </div>
+                <div class="card text-body bg-info mb-2 mt-2">
+                    <div class="card-header font-weight-bold">
+                        <h2><b>User Approval Page</b></h2>
+                    </div>
+                </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table class="table table-bordered table-striped">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table table-bordered table-striped">
                                     <thead class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
                                         <tr>
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Last Name</th>
+                                            <th>City</th>
                                             <th>Verfied At:</th>
                                             <th>Email</th>
                                             <th>Current Status</th>
@@ -43,6 +44,7 @@
                                             <td>{{ $user->fname }}</td>
                                             <td>{{ $user->mname }}</td>
                                             <td>{{ $user->lname }}</td>
+                                            <td>{{ $user->city }}</td>
                                             <td>{{ date('M j, Y',strtotime($user->email_verified_at)) }}</td>
                                             <td>{{ $user->email }}</td>
                                             <th>@if($user->status == 0) Not approved @else Approved @endif</th>

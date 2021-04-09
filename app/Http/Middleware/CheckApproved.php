@@ -23,15 +23,14 @@ class CheckApproved
             Auth::logout();
 
             if($user['email_verified_at']== null){
-                $message = 'Your verification mail has been sent your email. Please verify if for admin approvel...';
+                $message = 'Your verification mail has been sent to your email. Please verify it as soon as possible...';
             }elseif($not_active == 1) {
                 $message = 'Your account is waiting for our administrator approval. Please check back later. Thank You...';
             }
             return redirect()->route('login')
             ->with('status',$message)
-            ->withErrors(['email' => 'Your account still Not Actived. Please contact Administrator.']);
+            ->withErrors(['email' => 'Your account Still Not Actived. Please contact Administrator.']);
         }
-
 
         return $next($request);
     }

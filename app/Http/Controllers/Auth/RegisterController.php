@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Request;
 //use Illuminate\Http\Request;
-use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -34,7 +33,7 @@ class RegisterController extends Controller
      * @var string
      *
      */
-    
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
 
@@ -61,9 +60,10 @@ class RegisterController extends Controller
             'mname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
             'contact' => ['required', 'numeric', 'digits:10'],
+            'city' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'avatar' => ['sometimes', 'image', 'mimes:jpg,jpeg,bmp,svg,png' ,'max:5000'],
+            'avatar' => ['sometimes', 'image', 'mimes:jpg,jpeg,bmp,svg,png','max:5000'],
         ]);
     }
 
@@ -88,6 +88,7 @@ class RegisterController extends Controller
                 'mname' => $data['mname'],
                 'lname' => $data['lname'],
                 'contact' => '+94'.$str1,
+                'city' => $data['city'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'avatar' => '/images/'.  $avatarname,
@@ -100,6 +101,7 @@ class RegisterController extends Controller
             'mname' => $data['mname'],
             'lname' => $data['lname'],
             'contact' => '+94'.$str1,
+            'city' => $data['city'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
