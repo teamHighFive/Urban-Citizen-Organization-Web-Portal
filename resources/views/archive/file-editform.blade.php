@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
     <div class="container" >
         <h2 class="text-center cyan-text pt-5 mb-3">Edit file</h2>
@@ -35,24 +35,24 @@
                             </div>
                         <br>
 
-                        <a target="_blank" href="{{ asset ('uploads/files/'.$upload->type.'/' . $upload->file) }}">
-                        @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
-                                <h1 class="fas fa-file-invoice"></h1>
-                        @elseif($upload->type =='pdf')
-                                <h1 class="far fa-file-pdf"></h1>
-                        @elseif($upload->type =='zip')
-                                <h1 class="far fa-file-archive"></h1>
-                        @elseif($upload->type == 'jpg'||$upload->type == 'png'||$upload->type =='png'||$upload->type =='jpeg')
-                                <i class="fas fa-file-image">&nbsp; previuosly uploaded file</i>
-                        @elseif($upload->type == 'excel'||$upload->type == 'xlsm'||$upload->type =='xls' ||$upload->type =='xlsx')
-                                <h1 class="fas fa-excel"></h1>
-                        @elseif($upload->type == 'mkv'||$upload->type == 'mp4'||$upload->type == 'mov'||$upload->type == '3gp'
-                        ||$upload->type == 'wmv'||$upload->type == 'avi'||$upload->type == 'webm'||$upload->type == 'flv')
-                                <h1 class="fas fa-file-video"></h1>      
-                        @else
-                                <h1 class="fas fa-info"></h1>
-                        @endif
-                        </a>
+                            <a target="_blank" href="{{ asset ('uploads/files/'.$upload->type.'/' . $upload->file) }}">
+                            @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
+                                    <h1 class="fas fa-file-invoice"></h1>
+                            @elseif($upload->type =='pdf')
+                                    <h1 class="far fa-file-pdf"></h1>
+                            @elseif($upload->type =='zip')
+                                    <h1 class="far fa-file-archive"></h1>
+                            @elseif($upload->type == 'jpg'||$upload->type == 'png'||$upload->type =='png'||$upload->type =='jpeg')
+                                    <i class="fas fa-file-image">&nbsp; previuosly uploaded file</i>
+                            @elseif($upload->type == 'excel'||$upload->type == 'xlsm'||$upload->type =='xls' ||$upload->type =='xlsx')
+                                    <h1 class="fas fa-excel"></h1>
+                            @elseif($upload->type == 'mkv'||$upload->type == 'mp4'||$upload->type == 'mov'||$upload->type == '3gp'
+                            ||$upload->type == 'wmv'||$upload->type == 'avi'||$upload->type == 'webm'||$upload->type == 'flv')
+                                    <h1 class="fas fa-file-video"></h1>      
+                            @else
+                                    <h1 class="fas fa-info"></h1>
+                            @endif
+                            </a>
                                 
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" name="file" class="custom-file-input">
-                                    <label class="custom-file-label" for="inputGroupFile01">change file</label>
+                                    <label class="custom-file-label" for="inputGroupFile01">Change file</label>
                                 </div>
                             </div>
 

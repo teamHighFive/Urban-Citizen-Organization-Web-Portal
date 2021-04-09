@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
 <div class="container" style="min-height: 100vh">
     <div class="jumbotron">

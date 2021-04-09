@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
 <div class="container" style="min-height: 100vh">
     <div class="jumbotron">
@@ -12,16 +12,17 @@
     </div>
     <br><br>
 
-<table class="table table-stripped table-bordered">
+<table class="table">
 <thead class="color-block-dark teal lighten-1-color-dark z-depth-2 white-text">
     <tr>
         <th scope="col">File-ID</th>
         <th scope="col">Document details</th>
+        <th scope="col">Uploaded By</th>
         <th scope="col">Description</th>       
         <th scope="col">File <br> (click to view)</th>  
+        <th>Type</th>
         <th>Edit</th>
         <th>Delete</th>
-        <th>Download </th>
     </tr>
 </thead>
 
@@ -32,16 +33,44 @@
 
         <th> {{$item->id}}</th>
         <th> {{$item->document_details}}</th>
+        <th> {{App\User::find($item->created_by)->fname}} {{App\User::find($item->created_by)->lname}}</th>
         <th> {{$item->description}}</th>
-        <th>
-            <a target="_blank" href="{{ asset ('uploads/donate_files/'.$item->file .'/' ) }}">
-            <h1 class="fas fa-book"></h1>                   
-            </a> 
-        </th>
-        <th><a href ="/edit_don/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
-        <th><a href = "/deletedon/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
-        <th><a href = "/download/{{$item->id}}" class="btn btn-outline-secondary btn-sm"><i class="fa fa-download"></i></a></th>
+        <th>            
 
+            <a target="_blank" href="{{ asset ('uploads/donate_files'.$item->type.'/' . $item->file) }}">
+            @if($item->type == 'doc'||$item->type =='docx'||$item->type =='txt'||$item->type =='pptx')
+                    <h1 class="fas fa-file-invoice"></h1>
+            @elseif($item->type =='pdf')
+                    <h1 class="far fa-file-pdf"></h1>
+            @elseif($item->type =='zip')
+                    <h1 class="far fa-file-archive"></h1>
+            @elseif($item->type == 'jpg'||$item->type == 'png'||$item->type =='png'||$item->type =='jpeg')
+                    <h1 class="fas fa-file-image"></h1>
+            @elseif($item->type == 'excel'||$item->type == 'xlsm'||$item->type =='xls' ||$item->type =='xlsx')
+                    <h1 class="fas fa-excel"></h1>
+            @elseif($item->type == 'mkv'||$item->type == 'mp4'||$item->type == 'mov'||$item->type == '3gp'
+            ||$item->type == 'wmv'||$item->type == 'avi'||$item->type == 'webm'||$item->type == 'flv')
+                    <h1 class="fas fa-file-video"></h1>      
+            @else
+                    <h1 class="fas fa-info"></h1>
+            @endif
+            </a>
+
+            <!-- @if($item->type == 'exel')
+                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
+                    <h1 class="far fa-file-excel "></h1>
+                </a>
+
+            @endif -->
+
+            <th> {{$item->type}}</th>
+        </th>
+        @if(!Auth::guest())
+            @if (Auth::User()->id == $item->created_by)
+            <th><a href ="/edit_don/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
+            <th><a href = "/deletedon/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
+            @endif
+        @endif
     @endforeach
 </tbody>
 </table>

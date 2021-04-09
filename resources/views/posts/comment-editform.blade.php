@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Upcoming Meetings')
+@section('title','Blog')
 @section('content')
     <div class="container" >
         <h2 class="text-center cyan-text pt-5 mb-3">Edit Comment</h2>

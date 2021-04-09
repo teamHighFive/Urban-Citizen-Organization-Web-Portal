@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
     <div class="container" >
         <h2 class="text-center red-text pt-5 mb-3">Upload your extra submissions in here</h2>
@@ -10,11 +10,11 @@
             <div class="jumbotron">
                 <form action="{{ route('uploadfileexel') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                        <input type="text" name="file_Name" class="form-control my-1" placeholder="Submission file name">                        
+                        <input type="text" name="file_name" id= "file_Name" class="form-control my-1" placeholder="Submission file name">                        
 
-                        <input type="text" name="event" class="form-control my-1" placeholder="Description (optional)">
+                        <input type="text" name="Description" class="form-control my-1" placeholder="Description (optional)">
 
-                        <input type="text" name="userId" class="form-control my-1" placeholder="User ID">
+                        <!-- <input type="text" name="userId" class="form-control my-1" placeholder="User ID"> -->
                     <br>
                         
                     <br>
@@ -55,7 +55,7 @@
                         <br><br>
 
                         <div class="links">
-                            <a href="archieves">View uploded files</a>
+                            <a href="submission_table">View uploded files</a>
                         </div>
                 </form>
             </div>

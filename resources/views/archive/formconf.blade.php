@@ -3,7 +3,7 @@
 
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
 
     <div class="container" >  
@@ -24,12 +24,12 @@
 
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-signature input-prefix"></i>
-                        <input type="text" name="document_name" class="form-control my-1" placeholder="Document name or ID">
+                        <input type="text" name="document_name" class="form-control my-1" placeholder="Document name or ID" required>
                     </div>
 
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-map-marker-alt input-prefix"></i>
-                        <input type="text" name="location" class="form-control my-1" placeholder="Conference location (Online or Physical)">
+                        <input type="text" name="location" class="form-control my-1" placeholder="Conference location (Online or Physical)" required>
                     </div>
 
                     <div class="md-form input-with-pre-icon">
@@ -40,10 +40,10 @@
                         </div>                   
                     </div> 
 
-                    <div class="md-form input-with-pre-icon">
+                    <!-- <div class="md-form input-with-pre-icon">
                         <i class="fas fa-user input-prefix"></i>
                         <input type="text" name="created_by" class="form-control my-1" placeholder="Uploader's member ID">
-                    </div>
+                    </div> -->
 
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-calendar-alt input-prefix"></i>
@@ -73,7 +73,7 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" name="file" class="custom-file-input">
+                            <input type="file" name="file" class="custom-file-input" required>
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>

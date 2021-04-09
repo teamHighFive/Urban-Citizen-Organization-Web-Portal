@@ -23,7 +23,7 @@ class CreateConfFilesTable extends Migration
             $table->boolean('p_admin');
             $table->boolean('p_member');
             $table->boolean('p_visitor');
-            $table->binary('file')->nullable();
+            $table->binary('file');/*->nullable();*/
             $table->String('type');
             $table->timestamps();
         });

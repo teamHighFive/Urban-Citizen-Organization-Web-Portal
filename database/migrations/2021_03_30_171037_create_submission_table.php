@@ -14,7 +14,7 @@ class CreateSubmissionTable extends Migration
     public function up()
     {
         Schema::create('submission', function (Blueprint $table) {
-            $table->increments('sub-file_id');
+            $table->increments('id');
             $table->String('file_name');
             $table->String('location');
             $table->integer('created_by');

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title','Online Conferences')
+@section('title','Blog')
 @section('content')
 
 <table class="table table-stripped table-bordered">

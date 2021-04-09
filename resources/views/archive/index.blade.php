@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
 <div class="container" style="min-height: 100vh">
     <div class="jumbotron">
@@ -12,7 +12,7 @@
     </div>
     <br><br>
 
-<table class="table table-stripped table-bordered">
+<table class="table">
 <thead class="thead-dark">
     <tr>
         <th scope="col">File ID</th>
@@ -29,7 +29,7 @@
 
 <tbody>
     @foreach ($upload as $item)
-    <tr>
+    
     <tr>
 
         <th> {{$item->id}}</th>
@@ -66,11 +66,13 @@
 
             <th> {{$item->type}}</th>
         </th>
-        @if (Auth::User()->id == $item->created_by)
-        <th><a href ="/edit/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
-        <th><a href = "/delete/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
-        @endif
-
+        @guest
+        @else
+            @if (Auth::User()->id == $item->created_by)
+            <th><a href ="/edit/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
+            <th><a href = "/delete/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
+            @endif
+        @endguest
     </tr>
     @endforeach
 </tbody>
