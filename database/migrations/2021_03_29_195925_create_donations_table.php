@@ -19,9 +19,9 @@ class CreateDonationsTable extends Migration
             $table->float('amount', 10, 2);
             $table->integer('donation_event_id');
             $table->string('donner_fullname');
-            $table->string('donner_address');
-            $table->string('donner_country');
-            $table->string('donner_city');
+            $table->string('donner_address')->nullable();
+            $table->string('donner_country')->nullable();
+            $table->string('donner_city')->nullable();
             $table->string('is_member');
             $table->string('is_success')->default('no');
             $table->string('donner_phone');

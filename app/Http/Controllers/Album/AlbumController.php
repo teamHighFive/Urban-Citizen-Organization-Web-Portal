@@ -25,8 +25,9 @@ class AlbumController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function index(){
 
+        
             //Get all Albums
-            $albums=Album::orderBy('title','asc')->get();
+            $albums=Album::orderBy('created_at', 'desc')->paginate(7);
             
 
 
@@ -81,7 +82,7 @@ class AlbumController extends Controller
             
             
             //Rederect
-            return redirect('/gallery')->with('success','Album created.');
+            return redirect('/gallery')->with('message','Album created.');
 
     }
 
@@ -126,7 +127,7 @@ class AlbumController extends Controller
         $this->validate($request,[
             'title'=>'required|max:100',
             'description'=>'required|max:255',
-            'coverimage'=>'required|image|mimes:jpeg,jpg|max:2048',
+            'coverimage'=>'nullable|image|mimes:jpeg,jpg|max:2048',
         ]);
 
 

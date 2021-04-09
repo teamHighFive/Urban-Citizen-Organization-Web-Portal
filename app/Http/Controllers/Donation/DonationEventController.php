@@ -12,10 +12,10 @@ class DonationEventController extends Controller{
     // --------------------------------------------------------------------------------------------------
     // Create a new controller instance.
     // --------------------------------------------------------------------------------------------------
-    // public function __construct()
-    // {
-    //     $this->middleware('auth',['except'=> ['index','show']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=> ['index','show']]);
+    }
 
     // --------------------------------------------------------------------------------------------------
     // Display a listing of the Donation event
@@ -24,8 +24,8 @@ class DonationEventController extends Controller{
     public function index(){
 
         //Get all Donation Events
-        $donevents=DonationEvent::get();
-        $donevents=DonationEvent::simplePaginate(3);
+    
+        $donevents=DonationEvent::orderBy('created_at', 'desc')->paginate(7);
 
 
 
@@ -81,7 +81,8 @@ class DonationEventController extends Controller{
         
         
         //Rederect
-        return redirect('/donation')->with('success','Donation Event created.');
+        return redirect('/donation')->with('message','Donation Event created.');
+        
 
 }
 
@@ -116,7 +117,7 @@ public function update(Request $request, $id){
      $this->validate($request,[
         'name'=>'required|max:100',
         'description'=>'required|max:255',
-        'coverimage'=>'required|image|mimes:jpeg,jpg|max:2048',
+        'coverimage'=>'image|mimes:jpeg,jpg|max:2048',
     ]);
 
 

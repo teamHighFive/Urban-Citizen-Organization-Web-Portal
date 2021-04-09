@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Album;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Photo;
+use App\Album;
 
 class PhotoController extends Controller
 {
@@ -14,10 +16,10 @@ class PhotoController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function __construct()
     {
-        $this->middleware('auth',['except'=> ['index','show']]);
+        $this->middleware('auth',['except'=> ['create','details']]);
     }
     
-    private $table='photos';
+    // private $table='photos';
 
     //show create form
     public function create($album_id )
@@ -26,61 +28,65 @@ class PhotoController extends Controller
         return view ('gallery.photo.create',compact('album_id'));
     }
 
+    
 
     //Store photo
-    public function store(Request  $request)
+    function store(Request  $request)
     {
 
-        //Get request Input
-        $album_id=$request->input('album_id');
-        $caption=$request->input('caption');
-        $description=$request->input('description');
-        $location=$request->input('location');
-        $image=$request->file('image');
+      //validate inputs
+    //   $this->validate($request,[
+    //     'caption'=>'max:100',
+    //     'description'=>'max:255',
+    //     'location'=>'max:100',
+    //     'image'=>'required|image|mimes:jpeg,jpg|max:2048',
+    // ]);
 
+        
+  if($request->hasFile('image')) {
+    $images = $request->file('image');
+    foreach($images as $image) {
+      $filename = $image->getClientOriginalName();
+      $extension=$image->getClientOriginalExtension();
+      $fileNameToStore = $filename.'_'.time().'.'.$extension;
+      $path = $image;
+      $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
 
-        //check whether image is upload
-        if($image){
+      $photo = new Photo();
 
-            $image_filename=$image->getClientOriginalName();
-            $image-> move(public_path('/album-template/images'),$image_filename);
-
-        }
-
-        else{
-            $image_filename='noimage.jpg';
-        }
-
-        //insert photo the datbase
-        DB::table($this->table)->insert(
-        [
-        'caption'=>$caption,
-        'description'=>$description,
-        'location'=>$location,
-        'album_id'=>$album_id,
-        'image'=>$image_filename,
-
-
-        ]
-        );
-
-
-
-        //Rederect
-        //  return \Redirect::route('album.show',array('id'=>$album_id));
-         return \Redirect::route('album.show',$album_id);
-
-        // return \Redirect::back();
-
+      $photo->album_id = $request->input('album_id');
+      $photo->caption = $request->input('caption');
+      $photo->description = $request->input('description');
+      $photo->location = $request->input('location');
+      $photo->image=$fileNameToStore;
+      $photo->save();
+     
     }
+  }
+
+
+  return \Redirect::route('album.show',$photo->album_id)->with('message','Photo added to album.');
+  
+      
+        
+}
+
     //Show Photo details
     public function details($id)
     {
         //Get photo
-       $photo=DB::table($this->table)->where('id',$id)->first();
+       $photo=Photo::table($this->table)->where('id',$id)->first();
 
        //Render Template
         return view('gallery.photo.details',compact('photo'));
+
+    }
+
+    public function destroy($id){
+
+        $photos=Photo::find($id);
+        $photos->delete($id);
+        return \Redirect::route('album.show',$photos->album_id);
 
     }
 }

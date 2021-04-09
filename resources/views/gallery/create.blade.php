@@ -2,6 +2,16 @@
 
 @section('content')
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="container" style="min-height: 100vh">
     @if (Auth::check())
     <h3 class="mt-5 py-5">Create New Album</h3>
@@ -24,4 +34,5 @@
     </div>
 
 </div>
+
 @endsection

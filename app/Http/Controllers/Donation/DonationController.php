@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Donation;
 
+use App\DonationEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -39,8 +40,11 @@ class DonationController extends Controller
     }
 
 
-public function index(){
-        return view('donation.form');
+public function index($id){
+        $donationEvents = DonationEvent::where('id', $id)->get();
+        
+        
+        return view('donation.form')->with('donationEvents', $donationEvents);
 }
 
 public function payWithpaypal(Request $request){
@@ -48,11 +52,8 @@ public function payWithpaypal(Request $request){
     $request->validate([
         'donner_fullname' => 'required',
         'amount' => 'required',
-        'donner_country' => 'required',
-        'donner_city' => 'required',
-        'donner_address' => 'required',
-        'donner_phone' => 'required',
-        'donner_email' => 'required',
+        'donner_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+        'donner_email' => 'required|email',
         'is_member'=>'required',
         'payment_method' => 'required',
     ]);

@@ -21,6 +21,12 @@
 
 @section('content')
 
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
+
 <div class="container" style="height:auto;min-height: 100vh">
     <div class="row">
 
@@ -35,7 +41,6 @@
 
 		</div>
 	</div>
-
 
 	@if (Auth::check())
 	<div class="container-fluid py-2">
@@ -85,7 +90,7 @@
 						<form action="/donation/{{$donevent->id}}" method="POST">
 							@method('DELETE')
 							@csrf
-							<input type="submit" value="DELETE" class="btn btn-danger">
+							<input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-danger">
 						</form>
 					</div>
 					@endif 

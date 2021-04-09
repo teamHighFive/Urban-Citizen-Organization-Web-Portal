@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
+
+
 <div class="container" style="min-height: 100vh">
     <section>
 
@@ -43,44 +50,37 @@
 
     </section>
 
-
-        <section>
-
-
-            <div class="row row-cols-1 row-cols-md-3 mt-5">
+    <div class="row row-cols-1 row-cols-md-3 mt-5">
             @foreach($albums as $album)
 
-            
                 <div class="col mb-4">
                     <div class="card">
                         <div class="view overlay">
                             <img class="card-img-top" src="gallery-resourses/images/{{$album->coverimage}}" alt="snow" />
-
                         </div>
 
                         <div class="card-body">
                             <h4 class="card-title">{{$album->title}}</h4>
                             <p class="card-text">{{$album->description}}</p>
+                            <p><p>Created date:  {{ date("d F Y",strtotime($album->created_at)) }} at {{ date("g:ha",strtotime($album->created_at)) }}</p></p>
                             <a class="btn btn-primary" href="album/show/{{$album->id}}" role="button">See more</a>
                             {{-- <a class="btn btn-danger" href="album/delete/{{$album->id}}" role="button">Delete</a> --}}
 
                             @if (Auth::check())
                             <a class="btn aqua-gradient waves-effect" href="/album/edit/{{$album->id}}" role="button">Edit</a>
-                            
                             <div>
                                     <form action="/album/{{$album->id}}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <input type="submit" value="DELETE" class="btn btn-danger">
+                                        <input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-danger">
                                     </form>
                             </div>
                             @endif
                             
-                            
-
                         </div>
                     </div>
                 </div>
+           
             
 
 
@@ -94,5 +94,11 @@
             @endif
 
        
-    </div>
+</div>
 @endsection
+<script>
+    $('.addAttr').click(function() {
+    var id = $(this).data('id');   
+    $('#id').val(id); 
+    } );
+</script>

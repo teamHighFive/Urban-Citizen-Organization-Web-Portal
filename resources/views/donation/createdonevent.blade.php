@@ -2,6 +2,17 @@
 
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
 
 <div class="container" style="min-height: 100vh">
     <h3 class="mt-5 py-5">Create New Donation Event</h3>
@@ -16,7 +27,7 @@
                 {!!Form::label('description','Description') !!}
                 {!!Form::text('name',$value=null,$attributes=['placeholder'=>'Event Description','name'=>'description','required']) !!}
                 {!!Form::label('coverimage') !!}
-                {!!Form::file('coverimage')!!}
+                {!!Form::file('coverimage',$attributes=['placeholder'=>'img','name'=>'coverimage','required'])!!}
                 {!!Form::submit('Submit',$attributes=['class'=>'btn btn-primary btn-sm '])!!}
                 {!!Form::close() !!}
 

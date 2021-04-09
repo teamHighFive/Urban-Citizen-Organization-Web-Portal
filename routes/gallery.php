@@ -31,11 +31,15 @@ Route::get('/album/edit/{id}','Album\AlbumController@edit');
 
 Route::get('/album/create','Album\AlbumController@create');
 
-Route::get('/test', function()
-{
-    return view('gallery.test');
-});
+// Route::post('/add-photo-to-album', function()
+// {
+//     dd();
+// });
 
 Route::get('/photo/create/{id}', 'Album\PhotoController@create');
 
 Route::get('/photo/details/{id}', 'Album\PhotoController@details');
+
+Route::get('/photo/{id}', 'Album\PhotoController@destroy');
+
+
