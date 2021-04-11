@@ -58,13 +58,19 @@
                                     <td>
                                             <a href="{{ url('role-edit/'.$item->id) }}" class="badge badge-pill btn-primary px-3 py-2">EDIT</a>
                                     </td>
-                                    <td>
+                                    @if(Auth::user()->id == $item->id)
+                                        <td>
+                                            <label class="badge badge-pill btn-success px-3 py-2">My Page</label>
+                                        </td>
+                                    @else
+                                        <td>
                                             <form action="{{ url('role-delete/'.$item->id) }}" method="post">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                 <button type="submit" class="badge badge-pill btn-danger px-3 py-2">DELETE</button>
                                             </form>
-                                    </td>
+                                        </td>
+                                    @endif
                                     <td><a href="/view-payments/{{$item->id}}" class="badge badge-pill btn-primary px-3 py-2">View</a></td>
                                 </tr>
                                 @endforeach

@@ -203,8 +203,8 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">{{$post->title}}</h5>
                                                 <p class="card-text">
-                                                    {{-- {!! $post->body !!} --}}
-                                                    {!! substr($post->body, 0, 450) !!}{!! strlen($post->body) > 450 ? '...' : "" !!}
+                                                    {{ $post->body }}
+                                                    {{-- {!! substr($post->body, 0, 450) !!}{!! strlen($post->body) > 450 ? '...' : "" !!} --}}
                                                 </p>
                                                 <a href="/posts/{{$post->id}}" class="btn btn-primary">View Post</a>
                                             </div>

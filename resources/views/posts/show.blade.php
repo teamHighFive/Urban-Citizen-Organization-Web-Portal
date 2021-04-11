@@ -11,9 +11,21 @@
 
         <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
-                <h2 class="mb-2 mb-sm-0 pt-1">
-                    <span>{{$post->title}}</span>
-                </h2>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <h2><b>{{$post->title}}</b></h2>
+                    </div>
+                    @if(!Auth::guest())
+                        @if(Auth::user()->id == $post->user_id)
+                                <div class="col-md-3">
+                                    <div class="row justify-content-center">
+                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-success btn-lg">Edit Your post</a>
+                                    </div>
+                                </div>
+                        @endif
+                    @endif
+                </div>
             </div>
         </div>
 
@@ -29,48 +41,48 @@
                 <br><br>
                 <div class="col-md-12">
                         <div class="row justify-content-center">
-                            <p class="lead">{!! $post->body !!}</p>
+                            <p class="lead">{{ $post->body }}</p>
                         </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3 wow fadeIn">
-                    <div class="card-header font-weight-bold">
-                        Edit or Delete your post...
-                    </div>
+        {{-- @if(!Auth::guest())
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3 wow fadeIn">
+                        <div class="card-header font-weight-bold">
+                            Edit or Delete your post...
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                    @if(Auth::user()->id == $post->user_id)
+                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                            {!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
+                                            {{Form::hidden('_method','DELETE')}}
+                                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                            {!!Form::close()!!}
+                                    @endif
 
-                    <div class="card-body">
-                        <div class="row">
-                            @if(!Auth::guest())
-                                @if(Auth::user()->id == $post->user_id)
-                                    <a href="/posts/{{$post->id}}/edit" class="btn btn-success btn-sm">Edit</a>
-                                        {!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
-                                        {{Form::hidden('_method','DELETE')}}
-                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
-                                        {!!Form::close()!!}
-                                @endif
-                            @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="card mb-3 wow fadeIn">
+                <div class="col-md-6">
+                    <div class="card mb-3 wow fadeIn">
 
-                    <div class="card-header font-weight-bold">
-                        Put your comments here...
+                        <div class="card-header font-weight-bold">
+                            Put your comments here...
+                        </div>
+
+                        <div class="card-body">
+
+                        </div>
+
                     </div>
-
-                    <div class="card-body">
-
-                    </div>
-
                 </div>
             </div>
-        </div>
+        @endif --}}
 </div>
 @endsection
