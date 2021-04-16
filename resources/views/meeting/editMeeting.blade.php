@@ -1,6 +1,15 @@
 @extends('layouts.main')
 
 @section('title','Edit Meeting')
+@section('header')
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+        alert(msg);
+        }
+    </script>
+@endsection
 @section('content')
         <div class="container"  style="min-height: 100VH">
             <h1 class="text-center cyan-text pt-5 mb-3">Edit Meeting</h1>

@@ -4,7 +4,7 @@
 @section('title','Dashboard')
 @section('content')
 
-<div class="container" style="height:100vh; width:90;">
+<div class="container" style="height:100vh; width:90%;">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
@@ -24,7 +24,7 @@
                                 <div class="card-body">
                                   <h5 class="card-title">Online conferences</h5>
                                   <p class="card-text">
-                                    Click here to make quick Oline conferences
+                                    Click here to make quick Online conferences
                                   </p>
                                   <a href="{{ url('online-conferences') }}" class="btn btn-primary btn-sm">Click</a>
                                 </div>

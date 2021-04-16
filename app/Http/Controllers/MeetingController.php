@@ -117,7 +117,7 @@ class MeetingController extends Controller
     // View upcoming meetings and join. This is only visible to admins
     // --------------------------------------------------------------------------------------------------
     public function viewUpcomingMeetings(){
-        $meetings = Meeting::all()->where('approval', 1)->where('status',1)->where('date', '>=', date("Y-m-d"));
+        $meetings = Meeting::all()->where('approval', 1)->where('status',1)->where('date', '>=', date("Y-m-d")) ->sortBy('date');
         return view('meeting.upcomingMeetings')->with('meetings', $meetings);
     }
 
@@ -178,6 +178,19 @@ class MeetingController extends Controller
     // Edit a meeting
     // --------------------------------------------------------------------------------------------------
     public function editMeeting(Request $request){
+
+        if($request->date == date("Y-m-d")){
+            $ThatTime =$request->time;
+            $todaydate = date('Y-m-d');
+            $time_now=mktime(date('G'),date('i'),date('s'));
+            $NowisTime=date('G:i:s',$time_now);
+            if($NowisTime >= $ThatTime) {
+                if($request->time < date('H:i:s')){
+                    return redirect('/edit-meeting/'.$request->id)->with('alert', 'Invalid Time');
+                }
+            }
+        }
+
         $meeting = Meeting::find($request->id);
 
         $meeting->meeting_description = $request->description;
