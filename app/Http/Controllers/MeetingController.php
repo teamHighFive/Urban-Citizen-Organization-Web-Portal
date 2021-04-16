@@ -26,7 +26,11 @@ class MeetingController extends Controller
         $meeting = $this->create($request);
 
         $url = $this->join($meeting->meeting_id, 'moderator', $meeting->creator); //Send meeting ID and user type(attendee, moderator) as parameters
-        return redirect($url);
+        if($url == 'Can\'t create room! please contact our administrator.'){
+            return redirect()->back()->with('error', $url);
+        }else{
+            return redirect($url);
+        }
 
     }
 
@@ -37,7 +41,7 @@ class MeetingController extends Controller
 
         $meeting = $this->create($request);
 
-        return redirect()->back()->with('alert', "Successfully scheduled the meeting.");
+        return redirect()->back()->with('status', "Successfully scheduled the meeting.");
 
     }
 
@@ -136,14 +140,22 @@ class MeetingController extends Controller
         if($userType == 'moderator'){
             if($password == $meeting->moderator_password){
                 $url = $this->join($meetingID, $userType, $userName);
-                return redirect($url);
+                if($url == 'Can\'t create room! please contact our administrator.'){
+                    return redirect()->back()->with('error', $url);
+                }else{
+                    return redirect($url);
+                }
             }
             else
                 return 'Invalid Password';
         }elseif($userType == 'attendee'){
             if($password == $meeting->attendee_password){
                 $url = $this->join($meetingID, $userType, $userName);
-                return redirect($url);
+                if($url == 'Can\'t create room! please contact our administrator.'){
+                    return redirect()->back()->with('error', $url);
+                }else{
+                    return redirect($url);
+                }
             }
             else
                 return 'Invalid Password';

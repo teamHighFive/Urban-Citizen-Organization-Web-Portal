@@ -1,17 +1,18 @@
 @extends('layouts.main')
 
 @section('title','Online Conferences')
-@section('header')
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-        alert(msg);
-        }
-    </script>
-@endsection
 @section('content')
         <div class="container"  style="min-height: 100VH">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
             <h1 class="text-center cyan-text pt-5 mb-3">Online Conferencing</h1>
             <div class="row">
                 <div class="col-md-6">

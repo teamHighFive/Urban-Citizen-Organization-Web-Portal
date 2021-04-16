@@ -1,14 +1,5 @@
 @extends('layouts.dashboard')
-@section('title','Dashboard')
-@section('header')
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-        alert(msg);
-        }
-    </script>
-@endsection
+@section('title','All Meetings')
 @section('content')
 
 <div class="container" style="height:100vh">
