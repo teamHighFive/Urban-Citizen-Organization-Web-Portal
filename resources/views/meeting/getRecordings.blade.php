@@ -1,14 +1,5 @@
 @extends('layouts.dashboard')
 @section('title','Dashboard')
-@section('header')
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-        alert(msg);
-        }
-    </script>
-@endsection
 @section('content')
 
 <div class="container" style="height:100vh">
@@ -18,6 +9,16 @@
         ?>
 
                 <div class="container" style="min-height: 100VH; width:90%;">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="jumbotron">
                         @if($message == "UNSUCCESS")
                             <h3 class="text-center">Somthing went wrong. Please try again later.</h3>

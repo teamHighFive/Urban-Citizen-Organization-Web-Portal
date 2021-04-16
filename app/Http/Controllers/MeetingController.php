@@ -226,7 +226,7 @@ class MeetingController extends Controller
     public function deleteMeeting($meeting_id){
         $meeting = Meeting::find($meeting_id);
         $meeting->delete();
-        return redirect()->back()->with('alert', 'Meeting deleted successfully.');
+        return redirect()->back()->with('status', 'Meeting deleted successfully.');
     }
 
 
@@ -269,10 +269,10 @@ class MeetingController extends Controller
 
         if ($response->getReturnCode() == 'SUCCESS') {
             // recording deleted
-            return redirect()->back()->with('alert', 'Recording deleted successfully.');
+            return redirect()->back()->with('status', 'Recording deleted successfully.');
         } else {
             // something wrong
-            return redirect()->back()->with('alert', 'Something went wrong. Please try again later.');
+            return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
         }
     }
 }
