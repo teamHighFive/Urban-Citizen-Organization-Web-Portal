@@ -77,7 +77,8 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
 
     /// View all meetings with edit/delete options
     Route::get('/view-meetings', function(){
-        $meetings = Meeting::all();
+        // $meetings = Meeting::all();
+        $meetings = DB::table('meetings')->paginate(5);
         return view('meeting.viewMeetings')->with('meetings', $meetings);
     });
 

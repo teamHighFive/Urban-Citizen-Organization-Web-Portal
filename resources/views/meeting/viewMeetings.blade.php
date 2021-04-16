@@ -7,7 +7,7 @@
                 $user = Auth::user();
                 if($user['role_as'] == 'admin'){
         ?>
-                <div class="container" style="min-height: 100VH; width:90%;">
+                <div class="container" style="min-height: 100VH;">
                     <div class="jumbotron">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -15,6 +15,7 @@
                             </div>
                         @endif
                         <h3 class="text-center">All Meetings</h3>
+                        <span>{{$meetings->links()}}</span>
                         <table class="table">
                             <tr>
                                 <th>Meeting ID</th>
@@ -35,7 +36,6 @@
                                 <td><a class="btn btn-danger btn-sm" href="/delete-meeting/{{$meeting->meeting_id}}">Delete</a></td>
                             </tr>
                             @endforeach
-
                         </table>
                     </div>
                 </div>
