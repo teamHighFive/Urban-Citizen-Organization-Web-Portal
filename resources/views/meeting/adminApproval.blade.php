@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title','Dashboard')
+@section('title','Admin Approval')
 @section('content')
 
 <div class="container" style="height:100vh">
@@ -10,7 +10,7 @@
 
 
 
-            <div class="container" style="min-height: 100VH">
+            <div class="container" style="min-height: 100VH; width:90%;">
                 <div class="jumbotron">
                     <h3 class="text-center">Pending for Admin Approval</h3>
                     <table class="table">

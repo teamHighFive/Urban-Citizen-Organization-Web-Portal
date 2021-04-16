@@ -24,7 +24,7 @@
 
         {{-- Main Content --}}
 
-        <main style="padding-left: 250px">
+        <main style="padding-left: 280px">
             <div class="mt-5 pt-5">
                 @yield('content')
             </div>

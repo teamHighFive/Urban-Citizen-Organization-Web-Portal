@@ -81,6 +81,11 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
         return view('meeting.viewMeetings')->with('meetings', $meetings);
     });
 
+    Route::get('/view-meeting-details/{meeting_id}', function($meeting_id){
+        $meeting = Meeting::find($meeting_id);
+        return view('meeting.viewMeetingDetails')->with('meeting', $meeting);
+    });
+
     Route::get('/edit-meeting/{meeting_id}', function($meeting_id){
         $meeting = Meeting::find($meeting_id);
         return view('meeting.editMeeting')->with('meeting', $meeting);

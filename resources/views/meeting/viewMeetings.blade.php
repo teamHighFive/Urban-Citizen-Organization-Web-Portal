@@ -22,6 +22,7 @@
                                 <th>Description</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
 
                             @foreach ($meetings as $meeting)
@@ -29,6 +30,7 @@
                                 <td>{{$meeting->meeting_id}}</td>
                                 <td>{{$meeting->meeting_name}}</td>
                                 <td>{{$meeting->meeting_description}}</td>
+                                <td><a class="btn btn-success btn-sm" href="/view-meeting-details/{{$meeting->meeting_id}}">View</a></td>
                                 <td><a class="btn btn-info btn-sm" href="/edit-meeting/{{$meeting->meeting_id}}">Edit</a></td>
                                 <td><a class="btn btn-danger btn-sm" href="/delete-meeting/{{$meeting->meeting_id}}">Delete</a></td>
                             </tr>
