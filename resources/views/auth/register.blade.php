@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.userdashboard')
 
 @section('title','Register')
 @section('content')

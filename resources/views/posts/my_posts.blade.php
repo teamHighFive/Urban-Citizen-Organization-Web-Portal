@@ -27,8 +27,8 @@
                                         <th>Title</th>
                                         <th>View Post</th>
                                         <th>Created At</th>
-                                        <th>Delete Post</th>
                                         <th>Edit Post</th>
+                                        <th>Delete Post</th>
                                     </tr>
                                 </thead>
                                 @foreach($posts as $post)
@@ -41,14 +41,20 @@
                                                 <th>{{$post->title}}</a></th>
                                                 <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
                                                 <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
+
+                                                @if(Auth::user()->id == $post->user_id)
+                                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
+                                                    @else
+                                                    <th>
+                                                        <button type="button" class="btn btn-primary btn-sm" disabled>Not Allowed</button>
+                                                    </th>
+                                                @endif
+
                                                 <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
                                                     {{Form::hidden('_method','DELETE')}}
                                                     {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
                                                     {!!Form::close()!!}
                                                 </th>
-                                                @if(Auth::user()->id == $post->user_id)
-                                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
-                                                @endif
                                             </tr>
                                         <?php
                                         }else if($user['role_as'] == 'member'){
@@ -58,12 +64,12 @@
                                                     <th>{{$post->title}}</a></th>
                                                     <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
                                                     <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
+                                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
                                                     <th>{!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
                                                         {{Form::hidden('_method','DELETE')}}
                                                         {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
                                                         {!!Form::close()!!}
                                                     </th>
-                                                    <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a></th>
                                                 </tr>
                                             @endif
                                         <?php

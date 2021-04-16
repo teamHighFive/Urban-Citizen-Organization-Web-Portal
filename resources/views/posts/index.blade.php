@@ -50,7 +50,7 @@
                                         <br>
                                         <h2><b><a href="/posts/{{$post->id}}">{{$post->title}}</a></b></h2>
 
-                                        <p>{!! substr($post->body, 0, 450) !!}{!! strlen($post->body) > 450 ? '...' : "" !!}</p>
+                                        <p>{{ substr($post->body, 0, 350) }}{{ strlen($post->body) > 350 ? '...' : "" }}</p>
                                         {{-- <p>{!! $post->body !!}</p> --}}
                                         <div class="row">
                                             <div class="col-md-8">

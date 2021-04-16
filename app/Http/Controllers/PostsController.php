@@ -109,7 +109,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if(auth()->user()->id !== $post->user_id){
-            return redirect('/posts')->with('status', 'Unauthorized page.');
+            return redirect('/posts')->with('status', 'Unauthorized page. You can not edit.');
         }
         return view('posts.edit')->with('post',$post);
     }
@@ -162,12 +162,16 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
+        // if(auth()->user()->id !== $post->user_id){
+        //     return redirect('/posts')->with('error', 'Unauthorized page.');
+        // }
+
         if($post->cover_image !== 'noimage.jpg'){
             Storage::delete('public/cover_images/'.$post->cover_image);
         }
 
         $post->delete();
-        return redirect()->back()->with('status','Post is Removed successfully.');
+        return redirect('/posts')->with('status','Post is Removed successfully.');
     }
 
     
