@@ -29,11 +29,11 @@ class SMSController extends Controller
 
         $recipientsArr = $request->recipients;
         if($recipientsArr == null){
-            return redirect()->back()->with('alert', "No cantact was selected.");
+            return redirect()->back()->with('error', "No cantact was selected.");
         }
         $recipients = implode(",", $recipientsArr);
         $response = $this->send($recipients, $request->text);
-        return redirect()->back()->with('alert', $response);
+        return redirect()->back()->with('status', $response);
 
     }
 

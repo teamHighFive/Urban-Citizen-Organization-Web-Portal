@@ -3,12 +3,6 @@
 @section('title','SMS')
 @section('header')
     <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-        alert(msg);
-        }
-
         function c(){
             var recipients = document.getElementsByName('recipients[]');
             console.log(recipients.length);
@@ -28,6 +22,16 @@
 @endsection
 @section('content')
     <div class="container" style="min-height:100VH; width:90%;">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="jumbotron">
             <h3 class="text-center">SMS Gateway</h3>
             <div class="row">
