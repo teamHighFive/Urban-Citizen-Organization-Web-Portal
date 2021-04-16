@@ -1,21 +1,22 @@
 @extends('layouts.main')
 
 @section('title','Edit Meeting')
-@section('header')
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-        alert(msg);
-        }
-    </script>
-@endsection
 @section('content')
         <div class="container"  style="min-height: 100VH">
             <h1 class="text-center cyan-text pt-5 mb-3">Edit Meeting</h1>
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="jumbotron">
                         <h3 class="text-center">{{$meeting->meeting_name}}</h3>
                         <form action="/save-edited-meeting" method="POST">

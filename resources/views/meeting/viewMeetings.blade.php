@@ -16,9 +16,13 @@
                 $user = Auth::user();
                 if($user['role_as'] == 'admin'){
         ?>
-
                 <div class="container" style="min-height: 100VH; width:90%;">
                     <div class="jumbotron">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <h3 class="text-center">All Meetings</h3>
                         <table class="table">
                             <tr>

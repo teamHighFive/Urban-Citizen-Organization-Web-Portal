@@ -149,7 +149,9 @@ class PostsController extends Controller
         }
         $post->save();
 
-        return redirect('/posts')->with('status','Your Post is Updated successfully.');
+        $comments = Comment::all()->where('post_id', $post->id);
+        $post = Post::find($post->id);
+        return view('posts.show')->with('post',$post)->with('comments',$comments)->with('status','Your Post is Updated successfully.');
     }
 
     /**

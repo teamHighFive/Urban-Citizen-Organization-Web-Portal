@@ -186,7 +186,7 @@ class MeetingController extends Controller
             $NowisTime=date('G:i:s',$time_now);
             if($NowisTime >= $ThatTime) {
                 if($request->time < date('H:i:s')){
-                    return redirect('/edit-meeting/'.$request->id)->with('alert', 'Invalid Time');
+                    return redirect('/edit-meeting/'.$request->id)->with('error', 'Invalid Time');
                 }
             }
         }
@@ -205,7 +205,7 @@ class MeetingController extends Controller
         //End If
 
         $meeting->save();
-        return redirect('/view-meetings')->with('alert', 'Updates saved successfully.');
+        return redirect('/view-meetings')->with('status', 'Updates saved successfully.');
     }
 
     // --------------------------------------------------------------------------------------------------

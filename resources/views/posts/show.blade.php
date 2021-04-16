@@ -3,11 +3,6 @@
 @section('title','View Post')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
 
         <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
@@ -16,6 +11,13 @@
                     <div class="col-md-8">
                         <h2><b>{{$post->title}}</b></h2>
                     </div>
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
                     @if(!Auth::guest())
                         @if(Auth::user()->id == $post->user_id)
                             <div class="row justify-content-center">
