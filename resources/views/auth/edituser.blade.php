@@ -45,17 +45,15 @@
 
                                     <div class="form-group">
                                         <select name="roles" class="form-control">
-                                            <option value="">--Select Role--</option>
-                                            <option value="member">Member</option>
-                                            <option value="admin">Admin</option>
+                                            <option value="member" <?php if($user_roles->role_as == 'member') echo 'selected';?>>Member</option>
+                                            <option value="admin" <?php if($user_roles->role_as == 'admin') echo 'selected';?>>Admin</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <select name="isban" class="form-control">
-                                            <option value="">--Select Ban or Un-Ban--</option>
-                                            <option value="0">Un-Ban</option>
-                                            <option value="1">Ban now</option>
+                                            <option value="0" <?php if($user_roles->isban == '0') echo 'selected';?>>Not Banned</option>
+                                            <option value="1" <?php if($user_roles->isban == '1') echo 'selected';?>>Banned</option>
                                         </select>
                                     </div>
 
