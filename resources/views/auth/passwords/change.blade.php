@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card text-body bg-info mb-3 mt-5">
-                <div class="card-header font-weight-bold">
+                <div class="card-header font-weight-bold text-white">
                     <h3><b>Reset Your Password</b></h3>
                 </div>
             </div>

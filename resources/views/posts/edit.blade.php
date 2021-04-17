@@ -4,7 +4,7 @@
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
     <div class="card text-body bg-info mb-3 mt-2">
-        <div class="card-header font-weight-bold">
+        <div class="card-header font-weight-bold text-white">
             <h1><b>Edit Post</b></h1>
         </div>
     </div>

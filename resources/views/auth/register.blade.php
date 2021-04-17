@@ -14,7 +14,7 @@
             </div>
 
             <div class="card text-body bg-info mb-3 mt-2">
-                <div class="card-header">
+                <div class="card-header text-white">
                     <h2><b>Registration Page</b></h2>
                 </div>
             </div>

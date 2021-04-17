@@ -13,7 +13,7 @@
         <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-9 text-white">
                         <h1><b>Urban Citizen Organization</b></h1>
                     </div>
                     <div class="col-md-3">
@@ -55,8 +55,7 @@
                                         <br>
                                         <h2><b><a href="/posts/{{$post->id}}">{{$post->title}}</a></b></h2>
 
-                                        <p>{{ substr($post->body, 0, 350) }}{{ strlen($post->body) > 350 ? '...' : "" }}</p>
-                                        {{-- <p>{!! $post->body !!}</p> --}}
+                                        <p>{{ str_limit($post->body, $limit = 150, $end = '...') }}</p>
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <a href="/posts/{{$post->id}}" class="btn btn-primary">Read More</a>

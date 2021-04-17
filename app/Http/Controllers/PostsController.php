@@ -173,7 +173,12 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/posts')->with('status','Post is Removed successfully.');
+        //TODO - handle return url
+        if(redirect()->back()->getTargetUrl() == 'http://127.0.0.1:8000/my_posts'){
+            return redirect('/my_posts')->with('status','Post is Removed successfully.');
+        }else{
+            return redirect('/posts')->with('status','Post is Removed successfully.');
+        }
     }
 
     

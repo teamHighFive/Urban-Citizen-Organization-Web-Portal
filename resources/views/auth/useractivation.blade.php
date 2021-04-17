@@ -16,7 +16,7 @@
                 @endif
 
                 <div class="card text-body bg-info mb-2 mt-2">
-                    <div class="card-header font-weight-bold">
+                    <div class="card-header font-weight-bold text-white">
                         <h2><b>User Approval Page</b></h2>
                     </div>
                 </div>

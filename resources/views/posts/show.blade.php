@@ -5,7 +5,7 @@
 <div class="container" style="height:auto;min-height: 100vh">
 
         <div class="card text-body bg-info mb-3 mt-2">
-            <div class="card-header font-weight-bold">
+            <div class="card-header font-weight-bold text-white">
 
                 <div class="row">
                     <div class="col-md-8">

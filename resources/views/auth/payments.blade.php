@@ -9,7 +9,7 @@
             </div>
         @endif
     <div class="card text-body bg-info mb-3 mt-2">
-        <div class="card-header font-weight-bold">
+        <div class="card-header font-weight-bold text-white">
             <h2><b>My Membership Payments</b></h2>
         </div>
     </div>
