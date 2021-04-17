@@ -5,40 +5,38 @@
 <div class="container" style="min-height: 100vh">
     <div class="jumbotron">
     <h2 style = "font-family:Georgia, serif ;font-weight:600; text-align: center;">
-     Document Archieves
+    Submissions
     </h2>
     <div class="links">
-        <a href="/choose-type"><button type="submit" name="submit" class="btn btn-light btn-sm">Upload another file</button></a>
+        <a href="/arc"><button type="submit" name="submit" class="btn btn-light btn-sm">Check archives &emsp;<i class="fas fa-file"></i></button></a>
     </div>
     <br><br>
 
 <table class="table">
-<thead class="thead-dark">
+<thead class="color-block default-color z-depth-2 white-text">
     <tr>
-        <th scope="col">File ID</th>
-        <th scope="col">File Name</th>
-        <th scope="col">Uploaded By</th>
-        <th scope="col">Event Name</th>
+        <th scope="col">Submission file name</th>
+        <th scope="col">Uploaded by</th>
+        <th scope="col">Owner ID</th>
+        <th scope="col">Description</th>        
         <th scope="col"><strong>File </strong><br> (click to view)</th>
-        <th scope="col">File Type</th>
-        <th>Edit</th>
-        <th>Delete</th>
-
+        <th scope="col">Remove</th>
+        
     </tr>
 </thead>
 
 <tbody>
     @foreach ($upload as $item)
-    
+    <tr>
     <tr>
 
-        <th> {{$item->id}}</th>
-        <th> {{$item->document_name}}</th>
-        <th> {{App\User::find($item->created_by)->fname}} {{App\User::find($item->created_by)->lname}}</th>
-        <th> {{$item->event}}</th>
+        <th> {{$item->file_name}}</th>        
+        <th> {{App\User::find($item->created_by)->fname}} {{App\User::find($item->created_by)->lname}} </th>
+        <th> {{$item->created_by}}</th>
+        <th> {{$item->Description}}</th>
         <th>            
 
-            <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
+            <a target="_blank" href="{{ asset ('uploads/files/exel'.$item->type.'/' . $item->file) }}">
             @if($item->type == 'doc'||$item->type =='docx'||$item->type =='txt'||$item->type =='pptx')
                     <h1 class="fas fa-file-invoice"></h1>
             @elseif($item->type =='pdf')
@@ -57,22 +55,8 @@
             @endif
             </a>
 
-            <!-- @if($item->type == 'exel')
-                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
-                    <h1 class="far fa-file-excel "></h1>
-                </a>
+        <th><a href = "/deletsubmissionfile/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Remove </a> </th>
 
-            @endif -->
-
-            <th> {{$item->type}}</th>
-        </th>
-        @guest
-        @else
-            @if (Auth::User()->id == $item->created_by || Auth::User()->role_as == "admin")
-            <th><a href ="/edit/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
-            <th><a href = "/delete/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
-            @endif
-        @endguest
     </tr>
     @endforeach
 </tbody>

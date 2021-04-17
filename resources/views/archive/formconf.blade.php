@@ -3,7 +3,7 @@
 
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Archives')
 @section('content')
 
     <div class="container" >  
@@ -24,12 +24,12 @@
 
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-signature input-prefix"></i>
-                        <input type="text" name="document_name" class="form-control my-1" placeholder="Document name or ID">
+                        <input type="text" name="document_name" class="form-control my-1" placeholder="Document name or ID" required>
                     </div>
 
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-map-marker-alt input-prefix"></i>
-                        <input type="text" name="location" class="form-control my-1" placeholder="Conference location (Online or Physical)">
+                        <input type="text" name="location" class="form-control my-1" placeholder="Conference location (Online or Physical)" required>
                     </div>
 
                     <div class="md-form input-with-pre-icon">
@@ -40,10 +40,10 @@
                         </div>                   
                     </div> 
 
-                    <div class="md-form input-with-pre-icon">
+                    <!-- <div class="md-form input-with-pre-icon">
                         <i class="fas fa-user input-prefix"></i>
                         <input type="text" name="created_by" class="form-control my-1" placeholder="Uploader's member ID">
-                    </div>
+                    </div> -->
 
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-calendar-alt input-prefix"></i>
@@ -73,7 +73,7 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" name="file" class="custom-file-input">
+                            <input type="file" name="file" class="custom-file-input" required>
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>
@@ -85,29 +85,6 @@
 
                     <button type="submit" name="submit" class="btn btn-deep-orange" data-toggle="modal" data-target="#centralModal">Upload</button>
 
-                    <!--button alert pop up code-->  
-                        <!-- Central Modal Medium -->
-                        <div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <!--Content-->
-                            <div class="modal-content">
-                                <!--Header-->
-                                <div class="modal-body">
-                                <br>
-                                <center><button type="button" class="btn btn-success btn-lg">Uploaded</button></center>
-                                </div>
-                                <!-- Footer
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Done</button>                   
-                                </div> -->
-                            </div>
-                                <!--/.Content-->
-                            </div>
-                            </div>
-
-
-                        <!--button alert pop up code end--> 
-                    <br><br>
                     <div class="links">
                         <a href="conffiles-arc">View uploded files</a>
                     </div>

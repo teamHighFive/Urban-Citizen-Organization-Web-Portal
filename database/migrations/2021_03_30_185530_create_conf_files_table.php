@@ -14,16 +14,16 @@ class CreateConfFilesTable extends Migration
     public function up()
     {
         Schema::create('conf_files', function (Blueprint $table) {
-            $table->increments('document_id');
+            $table->increments('id');
             $table->String('document_name');
             $table->String('location');
-            $table->String('description');
+            $table->String('description')->nullable();
             $table->integer('created_by');
             $table->String('event')->nullable();
             $table->boolean('p_admin');
             $table->boolean('p_member');
             $table->boolean('p_visitor');
-            $table->binary('file')->nullable();
+            $table->binary('file');/*->nullable();*/
             $table->String('type');
             $table->timestamps();
         });

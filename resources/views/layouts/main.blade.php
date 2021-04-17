@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         @include('layouts.header')
-        @yield('header')
+        @yield('header')                
     </head>
     <body>
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventFilesTable extends Migration
+class CreateAnnouncementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateEventFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_files', function (Blueprint $table) {
+        Schema::create('announcement', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('event');
-            $table->String('document_name');
-            $table->String('location');
-            $table->integer('created_by');
-            $table->String('description')->nullable();
+            $table->String('topic');
+            $table->String('body');
+            $table->integer('user_id');
             $table->boolean('p_admin');
             $table->boolean('p_member');
             $table->boolean('p_visitor');
-            $table->binary('file');
-            $table->String('type');
+            $table->date('schedulestart');
+            $table->date('scheduleend');            
             $table->timestamps();
         });
     }
@@ -36,6 +34,6 @@ class CreateEventFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_files');
+        Schema::dropIfExists('announcement');
     }
 }

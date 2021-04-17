@@ -14,7 +14,7 @@ class DonationFile extends Migration
     public function up()
     {
         Schema::create('donation_files', function (Blueprint $table) {
-            $table->increments('document_id');
+            $table->increments('id');
             $table->String('document_details');
             $table->String('location');
             $table->integer('created_by');

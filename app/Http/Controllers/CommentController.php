@@ -28,7 +28,7 @@ class CommentController extends Controller
         $upload->user_id = Auth::user()->id;
 
         $upload->save();
-        return redirect('/posts')->with('upload',$upload);
+        return redirect()->back();//->with('upload',$upload);
         
     }
 
@@ -77,9 +77,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editcomment($id,$post_id)
     {
-        //
+        {
+            $comment = Comment::find($id);
+            return view('posts.comment-editform')->with('comment',$comment)->with('post_id',$post_id);
+        }
     }
 
     /**
@@ -89,9 +92,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatecomment(Request $request, $id, $post_id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->comment_body = $request->input('comment_body');
+        $comment->update();
+        return app('App\Http\Controllers\PostsController')->show($post_id);
     }
 
     /**
@@ -100,8 +106,13 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deletecomment($id,$post_id)
     {
-        //
+        {
+            $comment = Comment::find($id);
+            $comment->delete();
+            return app('App\Http\Controllers\PostsController')->show($post_id);
+
+        }
     }
 }
