@@ -10,7 +10,7 @@
             <div class="jumbotron">
                 <form action="{{ route('uploadfileexel') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                        <input type="text" name="file_name" id= "file_Name" class="form-control my-1" placeholder="Submission file name">                        
+                        <input type="text" name="file_name" id= "file_Name" class="form-control my-1" placeholder="Submission file name" required>                        
 
                         <input type="text" name="Description" class="form-control my-1" placeholder="Description (optional)">
 
@@ -23,7 +23,7 @@
                                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" name="file" class="custom-file-input">
+                                <input type="file" name="file" class="custom-file-input" required>
                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
                         </div>
@@ -33,27 +33,7 @@
                         <!-- <button type="submit" name="submit" class="btn btn-primary mt-3">Upload</button> -->
                         <button type="submit" name="submit" class="btn btn-danger waves-effect waves-light" data-toggle="modal" data-target="#centralModal">Upload</button>
 
-                        <!--button alert pop up code-->  
-                            <!-- Central Modal Medium -->
-                            <div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                <!--Content-->
-                                <div class="modal-content">
-                                    <!--Header-->
-                                    <div class="modal-body">
-                                    <br>
-                                    <center><button type="button" class="btn btn-success btn-lg">Uploaded</button></center>
-                                    </div>
-                                    <!-- Footer
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Done</button>                   
-                                    </div> -->
-                                </div>
-                                    <!--/.Content-->
-                                </div>
-                                </div>
-                        <br><br>
-
+          
                         <div class="links">
                             <a href="submission_table">View uploded files</a>
                         </div>

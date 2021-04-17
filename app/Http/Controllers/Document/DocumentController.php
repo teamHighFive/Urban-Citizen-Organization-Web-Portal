@@ -538,7 +538,17 @@ public function store_conffiles(Request $request)
 //------------------------------------------------------------------------------------------------------------------
     public function announcements()
     {
-        $upload = Announcement::all();
+        $upload = Announcement::all()->where('p_visitor', 1)->where('schedulestart', '<=', date('Y-m-d'))->where('scheduleend', '>=', date('Y-m-d'));
+        if(Auth::guest()){
+            $upload = Announcement::all()->where('p_visitor', 1)->where('schedulestart', '<=', date('Y-m-d'))->where('scheduleend', '>=', date('Y-m-d'));
+        }else {
+            $userType = Auth::user()->role_as;
+            if($userType == 'admin'){
+                $upload = Announcement::all()->where('schedulestart', '<=', date('Y-m-d'))->where('scheduleend', '>=', date('Y-m-d'));
+            }else if($userType == 'member'){
+                $upload = Announcement::all()->where('p_member', 1)->where('schedulestart', '<=', date('Y-m-d'))->where('scheduleend', '>=', date('Y-m-d'));
+            }
+        }
         return view('announcement.basicview ')->with('upload',$upload);
     }
 

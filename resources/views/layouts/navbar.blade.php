@@ -6,25 +6,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">            
-            <li class="nav-item dropdown">
-                <span
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-expanded="false"
-                href="/"
-                >
-                Home & Basics
-                </span>
-                <!-- Dropdown menu -->
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/">Home</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/announcement">Announcements</a></li>
-                </ul>
+        <ul class="navbar-nav mr-auto"> 
+            <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+            </li>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/#about">About Us</a>
@@ -74,12 +59,15 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/arc"><i class="far fa-file-alt"></i>&nbsp; Documents</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="/event-arc"><i class="fas fa-file-pdf"></i>&nbsp; Events shedules and documents</a></li>
+                <li><a class="dropdown-item" href="/eventfiles-arc"><i class="fas fa-file-pdf"></i>&nbsp; Events shedules and documents</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="/conffiles-arc"><i class="far fa-file-pdf"></i>&nbsp; Conferences schedules and documents</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="/upload_exel"><i class="fas fa-cloud-upload-alt"></i>&nbsp; Extra immeadiate submissions</a></li>
                 </ul>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/announcement">Announcements</a>
             </li>
 
             {{-- By theekshana start --}}

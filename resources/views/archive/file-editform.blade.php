@@ -69,7 +69,7 @@
                             <br><br>
 
                             <div class="links">
-                                <a href="table">View uploded files</a>
+                                <a href="/seperated-arc">View uploded files</a>
                             </div>
                     </form>
                 </div>

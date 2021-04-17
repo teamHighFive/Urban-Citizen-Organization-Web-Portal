@@ -23,13 +23,13 @@ Route::get('/donatfiles-arc', 'Document\DocumentController@table_donate_files');
 Route::get('/conffiles-arc', 'Document\DocumentController@table_conf_files');
 Route::get('/post-arc', 'Document\DocumentController@table_post_files');
 Route::get('/eventfiles-arc', 'Document\DocumentController@table_event_files');
+Route::get('/announcement', 'Document\DocumentController@announcements');
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
 
 Route::get('/submission_table', 'Document\DocumentController@table_submission_files');
 Route::get('/form', function () {return view('announcement\Announceform');});
 Route::post('/submit', 'Document\DocumentController@storeann')->name('submit');
-Route::get('/announcement', 'Document\DocumentController@announcements');
 Route::get('/deleteann/{id}','Document\DocumentController@announcementdelete');
 
 

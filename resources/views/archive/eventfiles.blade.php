@@ -70,7 +70,7 @@
             <th> {{$item->type}}</th>
         </th>
         @if(!Auth::guest())
-            @if (Auth::User()->id == $item->created_by)
+            @if (Auth::User()->id == $item->created_by || Auth::User()->role_as == "admin")
             <th><a href ="/editeventfile/{{$item->id}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i> </a></th>
             <th><a href = "/deleteeventfile/{{$item->id}}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a> </th>
             @endif

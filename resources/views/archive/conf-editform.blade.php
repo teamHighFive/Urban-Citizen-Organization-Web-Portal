@@ -67,7 +67,7 @@
                         <div class="col-md-4"></div>
                     </div>
                 <br>
-                        <a target="_blank" href="{{ asset ('uploads/conf_files/'.$upload->type.'/' . $upload->file) }}">
+                        <a target="_blank" href="{{ asset ('uploads/conf_files'.$upload->type.'/' . $upload->file) }}">
                         @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
                                 <h1 class="fas fa-file-invoice"></h1>
                         @elseif($upload->type =='pdf')
