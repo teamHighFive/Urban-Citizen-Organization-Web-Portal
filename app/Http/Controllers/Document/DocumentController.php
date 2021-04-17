@@ -15,6 +15,7 @@ use App\Conf_files;
 use App\Post;
 use App\Eventfiles;
 use App\Submission;
+use App\Announcement;
 
 
 
@@ -201,7 +202,7 @@ public function store_conffiles(Request $request)
         return view('archive.uploadform_exel')->with('success',$filename);
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
     public function table_submission_files()
     {
         $upload = Submission::all();
@@ -514,4 +515,41 @@ public function store_conffiles(Request $request)
         }
 
 
+   
+
+//------------------------------------------------------------------------------------------------------------------
+        public function storeann(Request $request)
+        {
+
+            $upload =new Announcement();
+            $upload->topic = $request->input('topic');
+            $upload->body = $request->input('body');            
+            $upload->user_id = Auth::user()->id;            
+            $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
+            $upload->p_member = $request->input('permissionmember') != null ? true : false;
+            $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+            $upload->schedulestart = $request->input('schedulestart');
+            $upload->scheduleend = $request->input('scheduleend');
+
+            $upload->save();
+            return view('announcement.Announceform')->with('upload',$upload);
+        }
+
+//------------------------------------------------------------------------------------------------------------------
+    public function announcements()
+    {
+        $upload = Announcement::all();
+        return view('announcement.basicview ')->with('upload',$upload);
     }
+
+//------------------------------------------------------------------------------------------------------------------
+
+    public function announcementdelete($primary)
+            {
+                $upload = Announcement::find($primary);
+                $upload->delete();
+                return redirect('/announcement')->with('upload',$upload);
+            }
+
+
+}

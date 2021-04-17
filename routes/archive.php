@@ -14,6 +14,7 @@ use App\Http\Controllers\DocumentController;
 */
 
 Route::get('/arc', function () {return view('archive\basic');});
+//Route::get('/ann', function () {return view('announcement\basicview');});
 
 Route::get('/seperated-arc', 'Document\DocumentController@table_seperated_files');
 Route::get('/gallery-arc', 'Document\DocumentController@table_gallery_files');
@@ -24,7 +25,14 @@ Route::get('/post-arc', 'Document\DocumentController@table_post_files');
 Route::get('/eventfiles-arc', 'Document\DocumentController@table_event_files');
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
+
 Route::get('/submission_table', 'Document\DocumentController@table_submission_files');
+Route::get('/form', function () {return view('announcement\Announceform');});
+Route::post('/submit', 'Document\DocumentController@storeann')->name('submit');
+Route::get('/announcement', 'Document\DocumentController@announcements');
+Route::get('/deleteann/{id}','Document\DocumentController@announcementdelete');
+
+
 });
 
 // Route::get('/archieves', function () {

@@ -62,12 +62,12 @@
                                         <i class="fas fa-pencil-alt input-prefix">&nbsp; Share your idea using comment</i><br>                                        
                                         <div class="md-form input-with-pre-icon">
                                             <i class="fas fa-signature input-prefix"></i>
-                                            <input type="text" name="comment_body" id="comment_body" rows="4" class="form-control my-1" placeholder="type here..">
+                                            <input type="text" name="comment_body" id="comment_body" rows="4" class="form-control my-1" placeholder="type here.." required>
                                         </div>
                                     </div>   
                                 </div>    
                                 <div class="col-md-10">              
-                                    <button type="submit" id="submit" class="btn btn-info btn-sm">Add</button>
+                                    <button type="submit" id="submit" class="badge badge-pill btn-info px-4 py-2">Add</button>
                                 </div>
                             </div>
                         </div>                    
