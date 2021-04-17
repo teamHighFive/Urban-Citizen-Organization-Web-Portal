@@ -6,19 +6,19 @@
     </head>
     <body>
 
-        {{-- Navigation --}}
+        <!-- {{-- Navigation --}} -->
         <header>
             @include('layouts.navbar')
         </header>
 
-        {{-- Main Content --}}
+        <!-- {{-- Main Content --}} -->
         <main>
             <div class="container mt-5 pt-5">
                 @yield('content')
             </div>
         </main>
 
-        {{-- Footer and Scripts  --}}
+        <!-- {{-- Footer and Scripts  --}} -->
         @include('layouts.footer')
         
 

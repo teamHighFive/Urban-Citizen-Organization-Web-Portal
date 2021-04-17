@@ -5,30 +5,33 @@
         @yield('header')
     </head>
     <body>
-        {{-- Navigation --}}
-            <header>
-                    @include('layouts.navbar')
-                <?php
-                $user = Auth::user();
-                if($user['role_as'] == 'admin'){
-                    ?>
-                    @include('layouts.sidebar')
-                    <?php
-                }else if($user['role_as'] == 'member'){
-                    ?>
-                    @include('layouts.usersidebar')
-                    <?php
-                }
-                ?>
+        <!-- {{-- Navigation --}} -->
+        <header>
+            @include('layouts.navbar')
+            <?php
+            $user = Auth::user();
+            if($user['role_as'] == 'admin'){
+            ?>
+                @include('layouts.sidebar')
+            <?php
+            }else if($user['role_as'] == 'member'){
+            ?>
+                @include('layouts.usersidebar')
+            <?php
+            }
+            ?>
             </header>
 
-        {{-- Main Content --}}
+        <!-- {{-- Main Content --}} -->
 
         <main style="padding-left: 280px">
             <div class="mt-5 pt-5">
                 @yield('content')
             </div>
         </main>
+
+        <!-- {{-- Footer and Scripts  --}} -->
+        @include('layouts.footer')
 
     </body>
 </html>
