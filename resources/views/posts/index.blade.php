@@ -31,13 +31,18 @@
             @foreach($posts as $post)
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card bg-light mb-3">
+                        <div class="card mb-3">
                             <div class="card-body">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <img src="{{App\User::find($post->user_id)->avatar}}" style="height:50px;width:50px;border-radius:60%;margin-right:15px" alt="" >
-                                                {{App\User::find($post->user_id)->fname}} {{App\User::find($post->user_id)->mname}} <br><br>
+                                                @if(App\User::find($post->user_id) == null)
+                                                    <img src="/images/unregisteredUser.jpg" style="height:50px;width:50px;border-radius:60%;margin-right:15px" alt="" >
+                                                    User is not available <br><br>
+                                                @else
+                                                    <img src="{{App\User::find($post->user_id)->avatar}}" style="height:50px;width:50px;border-radius:60%;margin-right:15px" alt="" >
+                                                    {{App\User::find($post->user_id)->fname}} {{App\User::find($post->user_id)->mname}} <br><br>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="row">

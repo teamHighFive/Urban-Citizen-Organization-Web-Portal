@@ -33,8 +33,8 @@
                                                         <h5 class="card-title">{{ $item->fname }} {{ $item->mname }} {{ $item->lname }} (User ID : {{$item->id}})</h5>
                                                     </div>
                                                     <div class="col-lg-5 d-flex justify-content-end">
-                                                        <a href="{{ url('role-edit/'.$item->id) }}" class="btn btn-primary btn-sm mx-2">EDIT</a>
-                                                        <a href="/view-payments/{{$item->id}}" class="btn btn-primary btn-sm">View Payment History</a>
+                                                        <a href="{{ url('role-edit/'.$item->id) }}" class="btn btn-primary mx-2">EDIT</a>
+                                                        <a href="/view-payments/{{$item->id}}" class="btn btn-primary">View Payment History</a>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -51,12 +51,12 @@
                                                             @endif
                                                         </p>
                                                         @if(Auth::user()->id == $item->id)
-                                                            <button type="button" class="btn btn-success btn-sm" disabled>My Account</button>
+                                                            <button type="button" class="btn btn-success" disabled>My Account</button>
                                                         @else
                                                             <form action="{{ url('role-delete/'.$item->id) }}" method="post">
                                                                     {{ csrf_field() }}
                                                                     {{ method_field('DELETE') }}
-                                                                <button type="submit" class="btn btn-danger px-3 py-2">DELETE</button>
+                                                                <button type="submit" class="btn btn-danger">DELETE</button>
                                                             </form>
                                                         @endif
                                                         

@@ -10,11 +10,28 @@
             </div>
         @endif
 
+        <?php
+        $user = Auth::user();
+        if($user['role_as'] == 'admin'){
+        ?>
         <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold">
-                <h2><b>Your Blog Posts</b></h2>
+                <h2><b>Blog Posts</b></h2>
             </div>
         </div>
+
+        <?php
+        }else if($user['role_as'] == 'member'){
+        ?>
+
+        <div class="card text-body bg-info mb-3 mt-2">
+            <div class="card-header font-weight-bold">
+                <h2><b>My Blog Posts</b></h2>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
 
         <div class="row">
             <div class="col-md-12">

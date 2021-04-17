@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="card bg-light mb-3">
+            <div class="card mb-3">
                 <div class="card-body">
                     <form method="POST" action="{{ route('passwords.update') }}">
                         @csrf

@@ -88,7 +88,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Contact Number</label>
-                                            <input type="text" name="contact" class="form-control @error('contact') is-invalid @enderror" value="{{ Auth::user()->contact }}" required>
+                                            <input type="text" name="contact" class="form-control @error('contact') is-invalid @enderror" value="0{{substr( Auth::user()->contact, 3)}}" required>
                                             @error('contact')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

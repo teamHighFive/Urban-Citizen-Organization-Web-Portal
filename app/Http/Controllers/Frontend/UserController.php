@@ -27,12 +27,14 @@ class UserController extends Controller
             'avatar' => 'image|sometimes|max:5000|mimes:jpg,jpeg,bmp,svg,png'
         ]);
 
+        $str1 = substr($request->input('contact'), 1);
+
         $user_id = Auth::user()->id;
         $user = User::findOrFail($user_id);
         $user->fname = $request->input('fname');
         $user->mname = $request->input('mname');
         $user->lname = $request->input('lname');
-        $user->contact = $request->input('contact');
+        $user->contact = "+94".$str1;
         $user->city = $request->input('city');
 
         if($request->has('avatar'))

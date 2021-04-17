@@ -18,7 +18,7 @@
 
         {{-- Main Content --}}
 
-        <main style="background-color:#e3f2fd">
+        <main style="background-color:#ddd">
             <div class="mt-5 pt-5">
                 @yield('content')
             </div>
