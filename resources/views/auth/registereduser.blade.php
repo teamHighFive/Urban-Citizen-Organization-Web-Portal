@@ -22,59 +22,51 @@
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
-                            <thead class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>First Name</th>
-                                    <th>Middle Name</th>
-                                    <th>Last Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>isban/unban</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                    <th>Payments History</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 @foreach ($users as $item)
-                                <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->fname }}</td>
-                                    <td>{{ $item->mname }}</td>
-                                    <td>{{ $item->lname }}</td>
-                                    <td>{{ $item->contact }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <th>{{ $item->role_as }}</th>
-
-                                    <td>
-                                        @if($item->isban == '0')
-                                                <label class="badge badge-pill btn-primary px-3 py-2">Not Banned</label>
-                                        @elseif($item->isban == '1')
-                                            <label class="badge badge-pill btn-danger px-3 py-2">Banned</label>
-                                        @endif
-                                    </td>
-                                    <td>
-                                            <a href="{{ url('role-edit/'.$item->id) }}" class="badge badge-pill btn-primary px-3 py-2">EDIT</a>
-                                    </td>
-                                    @if(Auth::user()->id == $item->id)
+                                    <tr>
                                         <td>
-                                            <label class="badge badge-pill btn-success px-3 py-2">My Page</label>
+                                            <div class="card">
+                                            <div class="card-body">
+                                                <div class="row note note-info">
+                                                    <div class="col-lg-7">
+                                                        <h5 class="card-title">{{ $item->fname }} {{ $item->mname }} {{ $item->lname }} (User ID : {{$item->id}})</h5>
+                                                    </div>
+                                                    <div class="col-lg-5 d-flex justify-content-end">
+                                                        <a href="{{ url('role-edit/'.$item->id) }}" class="btn btn-primary btn-sm mx-2">EDIT</a>
+                                                        <a href="/view-payments/{{$item->id}}" class="btn btn-primary btn-sm">View Payment History</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <br>
+                                                        <p class="card-text"><b>Contact Number : </b>{{ $item->contact }}</p>
+                                                        <p class="card-text"><b>Email : </b>{{ $item->email }}</p>
+                                                        <p class="card-text"><b>Role : </b>{{ $item->role_as }}</p>
+                                                        <p class="card-text"><b>Is Banned : </b>
+                                                            @if($item->isban == '0')
+                                                                <label class="badge badge-pill btn-primary px-3 py-2">Not Banned</label>
+                                                            @elseif($item->isban == '1')
+                                                                <label class="badge badge-pill btn-danger px-3 py-2">Banned</label>
+                                                            @endif
+                                                        </p>
+                                                        @if(Auth::user()->id == $item->id)
+                                                            <button type="button" class="btn btn-success btn-sm" disabled>My Account</button>
+                                                        @else
+                                                            <form action="{{ url('role-delete/'.$item->id) }}" method="post">
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('DELETE') }}
+                                                                <button type="submit" class="btn btn-danger px-3 py-2">DELETE</button>
+                                                            </form>
+                                                        @endif
+                                                        
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            </div>
                                         </td>
-                                    @else
-                                        <td>
-                                            <form action="{{ url('role-delete/'.$item->id) }}" method="post">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-                                                <button type="submit" class="badge badge-pill btn-danger px-3 py-2">DELETE</button>
-                                            </form>
-                                        </td>
-                                    @endif
-                                    <td><a href="/view-payments/{{$item->id}}" class="badge badge-pill btn-primary px-3 py-2">View</a></td>
-                                </tr>
+                                    </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
