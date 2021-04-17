@@ -2,9 +2,6 @@
 @section('header')
     <script>
         function copyToClipboard(id) {
-            // document.getElementById(id).select();
-            // document.execCommand('copy');
-            // alert(document.getElementById(id).value);
             var copyText = document.getElementById(id);
 
             /* Select the text field */

@@ -18,7 +18,7 @@
                             <th>Meeting ID</th>
                             <th>Meeting Name</th>
                             <th>Description</th>
-                            <th>Approvement</th>
+                            <th>Approval</th>
                             <th>Rejection</th>
                         </tr>
 
@@ -28,7 +28,7 @@
                             <td>{{$meeting->meeting_name}}</td>
                             <td>{{$meeting->meeting_description}}</td>
                             <td><a class="btn btn-info btn-sm" href="/approve-meeting/{{$meeting->meeting_id}}">Approve</a></td>
-                            <td><a class="btn btn-info btn-sm" href="/reject-meeting/{{$meeting->meeting_id}}">Reject</a></td>
+                            <td><a class="btn btn-danger btn-sm" href="/reject-meeting/{{$meeting->meeting_id}}">Reject</a></td>
                         </tr>
                         @endforeach
 
