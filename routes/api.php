@@ -32,3 +32,9 @@ Route::get('/post-clap-count/{id}',function($id){
     $post->update();
     return ['clapCount'=>$post->clap_count];
 });
+
+Route::get('/get-clap-count/{id}',function($id){
+
+    $post = Post::find($id);
+    return ['clapCount'=>$post->clap_count];
+});

@@ -69,12 +69,59 @@
         <hr>
 
         <div class="card mb-3 wow fadeIn">
+                <i class="fas fa-sign-language"></i>
+                
+                <div id="clapCount"></div>
+                <script>
+                    
+                    function getClapCount(){
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status == 200) {
+
+                                // let data = this.responseText;
+                                data = JSON.parse(this.responseText);
+                                console.log(data.clapCount);
+                                
+                                document.getElementById("clapCount").innerHTML  =  data.clapCount;
+                                
+                            
+                            }
+                        };
+                        xmlhttp.open("GET", 'http://127.0.0.1:8000/api/get-clap-count/1', true);//generating  get method link
+                        xmlhttp.send();
+                        }
+
+                        function updateClapCount(){
+                            var xmlhttp = new XMLHttpRequest();
+                            xmlhttp.onreadystatechange = function() {
+                            if (this.readyState === 4 && this.status == 200) {
+
+                                    // let data = this.responseText;
+                                    data = JSON.parse(this.responseText);
+                                    console.log(data.clapCount);
+                                    
+                                    document.getElementById("clapCount").innerHTML  =  data.clapCount;
+                                    
+                                
+                                }
+                            };
+                            xmlhttp.open("GET", 'http://127.0.0.1:8000/api/post-clap-count/1', true);//generating  get method link
+                            xmlhttp.send();
+                        }
+
+                        getClapCount();
+                </script>
+                <button onClick="updateClapCount()">Clap</button>
+                
             <form action="/storecomment/{{$post->id}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}  
+                
                 <div class="card-body">  
                     <div class="row">
                         <div class="col-md-12">                  
                             <div class="form-outline">
+
                                 <i class="fas fa-pencil-alt input-prefix">&nbsp; Share your idea using comment</i><br>                                        
                                 <div class="md-form input-with-pre-icon">
                                     <i class="fas fa-signature input-prefix"></i>
