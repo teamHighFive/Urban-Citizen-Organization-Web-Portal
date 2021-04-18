@@ -56,8 +56,6 @@
                         var since = document.getElementById("schedulestart").value ;
                         var to = document.getElementById("scheduleend").value ;
 
-                        
-
                         if(since != "" && to != ""){
                              since = new Date(since);
                              to = new Date(to);
