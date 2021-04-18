@@ -48,6 +48,51 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
+
+                        
+                            <script>
+                    
+                                function getClapCount(){
+                                    var xmlhttp = new XMLHttpRequest();
+                                    xmlhttp.onreadystatechange = function() {
+                                    if (this.readyState === 4 && this.status == 200) {
+
+                                            // let data = this.responseText;
+                                            data = JSON.parse(this.responseText);
+                                            console.log(data.clapCount);
+                                            
+                                            document.getElementById("clapCount").innerHTML  =  data.clapCount;
+                                            
+                                        
+                                        }
+                                    };
+                                    xmlhttp.open("GET", 'http://127.0.0.1:8000/api/get-clap-count/1', true);//generating  get method link
+                                    xmlhttp.send();
+                                    }
+
+                                    function updateClapCount(){
+                                        var xmlhttp = new XMLHttpRequest();
+                                        xmlhttp.onreadystatechange = function() {
+                                        if (this.readyState === 4 && this.status == 200) {
+
+                                                // let data = this.responseText;
+                                                data = JSON.parse(this.responseText);
+                                                console.log(data.clapCount);
+                                                
+                                                document.getElementById("clapCount").innerHTML  =  data.clapCount;
+                                                
+                                            
+                                            }
+                                        };
+                                        xmlhttp.open("GET", 'http://127.0.0.1:8000/api/post-clap-count/1', true);//generating  get method link
+                                        xmlhttp.send();
+                                    }
+
+                                    getClapCount();
+                        </script>
+                        <div class="row">
+                        <button class="badge badge-pill btn-warning px-3 py-2" onClick="updateClapCount()"><span id="clapCount"></span>&emsp;<i class="fas fa-sign-language"></i> &emsp; Clap </button>
+                        </div>
                             <div class="row justify-content-center mt-2">
                                 <img style="height: 250px;" src="/storage/cover_images/{{$post->cover_image}}" alt="">
                             </div>
@@ -69,50 +114,9 @@
         <hr>
 
         <div class="card mb-3 wow fadeIn">
-                <i class="fas fa-sign-language"></i>
                 
-                <div id="clapCount"></div>
-                <script>
-                    
-                    function getClapCount(){
-                        var xmlhttp = new XMLHttpRequest();
-                        xmlhttp.onreadystatechange = function() {
-                        if (this.readyState === 4 && this.status == 200) {
-
-                                // let data = this.responseText;
-                                data = JSON.parse(this.responseText);
-                                console.log(data.clapCount);
-                                
-                                document.getElementById("clapCount").innerHTML  =  data.clapCount;
-                                
-                            
-                            }
-                        };
-                        xmlhttp.open("GET", 'http://127.0.0.1:8000/api/get-clap-count/1', true);//generating  get method link
-                        xmlhttp.send();
-                        }
-
-                        function updateClapCount(){
-                            var xmlhttp = new XMLHttpRequest();
-                            xmlhttp.onreadystatechange = function() {
-                            if (this.readyState === 4 && this.status == 200) {
-
-                                    // let data = this.responseText;
-                                    data = JSON.parse(this.responseText);
-                                    console.log(data.clapCount);
-                                    
-                                    document.getElementById("clapCount").innerHTML  =  data.clapCount;
-                                    
-                                
-                                }
-                            };
-                            xmlhttp.open("GET", 'http://127.0.0.1:8000/api/post-clap-count/1', true);//generating  get method link
-                            xmlhttp.send();
-                        }
-
-                        getClapCount();
-                </script>
-                <button onClick="updateClapCount()">Clap</button>
+                
+                
                 
             <form action="/storecomment/{{$post->id}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}  
