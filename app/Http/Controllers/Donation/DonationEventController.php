@@ -27,7 +27,7 @@ class DonationEventController extends Controller{
         //Get all Donation Events
     
         // $donevents=DonationEvent::all();
-        $donevents = DB::table('donation_events')->where('status', 1)->paginate(7);
+        $donevents = DB::table('donation_events')->where('status', 1)->paginate(3);
 
 
 

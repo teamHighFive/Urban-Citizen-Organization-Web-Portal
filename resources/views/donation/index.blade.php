@@ -1,24 +1,5 @@
 @extends('layouts.main')
 
-@section('header')
-    <style>
-        .centered {
-			position: absolute !important;
-			top: 25vh;
-			left: 50%;
-			transform: translate(-50%, -50%);
-
-		  }
-
-		  .maintext{
-			  font-size: 3.7vw;
-			  color: rgb(255, 255, 255);
-			  font-family:'Alegreya Sans SC';
-			  text-shadow: 5px 0px 5px black;
-		  }
-    </style>
-@endsection
-
 @section('content')
 
 @if(session()->has('message'))
@@ -27,41 +8,32 @@
     </div>
 @endif
 
-<div class="container" style="height:auto;min-height: 100vh">
+<div class="container" style="height:auto; min-height: 100vh">
     <div class="row">
-
 		<div class="col-md-12 mb-3">
-
-			<img src="donation-resourses/events/images/donationthumbnail.jpg" class="img-fluid z-depth-1" alt="Responsive image" style="width:100%; height:40em">
-            {{-- TODO goes down when no donation is available --}}
-            <div class="mask flex-center waves-effect waves-light">
-				<div class="centered maintext">Your Donation <br>
-					is Others Inspiration</strong>
-	  		</div>
-
+			<h1 class="text-center cyan-text pt-5 mb-3">Your Donation is Other's Inspiration</h1>
 		</div>
 	</div>
 
-	@if (Auth::check())
+	@if (Auth::user()->role_as == "admin")
 	<div class="container-fluid py-2">
 		<a href="/createdonevent" class="btn aqua-gradient waves-effect">
 			<div>
-				<span>Create New event</span>
+				<span>Create New Donation event</span>
 			</div>
 		</a>
 	</div>
-	<div class="container-fluid py-2">
+	<!-- <div class="container-fluid py-2">
 		<a href="/donations/show" class="btn aqua-gradient waves-effect">
 			<div>
 				<span>Show Donations</span>
 			</div>
 		</a>
-	</div>
+	</div> -->
 	@endif
 
     <div class="row">
 		@foreach($donevents as $donevent)
-
 		<div class="col-md-4 mb-4">
 			<div class="card default-color-dark">
 				<div class="view">
@@ -71,7 +43,7 @@
 
 				<div class="card-body text-center">
 					<h4 class="card-title white-text">{{$donevent->name}} </h4>
-					<p class="card-text white-text">{{$donevent->description}}</p>
+					<p class="card-text white-text">{{ str_limit($donevent->description, $limit = 150, $end = '...') }}</p>
 
 					
 					<a href="donate/{{$donevent->id}}" class="btn aqua-gradient waves-effect">Donate</a>
@@ -83,7 +55,7 @@
 
 					
 
-					@if (Auth::check())
+					<!-- @if (Auth::check())
 					<a class="btn aqua-gradient waves-effect" href="/donation/edit/{{$donevent->id}}" role="button">Edit</a>
 					
 					<div>
@@ -93,18 +65,17 @@
 							<input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-danger">
 						</form>
 					</div>
-					@endif 
+					@endif  -->
 
 				</div>
 
 			</div>
 		</div>
 		@endforeach
-
 	</div>
 
-<div>
-	{{ $donevents->links() }}
-</div>
+	<div>
+		{{ $donevents->links() }}
+	</div>
 </div>
 @endsection
