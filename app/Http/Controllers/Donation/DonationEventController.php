@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Donation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\DonationEvent;
+use DB;
 
 class DonationEventController extends Controller{
  
@@ -25,7 +26,8 @@ class DonationEventController extends Controller{
 
         //Get all Donation Events
     
-        $donevents=DonationEvent::orderBy('created_at', 'desc')->paginate(7);
+        // $donevents=DonationEvent::all();
+        $donevents = DB::table('donation_events')->where('status', 1)->paginate(7);
 
 
 

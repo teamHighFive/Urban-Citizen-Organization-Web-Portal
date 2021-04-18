@@ -18,6 +18,7 @@ class CreateDonationEventsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('coverimage');
+            $table->integer('status')->default(1)->comment('0 - Deleted, 1 - Ongoing, 2 - finished');
             $table->timestamps();
         });
     }

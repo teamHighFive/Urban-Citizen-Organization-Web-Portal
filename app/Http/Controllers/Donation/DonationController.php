@@ -92,8 +92,8 @@ public function payWithpaypal(Request $request){
             ->setItemList($item_list)
             ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::to('status/'.$donation_id)) /** Specify return URL **/
-            ->setCancelUrl(URL::to('status/'.$donation_id));
+        $redirect_urls->setReturnUrl(URL::to('donationstatus/'.$donation_id)) /** Specify return URL **/
+            ->setCancelUrl(URL::to('donationstatus/'.$donation_id));
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)
@@ -108,10 +108,10 @@ public function payWithpaypal(Request $request){
             return Redirect::to('/donation');
             if (Config(get('app.debug'))) {
                 \Session::put('error', 'Connection timeout');
-                return Redirect::to('/payment');
+                return Redirect::to('/donation');
             } else {
                 \Session::put('error', 'Some error occur, sorry for inconvenient');
-                return Redirect::to('/payment');
+                return Redirect::to('/donation');
             }
         }
         foreach ($payment->getLinks() as $link) {
@@ -131,7 +131,7 @@ public function payWithpaypal(Request $request){
         }
 
         \Session::put('error', 'Unknown error occurred');
-        return Redirect::to('/payment');
+        return Redirect::to('/donation');
     }
 
     public function getPaymentStatus($donation_id)

@@ -29,7 +29,7 @@ class CreateDonationsTable extends Migration
             $table->string('comment')->nullable();
             $table->timestamps();
            
-            $table->foreign('donation_event_id')->references('id')->on('donation_events');
+            $table->foreign('donation_event_id')->references('id')->on('donation_events')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

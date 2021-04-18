@@ -34,7 +34,7 @@ class PhotoController extends Controller
     function store(Request  $request)
     {
 
-      //validate inputs
+    //   //validate inputs
     //   $this->validate($request,[
     //     'caption'=>'max:100',
     //     'description'=>'max:255',

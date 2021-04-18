@@ -77,9 +77,9 @@
 					<a href="donate/{{$donevent->id}}" class="btn aqua-gradient waves-effect">Donate</a>
 					
 
-					{{-- @if(Auth::user()->role_as == "admin")
-					<a href="donate" class="btn aqua-gradient waves-effect">Donate</a>
-					@endif --}}
+					<!-- {{-- @if(Auth::user()->role_as == "admin")
+					<a href="donate/{{$donevent->id}}" class="btn aqua-gradient waves-effect">Donate</a>
+					@endif --}} -->
 
 					
 
