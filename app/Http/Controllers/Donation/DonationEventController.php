@@ -27,7 +27,7 @@ class DonationEventController extends Controller{
         //Get all Donation Events
     
         // $donevents=DonationEvent::all();
-        $donevents = DB::table('donation_events')->where('status', 1)->paginate(3);
+        $donevents = DB::table('donation_events')->where('status', 2)->paginate(3);
 
 
 
@@ -149,7 +149,7 @@ public function update(Request $request, $id){
     
     
     //Rederect
-    return redirect('/donation')->with('success','Donation Event Updated.');
+    return redirect('/donations/showAllDonationEvents')->with('success','Donation Event Updated.');
 }
 
    
@@ -161,9 +161,31 @@ public function update(Request $request, $id){
     public function destroy($id){
 
         $donevents=DonationEvent::find($id);
-        $donevents->delete($id);
-        return redirect('/donation')->with('success','Donation event  Deleted');
+        $donevents->status = 0;
+        $donevents->update();
+        return redirect('/donations/showAllDonationEvents')->with('success','Donation event  Deleted');
 
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    // Finish donation event
+    // --------------------------------------------------------------------------------------------------
+    public function finish($id){
+
+        $donevents=DonationEvent::find($id);
+        $donevents->status = 1;
+        $donevents->update();
+        return redirect('/donations/showAllDonationEvents')->with('success','Donation event  finished');
+
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    // Show Donation Events
+    // --------------------------------------------------------------------------------------------------
+    public function showAllDonationEvents()
+    {
+        $donevents = DonationEvent::all()->sortByDesc('status');
+        return view('donation.showAllDonations')->with('donevents', $donevents);
     }
    
 }

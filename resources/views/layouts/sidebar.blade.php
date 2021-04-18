@@ -47,6 +47,10 @@
             <i class="fas fa-bullhorn mr-3"></i>Meeting Records
         </a>
 
+        <a href="{{ url('/donations/showAllDonationEvents') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-bullhorn mr-3"></i>Donations
+        </a>
+
         <a href="{{ url('manual-sms') }}" class="list-group-item list-group-item-action waves-effect">
             <i class="fas fa-bullhorn mr-3"></i>SMS Gateway
         </a>

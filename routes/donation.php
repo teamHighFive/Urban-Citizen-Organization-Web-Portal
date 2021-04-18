@@ -25,7 +25,8 @@ Route::get('/createdonevent','Donation\DonationEventController@create');
 Route::get('/donation/edit/{id}','Donation\DonationEventController@edit');
 
 
-Route::delete('/donation/delete/{id}','Donation\DonationEventController@destroy');
+Route::get('/donation/delete/{id}','Donation\DonationEventController@destroy');
+Route::get('/donation/finish/{id}','Donation\DonationEventController@finish');
 
 ///for payments
 
@@ -42,7 +43,8 @@ Route::get('donationstatus/{donation_id}', 'Donation\DonationController@getPayme
 
  Route::get('/donate/{id}', 'Donation\DonationController@index');
 
- Route::get('/donations/show','Donation\DonationController@show');
+ Route::get('/donations/showAllDonationEvents','Donation\DonationEventController@showAllDonationEvents');
+ Route::get('/donations/show/{id}','Donation\DonationController@show');
 
 
 // Route::resource('donation', 'Donation\DonationController');
