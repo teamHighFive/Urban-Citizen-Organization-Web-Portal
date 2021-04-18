@@ -37,20 +37,20 @@
 
                             <a target="_blank" href="{{ asset ('uploads/files/'.$upload->type.'/' . $upload->file) }}">
                             @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
-                                    <h1 class="fas fa-file-invoice"></h1>
+                                    <i class="fas fa-file-invoice">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type =='pdf')
-                                    <h1 class="far fa-file-pdf"></h1>
+                                    <i class="far fa-file-pdf">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type =='zip')
-                                    <h1 class="far fa-file-archive"></h1>
+                                    <i class="far fa-file-archive">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type == 'jpg'||$upload->type == 'png'||$upload->type =='png'||$upload->type =='jpeg')
                                     <i class="fas fa-file-image">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type == 'excel'||$upload->type == 'xlsm'||$upload->type =='xls' ||$upload->type =='xlsx')
-                                    <h1 class="fas fa-excel"></h1>
+                                    <i class="fas fa-excel">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type == 'mkv'||$upload->type == 'mp4'||$upload->type == 'mov'||$upload->type == '3gp'
                             ||$upload->type == 'wmv'||$upload->type == 'avi'||$upload->type == 'webm'||$upload->type == 'flv')
-                                    <h1 class="fas fa-file-video"></h1>      
+                                    <i class="fas fa-file-video">&nbsp; previuosly uploaded file</i>      
                             @else
-                                    <h1 class="fas fa-info"></h1>
+                                    <i class="fas fa-info">&nbsp; previuosly uploaded file</i>
                             @endif
                             </a>
                                 

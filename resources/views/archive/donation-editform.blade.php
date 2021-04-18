@@ -14,11 +14,7 @@
                             <input type="hidden" name="id" id="id" value="{{$upload->id}}">
 
                             <input type="text" name="document_details" class="form-control my-1" placeholder="Document name or description" value="{{$upload->document_details}}">
-                            
-                            <!-- <input type="hidden" name="location" class="form-control my-1" value="one">
-
-                            <input type="hidden" name="created_by" class="form-control my-1" value=1> -->
-
+                
                             <input type="text" name="description" class="form-control my-1" placeholder="Description" value="{{$upload->description}}">
                         <br>
                             <label class="my-1">Set permission to view document</label>
@@ -36,20 +32,20 @@
                         <br>
                             <a target="_blank" href="{{ asset ('uploads/donate_files/'.$upload->type.'/' . $upload->file) }}">
                             @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
-                                    <h1 class="fas fa-file-invoice"></h1>
+                                    <i class="fas fa-file-invoice">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type =='pdf')
-                                    <h1 class="far fa-file-pdf"></h1>
+                                    <i class="far fa-file-pdf">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type =='zip')
-                                    <h1 class="far fa-file-archive"></h1>
+                                    <i class="far fa-file-archive">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type == 'jpg'||$upload->type == 'png'||$upload->type =='png'||$upload->type =='jpeg')
                                     <i class="fas fa-file-image">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type == 'excel'||$upload->type == 'xlsm'||$upload->type =='xls' ||$upload->type =='xlsx')
-                                    <h1 class="fas fa-excel"></h1>
+                                    <i class="fas fa-excel">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type == 'mkv'||$upload->type == 'mp4'||$upload->type == 'mov'||$upload->type == '3gp'
                             ||$upload->type == 'wmv'||$upload->type == 'avi'||$upload->type == 'webm'||$upload->type == 'flv')
-                                    <h1 class="fas fa-file-video"></h1>      
+                                    <i class="fas fa-file-video">&nbsp; previuosly uploaded file</i>      
                             @else
-                                    <h1 class="fas fa-info"></h1>
+                                    <i class="fas fa-info">&nbsp; previuosly uploaded file</i>
                             @endif
                             </a>
 
@@ -58,7 +54,7 @@
                                     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" class="custom-file-input" value="{{$upload->file}}">
+                                    <input type="file" name="file" class="custom-file-input" value="{{$upload->file}}">
                                     <label class="custom-file-label" for="inputGroupFile01">Change file</label>
                                 </div>
                             </div>

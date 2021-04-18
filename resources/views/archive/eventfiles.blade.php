@@ -33,7 +33,7 @@
     
     <tr>
 
-        <th> {{$item->id}}</th>
+        <th> {{$item->event_id}}</th>
         <th> {{$item->event}}</th>
         <th> {{$item->document_name}}</th>
         <th> {{$item->location}}</th>
@@ -60,19 +60,12 @@
             @endif
             </a>
 
-            <!-- @if($item->type == 'exel')
-                <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">
-                    <h1 class="far fa-file-excel "></h1>
-                </a>
-
-            @endif -->
-
             <th> {{$item->type}}</th>
         </th>
         @if(!Auth::guest())
             @if (Auth::User()->id == $item->created_by || Auth::User()->role_as == "admin")
-            <th><a href ="/editeventfile/{{$item->id}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i> </a></th>
-            <th><a href = "/deleteeventfile/{{$item->id}}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a> </th>
+            <th><a href ="/editeventfile/{{$item->event_id}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i> </a></th>
+            <th><a href = "/deleteeventfile/{{$item->event_id}}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a> </th>
             @endif
         @endif
     @endforeach

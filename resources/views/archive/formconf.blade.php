@@ -40,11 +40,6 @@
                         </div>                   
                     </div> 
 
-                    <!-- <div class="md-form input-with-pre-icon">
-                        <i class="fas fa-user input-prefix"></i>
-                        <input type="text" name="created_by" class="form-control my-1" placeholder="Uploader's member ID">
-                    </div> -->
-
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-calendar-alt input-prefix"></i>
                         <input type="text" name="event" class="form-control my-1" placeholder="Event-if available (optional)">
@@ -79,9 +74,7 @@
                     </div>
 
                     <input type="hidden" name="type" class="form-control my-1" value=1>
-                    <br>
-                    <!-- <button type="submit" name="submit" class="btn btn-deep-orange">Upload</button> -->
-
+                    <br><br>
 
                     <button type="submit" name="submit" class="btn btn-deep-orange" data-toggle="modal" data-target="#centralModal">Upload</button>
 

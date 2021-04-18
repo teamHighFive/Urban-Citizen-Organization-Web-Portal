@@ -76,18 +76,12 @@ function myFunction() {
 <div style="min-height:100vh">
 
   <div class="jumbotron">   
-  <div class="row w-100">
-        <div class="col-md-10" >   
+    <div class="row w-100">
+        <div class="col-md-8" >   
         <h1 class="text-center red-text"><strong><i class="fas fa-scroll"></i> &nbsp; Announcements</strong></h1>          
         </div>
-    <div class="dropdown">
-            <button onclick="myFunction()" class="btn btn-info dropdown-toggle">Manage &emsp;</button>
-        <div id="myDropdown" class="dropdown-content">
-        <!-- <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"> -->
-                <a class="dropdown-item" href="/form">Add announcement</a>
-            <div class="dropdown-divider"><hr></div>
-                <a class="dropdown-item" href="#">Update</a> 
-            </div>
+        <div class="col-md-4">
+        <a href="/form"><button class="btn btn-primary mt-1 ">Add Announcement</button></a>
         </div>
     </div> 
   <br> &emsp; <br>

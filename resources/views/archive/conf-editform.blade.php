@@ -43,11 +43,6 @@
                         </div>                   
                     </div> 
 
-                    <!-- <div class="md-form input-with-pre-icon">
-                        <i class="fas fa-user input-prefix"></i>
-                        <input type="text" name="created_by" class="form-control my-1" placeholder="Uploader's member ID" value="{{$upload->created_by}}">
-                    </div> -->
-
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-calendar-alt input-prefix"></i>
                         <input type="text" name="event" class="form-control my-1" placeholder="Event-if available (optional)" value="{{$upload->event}}">
@@ -69,20 +64,20 @@
                 <br>
                         <a target="_blank" href="{{ asset ('uploads/conf_files'.$upload->type.'/' . $upload->file) }}">
                         @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
-                                <h1 class="fas fa-file-invoice"></h1>
+                                <i class="fas fa-file-invoice">&nbsp; previuosly uploaded file</i>
                         @elseif($upload->type =='pdf')
-                                <h1 class="far fa-file-pdf"></h1>
+                                <i class="far fa-file-pdf">&nbsp; previuosly uploaded file</i>
                         @elseif($upload->type =='zip')
-                                <h1 class="far fa-file-archive"></h1>
+                                <i class="far fa-file-archive">&nbsp; previuosly uploaded file</i>
                         @elseif($upload->type == 'jpg'||$upload->type == 'png'||$upload->type =='png'||$upload->type =='jpeg')
                                 <i class="fas fa-file-image">&nbsp; previuosly uploaded file</i>
                         @elseif($upload->type == 'excel'||$upload->type == 'xlsm'||$upload->type =='xls' ||$upload->type =='xlsx')
-                                <h1 class="fas fa-excel"></h1>
+                                <i class="fas fa-excel">&nbsp; previuosly uploaded file</i>
                         @elseif($upload->type == 'mkv'||$upload->type == 'mp4'||$upload->type == 'mov'||$upload->type == '3gp'
                         ||$upload->type == 'wmv'||$upload->type == 'avi'||$upload->type == 'webm'||$upload->type == 'flv')
-                                <h1 class="fas fa-file-video"></h1>      
+                                <i class="fas fa-file-video">&nbsp; previuosly uploaded file</i>      
                         @else
-                                <h1 class="fas fa-info"></h1>
+                                <i class="fas fa-info">&nbsp; previuosly uploaded file</i>
                         @endif
                         </a>
 
@@ -103,28 +98,6 @@
 
                     <button type="submit" name="submit" class="btn btn-deep-orange" data-toggle="modal" data-target="#centralModal">Upload</button>
 
-                    <!--button alert pop up code-->  
-                        <!-- Central Modal Medium -->
-                        <div class="modal fade" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <!--Content-->
-                            <div class="modal-content">
-                                <!--Header-->
-                                <div class="modal-body">
-                                <br>
-                                <center><button type="button" class="btn btn-success btn-lg">Uploaded</button></center>
-                                </div>
-                                <!-- Footer
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Done</button>                   
-                                </div> -->
-                            </div>
-                                <!--/.Content-->
-                            </div>
-                            </div>
-
-
-                        <!--button alert pop up code end--> 
                     <br><br>
                     <div class="links">
                         <a href="conffiles-arc">View uploded files</a>

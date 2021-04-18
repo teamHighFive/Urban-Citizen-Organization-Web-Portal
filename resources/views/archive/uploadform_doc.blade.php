@@ -16,9 +16,7 @@
 
                             <input type="text" name="docName" class="form-control my-1" placeholder="Document name or description" required>    
 
-                            <input type="hidden" name="userId" class="form-control my-1" value=1>
-
-                            <input type="text" name="event" class="form-control my-1" placeholder="Event or Function (optional)">
+                            <input type="text" name="event" class="form-control my-1" placeholder="Description (optional)">
                         <br>
                             <label class="my-1">Set permission to view document</label>
                             <div class="row my-1 ml-1">

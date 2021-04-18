@@ -18,7 +18,7 @@ Route::get('/arc', function () {return view('archive\basic');});
 
 Route::get('/seperated-arc', 'Document\DocumentController@table_seperated_files');
 Route::get('/gallery-arc', 'Document\DocumentController@table_gallery_files');
-Route::get('/event-arc', 'Document\DocumentController@table_events');
+Route::get('/event-arc', 'Document\DocumentController@table_event_files()');
 Route::get('/donatfiles-arc', 'Document\DocumentController@table_donate_files');
 Route::get('/conffiles-arc', 'Document\DocumentController@table_conf_files');
 Route::get('/post-arc', 'Document\DocumentController@table_post_files');

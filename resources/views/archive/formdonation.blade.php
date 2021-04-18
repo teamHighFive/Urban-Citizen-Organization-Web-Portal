@@ -24,8 +24,6 @@
                         <input type="text" name="docName" class="form-control my-1" placeholder="Document details" required>
                     </div>
 
-                        <input type="hidden" name="userId" class="form-control my-1" value=1>
-
                     <div class="md-form input-with-pre-icon">
                         <i class="fas fa-pencil-alt input-prefix"></i>
                         <div class="form-outline">

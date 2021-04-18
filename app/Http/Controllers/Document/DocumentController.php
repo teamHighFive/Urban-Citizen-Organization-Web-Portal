@@ -434,7 +434,7 @@ public function store_conffiles(Request $request)
             $upload->document_name = $request->input('document_name');
             $upload->location = $request->input('location');
             $upload->type = "doc";
-            $upload->created_by = "1"; //$request->input('created_by');
+            $upload->created_by = Auth::user()->id;  //$request->input('created_by');
             $upload->description = $request->input('description');
             $upload->event = $request->input('event');
             $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
@@ -476,8 +476,7 @@ public function store_conffiles(Request $request)
             $upload = Eventfiles::find($primary);
             $upload->document_name = $request->input('document_name');
             $upload->location = $request->input('location');
-            $upload->type = "doc";
-            $upload->created_by = "1"; //$request->input('created_by');
+            $upload->created_by = Auth::user()->id;  //$request->input('created_by');
             $upload->description = $request->input('description');
             $upload->event = $request->input('event');
             $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
@@ -494,7 +493,7 @@ public function store_conffiles(Request $request)
         }
 
         $upload->save();
-        return redirect('/eventfiles-arc')->with('success',$upload);
+        return redirect('/eventfiles-arc');
 
         } 
 
@@ -502,7 +501,7 @@ public function store_conffiles(Request $request)
         {
             $upload = Eventfiles::find($primary);
             $upload->delete();
-            return redirect('/eventfiles-arc')->with('upload',$upload);
+            return redirect('/eventfiles-arc');
         }
 
 //------------------------------------------------------------------------------------------------------------------  

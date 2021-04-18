@@ -17,8 +17,8 @@
     <tr>
         <th scope="col">File ID</th>
         <th scope="col">File Name</th>
+        <th scope="col">Description</th>
         <th scope="col">Uploaded By</th>
-        <th scope="col">Event Name</th>
         <th scope="col"><strong>File </strong><br> (click to view)</th>
         <th scope="col">File Type</th>
         <th>Edit</th>
@@ -34,8 +34,8 @@
 
         <th> {{$item->id}}</th>
         <th> {{$item->document_name}}</th>
-        <th> {{App\User::find($item->created_by)->fname}} {{App\User::find($item->created_by)->lname}}</th>
         <th> {{$item->event}}</th>
+        <th> {{App\User::find($item->created_by)->fname}} {{App\User::find($item->created_by)->lname}}</th>       
         <th>            
 
             <a target="_blank" href="{{ asset ('uploads/files/'.$item->type.'/' . $item->file) }}">

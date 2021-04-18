@@ -32,8 +32,8 @@
 
                         <!-- <button type="submit" name="submit" class="btn btn-primary mt-3">Upload</button> -->
                         <button type="submit" name="submit" class="btn btn-danger waves-effect waves-light" data-toggle="modal" data-target="#centralModal">Upload</button>
-
-          
+                        <br>
+                        <br>
                         <div class="links">
                             <a href="submission_table">View uploded files</a>
                         </div>

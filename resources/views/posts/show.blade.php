@@ -3,9 +3,8 @@
 @section('title','View Post')
 @section('content')
 <div class="container" style="height:auto;min-height: 100vh">
-
     <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-12">
         <div class="card text-body bg-info mb-3 mt-2">
             <div class="card-header font-weight-bold text-white">
 
@@ -40,26 +39,31 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row justify-content-center mt-2">
-                            <img style="width: 900px;height: 500px" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row justify-content-center mt-2">
+                                <img style="height: 250px;" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br><br>
-                <div class="col-md-12">
-                        <div class="row justify-content-center">
-                            <p class="lead">{{ $post->body }}</p>
-                        </div>
+                    <br><br>
+                    <div class="col-md-12">
+                            <div class="row">
+                                <p class="lead">{{ $post->body }}</p>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-5">
+        
+        <div class="col-lg-4">
         <hr>
             <h2 class="text-center"><b>Comments</b></h2>
         <hr>
@@ -91,14 +95,14 @@
             <div class="card-header">
                 <div class="row">   
                     <div class="col-sm-12 col-md-12"> 
-                        <img src="{{App\User::find($comment->user_id)->avatar}}" class="card-img-top" alt="..." style="height:60px;width:60px;border-radius:50%;margin-right:15px;padding:10px;">
+                        <img src="{{App\User::find($comment->user_id)->avatar}}" class="card-img-top" alt="..." style="height:30px;width:30px;border: radius 5px;50%;margin-right:15px;padding:1px;">
                         <b>{{App\User::find($comment->user_id)->fname}} {{App\User::find($comment->user_id)->lname}}</b>
                     </div>  
                 </div>
             </div>
             <div class="card-text"><br> 
                 <div class="col-md-10">
-                        <h5 class="card-title"> <i class="fas fa-comment-dots"></i> &nbsp; {{$comment->comment_body}}</h5>                       
+                        <p class="card-title"> <i class="fas fa-comment-dots"></i> &nbsp; {{$comment->comment_body}}</p>                       
                         <div class="card-text" align="right">  
                 </div> 
                 @if(!Auth::guest())
@@ -117,158 +121,7 @@
 
 </div>
 @endsection
-<!-- @section('content')
-<div class="container" style="height:auto;min-height: 100vh">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <div class="card text-body bg-info mb-3 mt-2">
-            <div class="card-header font-weight-bold">
-
-                <div class="row">
-                    <div class="col-md-9">
-                        <h2><b>{{$post->title}}</b></h2>
-                    </div>
-                    @if(!Auth::guest())
-                        @if(Auth::user()->id == $post->user_id)
-                                <div class="col-md-3">
-                                    <div class="row justify-content-center">
-                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-success btn-lg">Edit Your post</a>
-                                    </div>
-                                </div>
-                        @endif
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="card bg-light mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row justify-content-center mt-2">
-                            <img style="width: 900px;height: 500px" src="/storage/cover_images/{{$post->cover_image}}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <br><br>
-                <div class="col-md-12">
-                        <div class="row justify-content-center">
-                            <p class="lead">{{ $post->body }}</p>
-                        </div>
-                </div>
-            </div>
-        </div>
-
-        @if(!Auth::guest())
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card mb-3 wow fadeIn">
-                        <div class="card-header font-weight-bold">
-                            Edit or Delete your post...
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                    @if(Auth::user()->id == $post->user_id)
-                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-success btn-sm">Edit</a>
-                                            {!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
-                                            {{Form::hidden('_method','DELETE')}}
-                                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
-                                            {!!Form::close()!!}
-                                    @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card mb-3 wow fadeIn">
-                        <div class="card-header font-weight-bold">
-                            Put your comments here...
-                        </div>
-                        <div class="card-body">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="col-sm-4 col-md-4">  
-        <hr>
-            <h2 class="text-center"><b>Comments</b></h2>
-        <hr>
-                <div class="card mb-3 wow fadeIn">
-                    <form action="/storecomment/{{$post->id}}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}  
-                        <div class="card-body">  
-                            <div class="row">
-                                <div class="col-md-12">                  
-                                    <div class="form-outline">
-                                        <i class="fas fa-pencil-alt input-prefix">&nbsp; Share your idea using comment</i><br>                                        
-                                        <div class="md-form input-with-pre-icon">
-                                            <i class="fas fa-signature input-prefix"></i>
-                                            <input type="text" name="comment_body" id="comment_body" rows="4" class="form-control my-1" placeholder="type here.." required>
-                                        </div>
-                                    </div>   
-                                </div>    
-                                <div class="col-md-10">              
-                                    <button type="submit" id="submit" class="badge badge-pill btn-info px-4 py-2">Add</button>
-                                </div>
-                                <div class="col-md-6">
-                                        {!!Form::open(['action' => ['PostsController@destroy', $post->id] ,'method'=>'POST' ,'class' => 'pull-right'])!!}
-                                        {{Form::hidden('_method','DELETE')}}
-                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-block'])}}
-                                        {!!Form::close()!!}
-                                </div>
-                            @endif
-                        @endif
-		        </div>
-
-		    </div>
-		</div>
-<hr>
-
-<h3 class="text-center">Comments</h3>
-            <table class="table">
 
 
 
-                @foreach ($comments as $comment)
-                <tr>
-                    <td>{{$comment->comment_body}}</td>
-                    <td>{{App\User::find($comment->user_id)->fname}} {{App\User::find($comment->user_id)->lname}}</td>
 
-
-                </tr>
-                @endforeach
-
-            </table>
-
-    <hr>
-    <div class="card mb-3 wow fadeIn">
-        <form action="/storecomment/{{$post->id}}" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
-            <div class="card-body">
-                <div class="row">
-		            <div class="col-md-10">
-                        <div class="form-outline">
-                            <i class="fas fa-pencil-alt input-prefix">&nbsp; Share your idea using comment</i><br>
-                            <textarea class="form-control" name="comment_body" id="comment_body" rows="4" placeholder="type here.."></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <button type="submit" id="submit" class="btn btn-info btn-sm">Add</button>
-                    </div>
-                </div>
-            </div>
-
-        </form>
-    </div>
-
-
-        @endif
-</div>
-@endsection -->
