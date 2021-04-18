@@ -13,17 +13,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-///for donation
-Route::get('/donation', 'Donation\DonationController@index');
-Route::post('/create-donation', 'Donation\DonationController@store');
+///for donation events
+Route::get('/donation', 'Donation\DonationEventController@index');
+Route::post('/create-donation', 'Donation\DonationEventController@store');
 
+Route::resource('donation', 'Donation\DonationEventController');
+
+Route::get('/createdonevent','Donation\DonationEventController@create');
+
+
+Route::get('/donation/edit/{id}','Donation\DonationEventController@edit');
+
+
+Route::delete('/donation/delete/{id}','Donation\DonationEventController@destroy');
+
+///for payments
+
+// route for processing payment
+Route::post('paypal', 'Donation\DonationController@payWithpaypal')->name('paypal');
+
+// route for check status of the payment
+Route::get('status/{donation_id}', 'Donation\DonationController@getPaymentStatus')->name('status');
+
+// Route::get('status',array('as'=>'payment.status','uses'=>'Payment2Controller@store'));
+
+
+///for Dontions
+
+ Route::get('/donate/{id}', 'Donation\DonationController@index');
+
+ Route::get('/donations/show','Donation\DonationController@show');
 
 
 Route::resource('donation', 'Donation\DonationController');
 // Route::post('/','DonationController@store');
 
 
-Route::get('/donate','Donation\DonationController@donate');
 
-Route::delete('/donation/delete/{id}','AlbumController@destroy');
 
