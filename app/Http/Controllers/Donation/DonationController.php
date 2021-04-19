@@ -52,11 +52,13 @@ public function payWithpaypal(Request $request){
     $request->validate([
         'donner_fullname' => 'required|string|max:255',
         'amount' => 'required|numeric',
-        'donner_phone' => 'required|numeric|min:10',
+        'donner_phone' => 'required|numeric|digits:10',
         'donner_email' => 'required|email',
         'is_member'=>'required',
     ]);
 
+        $str1 = substr($request->input('donner_phone'), 1);
+        
         $donation = new Donation();
         $donation->donner_fullname = $request->input('donner_fullname');
         $donation->amount = $request->input('amount');
@@ -64,7 +66,7 @@ public function payWithpaypal(Request $request){
         $donation->donner_country = $request->input('donner_country');
         $donation->donner_city = $request->input('donner_city');
         $donation->donner_address = $request->input('donner_address');
-        $donation->donner_phone = $request->input('donner_phone');
+        $donation->donner_phone = '+94'.$str1;
         $donation->donner_email = $request->input('donner_email');
         $donation->comment = $request->input('comment');
         $donation->is_member = $request->input('is_member');
@@ -154,7 +156,16 @@ public function payWithpaypal(Request $request){
             $donation = Donation::find($donation_id);
             $donation->is_success = 'yes';
             $donation->update();
-            return redirect()->back()->with('message', 'Donation Successfully Received!');
+
+            $text = 'Your donation of USD '.$donation->amount.' has been made successfully. Thank you for your support. Your donation is other\'s inspiration.';
+
+            $response = app('App\Http\Controllers\SMSController')->send($donation->donner_phone, $text);
+
+            if($response == 'SMS notifications sent successfully.'){
+                return redirect()->back()->with('message','Your donation has been made successfully. You will recieve a confirmation SMS soon.');
+            }else{
+                return redirect()->back()->with('message','Your donation has been made successfully. '.$response);
+            }
         
         }
         \Session::put('error', 'Donation failed');

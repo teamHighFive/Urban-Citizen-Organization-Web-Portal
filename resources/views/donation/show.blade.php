@@ -15,7 +15,6 @@
                      <th>Is Member</th>
                      <th>Email</th>
                      <th>Amount($)</th>
-                     <th>Payment Method</th>
                      <th>Comments</th>
                  </tr>
              </thead>
@@ -30,7 +29,6 @@
                              <td>{{$donation->is_member}}</td>
                              <td>{{$donation->donner_email}}</td>
                              <td>{{$donation->amount}}</td>
-                             <td>{{$donation->payment_method}}</td>
                              <td>{{$donation->comment}}</td>
                         </tr>
                     </tbody>
