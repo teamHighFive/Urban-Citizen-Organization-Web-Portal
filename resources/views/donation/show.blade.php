@@ -2,10 +2,8 @@
 
 @section('content')
 <div class="container" style="min-height: 100vh">
-    <div class="jumbotron  blue-grey lighten-5">
-        <div class="card" >
-
-         <table class="table table-striped table-bordered table-hover">
+    <div class="jumbotron overflow-auto" style="overflow-x: scroll;">
+        <table class="table table-striped table-bordered table-hover">
              <thead class="thead">
                  <tr class="warning">
                      <th>Donation event ID</th>
@@ -39,7 +37,6 @@
                     </tbody>
              @endforeach
         </table>
-
-     </div>
+    </div>
 </div>
 @endsection
