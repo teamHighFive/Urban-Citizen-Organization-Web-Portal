@@ -169,7 +169,7 @@ public function payWithpaypal(Request $request){
 
     {
         $donations = Donation::Where('is_success', "yes")->where('donation_event_id', $id)->get();
-        return view('donation.show', compact('donations'));
+        return view('donation.show', compact('donations'))->with('id', $id);
     }
 
    

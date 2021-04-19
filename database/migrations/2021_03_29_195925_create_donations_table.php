@@ -17,7 +17,7 @@ class CreateDonationsTable extends Migration
             $table->id('id')->autoIncrement();
             $table->string('payment_method');
             $table->float('amount', 10, 2);
-            $table->integer('donation_event_id');
+            $table->integer('donation_event_id')->unsigned();
             $table->string('donner_fullname');
             $table->string('donner_address')->nullable();
             $table->string('donner_country')->nullable();

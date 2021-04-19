@@ -15,6 +15,7 @@
 		</div>
 	</div>
 
+	@if(!Auth::guest())
 	@if (Auth::user()->role_as == "admin")
 	<div class="container-fluid py-2">
 		<a href="/createdonevent" class="btn aqua-gradient waves-effect">
@@ -23,13 +24,7 @@
 			</div>
 		</a>
 	</div>
-	<!-- <div class="container-fluid py-2">
-		<a href="/donations/show" class="btn aqua-gradient waves-effect">
-			<div>
-				<span>Show Donations</span>
-			</div>
-		</a>
-	</div> -->
+	@endif
 	@endif
 
     <div class="row">
@@ -43,29 +38,10 @@
 
 				<div class="card-body text-center">
 					<h4 class="card-title white-text">{{$donevent->name}} </h4>
-					<p class="card-text white-text">{{ str_limit($donevent->description, $limit = 150, $end = '...') }}</p>
+					<p class="card-text white-text">{{$donevent->description}}</p>
 
 					
 					<a href="donate/{{$donevent->id}}" class="btn aqua-gradient waves-effect">Donate</a>
-					
-
-					<!-- {{-- @if(Auth::user()->role_as == "admin")
-					<a href="donate/{{$donevent->id}}" class="btn aqua-gradient waves-effect">Donate</a>
-					@endif --}} -->
-
-					
-
-					<!-- @if (Auth::check())
-					<a class="btn aqua-gradient waves-effect" href="/donation/edit/{{$donevent->id}}" role="button">Edit</a>
-					
-					<div>
-						<form action="/donation/{{$donevent->id}}" method="POST">
-							@method('DELETE')
-							@csrf
-							<input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-danger">
-						</form>
-					</div>
-					@endif  -->
 
 				</div>
 

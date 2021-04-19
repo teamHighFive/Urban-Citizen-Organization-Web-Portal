@@ -1,6 +1,16 @@
 @extends('layouts.main')
 
 @section('content')
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div>
         <div class="p-3 py-5">
         <div class="row column">
@@ -17,11 +27,9 @@
             {{-- //TODO photot controller store --}}
         {!!Form::open(array('url'=>'add-photo-to-album','enctype'=>'multipart/form-data')) !!}
         {!!Form::label('caption','Caption') !!}
-        {!!Form::text('caption',$photo->caption,$attributes=['name'=>'caption']) !!}
+        <input type="text" name="caption" class="form-control">
         {!!Form::label('description','Description') !!}
-        {!!Form::text('description',$photo->description,$attributes=['name'=>'description']) !!}
-        {!!Form::label('location','Location') !!}
-        {!!Form::text('location',$photo->location,$attributes=['name'=>'location']) !!}
+        <input type="text" name="description" class="form-control">
 
         <div class="file-field">
             <div class="file-path-wrapper">

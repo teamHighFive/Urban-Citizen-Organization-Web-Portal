@@ -50,10 +50,10 @@
 
     </section>
 
-    <div class="row row-cols-1 row-cols-md-3 mt-5">
+    <h1  class="text-center cyan-text pt-5 mb-3">Albums</h1>
+    <div class="row mt-5">
             @foreach($albums as $album)
-
-                <div class="col mb-4">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="view overlay">
                             <img class="card-img-top" src="gallery-resourses/images/{{$album->coverimage}}" alt="snow" />
@@ -61,39 +61,38 @@
 
                         <div class="card-body">
                             <h4 class="card-title">{{$album->title}}</h4>
-                            <p class="card-text">{{$album->description}}</p>
-                            <p><p>Created date:  {{ date("d F Y",strtotime($album->created_at)) }} at {{ date("g:ha",strtotime($album->created_at)) }}</p></p>
-                            <a class="btn btn-primary" href="album/show/{{$album->id}}" role="button">See more</a>
-                            {{-- <a class="btn btn-danger" href="album/delete/{{$album->id}}" role="button">Delete</a> --}}
-
-                            @if (Auth::check())
-                            <a class="btn aqua-gradient waves-effect" href="/album/edit/{{$album->id}}" role="button">Edit</a>
-                            <div>
-                                    <form action="/album/{{$album->id}}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-danger">
-                                    </form>
-                            </div>
+                            <p>{{ str_limit($album->description, $limit = 150, $end = '...') }}</p>
+                            <a class="btn btn-sm btn-primary btn-block mb-3" href="album/show/{{$album->id}}" role="button">See More</a>
+                            @if(!Auth::guest())
+                                @if(Auth::user()->role_as == "admin")
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <a class="btn btn-sm btn-warning btn-block" href="/album/edit/{{$album->id}}" role="button">Edit</a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <form action="/album/{{$album->id}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger btn-block">
+                                        </form>
+                                    </div>
+                                </div>
+                                @endif
                             @endif
                             
+                            
+                            <p class="card-text">Created date:  {{ date("d F Y",strtotime($album->created_at)) }} at {{ date("g:ha",strtotime($album->created_at)) }}</p>
                         </div>
                     </div>
                 </div>
-           
-            
-
-
             @endforeach
-            </div>
+    </div>
 
-            @if (Auth::check())
+            @if(Auth::user()->role_as == "admin")
             <div class="my-5">
                 <a href="album/create" class="btn aqua-gradient waves-effect  ">Create New Album</a>
             </div>
             @endif
-
-       
 </div>
 @endsection
 <script>

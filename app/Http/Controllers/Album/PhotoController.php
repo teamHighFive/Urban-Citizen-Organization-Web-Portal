@@ -34,18 +34,18 @@ class PhotoController extends Controller
     function store(Request  $request)
     {
 
-    //   //validate inputs
-    //   $this->validate($request,[
-    //     'caption'=>'max:100',
-    //     'description'=>'max:255',
-    //     'location'=>'max:100',
-    //     'image'=>'required|image|mimes:jpeg,jpg|max:2048',
-    // ]);
+      //validate inputs
+      $this->validate($request,[
+        'caption'=>'max:100',
+        'description'=>'max:255',
+        // 'image'=>'required|image|mimes:jpeg,jpg|max:2048',
+    ]);
 
         
   if($request->hasFile('image')) {
     $images = $request->file('image');
     foreach($images as $image) {
+     
       $filename = $image->getClientOriginalName();
       $extension=$image->getClientOriginalExtension();
       $fileNameToStore = $filename.'_'.time().'.'.$extension;
@@ -57,7 +57,6 @@ class PhotoController extends Controller
       $photo->album_id = $request->input('album_id');
       $photo->caption = $request->input('caption');
       $photo->description = $request->input('description');
-      $photo->location = $request->input('location');
       $photo->image=$fileNameToStore;
       $photo->save();
      

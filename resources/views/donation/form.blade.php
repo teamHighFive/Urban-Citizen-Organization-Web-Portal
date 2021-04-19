@@ -4,13 +4,13 @@
 
 @foreach($donationEvents as $donationEvent)
 <div>
-<h2>{{$donationEvent->name}}</h2>
-<h2>{{$donationEvent->description}}</h2>
+<h3 class="text-center cyan-text pt-5 mb-3">{{$donationEvent->name}}</h3>
+
+
 </div>
 @endforeach
 
 
-<h3>Donation Information</h3>
 
 
 
@@ -43,7 +43,13 @@
 @endif
 
 
-
+<div class="container" style="min-height: 100vh">
+    
+    <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+    <div class="jumbotron px-3">
+            <div class="form-group">
 <form action="{{route('paypal')}}" method="post">
     @csrf
     
@@ -62,7 +68,7 @@
 
     <div class="form-group">
       <label for="">Amount</label>
-      <input type="text" name="amount" id="" class="form-control" required autocomplete="amount" autofocus>
+      <input type="text" name="amount" id="" placeholder="$" class="form-control" required autocomplete="amount" autofocus>
     </div>
 
     <div class="form-group">
@@ -123,6 +129,11 @@
 
 
 </form>
+</div>
+    </div>
+    <div class="col-lg-3"></div>
+    </div>
+</div>
 
 
 @endsection

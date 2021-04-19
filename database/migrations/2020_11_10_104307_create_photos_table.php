@@ -16,9 +16,9 @@ class CreatePhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id',6)->unique();
             $table->integer('album_id')->unsigned();
-            $table->string('caption');
+            $table->string('caption')->nullable();
             $table->string('description')->nullable();
-            $table->string('location')->nullable();
+            $table->string('location')->default('Sri Lanka');
             $table->string('image');
             $table->timestamps();
             $table->foreign('album_id')->references('id')->on('albums')->onDelete('CASCADE')->onUpdate('CASCADE');

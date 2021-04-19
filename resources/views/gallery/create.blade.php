@@ -13,26 +13,30 @@
 @endif
 
 <div class="container" style="min-height: 100vh">
-    @if (Auth::check())
-    <h3 class="mt-5 py-5">Create New Album</h3>
-    @endif
-    <div class="row small-up-2 medium-up-3 large-up-4">
-        <div class="form-group row">
+    
+    <h3 class="text-center cyan-text pt-5 mb-3">Create New Album</h3>
+    <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+    <div class="jumbotron px-3">
+            <div class="form-group">
+        
                         {!!Form::open(array('url'=>'create-album','enctype'=>'multipart/form-data')) !!}
                         {!!Form::label('title','Title') !!}
-                        {!!Form::text('title',$value=null,$attributes=['placeholder'=>'Album Title','name'=>'title','required']) !!}
+                        <input type="text" name="title" class="form-control">
                         {!!Form::label('description','Description') !!}
-                        {!!Form::text('description',$value=null,$attributes=['placeholder'=>'Album Description ','name'=>'description','required']) !!}
-                        {!!Form::file('coverimage',$attributes=['class' => 'file-path validate px-4','placeholder'=>'Upload your file','required'])!!}
-                        {!!Form::submit('Submit',$attributes=['class'=>'btn btn-primary btn-sm'])!!}
+                        <input type="text" name="description" class="form-control">
+                        {!!Form::label('coverimage','Cover Image') !!}
+                        {!!Form::file('coverimage',$attributes=['class' => 'form-control','required'])!!}
+                        </br>
+                        {!!Form::submit('Submit',$attributes=['class'=>'form-control btn btn-primary btn-sm'])!!}
                         {!!Form::close() !!}
 
-
-
-            
-        </div>
+            </div>
     </div>
-
+    </div>
+    <div class="col-lg-3"></div>
+    </div>
 </div>
 
 @endsection

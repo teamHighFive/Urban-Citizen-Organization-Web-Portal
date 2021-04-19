@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container" style="min-height: 100vh">
+    <h1  class="text-center cyan-text pt-5 mb-3">{{App\DonationEvent::find($id)->name}}</h1>
     <div class="jumbotron overflow-auto" style="overflow-x: scroll;">
         <table class="table table-striped table-bordered table-hover">
              <thead class="thead">
                  <tr class="warning">
-                     <th>Donation event ID</th>
-                     <th>Donner Name</th>
-                     <th>Donner Address</th>
-                     <th>Donner Country</th>
-                     <th>Donner City</th>
+                     <th>Donor's Name</th>
+                     <th>Donor's Address</th>
+                     <th>Donor's Country</th>
+                     <th>Donor's City</th>
                      <th>Phone No</th>
                      <th>Is Member</th>
                      <th>Email</th>
@@ -22,7 +22,6 @@
            @foreach($donations as $donation)
                      <tbody>
                          <tr>
-                             <td>{{$donation->donation_event_id}}</td>
                              <td>{{$donation->donner_fullname}}</td>
                              <td>{{$donation->donner_address}}</td>
                              <td>{{$donation->donner_country}}</td>
