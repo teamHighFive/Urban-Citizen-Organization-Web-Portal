@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,16 @@ Route::get('/post-clap-count/{id}',function($id){
     return ['clapCount'=>$post->clap_count];
 });
 
+
 Route::get('/get-clap-count/{id}',function($id){
 
     $post = Post::find($id);
     return ['clapCount'=>$post->clap_count];
+});
+
+
+Route::get('/get-user-registered-year/{id}',function($id){
+
+    $user = User::find($id);
+    return ['registeredYear'=>$user->email_verified_at->year];
 });

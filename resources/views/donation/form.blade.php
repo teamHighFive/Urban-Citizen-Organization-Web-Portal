@@ -10,10 +10,6 @@
 </div>
 @endforeach
 
-
-
-
-
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
     <span onclick="this.parentElement.style.display='none'"
@@ -59,7 +55,7 @@
     
     <div class="form-group">
         <label for="">Full Name</label>
-        <input type="text" name="donner_fullname" id="" class="form-control" required autocomplete="donner_fullname" autofocus>
+        <input type="text" name="donner_fullname" id="" class="form-control" required autocomplete="donner_fullname">
         @if ($errors->has('donner_fullname'))
                     <span class="text-danger">{{ $errors->first('donner_fullname') }}</span>
                 @endif
@@ -68,7 +64,7 @@
 
     <div class="form-group">
       <label for="">Amount</label>
-      <input type="text" name="amount" id="" placeholder="$" class="form-control" required autocomplete="amount" autofocus>
+      <input type="text" name="amount" id="" placeholder="$" class="form-control" required autocomplete="amount">
     </div>
 
     <div class="form-group">
@@ -88,12 +84,12 @@
 
     <div class="form-group">
         <label for="">Email</label>
-        <input type="text" name="donner_email" id="" class="form-control" required autocomplete="donner_email" autofocus>
+        <input type="text" name="donner_email" id="" class="form-control" required autocomplete="donner_email">
     </div>
 
     <div class="form-group">
         <label for="">Mobile</label>
-        <input type="text" name="donner_phone" id="" class="form-control" required autocomplete="donner_phone" autofocus>
+        <input type="text" name="donner_phone" id="" class="form-control" required autocomplete="donner_phone">
     </div>
 
     <div class="form-group">
@@ -112,17 +108,6 @@
     </label>
   </div>
 </br>
-
-    <div class="form-check">
-        <label class="form-check-label">Payment method:</label>
-        </br>
-            <input type="radio" class="form-check-input" name="payment_method" id="" value="paypal">
-            <label>Paypal</label>
-        </br>
-            <input type="radio" class="form-check-input" name="payment_method" id="" value="bank deposit">
-            <label>Bank Deposit</label>
-        </label>
-    </div>
 
 
     <button type="submit" class="btn btn-primary mt-3">Donate</button>

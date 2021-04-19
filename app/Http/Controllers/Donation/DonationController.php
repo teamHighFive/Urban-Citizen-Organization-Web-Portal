@@ -50,12 +50,11 @@ public function index($id){
 public function payWithpaypal(Request $request){
 
     $request->validate([
-        'donner_fullname' => 'required',
-        'amount' => 'required',
-        'donner_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+        'donner_fullname' => 'required|string|max:255',
+        'amount' => 'required|numeric',
+        'donner_phone' => 'required|numeric|min:10',
         'donner_email' => 'required|email',
         'is_member'=>'required',
-        'payment_method' => 'required',
     ]);
 
         $donation = new Donation();
@@ -68,7 +67,6 @@ public function payWithpaypal(Request $request){
         $donation->donner_phone = $request->input('donner_phone');
         $donation->donner_email = $request->input('donner_email');
         $donation->comment = $request->input('comment');
-        $donation->payment_method = $request->input('payment_method');
         $donation->is_member = $request->input('is_member');
         $donation->save();
         $donation_id=$donation->id;

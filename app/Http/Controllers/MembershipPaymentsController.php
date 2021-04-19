@@ -26,6 +26,10 @@ class MembershipPaymentsController extends Controller
         $payment->user_id = Auth::user()->id;
         $payment->save();
 
+        //================================================================
+        
+        //================================================================
+
         $text = 'Your mambership payment of LKR 750.00, for the year '.$payment->year.' has been made successfully.';
 
         $response = app('App\Http\Controllers\SMSController')->send(Auth::user()->contact, $text);

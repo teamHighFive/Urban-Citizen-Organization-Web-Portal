@@ -15,7 +15,6 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id('id')->autoIncrement();
-            $table->string('payment_method');
             $table->float('amount', 10, 2);
             $table->integer('donation_event_id')->unsigned();
             $table->string('donner_fullname');
