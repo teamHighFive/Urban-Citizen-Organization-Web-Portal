@@ -13,42 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-///for donation events
-Route::get('/donation', 'Donation\DonationEventController@index');
-Route::post('/create-donation', 'Donation\DonationEventController@store');
+////All
+    ///for donation events
+    Route::resource('donation', 'Donation\DonationController');
+    Route::get('/donation', 'Donation\DonationEventController@index');
+    Route::resource('donation-event', 'Donation\DonationEventController');
 
-Route::resource('donation-event', 'Donation\DonationEventController');
+    ///for donations
+    Route::get('/donate/{id}', 'Donation\DonationController@index');
 
-Route::get('/createdonevent','Donation\DonationEventController@create');
+    // route for processing payment
+    Route::post('paypal', 'Donation\DonationController@payWithpaypal')->name('paypal');
 
+    // route for check status of the payment
+    Route::get('donationstatus/{donation_id}', 'Donation\DonationController@getPaymentStatus')->name('status');
 
-Route::get('/donation/edit/{id}','Donation\DonationEventController@edit');
-
-
-Route::get('/donation/delete/{id}','Donation\DonationEventController@destroy');
-Route::get('/donation/finish/{id}','Donation\DonationEventController@finish');
-
-///for payments
-
-// route for processing payment
-Route::post('paypal', 'Donation\DonationController@payWithpaypal')->name('paypal');
-
-// route for check status of the payment
-Route::get('donationstatus/{donation_id}', 'Donation\DonationController@getPaymentStatus')->name('status');
-
-// Route::get('donationstatus',array('as'=>'payment.status','uses'=>'Payment2Controller@store'));
-
-
-///for Dontions
-
- Route::get('/donate/{id}', 'Donation\DonationController@index');
-
- Route::get('/donations/showAllDonationEvents','Donation\DonationEventController@showAllDonationEvents');
- Route::get('/donations/show/{id}','Donation\DonationController@show');
-
-
-// Route::resource('donation', 'Donation\DonationController');
-// Route::post('/','DonationController@store');
+////Admin
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+    ///for donation events
+    Route::post('/create-donation', 'Donation\DonationEventController@store');
+    Route::get('/createdonevent','Donation\DonationEventController@create');
+    Route::get('/donation/edit/{id}','Donation\DonationEventController@edit');
+    Route::get('/donation/delete/{id}','Donation\DonationEventController@destroy');
+    Route::get('/donation/finish/{id}','Donation\DonationEventController@finish');
+    Route::get('/donations/showAllDonationEvents','Donation\DonationEventController@showAllDonationEvents');
+    Route::get('/donations/show/{id}','Donation\DonationController@show');
+});
 
 
 
