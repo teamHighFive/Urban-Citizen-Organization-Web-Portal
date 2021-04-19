@@ -1,38 +1,60 @@
 @extends('layouts.main')
 
-@section('title','Upcoming Meetings')
+@section('title','Upcoming Events')
 @section('content')
-<div class="container" style="min-height: 100vh">
-    <div class="jumbotron blue-grey lighten-5">
-        <h2 class="grey-text text-center"><strong> Add Event to Calendar</strong></h2>
-      <div class="card" >
-          <div class="row">
-              <div class="col-md-8  col-md-offset-2">
-                  <div class="panel panel-default">
-                      <div class="panel-body"><br/><br/>
-                          <div class="col-md-8  col-md-offset-2">
-                              <form method="POST" action="{{url('/add-event') }}">
-                                {{ csrf_field() }}
-                                <label for=""><h5 class="blue-grey-text"><strong>Enter Event Name:</strong></h5></label>
-                                <input type="text" class="form-control" name="title" placeholder="Enter the Name" Required><br/>
-                                <label for=""><h5 class="blue-grey-text"><strong>Enter Description:</strong></h5></label>
-                                <input type="text" class="form-control" name="description" placeholder="Description" Required><br/>
-                                <label for=""><h5 class="blue-grey-text"><strong>Enter Location:</strong></h5></label>
-                                <input type="text" class="form-control" name="location" placeholder="Location" Required><br/>
-                                <label for=""><h5 class="blue-grey-text"><strong>Enter Color:</strong></h5></label>
-                                <input type="color" class="form-control" name="color" placeholder="Enter the color" value="#cccccc" Required><br/>
-                                <label for=""><h5 class="blue-grey-text"><strong>Enter Start Date:</strong></h5></label>
-                                <input type="datetime-local" class="form-control" name="start_date" class="date" placeholder="Enter Start date"Required><br/>
-                                <label for=""><h5 class="blue-grey-text"><strong>Enter End Date:</strong></h5></label>
-                                <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date"Required><br/>
-                                <input type="submit" name="submit" class="btn btn-blue-grey" value="Add Event">
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-   </div>
+<div class="container">
+    <div class="jumbotron blue-grey lighten-4">
+        <h2 class="font-weight-bold text-center text-muted"><strong> Add Event to Calendar</strong></h2>
+        <hr>
+        <div class="card" >
+           
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                         <div class="panel-body"><br/><br/>
+                            <div class="col-sm-12">
+                                
+                                <form method="POST" action="{{url('/add-event') }}">
+                                    {{ csrf_field() }}
+
+
+                                   
+
+                                    <label for=""><h5 class="font-weight-bold"><strong>Event Name:</strong></h5></label>
+                                    <input type="text" class="form-control col-sm-9" name="title" placeholder="Enter the Name" Required><br/>
+                                    
+                                    <label for=""><h5 class="font-weight-bold"><strong> Description:</strong></h5></label>
+                                    <input type="text" class="form-control col-sm-9" name="description" placeholder="Enter the Description" Required><br/>
+                                    
+                                    <label for=""><h5 class="font-weight-bold"><strong> Location:</strong></h5></label>
+                                    <input type="text" class="form-control col-sm-9" name="location" placeholder="Enter the Location" Required><br/>
+
+                                                           
+                                    <label for=""><h5 class="font-weight-bold"><strong> Color:</strong></h5></label>
+                                    <input type="color" class="form-control col-sm-9" name="color" placeholder="Enter the color" value="#cccccc" Required><br/>
+                                    
+                                    <label for=""><h5 class="font-weight-bold"><strong> Start Date:</strong></h5></label>
+                                    <input type="datetime-local" class="form-control col-sm-9" name="start_date" class="date" placeholder="Enter Start date"Required><br/>
+                                    
+                                    <label for=""><h5 class="font-weight-bold"><strong> End Date:</strong></h5></label>
+                                    <input type="datetime-local" class="form-control col-sm-9" name="end_date" class="date" placeholder="Enter End date"Required><br/>
+                                    
+                                    <div class="text-center">
+                                        <input type="submit" name="submit" class="btn btn-primary float-center mb-5" value="Add Event">
+                                    </div>
+                                    
+                                    
+                                </form>
+                                     
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
 </div>
+<br>
+<br>
+<br>
+<br>
 @endsection

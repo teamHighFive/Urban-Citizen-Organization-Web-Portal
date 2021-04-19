@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\event;//event model
 use App\Meeting;
 use LaravelFullCalendar\Facades\Calendar;//Calendar class
+use Illuminate\Support\Facades\Auth;
+use Validator;
+
 
 class EventController extends Controller
 {
@@ -55,7 +58,12 @@ class EventController extends Controller
 
      //output Add Event to Calendar view---------------------------
      public function display(){
-         return view('event.addevent');
+        if(Auth::check() && Auth::user()->role_as == 'admin'){
+            return view('event.addevent');
+        }else{
+            return redirect ('/event-calendar')->with('fail','You are not authorized to enter this page.');
+        }
+        
      }
      //-------------------------------------------------------------
 
@@ -79,7 +87,7 @@ class EventController extends Controller
        $events->end_date = $request->input('end_date');
 
        $events->save();
-       return redirect('event-calendar')->with('success','Events Added');
+       return redirect('event-calendar')->with('success','Event Added Suceessfully!!!');
 
      }
      //-------------------------------------------------------------------
@@ -87,8 +95,15 @@ class EventController extends Controller
 
      //output display blade-Table view-------------------------------------
      public function show(){
-         $events = event::all();
-         return view('event.view-event')->with('events',$events);
+        if(Auth::check() && Auth::user()->role_as == 'admin'){
+            $events = event::all();
+            return view('event.view-event')->with('events',$events);
+   
+        }else{
+            return redirect ('/event-calendar')->with('fail','You are not authorized to enter this page.');
+        }
+
+       
 
      }
      //---------------------------------------------------------------------
@@ -122,7 +137,7 @@ class EventController extends Controller
  
         $events->save();
 
-        return redirect('event-calendar')->with('success','Event Updated');
+        return redirect('event-calendar')->with('success','Event Updated Successfully!!!');
 
      }
       //------------------------------------------------------------------------
@@ -133,7 +148,7 @@ class EventController extends Controller
         $events= event::find($id);
         $events->delete();
 
-        return redirect('event-calendar')->with('success','Event Deleted');
+        return redirect('event-calendar')->with('success','Event Deleted Successfully!!!');
 
         }
 

@@ -1,14 +1,13 @@
 <?php
 
-use App\Post;
-use App\DonationEvent;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\PollController;//Dhananjana
+
+use App\Http\Controllers\PollController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +21,7 @@ use App\Http\Controllers\PollController;//Dhananjana
 */
 
 
-Route::get('/', function () {
 
-    $donationEvents = DonationEvent::latest()->take(3)->get();
-    $albums = DB::table('albums')->latest()->take(3)->get();
-    $posts = Post::latest()->take(3)->get();
-
-    return view('welcome')->with('donationEvents', $donationEvents)->with('albums', $albums)->with('posts', $posts);
-
-});
-
-//--------------------------Dhananjana----------------------------------------------------------------------------------------------//
 
 //pollhome page
 Route::get('/pollhome',[PollController::class,'PollHome']);
@@ -65,5 +54,3 @@ Route::get('/pollview/{id}',[PollController::class,'viewvotingpage'] );
 Route::get('/pollresult/{id}',[PollController::class,'result']);
 
 Route::post('/castvote/{id}',[PollController::class,'castVote']);
-
-//-------------------------------------------Dhananjana-------------------------------------------------------------------
