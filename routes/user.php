@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('/membership-payments', 'MembershipPaymentsController@mpayments');
             Route::post('/do-payments', 'MembershipPaymentsController@createPayments');
+            Route::get('membership-payment-status/{payment_id}', 'MembershipPaymentsController@getPaymentStatus');
 
 
         });

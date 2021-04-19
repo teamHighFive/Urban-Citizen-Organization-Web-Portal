@@ -14,9 +14,10 @@ class CreateMembershipPaymentsTable extends Migration
     public function up()
     {
         Schema::create('membership_payments', function (Blueprint $table) {
-            $table->increments('payment_id');
+            $table->increments('id');
             $table->integer('user_id');
             $table->integer('year');
+            $table->string('is_success')->default('no');
             $table->timestamps();
         });
     }

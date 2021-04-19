@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Post;
 use App\User;
+use App\Payments;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,9 @@ Route::get('/get-clap-count/{id}',function($id){
 });
 
 
-Route::get('/get-user-registered-year/{id}',function($id){
+Route::get('/is-membership-payment-year-available/{id}/{year}',function($id, $year){
 
-    $user = User::find($id);
-    return ['registeredYear'=>$user->email_verified_at->year];
+    $payments = Payments::all()->where('user_id', $id)->where('is_success', "yes")->where('year', $year);
+    
+    return ['is_available'=>(count($payments) == 0 ? false: true)];
 });
