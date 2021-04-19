@@ -87,12 +87,14 @@
                 </div>
             @endforeach
     </div>
-
+            @if(!Auth::guest())
             @if(Auth::user()->role_as == "admin")
             <div class="my-5">
                 <a href="album/create" class="btn aqua-gradient waves-effect  ">Create New Album</a>
             </div>
             @endif
+            @endif
+
 </div>
 @endsection
 <script>

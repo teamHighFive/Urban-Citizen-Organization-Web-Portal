@@ -127,7 +127,7 @@ class AlbumController extends Controller
         $this->validate($request,[
             'title'=>'required|max:100',
             'description'=>'required|max:255',
-            'coverimage'=>'nullable|image|mimes:jpeg,jpg|max:2048',
+            'coverimage'=>'image|mimes:jpeg,jpg|max:2048',
         ]);
 
 

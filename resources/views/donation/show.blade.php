@@ -14,7 +14,7 @@
                      <th>Phone No</th>
                      <th>Is Member</th>
                      <th>Email</th>
-                     <th>Amount</th>
+                     <th>Amount($)</th>
                      <th>Payment Method</th>
                      <th>Comments</th>
                  </tr>

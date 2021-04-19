@@ -19,7 +19,7 @@ Route::get('/viewcomments', 'CommentController@table_comments_files');
 
 Route::resource('posts', 'PostsController');
 Auth::routes();
-Route::get('/my_posts', 'PostsController@my_posts');
+
 
 Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');; 
@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth','isUser']], function () {
     Route::post('/updatecomment/{id}/{post_id}','CommentController@updatecomment');
     
     Route::get('/deletecomment/{id}/{post_id}','CommentController@deletecomment');
+    Route::get('/my_posts', 'PostsController@my_posts');
 });
  //Route::resources('comments','CommentController');

@@ -6,16 +6,12 @@
     <div class="row mt-5 px-5">
         
        
-        <h2>{{$album->title}}</h2>
+    <h3 class="text-center cyan-text pt-5 mb-3">{{$album->title}}</h3>
 
         
 
     </div>
-    <div class="row px-5">
 
-        <a href="/gallery">Back to Gallery</a>
-
-    </div>
 
     @if(session()->has('message'))
     <div class="alert alert-success">
