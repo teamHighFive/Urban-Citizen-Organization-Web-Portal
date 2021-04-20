@@ -30,7 +30,7 @@
 
                                                            
                                     <label for=""><h5 class="font-weight-bold"><strong> Color:</strong></h5></label>
-                                    <input type="color" class="form-control col-sm-9" name="color" placeholder="Enter the color" value="#cccccc" Required><br/>
+                                    <input type="color" class="form-control col-sm-9" name="color" placeholder="Enter the color" value="#0d1178" Required><br/>
                                     
                                     <label for=""><h5 class="font-weight-bold"><strong> Start Date:</strong></h5></label>
                                     <input type="datetime-local" id="sDate" onChange="checkDates()" class="form-control col-sm-9" name="start_date" class="date" placeholder="Enter Start date"Required><br/>
@@ -50,32 +50,42 @@
                                             var eDate = document.getElementById('eDate').value;
                                             var err =  document.getElementById('err');
                                             var sBtn = document.getElementById('submit');
+
+                                            err.innerHTML = "";
+                                            sBtn.disabled  = false;
+                
                                             if(sDate != "" && eDate != ""){
                                                 nsDate = new Date(sDate);
                                                 neDate = new Date(eDate);
+                                                cDate = new Date();
                                                 if(+nsDate < +neDate){
-                                                    err.innerHTML = `Loading...`;
-                                                    //ajax start
-                                                    var xmlhttp = new XMLHttpRequest();
-                                                    xmlhttp.onreadystatechange = function() {
-                                                    if (this.readyState === 4 && this.status == 200) {
+                                                    if(+nsDate < +cDate - 1000*60){
+                                                        sBtn.disabled  = true;
+                                                        err.innerHTML = `Starting date & time is not valid it should be greater than current date & time`;
+                                                    }else{
+                                                        err.innerHTML = `Loading...`;
+                                                        //ajax start
+                                                        var xmlhttp = new XMLHttpRequest();
+                                                        xmlhttp.onreadystatechange = function() {
+                                                        if (this.readyState === 4 && this.status == 200) {
 
-                                                            // let data = this.responseText;
-                                                            data = JSON.parse(this.responseText);
+                                                                // let data = this.responseText;
+                                                                data = JSON.parse(this.responseText);
 
-                                                            if(data.is_overlap){
-                                                                err.innerHTML = "This event is overlaping with another event(s).If you are okay with that you can proceed and add event.";
-                                                                sBtn.disabled  = false;
-                                                            }else{
-                                                                err.innerHTML = "";
-                                                                sBtn.disabled  = false;
+                                                                if(data.is_overlap){
+                                                                    err.innerHTML = "This event is overlaping with another event(s).If you are okay with that you can proceed and add event.";
+                                                                    sBtn.disabled  = false;
+                                                                }else{
+                                                                    err.innerHTML = "";
+                                                                    sBtn.disabled  = false;
+                                                                }
+                                                                
                                                             }
-                                                            
-                                                        }
-                                                    };
-                                                    xmlhttp.open("GET", `http://127.0.0.1:8000/api/is-event-overlap/${sDate}/${eDate}`, true);//generating  get method link
-                                                    xmlhttp.send();
-                                                    //ajax end
+                                                        };
+                                                        xmlhttp.open("GET", `http://127.0.0.1:8000/api/is-event-overlap/${sDate}/${eDate}`, true);//generating  get method link
+                                                        xmlhttp.send();
+                                                        //ajax end
+                                                    }
                                                 }else{
                                                     err.innerHTML = `Selected dates are invalid. End date & time Should be greater than start date & time`;
                                                 }
@@ -84,6 +94,8 @@
                                                 sBtn.disabled  = true;
                                             }
                                         }
+
+                                        checkDates();
                                     </script>
                                     
                                 </form>

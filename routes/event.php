@@ -14,25 +14,37 @@ use App\Http\Controllers\Event\EventController;//Event-Calendar EventController-
 |
 */
 
+//All
 //Route to Display eventpage-Event Calendar View
 Route::get('/event-calendar',[EventController::class,'index'] );
-//Route to Add Event to Calendar-view
-Route::get('/addeventurl',[EventController::class,'display'] );
-//Route to dispaly blade-Table view
-Route::get('/view-event',[EventController::class,'show']);
-//Route to delete event and show
-Route::get('/deleteeventurl',[EventController::class,'show'] );
-
-//EventController edit function route
-Route::get('/event@edit/{id}',[EventController::class,'edit'] );
-//EventController update function route
-Route::put('/event@update/{id}',[EventController::class,'update'] );
-//EventController destroy function route
-Route::get('/event@destroy/{id}',[EventController::class,'destroy'] );
-//EventController store function route
-Route::post('/add-event',[EventController::class,'store'] );
-
 Route::get('/eventDetails/{event_id}', [EventController::class,'moreOnEvent']);
 
 //By Sandali
 Route::get('/meetingDetails/{event_id}', [EventController::class,'moreOnMeeting']);
+
+
+//Admins
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+    //Route to Add Event to Calendar-view
+    Route::get('/addeventurl',[EventController::class,'display'] );
+    //Route to dispaly blade-Table view
+    Route::get('/view-event',[EventController::class,'show']);
+    //Route to delete event and show
+    Route::get('/deleteeventurl',[EventController::class,'show'] );
+    //EventController edit function route
+    Route::get('/event@edit/{id}',[EventController::class,'edit'] );
+    //EventController update function route
+    Route::put('/event@update/{id}',[EventController::class,'update'] );
+    //EventController destroy function route
+    Route::get('/event@destroy/{id}',[EventController::class,'destroy'] );
+    //EventController store function route
+    Route::post('/add-event',[EventController::class,'store'] );
+});
+
+
+
+
+
+
+
+

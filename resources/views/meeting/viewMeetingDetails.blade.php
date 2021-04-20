@@ -21,7 +21,7 @@
                             <p class="card-text"><b>Recording : </b>{{$meeting->recording == 1 ? 'Allowed' : 'Not Allowed'}}</p>
                             <p class="card-text"><b>Display on Calendar : </b>{{$meeting->display_on_calendar == 1 ? 'Allowed' : 'Not Allowed'}}</p>
                             <p class="card-text"><b>Admin Approval : </b>{{$meeting->approval == 1 ? 'Done' : 'Pending for admin approval'}}</p>
-                            <p class="card-text"><b>Status : </b>{{$meeting->status == 1 ? 'Ended/Canceled' : 'Available'}}</p>
+                            <p class="card-text"><b>Status : </b>{{$meeting->status == 0 ? 'Ended/Canceled' : 'Available'}}</p>
                         </div>
                         <div class="note note-success my-1"> 
                             <p class="card-text"><b>Date : </b>{{$meeting->date}}</p>

@@ -41,19 +41,23 @@
   <div class="jumbotron  blue-grey lighten-4">
     <h1 class="font-weight-bold text-center text-muted"><strong>Event Calendar</strong></h1>
     <hr>
-    <div class="card">
-      
-      <div class="row">
-        <div class="col-md-12 col-md-offset-2 p-3"><br/><br/>
+    <div class="card pt-5">
+
+    @if(!Auth::guest())
+    @if (Auth::user()->role_as == "admin")
+    <div class="row">
+        <div class="col-md-12 col-md-offset-2"><br/><br/>
           <!-- Add Event button -->
           <a href="/addeventurl"  class=" btn btn-blue-grey"> <strong >Add Event</strong> </a>
           <!-- Edit Event button -->
           <a href="/view-event" class="btn btn-light-blue"> <strong>Edit Event </strong></a>
           <!-- Delete Event button -->
-          <a href="/deleteeventurl" class="btn btn-yellow"><strong> Delete Event </strong></a>
+          <a href="/deleteeventurl" class="btn btn-yellow mb-2"><strong> Delete Event </strong></a>
         </div><br>
-      </div>
-
+    </div>
+    @endif
+    @endif
+      
       <div class="col-md-12 col-md-offset-2" >
             
 
@@ -70,19 +74,19 @@
       @endif
       <!-- success message -->
       @if(\Session::has('success'))
-        <div class="alert alert-success text-center">
+        <div class="alert alert-success text-center mt-2">
           <p>{{ \Session::get('success') }}</p>
         </div>
       @endif
       @if(\Session::has('fail'))
-        <div class="alert alert-danger text-center">
+        <div class="alert alert-danger text-center mt-2">
           <p>{{ \Session::get('fail') }}</p>
         </div>
       @endif
               
 
       <div class="col-md-18 col-md-offset-2" >
-        <div class="panel panel-default">
+        <div class="panel panel-default mt-3">
           <!-- Calendar Code -->
             <div class="panel-body" style="center">
               <div class="col-md-16 col-md-offset-2 pb-5" >

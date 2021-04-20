@@ -31,6 +31,10 @@
             <i class="fas fa-money-check-alt mr-3"></i>My Membership Payments
         </a>
 
+        <a href="{{ url('/pollhome') }}" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-money-check-alt mr-3"></i>Polls
+        </a>
+
         <a href="{{ url('view-meetings') }}" class="list-group-item list-group-item-action waves-effect">
             <i class="fas fa-bullhorn mr-3"></i>All Meetings
         </a>

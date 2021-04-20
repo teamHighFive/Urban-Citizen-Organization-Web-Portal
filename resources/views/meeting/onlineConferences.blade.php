@@ -108,5 +108,7 @@
                    
                 }
             }
+
+            checkDateAndTime();
         </script>
 @endsection
