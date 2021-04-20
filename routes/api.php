@@ -7,6 +7,7 @@ use App\Post;
 use App\User;
 use App\Payments;
 use App\event;
+use App\Option;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,26 @@ Route::get('/is-event-overlap/{startDate}/{endDate}',function($startDate, $endDa
     $events=DB::table('events')->where('start_date', '<=', $startDate)->where('end_date', '>=', $startDate)->orWhere('start_date', '<=', $endDate)->where('end_date', '>=', $endDate);
     
     return ['is_overlap'=>($events->count() == 0 ? false: true)];
+});
+
+Route::get('/edit-option/{optionId}/{text}',function($optionId, $text){
+    try {
+        $option=Option::find($optionId);
+        $option->option_name = $text;
+        $option->update();
+        return ['status'=>true];
+    } catch (Throwable $e) {
+        report($e);
+        return ['status'=>false];
+    }
+});
+Route::get('/delete-option/{optionId}',function($optionId){
+    try {
+        $option=Option::find($optionId);
+        $option->delete();
+        return ['status'=>true];
+    } catch (Throwable $e) {
+        report($e);
+        return ['status'=>false];
+    }
 });

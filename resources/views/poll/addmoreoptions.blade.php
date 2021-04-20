@@ -13,7 +13,7 @@
 
 
 <div class="container"><br>
-    <div class="jumbotron blue-grey lighten-4 mt-5">
+    <div class="jumbotron mt-5">
       <h2 class="font-weight-bold text-center text-muted"> Add More Options </h2>
        <hr>
         

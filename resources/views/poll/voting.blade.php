@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <div class="jumbotron blue-grey lighten-5 mt-5">
+        <div class="jumbotron mt-5">
          <h2 class="font-weight-bold text-center text-muted"> Vote To Poll </h2>
          <hr>
             <form action="{{url('/castvote/'.$id)}}" method="post">

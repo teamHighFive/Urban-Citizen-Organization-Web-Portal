@@ -4,7 +4,7 @@
 @section('content')
 <div class="container mt-5">
 
-    <div class="jumbotron  blue-grey lighten-4">
+    <div class="jumbotron">
       <div class="card">
         
 

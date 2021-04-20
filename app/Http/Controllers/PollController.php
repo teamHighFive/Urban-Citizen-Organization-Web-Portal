@@ -33,13 +33,15 @@ class PollController extends Controller
     
 //--------------------------save the data entered create poll form---------------------------------------//
     public function createPoll(Request $request){
+        
         $this->validate($request,[
             'Question'=>'required',
-            'Optionone'=>'required',
-            'Optiontwo'=>'required',
-            'end_date'=>'required',
-            'is_anonymous'=>'required'
+            'op1'=>'required',
+            'op2'=>'required',
+            'end_date'=>'required'
+          
         ]);
+            
 
             $poll = new Poll();
             $poll->descrition = $request->input('Question');
@@ -47,19 +49,24 @@ class PollController extends Controller
             $poll->is_anonymous = $request->anonymous != null ? true : false;
             $poll->save();
 
-            $optionOne = new Option();
-            $optionOne->option_name = $request->Optionone;
-            $optionOne->poll_id = $poll->id;
-            $optionOne->votes = 0;
-            $optionOne->save();
+            
+            for($x = 1; $x <= $request->poolCount;$x++){
+                $optionOne = new Option();
+                $optionOne->option_name = $request["op$x"];
+                $optionOne->poll_id = $poll->id;
+                $optionOne->votes = 0;
+                $optionOne->save();
+            }
 
-            $optionTwo = new Option();
-            $optionTwo->option_name = $request->Optiontwo;
-            $optionTwo->poll_id = $poll->id;
-            $optionTwo->votes = 0;
-            $optionTwo->save();
+            
 
-     return redirect('create-poll-form')->with('flashMessage','You have created poll successfully!!! Now you can add the more options.');
+            // $optionTwo = new Option();
+            // $optionTwo->option_name = $request->op2;
+            // $optionTwo->poll_id = $poll->id;
+            // $optionTwo->votes = 0;
+            // $optionTwo->save();
+
+     return redirect('pollhome')->with('flashMessage','You have created poll successfully!!! ');
     }
 
 
@@ -166,8 +173,8 @@ class PollController extends Controller
     public function update(Request $request, $id){
         $this->validate($request,[
             'Question'=>'required',
-            'end_date'=>'required',
-            'is_anonymous'=>'required'
+            'end_date'=>'required'
+           
         ]);
         $questions=Poll::find($id);
        
@@ -178,20 +185,20 @@ class PollController extends Controller
         $questions->save();
    
 
-       foreach($request->input('option') as $key => $value) {
-           $rules["option.{$key}"] = 'required';
-       }
+    //    foreach($request->input('option') as $key => $value) {
+    //        $rules["option.{$key}"] = 'required';
+    //    }
 
-        $validator = Validator::make($request->all(), $rules);
-        $optionidone=DB::table('options')->where('poll_id',$id)->orderBy('id','asc')->min('id');//get the optionid1
+    //     $validator = Validator::make($request->all(), $rules);
+    //     $optionidone=DB::table('options')->where('poll_id',$id)->orderBy('id','asc')->min('id');//get the optionid1
 
-       if ($validator->passes()) {
-          foreach($request->input('option') as $key => $value) {
-             DB::table('options')->where('id',$optionidone) ->update(['option_name'=>$value,'poll_id'=>$id,'votes'=>0]);
-            $optionidone++;
-           }
+    //    if ($validator->passes()) {
+    //       foreach($request->input('option') as $key => $value) {
+    //          DB::table('options')->where('id',$optionidone) ->update(['option_name'=>$value,'poll_id'=>$id,'votes'=>0]);
+    //         $optionidone++;
+    //        }
       
-        }
+    //     }
       
         return redirect('pollhome')->with('flashMessage','Poll updated successfully!!!');
      
