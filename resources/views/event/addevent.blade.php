@@ -51,8 +51,6 @@
                                             var err =  document.getElementById('err');
                                             var sBtn = document.getElementById('submit');
                                             if(sDate != "" && eDate != ""){
-                                                err.innerHTML = ('Both are available');
-                                                console.log(sDate,eDate);
                                                 nsDate = new Date(sDate);
                                                 neDate = new Date(eDate);
                                                 if(+nsDate < +neDate){
