@@ -54,18 +54,6 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function create(Request $request){
 
-        if($request->date == date("Y-m-d")){
-            $ThatTime =$request->time;
-            $todaydate = date('Y-m-d');
-            $time_now=mktime(date('G'),date('i'),date('s'));
-            $NowisTime=date('G:i:s',$time_now);
-            if($NowisTime >= $ThatTime) {
-                if($request->time < date('H:i:s')){
-                    return 'Invalid Time';
-                }
-            }
-        }
-
         //Add meetings to the table
         $meeting = new Meeting();
 
@@ -206,18 +194,6 @@ class MeetingController extends Controller
     // Edit a meeting
     // --------------------------------------------------------------------------------------------------
     public function editMeeting(Request $request){
-
-        if($request->date == date("Y-m-d")){
-            $ThatTime =$request->time;
-            $todaydate = date('Y-m-d');
-            $time_now=mktime(date('G'),date('i'),date('s'));
-            $NowisTime=date('G:i:s',$time_now);
-            if($NowisTime >= $ThatTime) {
-                if($request->time < date('H:i:s')){
-                    return redirect('/edit-meeting/'.$request->id)->with('error', 'Invalid Time');
-                }
-            }
-        }
 
         $meeting = Meeting::find($request->id);
 

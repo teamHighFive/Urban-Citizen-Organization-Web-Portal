@@ -6,6 +6,7 @@ use App\Http\Controllers\PostsController;
 use App\Post;
 use App\User;
 use App\Payments;
+use App\event;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,11 @@ Route::get('/is-membership-payment-year-available/{id}/{year}',function($id, $ye
     $payments = Payments::all()->where('user_id', $id)->where('is_success', "yes")->where('year', $year);
     
     return ['is_available'=>(count($payments) == 0 ? false: true)];
+});
+
+Route::get('/is-event-overlap/{startDate}/{endDate}',function($startDate, $endDate){
+
+    $events=DB::table('events')->where('start_date', '<=', $startDate)->where('end_date', '>=', $startDate)->orWhere('start_date', '<=', $endDate)->where('end_date', '>=', $endDate);
+    
+    return ['is_overlap'=>($events->count() == 0 ? false: true)];
 });

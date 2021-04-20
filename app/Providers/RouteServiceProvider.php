@@ -60,6 +60,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapArchiveRoutes();
         $this->mapBlogRoutes();
         $this->mapGalleryRoutes();
+        $this->mapPollRoutes();
 
         //------------------------------------------------------------------------------------------
         //By Sandali
@@ -138,6 +139,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/gallery.php'));
+    }
+
+    protected function mapPollRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/poll.php'));
     }
 
     //------------------------------------------------------------------------------------------

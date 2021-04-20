@@ -32,38 +32,38 @@ Route::get('/', function () {
 
 });
 
-//--------------------------Dhananjana----------------------------------------------------------------------------------------------//
+// //--------------------------Dhananjana----------------------------------------------------------------------------------------------//
 
-//pollhome page
-Route::get('/pollhome',[PollController::class,'PollHome']);
-//pollhome-createpoll button -create poll form
-Route::get('/create-poll-form',[PollController::class,'createPollForm']);
-//pollhome-edit&delete button-poll table
-Route::get('/polltable-view',[PollController::class,'showtable']);
-
-
-//created poll submit
-Route::post('/create-poll',[PollController::class,'createPoll'])->name('create-poll');
-//add more option view and submit
-Route::get("addmore","PollController@addMore");
-Route::post("addmore","PollController@addMorePost");
+// //pollhome page
+// Route::get('/pollhome',[PollController::class,'PollHome']);
+// //pollhome-createpoll button -create poll form
+// Route::get('/create-poll-form',[PollController::class,'createPollForm']);
+// //pollhome-edit&delete button-poll table
+// Route::get('/polltable-view',[PollController::class,'showtable']);
 
 
-
-//route to poll edit form
-Route::get('/polledit/{id}',[PollController::class,'edit'] );
-Route::put('/pollupdate/{id}',[PollController::class,'update']);
-
-//poll delete
-Route::get('/polldestroy/{id}',[PollController::class,'destroy'] );
+// //created poll submit
+// Route::post('/create-poll',[PollController::class,'createPoll'])->name('create-poll');
+// //add more option view and submit
+// Route::get("addmore","PollController@addMore");
+// Route::post("addmore","PollController@addMorePost");
 
 
-Route::get('/votetable',[PollController::class,'showvotetable']);
 
-Route::get('/pollview/{id}',[PollController::class,'viewvotingpage'] ); 
+// //route to poll edit form
+// Route::get('/polledit/{id}',[PollController::class,'edit'] );
+// Route::put('/pollupdate/{id}',[PollController::class,'update']);
 
-Route::get('/pollresult/{id}',[PollController::class,'result']);
+// //poll delete
+// Route::get('/polldestroy/{id}',[PollController::class,'destroy'] );
 
-Route::post('/castvote/{id}',[PollController::class,'castVote']);
 
-//-------------------------------------------Dhananjana-------------------------------------------------------------------
+// Route::get('/votetable',[PollController::class,'showvotetable']);
+
+// Route::get('/pollview/{id}',[PollController::class,'viewvotingpage'] ); 
+
+// Route::get('/pollresult/{id}',[PollController::class,'result']);
+
+// Route::post('/castvote/{id}',[PollController::class,'castVote']);
+
+// //-------------------------------------------Dhananjana-------------------------------------------------------------------
