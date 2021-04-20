@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.dashboard')
 @section('title','CreatePollForm')
     
 @section('content')  
@@ -44,10 +44,19 @@
           <input type="text" name="Optiontwo" class="form-control mb-2 col-sm-7" placeholder="Type Second Option"Required>
         </div>
         
-        <div class="form-group mb-4">
+        <div class="form-group mb-1">
           <label><strong>End date & Time:</strong></label>
-          <input type="datetime-local" class="form-control" name="end_date" class="date" placeholder="Enter End date"Required><br/>
+          <input type="datetime-local" class="form-control" name="end_date" min="{{Carbon\Carbon::now()->format('Y-m-d').'T'.Carbon\Carbon::now()->format('H:i')}}" class="date" placeholder="Enter End date"Required><br/>
         </div>
+
+        <div class="form-group mb-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="anonymous">
+          <label class="form-check-label" for="flexCheckDefault">
+              make this poll anonymous
+          </label>
+          </div>
+          </div>
 
         <div class="text-center">
           <button type="submit" class="btn btn-primary float-center"><strong>Submit</strong></button>

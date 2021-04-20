@@ -16,9 +16,9 @@ class CreatePollsTable extends Migration
         Schema::create('polls', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('descrition');
+            $table->boolean('is_anonymous')->default(false);
             $table->dateTime('end_date');
             $table->timestamps();
-           
         });
     }
 

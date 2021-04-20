@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.dashboard')
 
 @section('title','Vote-Table')
 @section('content')
@@ -26,9 +26,14 @@
                                 <td><div class="text-center font-weight-bold">{{ $question->descrition}}</div></td>
                                 <td><div class="text-center font-weight-bold">{{ $question->end_date}}</div></td>
 
-                                
-                                <td><a class="btn btn-success btn-sm" href="/pollview/{{$question->id}}">vote to Poll</a></td>
-                                <td><a class="btn btn-primary btn-lg active btn-sm" href="/pollresult/{{$question->id}}">View Poll result</a></td>
+                                @if($question->end_date > now())
+                                    
+                                    <td class="text-center"><a class="btn btn-success btn-sm" href="/pollview/{{$question->id}}">Vote</a></td>
+                                    
+                                @else
+                                    <td  class="text-center"><a class="btn btn-warning btn-sm disabled">Finished</a></td>
+                                @endif
+                                <td  class="text-center"><a class="btn btn-primary btn-lg active btn-sm" href="/pollresult/{{$question->id}}">View Result</a></td>
                                 
                             </tr>
                         </tbody>

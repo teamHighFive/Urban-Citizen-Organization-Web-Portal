@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Poll;
 use App\Option;
+use App\Vote;
+use App\User;
 
 
 
@@ -36,19 +38,26 @@ class PollController extends Controller
             'Optionone'=>'required',
             'Optiontwo'=>'required',
             'end_date'=>'required',
+            'is_anonymous'=>'required'
         ]);
-       
-            $Question=$request->input('Question');
-            $end_date=$request->input('end_date');
-        
-                
-            $id=DB::table('polls')->insertGetId(['descrition'=>$Question,'end_date'=> $end_date]);
-            
-            $Optionone=$request->Optionone;
-            DB::table('options')->insert( ['option_name'=>$Optionone,'poll_id'=>$id,'votes'=>0]);
-        
-            $Optiontwo=$request->Optiontwo;
-            DB::table('options')->insert( ['option_name'=>$Optiontwo,'poll_id'=>$id,'votes'=>0]);
+
+            $poll = new Poll();
+            $poll->descrition = $request->input('Question');
+            $poll->end_date = $request->input('end_date');
+            $poll->is_anonymous = $request->anonymous != null ? true : false;
+            $poll->save();
+
+            $optionOne = new Option();
+            $optionOne->option_name = $request->Optionone;
+            $optionOne->poll_id = $poll->id;
+            $optionOne->votes = 0;
+            $optionOne->save();
+
+            $optionTwo = new Option();
+            $optionTwo->option_name = $request->Optiontwo;
+            $optionTwo->poll_id = $poll->id;
+            $optionTwo->votes = 0;
+            $optionTwo->save();
 
      return redirect('create-poll-form')->with('flashMessage','You have created poll successfully!!! Now you can add the more options.');
     }
@@ -123,9 +132,10 @@ class PollController extends Controller
             
         $question=Poll::find($id);
         $options=DB::table('options')->where('poll_id',$id)->get();
-      
-        
-        return view('poll.result',['question'=>$question,'options'=>$options]);
+
+        $no_of_votes = $options->sum('votes') == 0 ? 1:$options->sum('votes');
+
+        return view('poll.result',['question'=>$question,'options'=>$options,'no_of_votes'=>$no_of_votes]);
     }
 
     //--------------------------poll table view------------------------------------------------------------
@@ -157,11 +167,13 @@ class PollController extends Controller
         $this->validate($request,[
             'Question'=>'required',
             'end_date'=>'required',
+            'is_anonymous'=>'required'
         ]);
         $questions=Poll::find($id);
        
         $questions->descrition=$request->input('Question');
         $questions->end_date=$request->input('end_date');
+        $questions->is_anonymous = $request->anonymous != null ? true : false;
      
         $questions->save();
    
@@ -233,6 +245,34 @@ class PollController extends Controller
         return redirect('pollhome')->with('flashMessageProblem','You have already voted');
         }
        
+    }
+
+
+    public function viewvoters($poll_id, $option_id){
+        $poll = Poll::find($poll_id);
+        $option = Option::find($option_id);
+
+        $votes = Vote::all()->where('poll_id',$poll_id)->where('option_id',$option_id)->where('has_voted',1);
+
+        $voters = [];
+        foreach($votes as $vote){
+            $user = User::find($vote->user_id);
+            if($user == null){
+                // $user = new User();
+                $no_user = new User();
+                $no_user->avatar = '/images/unregisteredUser.jpg';
+                $no_user->fname = 'User';
+                $no_user->mname = 'not';
+                $no_user->lname = 'available';
+                array_push($voters, $no_user);
+
+            }else{
+                array_push($voters, $user);
+            }
+            
+        }
+             
+        return view('poll.viewvoters')->with('poll', $poll)->with('option', $option)->with('voters', $voters);
     }
 
   

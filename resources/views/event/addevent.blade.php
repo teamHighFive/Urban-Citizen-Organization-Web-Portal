@@ -37,7 +37,8 @@
                                     
                                     <label for=""><h5 class="font-weight-bold"><strong> End Date:</strong></h5></label>
                                     <input type="datetime-local" id="eDate" onChange="checkDates()" class="form-control col-sm-9" name="end_date" class="date" placeholder="Enter End date"Required><br/>
-                                    
+
+                                                                        
                                     <div class="text-center">
                                         <p id="err" style="color:red"></p>
                                         <input type="submit" id="submit" name="submit" disabled class="btn btn-primary float-center mb-5" value="Add Event">
