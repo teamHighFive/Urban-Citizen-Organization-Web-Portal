@@ -531,7 +531,8 @@ public function store_conffiles(Request $request)
             $upload->scheduleend = $request->input('scheduleend');
 
             $upload->save();
-            return view('announcement.Announceform')->with('upload',$upload);
+            // return redirect('/announcement')->with('staus',"Announcement added successfully.");
+            return $this->announcements()->with('status','Announcement added successfully.');
         }
 
 //------------------------------------------------------------------------------------------------------------------

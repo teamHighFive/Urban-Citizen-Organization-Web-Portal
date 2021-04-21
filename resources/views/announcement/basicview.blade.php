@@ -77,11 +77,22 @@ function myFunction() {
 
   <div class="jumbotron">   
     <div class="row w-100">
+
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <div class="col-md-8" >   
         <h1 class="text-center red-text"><strong><i class="fas fa-scroll"></i> &nbsp; Announcements</strong></h1>          
         </div>
         <div class="col-md-4">
-        <a href="/form"><button class="btn btn-primary mt-1 ">Add Announcement</button></a>
+        @if(!Auth::guest())
+          @if (Auth::User()->role_as == "admin")
+            <a href="/form"><button class="btn btn-primary mt-1 ">Add Announcement</button></a>
+          @endif
+        @endif
         </div>
     </div> 
   <br> &emsp; <br>
