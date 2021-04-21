@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('paypal', 'Donation\DonationController@payWithpaypal')->name('paypal');
 
     // route for check status of the payment
-    Route::get('donationstatus/{donation_id}', 'Donation\DonationController@getPaymentStatus')->name('status');
+    Route::get('donationstatus/{donation_id}', 'Donation\DonationController@getPaymentStatus');
 
 ////Admin
 Route::group(['middleware' => ['auth','isAdmin']], function () {
