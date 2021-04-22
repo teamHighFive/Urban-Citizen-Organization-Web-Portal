@@ -123,7 +123,7 @@
                                                 <p class="card-text">
                                                     {{ str_limit($donationEvent->description, $limit = 150, $end = '...') }}
                                                 </p>
-                                                <a href="donate" class="btn btn-primary" style="position:absolute; bottom:15px; left:15px; right:15px;">Donate</a>
+                                                <a href="donate/{{$donationEvent->id}}" class="btn btn-primary" style="position:absolute; bottom:15px; left:15px; right:15px;">Donate</a>
                                             </div>
                                         </div>
                                     </div>
