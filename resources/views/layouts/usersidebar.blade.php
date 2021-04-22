@@ -17,7 +17,7 @@
         </a>
 
         <a href="{{ url('my_posts') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-mail-bulk mr-3"></i>My posts
+            <i class="fas fa-th-large mr-3"></i>My posts
         </a>
 
         <a href="{{ url('membership-payments') }}" class="list-group-item list-group-item-action waves-effect">
@@ -25,7 +25,7 @@
         </a>
 
         <a href="{{ url('/pollhome') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-money-check-alt mr-3"></i>Polls
+            <i class="fas fa-poll-h mr-3"></i>Polls
         </a>
 
         <!-- {{-- <a href="{{ url('#') }}" class="list-group-item list-group-item-action waves-effect">
@@ -33,7 +33,7 @@
         </a> --}} -->
 
         <a href="{{ url('get-recordings') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>Meeting Records
+            <i class="fas fa-compact-disc mr-3"></i>Meeting Records
         </a>
 
     </div>

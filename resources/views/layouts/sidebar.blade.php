@@ -20,11 +20,11 @@
         </a>
 
         <a href="{{ url('my_posts') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-mail-bulk mr-3"></i>Posts
+            <i class="fas fa-th-large mr-3"></i>Posts
         </a>
 
         <a href="{{ url('user-active') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-newspaper mr-3"></i>User Approval
+            <i class="fas fa-user-lock mr-3"></i>User Approval
         </a>
 
         <a href="{{ url('membership-payments') }}" class="list-group-item list-group-item-action waves-effect">
@@ -32,11 +32,11 @@
         </a>
 
         <a href="{{ url('/pollhome') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-money-check-alt mr-3"></i>Polls
+            <i class="fas fa-poll-h mr-3"></i>Polls
         </a>
 
         <a href="{{ url('view-meetings') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>All Meetings
+            <i class="fas fa-handshake mr-3"></i>All Meetings
         </a>
 
         <a href="{{ url('admin-approval') }}" class="list-group-item list-group-item-action waves-effect">
@@ -44,19 +44,19 @@
         </a>
 
         <a href="{{ url('upcoming-meetings') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>Upcoming Meetings
+            <i class="fas fa-calendar-day mr-3"></i>Upcoming Meetings
         </a>
 
         <a href="{{ url('get-recordings') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>Meeting Records
+            <i class="fas fa-compact-disc mr-3"></i>Meeting Records
         </a>
 
         <a href="{{ url('/donations/showAllDonationEvents') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>Donations
+            <i class="fas fa-donate mr-3"></i>Donations
         </a>
 
         <a href="{{ url('manual-sms') }}" class="list-group-item list-group-item-action waves-effect">
-            <i class="fas fa-bullhorn mr-3"></i>SMS Gateway
+            <i class="fas fa-comment mr-3"></i>SMS Gateway
         </a>
 
     </div>
