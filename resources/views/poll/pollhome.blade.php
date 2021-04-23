@@ -6,7 +6,7 @@
  
   
   <div class="container">
-    <div class="jumbotron mb-2">
+    <div class="jumbotron mb-2 mt-3">
 
     
      <h3><div class="p-2 mb-4 bg-info text-white text-center font-weight-bold col-sm-10" style="margin:0 auto">POLLS</div></h3>
