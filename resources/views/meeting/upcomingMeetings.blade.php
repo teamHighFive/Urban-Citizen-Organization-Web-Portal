@@ -19,7 +19,7 @@
 @section('title','Dashboard')
 @section('content')
 
-<div class="container" style="height:100vh">
+<div class="container" style="min-height:100vh">
         <?php
                 $user = Auth::user();
                 if($user['role_as'] == 'admin'){

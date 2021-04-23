@@ -2,7 +2,7 @@
 
 @section('title','Edit Meeting')
 @section('content')
-        <div class="container"  style="min-height: 100VH">
+        <div class="container"  style="min-height: 100vh">
             <h1 class="text-center cyan-text pt-5 mb-3">Edit Meeting</h1>
             <div class="row">
                 <div class="col-md-3"></div>
