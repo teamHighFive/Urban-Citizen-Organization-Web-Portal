@@ -22,12 +22,12 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth','isUser']], function () {
-    Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');; 
- 
+    Route::post('/storecomment/{post_id}', 'CommentController@store')->name('storecomment');;
     Route::get('/editcomment/{id}/{post_id}','CommentController@editcomment');
     Route::post('/updatecomment/{id}/{post_id}','CommentController@updatecomment');
-    
     Route::get('/deletecomment/{id}/{post_id}','CommentController@deletecomment');
+
+
     Route::get('/my_posts', 'PostsController@my_posts');
 });
  //Route::resources('comments','CommentController');
