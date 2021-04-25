@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Photo;
 use App\Album;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PhotoController extends Controller
 {
@@ -50,7 +51,10 @@ class PhotoController extends Controller
       $extension=$image->getClientOriginalExtension();
       $fileNameToStore = $filename.'_'.time().'.'.$extension;
       $path = $image;
-      $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
+      // $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
+      $image_resize = Image::make($path->getRealPath());              
+      $image_resize->resize(300, 200);
+      $image_resize->save(public_path('gallery-resourses/images/' .$fileNameToStore),100);
 
       $photo = new Photo();
 
@@ -74,7 +78,7 @@ class PhotoController extends Controller
     public function details($id)
     {
         //Get photo
-       $photo=Photo::table($this->table)->where('id',$id)->first();
+       $photo=Photo::where('id',$id)->first();
 
        //Render Template
         return view('gallery.photo.details',compact('photo'));
@@ -85,7 +89,7 @@ class PhotoController extends Controller
 
         $photos=Photo::find($id);
         $photos->delete($id);
-        return \Redirect::route('album.show',$photos->album_id);
+        return \Redirect::route('album.show',$photos->album_id)->with('message','Photo  Deleted');
 
     }
 }

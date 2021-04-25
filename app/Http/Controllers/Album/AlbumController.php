@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Album;
 use App\Photo;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class AlbumController extends Controller
@@ -27,7 +28,7 @@ class AlbumController extends Controller
 
         
             //Get all Albums
-            $albums=Album::orderBy('created_at', 'desc')->paginate(7);
+            $albums=Album::orderBy('created_at', 'desc')->paginate(3);
             
 
 
@@ -65,7 +66,13 @@ class AlbumController extends Controller
                 $extension = $request->file('coverimage')->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
                 $path = $request->file('coverimage');
-                $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
+                // $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
+
+
+
+                $image_resize = Image::make($path->getRealPath());              
+                $image_resize->resize(300, 200);
+                $image_resize->save(public_path('gallery-resourses/images/' .$fileNameToStore),100);
             }
 
             else{
@@ -97,7 +104,7 @@ class AlbumController extends Controller
             // $album=Album::where('id',$id)->first();
             $album = Album::find($id);
             //Get photo
-            $photos=Photo::where('album_id',$id)->get();
+            $photos=Photo::where('album_id',$id)->orderBy('created_at', 'desc')->paginate(9);
 
             //return view
             return view('gallery.show',compact('album','photos'));
@@ -138,7 +145,11 @@ class AlbumController extends Controller
             $extension = $request->file('coverimage')->getClientOriginalExtension();
             $fileNameToStore =time().'.'.$filename.$extension;
             $path = $request->file('coverimage');
-            $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
+            // $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
+
+            $image_resize = Image::make($path->getRealPath()); 
+            $image_resize->resize(300, 200);
+            $image_resize->save(public_path('gallery-resourses/images/' .$filename),100);
         }
 
         $donevents=Album::find($id);
@@ -150,11 +161,12 @@ class AlbumController extends Controller
         $album->title = $request->input('title');
         $album->description = $request->input('description');
         if($request->hasFile('coverimage')){
-            $album->coverimage = $fileNameToStore;
+            $album->coverimage = $filename;
         }
+
         $album->save();
         
-        return redirect('/gallery')->with('success','Album Edited');
+        return redirect('/gallery')->with('message','Album Edited');
         
     }
     
@@ -165,7 +177,7 @@ class AlbumController extends Controller
 
         $albums=Album::find($id);
         $albums->delete($id);
-        return redirect('/gallery')->with('success','Album  Deleted');
+        return redirect('/gallery')->with('message','Album  Deleted');
 
     }
 

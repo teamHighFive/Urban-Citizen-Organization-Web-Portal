@@ -3,27 +3,25 @@
 @section('content')
 
 <div class="container" style="min-height: 100vh">
-    <div class="row mt-5 px-5">
-        
-       
-    <h3 class="text-center cyan-text pt-5 mb-3">{{$album->title}}</h3>
-
-        
-
-    </div>
+     
+    <h3 class="text-center cyan-text pt-5 mb-3 font-weight-light">{{$album->title}}</h3>
 
 
     @if(session()->has('message'))
     <div class="alert alert-success">
         {{ session()->get('message') }}
     </div>
-@endif
+    @endif
     <div class="row mt-2">
 
         <div class="col px-5">
-            @if (Auth::check())
+            @if(!Auth::guest())
+            @if(Auth::user()->role_as == "admin")
             <a class="btn btn-primary" href="/photo/create/{{$album->id}}" role="button">Add Photo</a>
             @endif
+            @endif
+            
+            
         </div>
         
     </div>
@@ -63,6 +61,9 @@
             </div>
             @endforeach
 
+        </div>
+        <div class="d-flex justify-content-center">
+            {{ $photos->links() }}
         </div>
 
 </div>

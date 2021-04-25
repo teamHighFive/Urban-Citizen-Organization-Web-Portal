@@ -54,17 +54,18 @@
   		<div class="card-body">
     		<h5 class="card-title">For local donations (LKR)</h5>
     		<p class="card-text">
-			Bank Name    : Commercial Bank of Ceylon PLC
-			Bank Account : xxxxxxxxxxx
-			Currency     : LKR
-			Bank Address : No.766, Galle Road, Idama, Moratuwa, Sri Lanka.
-			Swift Code   : CCEYLKLXXXX
+			Bank Name    : Commercial Bank of Ceylon PLC</br>
+			Bank Account : xxxxxxxxxxx</br>
+			Currency     : LKR</br>
+			Bank Address : No.766, Galle Road, Idama, Moratuwa, Sri Lanka.</br>
+			Swift Code   : CCEYLKLXXXX</br>
     		</p>
   </div>
 </div>
 
-	<div>
+	<div class="d-flex justify-content-center">
 		{{ $donevents->links() }}
 	</div>
 </div>
+</br>
 @endsection

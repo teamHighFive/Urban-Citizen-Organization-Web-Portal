@@ -1,6 +1,19 @@
 @extends('layouts.main')
 
 @section('content')
+<style>
+#submit {
+    width: 29em;  height: 3em;
+}
+#edit {
+    width: 29em;  height: 3em;
+}
+
+#seemore {
+    width: 29em;  height: 3em;
+}
+
+</style>
 
 @if(session()->has('message'))
     <div class="alert alert-success">
@@ -11,6 +24,7 @@
 
 <div class="container" style="min-height: 100vh">
     <section>
+        <h1  class="text-center cyan-text pt-5 mb-3 font-weight-light">GALLERY</h1>
 
         <div id="carouselExampleIndicators" class="carousel slide carousel-fade " data-ride="carousel">
 
@@ -22,11 +36,11 @@
 
             </ol>
 
-            <div class="carousel-inner"  style="max-height: 60vh"  role="listbox">
+            <div class="carousel-inner"  role="listbox">
                 @foreach($albums as $album)
 
                     <div class="carousel-item  @if($loop->first) active @endif">
-                        <img src="gallery-resourses/images/{{$album->coverimage}}" class="d-block w-100" alt="slide">
+                        <img src="gallery-resourses/images/{{$album->coverimage}}" class="mh-100" style="width: 1075px; height: 550px" alt="slide">
                     </div>
 
                 @endforeach
@@ -49,8 +63,15 @@
 
 
     </section>
-
-    <h1  class="text-center cyan-text pt-5 mb-3">Albums</h1>
+</br>
+    
+    @if(!Auth::guest())
+    @if(Auth::user()->role_as == "admin")
+    <div class="my-0.5">
+        <a href="album/create" class="btn aqua-gradient waves-effect  ">Create New Album</a>
+    </div>
+    @endif
+    @endif
     <div class="row mt-5">
             @foreach($albums as $album)
                 <div class="col-lg-4">
@@ -60,42 +81,42 @@
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title">{{$album->title}}</h4>
+                            
+                           <h4 class="card-title">{{$album->title}}</h4>
                             <p>{{ str_limit($album->description, $limit = 150, $end = '...') }}</p>
-                            <a class="btn btn-sm btn-primary btn-block mb-3" href="album/show/{{$album->id}}" role="button">See More</a>
-                            @if(!Auth::guest())
+                            
+                            <a class="btn aqua-gradient waves-effect btn-sm" href="album/show/{{$album->id}}" id="seemore" role="button">See More-->></a>
+                                @if(!Auth::guest())
                                 @if(Auth::user()->role_as == "admin")
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <a class="btn btn-sm btn-warning btn-block" href="/album/edit/{{$album->id}}" role="button">Edit</a>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <form action="/album/{{$album->id}}" method="POST">
+                                
+                                    <a class="btn btn-sm btn-secondary" href="/album/edit/{{$album->id}}" id="edit" role="button">Edit</a>
+                                    <form action="/album/{{$album->id}}" method="POST">
                                             @method('DELETE')
                                             @csrf
-                                            <input type="submit" value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger btn-block">
-                                        </form>
-                                    </div>
-                                </div>
+                                            <input type="submit" id="submit"value="DELETE" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm ">
+                                    </form>
+
+                                        
+                                    
+                            
                                 @endif
-                            @endif
-                            
-                            
+                                @endif
+                       
                             <p class="card-text">Created date:  {{ date("d F Y",strtotime($album->created_at)) }} at {{ date("g:ha",strtotime($album->created_at)) }}</p>
                         </div>
                     </div>
+                    </br>
                 </div>
             @endforeach
     </div>
-            @if(!Auth::guest())
-            @if(Auth::user()->role_as == "admin")
-            <div class="my-5">
-                <a href="album/create" class="btn aqua-gradient waves-effect  ">Create New Album</a>
-            </div>
-            @endif
-            @endif
+           
 
 </div>
+
+<div class="d-flex justify-content-center">
+    {{ $albums->links() }}
+</div>
+
 @endsection
 <script>
     $('.addAttr').click(function() {

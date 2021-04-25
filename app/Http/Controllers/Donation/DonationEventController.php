@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\DonationEvent;
 use DB;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class DonationEventController extends Controller{
  
@@ -66,7 +67,11 @@ class DonationEventController extends Controller{
             $extension = $request->file('coverimage')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             $path = $request->file('coverimage');
-            $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
+            // $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
+
+            $image_resize = Image::make($path->getRealPath());              
+            $image_resize->resize(300, 200);
+            $image_resize->save(public_path('donation-resourses/events/images/' .$fileNameToStore));
         }
 
         else{
@@ -130,7 +135,11 @@ public function update(Request $request, $id){
         $extension = $request->file('coverimage')->getClientOriginalExtension();
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
         $path = $request->file('coverimage');
-        $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
+        // $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
+
+        $image_resize = Image::make($path->getRealPath());              
+        $image_resize->resize(300, 200);
+        $image_resize->save(public_path('donation-resourses/events/images/' .$filename));
     }
 
     //insert into datbase
@@ -142,7 +151,7 @@ public function update(Request $request, $id){
     $donevents->name = $request->input('name');
     $donevents->description = $request->input('description');
     if($request->hasFile('coverimage')){
-        $donevents->coverimage = $fileNameToStore;
+        $donevents->coverimage = $filename;
     }
     $donevents->save();
 

@@ -6,7 +6,7 @@
     <div class="jumbotron overflow-auto" style="overflow-x: scroll;">
         <table class="table table-striped table-bordered table-hover">
              <thead class="thead">
-                 <tr class="warning">
+                 <tr class="color-block-dark indigo lighten-1-color-dark z-depth-2 white-text">
                      <th>Donor's Name</th>
                      <th>Donor's Address</th>
                      <th>Donor's Country</th>
