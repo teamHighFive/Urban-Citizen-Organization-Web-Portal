@@ -55,7 +55,7 @@
     
     <div class="form-group">
         <label for="">Full Name</label>
-        <input type="text" name="donner_fullname" id="" class="form-control" required autocomplete="donner_fullname">
+        <input type="text" name="donner_fullname" id="" class="form-control" required>
         @if ($errors->has('donner_fullname'))
                     <span class="text-danger">{{ $errors->first('donner_fullname') }}</span>
                 @endif
@@ -64,7 +64,7 @@
 
     <div class="form-group">
       <label for="">Amount</label>
-      <input type="text" name="amount" id="" placeholder="$" class="form-control" required autocomplete="amount">
+      <input type="text" name="amount" id="" placeholder="$" class="form-control">
     </div>
 
     <div class="form-group">
@@ -84,12 +84,12 @@
 
     <div class="form-group">
         <label for="">Email</label>
-        <input type="text" name="donner_email" id="" class="form-control" required autocomplete="donner_email">
+        <input type="text" name="donner_email" id="" class="form-control" required >
     </div>
 
     <div class="form-group">
         <label for="">Mobile</label>
-        <input type="text" name="donner_phone" id="" class="form-control" required autocomplete="donner_phone">
+        <input type="text" name="donner_phone" id="" class="form-control" required>
     </div>
 
     <div class="form-group">

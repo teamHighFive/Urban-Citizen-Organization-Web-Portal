@@ -46,9 +46,8 @@
                                 <h5>{{$photo->description}}</h5>
                             </div>
 
-                            @if (Auth::check())
-                            {{-- <a class="btn aqua-gradient waves-effect" href="/photo/edit/{{$photo->id}}" role="button">Edit</a> --}}
-                            
+                            @if(!Auth::guest())
+                            @if(Auth::user()->role_as == "admin")
                             <div>
                                     <form action="/photo/{{$photo->id}}" method="POST">
                                         @method('DELETE')
@@ -56,6 +55,7 @@
                                         <input type="submit" value="DELETE"onclick="return confirm('Are you sure?')" class="btn btn-danger">
                                     </form>
                             </div>
+                            @endif
                             @endif
                         </div>
             </div>
