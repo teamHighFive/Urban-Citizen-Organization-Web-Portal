@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Kolkata");
 
 use Illuminate\Http\Request;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 use BigBlueButton\BigBlueButton;
 use BigBlueButton\Parameters\CreateMeetingParameters;
@@ -66,7 +66,7 @@ class MeetingController extends Controller
         $meeting->time = $request->time == null ? date('H:i:s') : $request->time;
         $meeting->recording = $request->recording != null ? true : false;
         $meeting->display_on_calendar = $request->calendar != null ? true : false;
-        
+
         $user = Auth::user();
         if($user['role_as'] == 'admin'){
             $meeting->approval = true;
@@ -224,7 +224,7 @@ class MeetingController extends Controller
 
 
 
-    
+
 
     // --------------------------------------------------------------------------------------------------
     //  Get meeting recordings
