@@ -25,9 +25,9 @@
                 {!!Form::open(array('url'=>'create-donation','enctype'=>'multipart/form-data')) !!}
                 @csrf
                 {!!Form::label('name','Name') !!}
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" required>
                 {!!Form::label('description','Description') !!}
-                <input type="text" name="description" class="form-control">
+                <input type="text" name="description" class="form-control" required>
                 {!!Form::label('coverimage','Cover Image') !!}
                 </br>
                 {!!Form::file('coverimage',$attributes=['name'=>'coverimage','required'])!!}

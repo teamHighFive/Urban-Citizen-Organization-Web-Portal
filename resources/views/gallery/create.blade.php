@@ -23,9 +23,9 @@
         
                         {!!Form::open(array('url'=>'create-album','enctype'=>'multipart/form-data')) !!}
                         {!!Form::label('title','Title') !!}
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" name="title" class="form-control" required>
                         {!!Form::label('description','Description') !!}
-                        <input type="text" name="description" class="form-control">
+                        <input type="text" name="description" class="form-control" required>
                         {!!Form::label('coverimage','Cover Image') !!}
                         {!!Form::file('coverimage',$attributes=['class' => 'form-control','required'])!!}
                         </br>

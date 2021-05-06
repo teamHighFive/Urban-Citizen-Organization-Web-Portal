@@ -17,6 +17,7 @@ Route::get('/gallery', 'Album\AlbumController@index');
 Route::resource('album', 'Album\AlbumController');
 Route::resource('photo', 'Album\PhotoController');
 Route::get('/album/show/{id}', 'Album\AlbumController@show');
+Route::get('/photo/details/{id}', 'Album\PhotoController@details');
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
 ///Admin
@@ -27,7 +28,6 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     // Route::post('edit-album/{id}','Album\AlbumController@update');
     Route::get('/album/create','Album\AlbumController@create');
     Route::get('/photo/create/{id}', 'Album\PhotoController@create');
-    Route::get('/photo/details/{id}', 'Album\PhotoController@details');
     Route::get('/photo/{id}', 'Album\PhotoController@destroy');
     
 });
