@@ -52,8 +52,11 @@
                     <div class="jumbotron">
                         <form action="/send-sms" method="POST">
                                 {{csrf_field()}}
-                                <!-- TODO - set correct sender ID dynamically -->
-                                <input type="text" name="from" class="form-control my-1" value="From : Mora-FitB18" required disabled>
+                                <input type="hidden" name="attendeePwd" class="form-control my-1" value="{{$meeting->attendee_password}}">
+                                <input type="hidden" name="moderatorPwd" class="form-control my-1" value="{{$meeting->moderator_password}}">
+                                
+                                <input type="text" name="from" class="form-control my-1" value="From : {{getenv('NEWSLETTERS_SENDER_ID')}}" required disabled>
+                                
                                 <!-- <input type="text" name="to" class="form-control my-1" placeholder="To" required> -->
                                 <a href="#contact-list" class="form-control my-1" data-toggle="collapse">To</a>
                                 <div id="contact-list" class="collapse my-1">
@@ -79,7 +82,15 @@
                                     </div>
                                 </div>
                                 <textarea name="text" cols="30" rows="3" class="form-control my-1" placeholder="Message" required>"{{$meeting->meeting_name}}", online meeting is going to be held on {{$meeting->date}} at <?php echo substr($meeting->time, 0, 5); ?>. {{$meeting->meeting_description}}. Please click the following link to join the meeting. {{getenv('APP_URL')}}/join-via-link/{{$meeting->meeting_id}}</textarea>
-                                <p class="text-danger text-justify">Please add meeting's attendee or moderator password in the above text message according to the participant type.</p>
+                                
+                                <div class="ml-4">
+                                    <input type="checkbox" class="form-check-input" name="attendee">
+                                    <label class="form-check-label" for="attendee">Send Attendee Password</label><br>
+
+                                    <input type="checkbox" class="form-check-input" name="moderator">
+                                    <label class="form-check-label" for="moderator">Send Moderator Password</label><br>
+                                </div>
+
                                 <input type="submit" class="btn btn-primary mt-2" value="Send">
                         </form>
                     </div>

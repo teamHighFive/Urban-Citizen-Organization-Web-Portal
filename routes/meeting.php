@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('/send-meeting-notifications/{meeting_id}', function($meeting_id){
         $meeting = Meeting::find($meeting_id);
         $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
-        $members = User::all();
+        $members = User::all()->sortby('fname');
         if (isset($dataBalance['balance'])){
             return view('sms.meetingNotifications')->with('meeting', $meeting)->with('members', $members)->with('meeting', $meeting)->with('balance', $dataBalance['balance']);
         }else if ($dataBalance['status'] == "error"){

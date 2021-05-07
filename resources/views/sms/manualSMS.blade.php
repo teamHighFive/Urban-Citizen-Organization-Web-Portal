@@ -53,7 +53,7 @@
                         <form action="/send-sms" method="POST">
                                 {{csrf_field()}}
                                 <!-- TODO - set correct sender ID dynamically -->
-                                <input type="text" name="from" class="form-control my-1" value="From : Mora-FitB18" required disabled>
+                                <input type="text" name="from" class="form-control my-1" value="From : {{getenv('NEWSLETTERS_SENDER_ID')}}" required disabled>
                                 <!-- <input type="text" name="to" class="form-control my-1" placeholder="To" required> -->
                                 <a href="#contact-list" class="form-control my-1" data-toggle="collapse">To</a>
                                 <div id="contact-list" class="collapse my-1">

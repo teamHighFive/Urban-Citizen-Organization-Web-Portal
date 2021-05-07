@@ -32,7 +32,20 @@ class SMSController extends Controller
             return redirect()->back()->with('error', "No cantact was selected.");
         }
         $recipients = implode(",", $recipientsArr);
-        $response = $this->send($recipients, $request->text);
+
+        $attendeePwd = $request->attendee != null ? $request->attendeePwd : '';
+        $moderatorPwd = $request->moderator != null ? $request->moderatorPwd : '';
+
+        $text = $request->text;
+
+        if($attendeePwd != ""){
+            $text = $text."  "."Attendee Password : ".$attendeePwd;
+        }
+        if($moderatorPwd != ""){
+            $text = $text."  "."Moderator Password : ".$moderatorPwd;
+        }
+
+        $response = $this->send($recipients, $text);
         return redirect()->back()->with('status', $response);
 
     }

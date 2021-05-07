@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     /// SMS gateway
     Route::get('/manual-sms', ['middleware' => 'auth', 'uses' => function () {
         $dataBalance = Http::get('https://app.newsletters.lk/smsAPI?balance&apikey='.getenv("NEWSLETTERS_API_KEY").'&apitoken='.getenv("NEWSLETTERS_API_TOKEN"))->json();
-        $members = User::all();
+        $members = User::all()->sortby('fname');
         if (isset($dataBalance['balance'])){
             return view('sms.manualSMS')->with('members', $members)->with('balance', $dataBalance['balance']);
         }else if ($dataBalance['status'] == "error"){
