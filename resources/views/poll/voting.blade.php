@@ -26,6 +26,16 @@
                                 </div>
                              <br>
                             @endforeach
+
+                            @if($question->is_anonymous == 0)
+                            <div class="note note-danger my-1">
+                                <p class="text-danger">This pall is not anonymous</p>
+                            </div>
+                            @elseif($question->is_anonymous == 1)
+                            <div class="note note-success my-1">
+                                <p class="text-success">This pall is anonymous</p>
+                            </div>
+                            @endif
                             
                             <div class="form-group row ">
                                 <div class="col-sm-10" style="margin:0 auto">
