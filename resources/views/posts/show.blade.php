@@ -66,7 +66,7 @@
                                         
                                         }
                                     };
-                                    xmlhttp.open("GET", 'http://127.0.0.1:8000/api/get-clap-count/1', true);//generating  get method link
+                                    xmlhttp.open("GET", 'http://127.0.0.1:8000/api/get-clap-count/{{$post->id}}', true);//generating  get method link
                                     xmlhttp.send();
                                     }
 
@@ -84,7 +84,8 @@
                                             
                                             }
                                         };
-                                        xmlhttp.open("GET", 'http://127.0.0.1:8000/api/post-clap-count/1', true);//generating  get method link
+                                        // TODO - URL
+                                        xmlhttp.open("GET", 'http://127.0.0.1:8000/api/post-clap-count/{{$post->id}}', true);//generating  get method link
                                         xmlhttp.send();
                                     }
 
