@@ -33,7 +33,11 @@
                                                         <h5 class="card-title">{{ $item->fname }} {{ $item->mname }} {{ $item->lname }} (User ID : {{$item->id}})</h5>
                                                     </div>
                                                     <div class="col-lg-5 d-flex justify-content-end">
+                                                        @if(Auth::user()->id == $item->id)
+                                                            {{-- <button type="button" class="btn btn-primary mx-2" disabled>My Account</button> --}}
+                                                        @else
                                                         <a href="{{ url('role-edit/'.$item->id) }}" class="btn btn-primary mx-2">EDIT</a>
+                                                        @endif
                                                         <a href="/view-payments/{{$item->id}}" class="btn btn-primary">View Payment History</a>
                                                     </div>
                                                 </div>
@@ -59,9 +63,9 @@
                                                                 <button type="submit" class="btn btn-danger">DELETE</button>
                                                             </form>
                                                         @endif
-                                                        
+
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>
                                             </div>
                                         </td>
