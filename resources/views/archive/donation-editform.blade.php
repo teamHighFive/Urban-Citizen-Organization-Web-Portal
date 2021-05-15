@@ -30,7 +30,7 @@
                                 <div class="col-md-4"></div>
                             </div>
                         <br>
-                            <a target="_blank" href="{{ asset ('uploads/donate_files/'.$upload->type.'/' . $upload->file) }}">
+                            <a target="_blank" href="{{ asset ('uploads/donate_files'.$upload->type.'/' . $upload->file) }}">
                             @if($upload->type == 'doc'||$upload->type =='docx'||$upload->type =='txt'||$upload->type =='pptx')
                                     <i class="fas fa-file-invoice">&nbsp; previuosly uploaded file</i>
                             @elseif($upload->type =='pdf')

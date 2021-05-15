@@ -7,7 +7,6 @@
 <h3 class="text-center cyan-text pt-5 mb-3">{{$donationEvent->name}}</h3>
 
 
-</div>
 @endforeach
 
 @if ($message = Session::get('success'))

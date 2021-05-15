@@ -1,7 +1,7 @@
 @extends('layouts.main')
-
 @section('title','Announcements')
 @section('header')
+
 <style>
 .dropbtn {
   background-color: #4CAF50;
@@ -73,50 +73,79 @@ function myFunction() {
 @endsection
 @section('content')
 
-<div style="min-height:100vh">
+  <div style="min-height:100vh">
 
-  <div class="jumbotron">   
-    <div class="row w-100">
+    <div class="jumbotron">   
+      <div class="row w-100">
 
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <div class="col-md-8" >   
-        <h1 class="text-center red-text"><strong><i class="fas fa-scroll"></i> &nbsp; Announcements</strong></h1>          
-        </div>
-        <div class="col-md-4">
-        @if(!Auth::guest())
-          @if (Auth::User()->role_as == "admin")
-            <a href="/form"><button class="btn btn-primary mt-1 ">Add Announcement</button></a>
+          @if (session('status'))
+              <div class="alert alert-success" role="alert">
+                  {{ session('status') }}
+              </div>
           @endif
-        @endif
-        </div>
-    </div> 
-  <br> &emsp; <br>
-      @foreach ($upload as $item)
-        <div class="card">
-          <div class="row">
-            <div class="col"><h5 class="text-left orange-text pt-1 mb-1"> &nbsp; <i class="fas fa-bullhorn"></i></i>&nbsp; {{$item->topic}}</h5><hr></div>
-          </div>
-          <div class="row">
-            <div class="col"> &nbsp; <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;{{$item->body}} <hr style="width:40%" align="right"></div>
-          </div>
-          <div class="row">          
-            <div class="col" align="right" ><strong> Announced by administrator : </strong> {{App\User::find($item->user_id)->fname}} {{App\User::find($item->user_id)->lname}} &nbsp;
-            @if(!Auth::guest())
-              @if (Auth::User()->role_as == "admin")
-                <a href="/deleteann/{{$item->id}}" class="btn btn-outline-danger btn-sm">Delete announcement</a></div>
-              @endif
+
+          <div class="col-md-8" >   
+          <h1 class="text-center deep-purple-text"><strong><i class="fas fa-scroll"></i> &nbsp; Announcements</strong></h1>          
+          </div>        
+          <div class="col-md-4" align="right">
+          @if(!Auth::guest())
+            @if (Auth::User()->role_as == "admin")
+              <a href="/form"><button class="btn btn-outline-primary mt-1 btn-md"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; ADD </button></a>   
+              <button type="button" class="btn btn-outline-primary mt-1 btn-md" data-toggle="modal" data-target="#basicExampleModal"><i class="fas fa-tasks"></i>&nbsp; Check list</button></a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="display-6">Announcement list</h1>                        
+                          </div>
+                          <div>
+                            <a href="/list" class="btn btn-dark btn-sm">Go to Table</a>
+                          </div>
+                          <table class="table">
+                            <div class="modal-body">
+                              <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">Annoucment Topic</th>
+                                    <th>Time period</th>
+                                    <th>Delete</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  @foreach ($upload as $item)
+                                  <tr>
+                                      <th> {{$item->topic}}</th>                                    
+                                      <th> {{$item->schedulestart}}<b> &nbsp; - &nbsp;</b><br> {{$item->scheduleend}}</th>
+                                      <th> <a href="/deleteann/{{$item->id}}" class="btn btn-outline-danger btn-sm"><i class="fas fa-times"></i></a>
+                                  </tr>
+                                  @endforeach
+                              </tbody>                          
+                            </div>                          
+                          </table>
+                        </div>
+                      </div>
+                    </div>
             @endif
+          @endif
           </div>
-        </div><br>   
-      @endforeach 
+      </div> 
+    <br> &emsp; <br>
+        @foreach ($upload as $item)
+          <div class="card">
+            <div class="row">
+              <div class="col"><h5 class="text-left indigo-text pt-1 mb-0"> &nbsp; <i class="fas fa-bullhorn"></i></i>&nbsp; {{$item->topic}}</h5><hr></div>
+            </div>
+            <div class="row">
+              <div class="col"> &nbsp; <p class="note note-primary"> &nbsp;{{$item->body}} </p><hr style="width:40%" align="right"></div>
+            </div>
+            <div class="row">          
+              <div class="col" align="right" ><strong> Announced by administrator : </strong> {{App\User::find($item->user_id)->fname}} {{App\User::find($item->user_id)->lname}} &nbsp;
+            </div>
+          </div><br>   
+        @endforeach 
+      </div>
     </div>
   </div>
-</div>
-
 
 @endsection
