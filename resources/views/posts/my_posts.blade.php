@@ -56,7 +56,13 @@
                                         ?>
                                             <tr>
                                                 <th>{{$post->title}}</a></th>
-                                                <th><a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a></th>
+                                                <th>
+                                                    @if($post->cover_image == null)
+                                                    <h6>No image</h6>
+                                                    @else
+                                                    <a href="/posts/{{$post->id}}"><img style="width: 150px;height: 100px" src="/storage/cover_images/{{$post->cover_image}}" alt=""></a>
+                                                    @endif
+                                                </th>
                                                 <th>{{date('M j, Y',strtotime($post->created_at))}}</a></th>
 
                                                 @if(Auth::user()->id == $post->user_id)
