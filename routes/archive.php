@@ -25,12 +25,16 @@ Route::get('/post-arc', 'Document\DocumentController@table_post_files');
 Route::get('/eventfiles-arc', 'Document\DocumentController@table_event_files');
 Route::get('/announcement', 'Document\DocumentController@announcements');
 
+
+
 Route::group(['middleware' => ['auth','isAdmin']], function () {
 
 Route::get('/submission_table', 'Document\DocumentController@table_submission_files');
 Route::get('/form', function () {return view('announcement\Announceform');});
 Route::post('/submit', 'Document\DocumentController@storeann')->name('submit');
 Route::get('/deleteann/{id}','Document\DocumentController@announcementdelete');
+Route::get('/list', 'Document\DocumentController@announcementlist');
+Route::get('/deletetableann/{id}','Document\DocumentController@announcementtabledelete');
 
 
 });

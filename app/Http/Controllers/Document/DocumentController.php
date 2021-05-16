@@ -56,7 +56,10 @@ public function event_form()
 }
 //------------------------------------------------------------------------------------------------------------------
 
-
+public function list()
+{
+    return view('announcement.list');
+}
 //------------------------------------------------------------------------------------------------------------------
 
 public function store_events(Request $request)
@@ -560,6 +563,32 @@ public function store_conffiles(Request $request)
                 $upload->delete();
                 return redirect('/announcement')->with('upload',$upload);
             }
+//------------------------------------------------------------------------------------------------------------------
 
+public function announcementtabledelete($primary)
+{
+    $upload = Announcement::find($primary);
+    $upload->delete();
+    return redirect('/list')->with('upload',$upload);
+}          
+
+
+//------------------------------------------------------------------------------------------------------------------
+
+    public function announcementlist()
+        {   
+            $upload = Announcement::all()->where('p_visitor', 1);
+            if(Auth::guest()){
+                $upload = Announcement::all()->where('p_visitor', 1);
+            }else {
+                $userType = Auth::user()->role_as;
+                if($userType == 'admin'){
+                    $upload = Announcement::all();
+                }else if($userType == 'member'){
+                    $upload = Announcement::all()->where('p_member', 1);
+                }
+            }
+            return view('announcement.list')->with('upload',$upload);
+        }
 
 }
