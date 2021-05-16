@@ -111,7 +111,8 @@ class CommentController extends Controller
         {
             $comment = Comment::find($id);
             $comment->delete();
-            return app('App\Http\Controllers\PostsController')->show($post_id);
+            // return app('App\Http\Controllers\PostsController')->show($post_id);
+            return redirect('/posts/'.$post_id);
 
         }
     }
