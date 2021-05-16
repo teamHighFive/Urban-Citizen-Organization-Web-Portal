@@ -17,6 +17,15 @@
                             {{ session('error') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="jumbotron">
                         <h3 class="text-center">{{$meeting->meeting_name}}</h3>
                         <form action="/save-edited-meeting" method="POST">
@@ -25,7 +34,7 @@
                             <input type="text" name="user" class="form-control my-1" placeholder="Your Name" value="{{$meeting->creator}}" required disabled>
                             <input type="text" name="meetingName" class="form-control my-1" placeholder="Meeting Name" value="{{$meeting->meeting_name}}" required disabled>
                             <textarea name="description" cols="30" rows="3" class="form-control my-1" placeholder="Description" required>{{$meeting->meeting_description}}</textarea>
-                            <input type="date" name="date" class="form-control my-1" value="{{$meeting->date}}" min="<?php echo date("Y-m-d"); ?>" required>
+                            <input type="date" name="date" class="form-control my-1" value="{{$meeting->date}}" onChange="checkDateAndTime()" min="<?php echo date("Y-m-d"); ?>" required>
                             <input type="time" name="time" class="form-control my-1" value="{{$meeting->time}}" onChange="checkDateAndTime()" required>
                             <input type="text" name="moderatorPwd" class="form-control my-1" placeholder="Set Moderator Password (Not Required)" value="<?php echo $meeting->moderator_password != 'moderator_pwd'? $meeting->moderator_password:''; ?>">
                             <input type="text" name="attendeePwd" class="form-control my-1" placeholder="Set Attendee Password (Not Required)" value="<?php echo $meeting->attendee_password != 'attendee_pwd'? $meeting->attendee_password:''; ?>">

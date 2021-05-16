@@ -23,6 +23,13 @@ class MeetingController extends Controller
     // --------------------------------------------------------------------------------------------------
     public function createAndJoin(Request $request){
 
+        $validated = $request->validate([
+            'meetingName' => 'required|max:200',
+            'description' => 'required|max:500',
+            'moderatorPwd' => 'max:50',
+            'attendeePwd' => 'max:50',
+        ]);
+
         $meeting = $this->create($request);
 
         $url = $this->join($meeting->meeting_id, 'moderator', $meeting->creator); //Send meeting ID and user type(attendee, moderator) as parameters
@@ -38,6 +45,13 @@ class MeetingController extends Controller
     // Schedule a meeting
     // --------------------------------------------------------------------------------------------------
     public function schedule(Request $request){
+
+        $validated = $request->validate([
+            'meetingName' => 'required|max:200',
+            'description' => 'required|max:500',
+            'moderatorPwd' => 'max:50',
+            'attendeePwd' => 'max:50',
+        ]);
 
         $meeting = $this->create($request);
 
@@ -96,8 +110,6 @@ class MeetingController extends Controller
             $password = $attendeePassword;
         }
         $recording = $meeting->recording;
-
-        //TODO Check if the time is right
 
         $bbb = new BigBlueButton();
 
@@ -194,6 +206,12 @@ class MeetingController extends Controller
     // Edit a meeting
     // --------------------------------------------------------------------------------------------------
     public function editMeeting(Request $request){
+
+        $validated = $request->validate([
+            'description' => 'required|max:500',
+            'moderatorPwd' => 'max:50',
+            'attendeePwd' => 'max:50',
+        ]);
 
         $meeting = Meeting::find($request->id);
 
