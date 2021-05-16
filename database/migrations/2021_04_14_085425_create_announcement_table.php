@@ -16,7 +16,7 @@ class CreateAnnouncementTable extends Migration
         Schema::create('announcement', function (Blueprint $table) {
             $table->increments('id');
             $table->String('topic');
-            $table->String('body');
+            $table->mediumText('body');
             $table->integer('user_id');
             $table->boolean('p_admin');
             $table->boolean('p_member');

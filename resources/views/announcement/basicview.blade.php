@@ -91,7 +91,7 @@ function myFunction() {
           @if(!Auth::guest())
             @if (Auth::User()->role_as == "admin")
               <a href="/form"><button class="btn btn-outline-primary mt-1 btn-md"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; ADD </button></a>   
-              <button type="button" class="btn btn-outline-primary mt-1 btn-md" data-toggle="modal" data-target="#basicExampleModal"><i class="fas fa-tasks"></i>&nbsp; Check list</button></a>
+              <button type="button" class="btn btn-outline-primary mt-1 btn-md" data-toggle="modal" data-target="#basicExampleModal"><i class="fas fa-tasks"></i>&nbsp; Options</button></a>
                     <!-- Modal -->
                     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                       aria-hidden="true">

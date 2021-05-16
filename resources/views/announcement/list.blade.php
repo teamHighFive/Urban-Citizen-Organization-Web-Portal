@@ -11,6 +11,7 @@
                         <th scope="col">Annoucment Topic</th>
                         <th scope="col">Added by</th>    
                         <th>Time period</th>
+                        <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -21,7 +22,8 @@
                         <th> {{$item->topic}}</th>
                         <th> {{App\User::find($item->user_id)->fname}}</th>
                         <th> {{$item->schedulestart}}<b> &nbsp; - &nbsp;</b> {{$item->scheduleend}}</th>
-                        <th> <a href="/deletetableann/{{$item->id}}" class="btn btn-outline-danger btn-sm" aria-hidden="true">Delete announcement</a>
+                        <th> <a href="/edittableann/{{$item->id}}" class="btn btn-outline-warning btn-sm" aria-hidden="true">Edit</a>
+                        <th> <a href="/deletetableann/{{$item->id}}" class="btn btn-outline-danger btn-sm" aria-hidden="true">Delete</a>
                     </tr>
                     @endforeach
                 </tbody>

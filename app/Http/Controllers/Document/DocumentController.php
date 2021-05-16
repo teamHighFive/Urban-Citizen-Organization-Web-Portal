@@ -565,12 +565,12 @@ public function store_conffiles(Request $request)
             }
 //------------------------------------------------------------------------------------------------------------------
 
-public function announcementtabledelete($primary)
-{
-    $upload = Announcement::find($primary);
-    $upload->delete();
-    return redirect('/list')->with('upload',$upload);
-}          
+    public function announcementtabledelete($primary)
+    {
+        $upload = Announcement::find($primary);
+        $upload->delete();
+        return redirect('/list')->with('upload',$upload);
+    }          
 
 
 //------------------------------------------------------------------------------------------------------------------
