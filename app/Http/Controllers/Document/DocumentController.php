@@ -590,5 +590,30 @@ public function store_conffiles(Request $request)
             }
             return view('announcement.list')->with('upload',$upload);
         }
+//------------------------------------------------------------------------------------------------------------------  
+
+    public function announcementtableedit($primary)
+    {
+        $upload = Announcement::find($primary);
+        return view('announcement.ann-editform')->with('upload',$upload);
+    }
+
+
+    public function updateann(Request $request, $primary)
+    {
+        $upload = Announcement::find($primary);
+        $upload->topic = $request->input('topic');
+        $upload->body = $request->input('body');            
+        $upload->user_id = Auth::user()->id;            
+        $upload->p_admin = $request->input('permissionadmin') != null ? true : true;
+        $upload->p_member = $request->input('permissionmember') != null ? true : false;
+        $upload->p_visitor = $request->input('permissionvisitor') != null ? true : false;
+        $upload->schedulestart = $request->input('schedulestart');
+        $upload->scheduleend = $request->input('scheduleend');
+
+    $upload->save();
+    return redirect('/list');
+
+    } 
 
 }
