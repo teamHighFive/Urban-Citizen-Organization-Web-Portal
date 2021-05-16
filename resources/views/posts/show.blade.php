@@ -66,6 +66,7 @@
                                         
                                         }
                                     };
+                                    // TODO - URL
                                     xmlhttp.open("GET", 'http://127.0.0.1:8000/api/get-clap-count/{{$post->id}}', true);//generating  get method link
                                     xmlhttp.send();
                                     }
