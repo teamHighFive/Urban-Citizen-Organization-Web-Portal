@@ -200,9 +200,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12 my-1">
                                         <div class="card card-margin">
                                             <div class="bg-image hover-overlay ripple" data-ripple-color="light">
-                                                @if($post->cover_image == null)
-                                                    <h6>No image</h6>
-                                                    @else
+                                                @if($post->cover_image != null)
                                                 <img
                                                     src="/storage/cover_images/{{$post->cover_image}}"
                                                     class="img-fluid center-cropped"
