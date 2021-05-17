@@ -35,7 +35,7 @@
                                             <th>Verfied At:</th>
                                             <th>Email</th>
                                             <th>Current Status</th>
-                                            <th>Approve/Not approve</th>
+                                            <th>Approve/Suspend</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,7 +48,7 @@
                                             <td>{{ date('M j, Y',strtotime($user->email_verified_at)) }}</td>
                                             <td>{{ $user->email }}</td>
                                             <th>@if($user->status == 0) Not approved @else Approved @endif</th>
-                                            <td><a href="{{ route('status', ['id'=>$user->id]) }}" class="btn btn-primary btn-sm">@if($user->status == 1) Not approve @else Approve @endif</a></td>
+                                            <td><a href="{{ route('status', ['id'=>$user->id]) }}" class="btn btn-primary btn-sm">@if($user->status == 1) Suspend @else Approve @endif</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

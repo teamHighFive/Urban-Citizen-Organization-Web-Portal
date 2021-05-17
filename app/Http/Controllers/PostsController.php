@@ -70,15 +70,17 @@ class PostsController extends Controller
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             //image uploading path
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        }else{
-            $fileNameToStore = 'noimage.jpg';
         }
 
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-        $post->cover_image = $fileNameToStore;
+        if($request->hasFile('cover_image')){
+            $post->cover_image = $fileNameToStore;
+        }else{
+            $post->cover_image =null;
+        }
         $post->save();
 
         return redirect('/posts')->with('status','Your Post is Created successfully.');
@@ -96,7 +98,7 @@ class PostsController extends Controller
         // $comments = Comment::find();
         $comments = Comment::all()->where('post_id', $id);
         return view('posts.show')->with('post',$post)->with('comments',$comments);
-    
+
     }
 
     /**
@@ -168,7 +170,7 @@ class PostsController extends Controller
         //     return redirect('/posts')->with('error', 'Unauthorized page.');
         // }
 
-        if($post->cover_image !== 'noimage.jpg'){
+        if($post->cover_image !== null){
             Storage::delete('public/cover_images/'.$post->cover_image);
         }
 
@@ -180,5 +182,5 @@ class PostsController extends Controller
             return redirect('/posts')->with('status','Post is Removed successfully.');
         }
     }
-    
+
 }

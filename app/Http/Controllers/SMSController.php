@@ -29,7 +29,7 @@ class SMSController extends Controller
 
         $recipientsArr = $request->recipients;
         if($recipientsArr == null){
-            return redirect()->back()->with('error', "No cantact was selected.");
+            return redirect()->back()->with('error', "No contact was selected.");
         }
         $recipients = implode(",", $recipientsArr);
 

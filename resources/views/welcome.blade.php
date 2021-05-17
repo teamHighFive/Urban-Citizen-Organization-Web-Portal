@@ -200,11 +200,15 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12 my-1">
                                         <div class="card card-margin">
                                             <div class="bg-image hover-overlay ripple" data-ripple-color="light">
+                                                @if($post->cover_image == null)
+                                                    <h6>No image</h6>
+                                                    @else
                                                 <img
                                                     src="/storage/cover_images/{{$post->cover_image}}"
                                                     class="img-fluid center-cropped"
                                                     style="height:20vh; object-fit: cover; object-position: center; width:100%;"
                                                 />
+                                                @endif
                                             </div>
                                             <div class="card-body" style="height:250px;">
                                                 <h5 class="card-title">{{$post->title}}</h5>

@@ -48,7 +48,10 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row justify-content-center " >
+                                                    @if($post->cover_image == null)
+                                                    @else
                                                     <img style="width: 550px;height: 350px" src="/storage/cover_images/{{$post->cover_image}}" alt=""> <br><br>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
