@@ -70,8 +70,8 @@
         </th>
         @if(!Auth::guest())
             @if (Auth::User()->id == $item->created_by || Auth::User()->role_as == "admin")
-            <th><a href ="/editconf/{{$item->id}}" class="btn btn-outline-warning btn-sm"> Edit </a></th>
-            <th><a href = "/deleteconf/{{$item->id}}" class="btn btn-outline-danger btn-sm"> Delete </a> </th>
+            <th><a href ="/editconf/{{$item->id}}" class="btn btn-outline-warning btn-sm"> <i class="fas fa-pencil-alt"></i> </a></th>
+            <th><a href = "/deleteconf/{{$item->id}}" class="btn btn-outline-danger btn-sm"> <i class="fas fa-times"></i> </a> </th>
             @endif
         @endif
     @endforeach

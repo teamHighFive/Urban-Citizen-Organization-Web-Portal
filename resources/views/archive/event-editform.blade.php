@@ -14,11 +14,11 @@
                     {{ method_field('PUT')}}
                             <input type="hidden" name="id" id="id" value="{{$upload->event_id}}">
 
-                            <input type="text" name="event" class="form-control my-1" placeholder="Document name or description" value="{{$upload->event}}">
+                            <input type="text" name="event" class="form-control my-1" placeholder="Event name" value="{{$upload->event}}">
 
-                            <input type="text" name="document_name" class="form-control my-1" placeholder="Document name or description" value="{{$upload->document_name}}">
+                            <input type="text" name="document_name" class="form-control my-1" placeholder="Document name or ID" value="{{$upload->document_name}}">
                             
-                            <input type="text" name="location" class="form-control my-1" value="{{$upload->location}}">
+                            <input type="text" name="location" class="form-control my-1" placeholder="Event location" value="{{$upload->location}}">
 
                             <input type="text" name="description" class="form-control my-1" placeholder="Description" value="{{$upload->description}}">
                         <br>

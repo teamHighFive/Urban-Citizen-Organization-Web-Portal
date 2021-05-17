@@ -34,8 +34,10 @@ Route::get('/form', function () {return view('announcement\Announceform');});
 Route::post('/submit', 'Document\DocumentController@storeann')->name('submit');
 Route::get('/deleteann/{id}','Document\DocumentController@announcementdelete');
 Route::get('/list', 'Document\DocumentController@announcementlist');
-Route::get('/deletetableann/{id}','Document\DocumentController@announcementtabledelete');
 
+Route::get('/edittableann/{id}','Document\DocumentController@announcementtableedit');
+Route::put('/updateann/{id}','Document\DocumentController@updateann');
+Route::get('/deletetableann/{id}','Document\DocumentController@announcementtabledelete');
 
 });
 
