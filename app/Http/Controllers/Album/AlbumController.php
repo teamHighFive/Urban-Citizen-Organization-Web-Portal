@@ -71,7 +71,7 @@ class AlbumController extends Controller
 
 
                 $image_resize = Image::make($path->getRealPath());              
-                $image_resize->resize(300, 200);
+                $image_resize->resize(1200, 800);
                 $image_resize->save(public_path('gallery-resourses/images/' .$fileNameToStore),100);
             }
 
@@ -148,7 +148,7 @@ class AlbumController extends Controller
             // $path-> move(public_path('/gallery-resourses/images'),$fileNameToStore);
 
             $image_resize = Image::make($path->getRealPath()); 
-            $image_resize->resize(300, 200);
+            $image_resize->resize(1200, 800);
             $image_resize->save(public_path('gallery-resourses/images/' .$filename),100);
         }
 

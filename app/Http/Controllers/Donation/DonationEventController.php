@@ -70,7 +70,7 @@ class DonationEventController extends Controller{
             // $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
 
             $image_resize = Image::make($path->getRealPath());              
-            $image_resize->resize(300, 200);
+            $image_resize->resize(1200, 800);
             $image_resize->save(public_path('donation-resourses/events/images/' .$fileNameToStore));
         }
 
@@ -138,7 +138,7 @@ public function update(Request $request, $id){
         // $path-> move(public_path('/donation-resourses/events/images'),$fileNameToStore);
 
         $image_resize = Image::make($path->getRealPath());              
-        $image_resize->resize(300, 200);
+        $image_resize->resize(1200, 800);
         $image_resize->save(public_path('donation-resourses/events/images/' .$filename));
     }
 
