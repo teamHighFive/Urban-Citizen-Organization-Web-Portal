@@ -33,7 +33,7 @@
                                         <a href="/donation/finish/{{$donevent->id}}" class="btn btn-sm btn-warning">Finish Donation Event</a>
                                     @endif
                                     @if($donevent->status != 0)
-                                        <a href="/donation/delete/{{$donevent->id}}" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="/donation/delete/{{$donevent->id}}"onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</a>
                                     @endif
                                     @if($donevent->status == 2)
                                         <a href="/donation/edit/{{$donevent->id}}" class="btn btn-sm btn-info">Edit</a>
